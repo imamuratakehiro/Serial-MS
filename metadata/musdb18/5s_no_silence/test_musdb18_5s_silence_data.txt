@@ -1,0 +1,2470 @@
+track_name,seg,mix_silence,drums_silence,bass_silence,vocals_silence,other_silence
+Moosmusic - Big Dummy Shake,1,False,True,True,True,False
+Moosmusic - Big Dummy Shake,2,False,False,True,True,False
+Moosmusic - Big Dummy Shake,3,False,False,True,True,False
+Moosmusic - Big Dummy Shake,4,False,False,True,True,False
+Moosmusic - Big Dummy Shake,5,False,False,True,True,False
+Moosmusic - Big Dummy Shake,6,False,False,False,False,False
+Moosmusic - Big Dummy Shake,7,False,False,False,False,False
+Moosmusic - Big Dummy Shake,8,False,False,False,False,False
+Moosmusic - Big Dummy Shake,9,False,False,False,False,False
+Moosmusic - Big Dummy Shake,10,False,False,False,False,False
+Moosmusic - Big Dummy Shake,11,False,False,False,False,False
+Moosmusic - Big Dummy Shake,12,False,False,False,False,False
+Moosmusic - Big Dummy Shake,13,False,False,False,False,False
+Moosmusic - Big Dummy Shake,14,False,False,False,False,False
+Moosmusic - Big Dummy Shake,15,False,False,False,False,False
+Moosmusic - Big Dummy Shake,16,False,False,False,False,False
+Moosmusic - Big Dummy Shake,17,False,False,False,False,False
+Moosmusic - Big Dummy Shake,18,False,False,False,False,False
+Moosmusic - Big Dummy Shake,19,False,False,False,False,False
+Moosmusic - Big Dummy Shake,20,False,False,False,False,False
+Moosmusic - Big Dummy Shake,21,False,False,False,False,False
+Moosmusic - Big Dummy Shake,22,False,False,False,False,False
+Moosmusic - Big Dummy Shake,23,False,False,False,False,False
+Moosmusic - Big Dummy Shake,24,False,False,False,False,False
+Moosmusic - Big Dummy Shake,25,False,False,False,False,False
+Moosmusic - Big Dummy Shake,26,False,False,False,False,False
+Moosmusic - Big Dummy Shake,27,False,False,False,False,False
+Moosmusic - Big Dummy Shake,28,False,False,False,False,False
+Moosmusic - Big Dummy Shake,29,False,False,False,False,False
+Moosmusic - Big Dummy Shake,30,False,False,False,False,False
+Moosmusic - Big Dummy Shake,31,False,False,False,False,False
+Moosmusic - Big Dummy Shake,32,False,False,False,False,False
+Moosmusic - Big Dummy Shake,33,False,False,False,False,False
+Moosmusic - Big Dummy Shake,34,False,False,False,False,False
+Moosmusic - Big Dummy Shake,35,False,False,False,False,False
+Moosmusic - Big Dummy Shake,36,False,False,False,False,False
+Moosmusic - Big Dummy Shake,37,False,False,False,False,False
+Moosmusic - Big Dummy Shake,38,False,False,False,False,False
+Moosmusic - Big Dummy Shake,39,False,False,False,False,False
+The Mountaineering Club - Mallory,1,False,True,True,True,False
+The Mountaineering Club - Mallory,2,False,True,True,True,False
+The Mountaineering Club - Mallory,3,False,True,True,True,False
+The Mountaineering Club - Mallory,4,False,True,False,True,False
+The Mountaineering Club - Mallory,5,False,True,False,True,False
+The Mountaineering Club - Mallory,6,False,True,False,True,False
+The Mountaineering Club - Mallory,7,False,True,False,True,False
+The Mountaineering Club - Mallory,8,False,False,False,False,False
+The Mountaineering Club - Mallory,9,False,False,False,False,False
+The Mountaineering Club - Mallory,10,False,False,False,False,False
+The Mountaineering Club - Mallory,11,False,False,False,False,False
+The Mountaineering Club - Mallory,12,False,False,False,False,False
+The Mountaineering Club - Mallory,13,False,False,False,False,False
+The Mountaineering Club - Mallory,14,False,False,False,False,False
+The Mountaineering Club - Mallory,15,False,False,False,True,False
+The Mountaineering Club - Mallory,16,False,False,False,True,False
+The Mountaineering Club - Mallory,17,False,False,False,False,False
+The Mountaineering Club - Mallory,18,False,False,False,False,False
+The Mountaineering Club - Mallory,19,False,False,False,False,False
+The Mountaineering Club - Mallory,20,False,False,False,False,False
+The Mountaineering Club - Mallory,21,False,False,False,False,False
+The Mountaineering Club - Mallory,22,False,False,False,False,False
+The Mountaineering Club - Mallory,23,False,False,False,False,False
+The Mountaineering Club - Mallory,24,False,False,False,False,False
+The Mountaineering Club - Mallory,25,False,True,False,False,False
+The Mountaineering Club - Mallory,26,False,True,False,False,False
+The Mountaineering Club - Mallory,27,False,True,True,False,False
+The Mountaineering Club - Mallory,28,False,True,True,False,False
+The Mountaineering Club - Mallory,29,False,True,True,False,False
+The Mountaineering Club - Mallory,30,False,True,True,False,False
+The Mountaineering Club - Mallory,31,False,True,True,False,False
+The Mountaineering Club - Mallory,32,False,True,True,True,False
+The Mountaineering Club - Mallory,33,False,True,True,True,False
+The Mountaineering Club - Mallory,34,False,False,False,True,False
+The Mountaineering Club - Mallory,35,False,False,False,True,False
+The Mountaineering Club - Mallory,36,False,False,False,True,False
+The Mountaineering Club - Mallory,37,False,False,False,True,False
+The Mountaineering Club - Mallory,38,False,False,False,False,False
+The Mountaineering Club - Mallory,39,False,False,False,False,False
+The Mountaineering Club - Mallory,40,False,False,False,False,False
+The Mountaineering Club - Mallory,41,False,False,False,False,False
+The Mountaineering Club - Mallory,42,False,False,False,False,False
+The Mountaineering Club - Mallory,43,False,False,False,False,False
+The Mountaineering Club - Mallory,44,False,False,False,False,False
+The Mountaineering Club - Mallory,45,False,False,False,False,False
+The Mountaineering Club - Mallory,46,False,False,False,False,False
+The Mountaineering Club - Mallory,47,False,False,False,False,False
+The Mountaineering Club - Mallory,48,False,False,False,False,False
+Bobby Nobody - Stitch Up,1,False,False,False,True,True
+Bobby Nobody - Stitch Up,2,False,False,False,True,False
+Bobby Nobody - Stitch Up,3,False,False,False,True,False
+Bobby Nobody - Stitch Up,4,False,False,False,True,False
+Bobby Nobody - Stitch Up,5,False,False,False,False,False
+Bobby Nobody - Stitch Up,6,False,False,False,False,False
+Bobby Nobody - Stitch Up,7,False,False,False,False,False
+Bobby Nobody - Stitch Up,8,False,False,False,False,False
+Bobby Nobody - Stitch Up,9,False,False,False,False,False
+Bobby Nobody - Stitch Up,10,False,False,False,False,False
+Bobby Nobody - Stitch Up,11,False,False,False,False,False
+Bobby Nobody - Stitch Up,12,False,False,False,False,False
+Bobby Nobody - Stitch Up,13,False,False,False,False,False
+Bobby Nobody - Stitch Up,14,False,False,False,False,False
+Bobby Nobody - Stitch Up,15,False,False,False,False,False
+Bobby Nobody - Stitch Up,16,False,False,False,False,False
+Bobby Nobody - Stitch Up,17,False,False,False,False,False
+Bobby Nobody - Stitch Up,18,False,False,False,False,False
+Bobby Nobody - Stitch Up,19,False,False,False,True,False
+Bobby Nobody - Stitch Up,20,False,False,False,True,False
+Bobby Nobody - Stitch Up,21,False,False,False,False,False
+Bobby Nobody - Stitch Up,22,False,False,False,False,False
+Bobby Nobody - Stitch Up,23,False,False,False,False,False
+Bobby Nobody - Stitch Up,24,False,False,False,False,False
+Bobby Nobody - Stitch Up,25,False,False,False,False,False
+Bobby Nobody - Stitch Up,26,False,False,False,False,False
+Bobby Nobody - Stitch Up,27,False,False,False,False,False
+Bobby Nobody - Stitch Up,28,False,False,False,False,False
+Bobby Nobody - Stitch Up,29,False,False,False,False,False
+Bobby Nobody - Stitch Up,30,False,False,False,False,False
+Bobby Nobody - Stitch Up,31,False,False,False,False,False
+Bobby Nobody - Stitch Up,32,False,False,False,False,False
+Bobby Nobody - Stitch Up,33,False,False,False,False,False
+Bobby Nobody - Stitch Up,34,False,False,False,False,False
+Bobby Nobody - Stitch Up,35,False,False,False,False,False
+Bobby Nobody - Stitch Up,36,False,False,False,False,False
+Bobby Nobody - Stitch Up,37,False,False,False,False,False
+Bobby Nobody - Stitch Up,38,False,False,False,False,False
+Bobby Nobody - Stitch Up,39,False,False,False,False,False
+Bobby Nobody - Stitch Up,40,False,False,False,False,False
+Bobby Nobody - Stitch Up,41,False,False,False,False,False
+Bobby Nobody - Stitch Up,42,False,False,False,False,False
+Bobby Nobody - Stitch Up,43,False,False,False,True,False
+Bobby Nobody - Stitch Up,44,False,False,False,True,False
+Punkdisco - Oral Hygiene,1,False,False,True,True,False
+Punkdisco - Oral Hygiene,2,False,False,True,False,False
+Punkdisco - Oral Hygiene,3,False,False,False,False,False
+Punkdisco - Oral Hygiene,4,False,False,False,False,False
+Punkdisco - Oral Hygiene,5,False,False,False,False,False
+Punkdisco - Oral Hygiene,6,False,False,False,True,False
+Punkdisco - Oral Hygiene,7,False,False,False,False,False
+Punkdisco - Oral Hygiene,8,False,False,False,False,False
+Punkdisco - Oral Hygiene,9,False,False,False,False,False
+Punkdisco - Oral Hygiene,10,False,False,False,False,False
+Punkdisco - Oral Hygiene,11,False,False,False,False,False
+Punkdisco - Oral Hygiene,12,False,False,False,False,False
+Punkdisco - Oral Hygiene,13,False,False,False,False,False
+Punkdisco - Oral Hygiene,14,False,False,False,False,False
+Punkdisco - Oral Hygiene,15,False,False,False,False,False
+Punkdisco - Oral Hygiene,16,False,False,False,False,False
+Punkdisco - Oral Hygiene,17,False,False,False,False,False
+Punkdisco - Oral Hygiene,18,False,False,False,True,False
+Punkdisco - Oral Hygiene,19,False,False,False,False,False
+Punkdisco - Oral Hygiene,20,False,False,False,False,False
+Punkdisco - Oral Hygiene,21,False,False,False,True,False
+Punkdisco - Oral Hygiene,22,False,False,False,False,False
+Punkdisco - Oral Hygiene,23,False,False,False,False,False
+Punkdisco - Oral Hygiene,24,False,False,False,False,False
+Punkdisco - Oral Hygiene,25,False,False,False,False,False
+Punkdisco - Oral Hygiene,26,False,False,False,False,False
+Punkdisco - Oral Hygiene,27,False,False,False,False,False
+Punkdisco - Oral Hygiene,28,False,False,False,False,False
+Punkdisco - Oral Hygiene,29,False,False,False,False,False
+Punkdisco - Oral Hygiene,30,False,False,False,False,False
+Punkdisco - Oral Hygiene,31,False,False,False,False,False
+Punkdisco - Oral Hygiene,32,False,False,False,False,False
+Punkdisco - Oral Hygiene,33,False,False,False,False,False
+Punkdisco - Oral Hygiene,34,False,False,False,False,False
+Punkdisco - Oral Hygiene,35,False,False,False,False,False
+Punkdisco - Oral Hygiene,36,False,False,False,False,False
+Punkdisco - Oral Hygiene,37,False,True,False,True,False
+Punkdisco - Oral Hygiene,38,False,False,False,True,True
+Punkdisco - Oral Hygiene,39,False,False,False,False,False
+Punkdisco - Oral Hygiene,40,False,False,False,False,False
+Punkdisco - Oral Hygiene,41,False,False,False,False,False
+Punkdisco - Oral Hygiene,42,False,True,True,False,True
+Punkdisco - Oral Hygiene,43,False,True,True,False,True
+Punkdisco - Oral Hygiene,44,False,True,True,False,True
+Lyndsey Ollard - Catching Up,1,False,True,True,False,False
+Lyndsey Ollard - Catching Up,2,False,True,True,False,False
+Lyndsey Ollard - Catching Up,3,False,False,True,False,False
+Lyndsey Ollard - Catching Up,4,False,False,True,False,False
+Lyndsey Ollard - Catching Up,5,False,False,True,False,False
+Lyndsey Ollard - Catching Up,6,False,False,True,False,False
+Lyndsey Ollard - Catching Up,7,False,False,True,False,False
+Lyndsey Ollard - Catching Up,8,False,False,False,False,False
+Lyndsey Ollard - Catching Up,9,False,False,False,False,False
+Lyndsey Ollard - Catching Up,10,False,False,False,False,False
+Lyndsey Ollard - Catching Up,11,False,False,False,False,False
+Lyndsey Ollard - Catching Up,12,False,False,False,False,False
+Lyndsey Ollard - Catching Up,13,False,False,False,False,False
+Lyndsey Ollard - Catching Up,14,False,False,False,False,False
+Lyndsey Ollard - Catching Up,15,False,False,False,False,False
+Lyndsey Ollard - Catching Up,16,False,False,False,False,False
+Lyndsey Ollard - Catching Up,17,False,False,False,False,False
+Lyndsey Ollard - Catching Up,18,False,False,False,False,False
+Lyndsey Ollard - Catching Up,19,False,False,False,False,False
+Lyndsey Ollard - Catching Up,20,False,False,False,False,False
+Lyndsey Ollard - Catching Up,21,False,False,False,False,False
+Lyndsey Ollard - Catching Up,22,False,False,False,False,False
+Lyndsey Ollard - Catching Up,23,False,False,False,False,False
+Lyndsey Ollard - Catching Up,24,False,False,False,False,False
+Lyndsey Ollard - Catching Up,25,False,False,False,False,False
+Lyndsey Ollard - Catching Up,26,False,False,False,False,False
+Lyndsey Ollard - Catching Up,27,False,False,False,False,False
+Lyndsey Ollard - Catching Up,28,False,False,False,False,False
+Lyndsey Ollard - Catching Up,29,False,False,False,False,False
+Lyndsey Ollard - Catching Up,30,False,False,False,False,False
+Lyndsey Ollard - Catching Up,31,False,False,False,False,False
+Lyndsey Ollard - Catching Up,32,False,False,False,False,False
+Lyndsey Ollard - Catching Up,33,False,False,False,False,False
+Lyndsey Ollard - Catching Up,34,False,False,False,False,False
+Lyndsey Ollard - Catching Up,35,False,False,False,False,False
+Lyndsey Ollard - Catching Up,36,False,False,False,False,False
+Lyndsey Ollard - Catching Up,37,False,False,False,False,False
+Lyndsey Ollard - Catching Up,38,False,False,False,False,False
+Lyndsey Ollard - Catching Up,39,False,False,False,False,False
+Lyndsey Ollard - Catching Up,40,False,False,False,False,False
+Lyndsey Ollard - Catching Up,41,False,True,False,False,False
+Lyndsey Ollard - Catching Up,42,False,True,False,False,False
+Lyndsey Ollard - Catching Up,43,False,True,False,False,False
+Lyndsey Ollard - Catching Up,44,False,True,False,False,False
+Lyndsey Ollard - Catching Up,45,False,True,False,True,False
+Al James - Schoolboy Facination,1,False,False,False,False,False
+Al James - Schoolboy Facination,2,False,False,False,False,False
+Al James - Schoolboy Facination,3,False,False,False,False,False
+Al James - Schoolboy Facination,4,False,False,False,False,False
+Al James - Schoolboy Facination,5,False,False,False,False,False
+Al James - Schoolboy Facination,6,False,False,False,False,False
+Al James - Schoolboy Facination,7,False,False,False,False,False
+Al James - Schoolboy Facination,8,False,False,False,False,False
+Al James - Schoolboy Facination,9,False,False,False,False,False
+Al James - Schoolboy Facination,10,False,False,False,False,False
+Al James - Schoolboy Facination,11,False,False,False,False,False
+Al James - Schoolboy Facination,12,False,False,False,False,False
+Al James - Schoolboy Facination,13,False,False,False,False,False
+Al James - Schoolboy Facination,14,False,False,False,False,False
+Al James - Schoolboy Facination,15,False,False,False,False,False
+Al James - Schoolboy Facination,16,False,False,False,False,False
+Al James - Schoolboy Facination,17,False,False,False,False,False
+Al James - Schoolboy Facination,18,False,False,False,False,False
+Al James - Schoolboy Facination,19,False,False,False,False,False
+Al James - Schoolboy Facination,20,False,False,False,False,False
+Al James - Schoolboy Facination,21,False,False,False,False,False
+Al James - Schoolboy Facination,22,False,False,False,False,False
+Al James - Schoolboy Facination,23,False,False,False,False,False
+Al James - Schoolboy Facination,24,False,False,False,False,False
+Al James - Schoolboy Facination,25,False,False,False,False,False
+Al James - Schoolboy Facination,26,False,False,False,False,False
+Al James - Schoolboy Facination,27,False,False,False,False,False
+Al James - Schoolboy Facination,28,False,False,False,False,False
+Al James - Schoolboy Facination,29,False,False,False,False,False
+Al James - Schoolboy Facination,30,False,False,False,False,False
+Al James - Schoolboy Facination,31,False,False,False,False,False
+Al James - Schoolboy Facination,32,False,False,False,False,False
+Al James - Schoolboy Facination,33,False,False,False,False,False
+Al James - Schoolboy Facination,34,False,False,False,False,False
+Al James - Schoolboy Facination,35,False,False,False,False,False
+Al James - Schoolboy Facination,36,False,False,False,False,False
+Al James - Schoolboy Facination,37,False,False,False,False,False
+Al James - Schoolboy Facination,38,False,False,False,False,False
+Al James - Schoolboy Facination,39,False,False,False,False,False
+Al James - Schoolboy Facination,40,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,1,False,False,True,True,False
+James Elder & Mark M Thompson - The English Actor,2,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,3,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,4,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,5,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,6,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,7,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,8,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,9,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,10,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,11,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,12,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,13,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,14,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,15,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,16,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,17,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,18,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,19,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,20,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,21,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,22,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,23,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,24,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,25,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,26,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,27,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,28,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,29,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,30,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,31,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,32,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,33,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,34,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,35,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,36,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,37,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,38,False,False,False,True,False
+James Elder & Mark M Thompson - The English Actor,39,False,False,True,True,False
+James Elder & Mark M Thompson - The English Actor,40,False,False,True,True,False
+James Elder & Mark M Thompson - The English Actor,41,False,False,True,True,True
+Juliet's Rescue - Heartbeats,1,False,False,False,True,False
+Juliet's Rescue - Heartbeats,2,False,False,False,True,False
+Juliet's Rescue - Heartbeats,3,False,False,False,False,False
+Juliet's Rescue - Heartbeats,4,False,False,False,False,False
+Juliet's Rescue - Heartbeats,5,False,False,False,False,False
+Juliet's Rescue - Heartbeats,6,False,False,False,False,False
+Juliet's Rescue - Heartbeats,7,False,False,False,False,False
+Juliet's Rescue - Heartbeats,8,False,False,False,False,False
+Juliet's Rescue - Heartbeats,9,False,False,False,False,False
+Juliet's Rescue - Heartbeats,10,False,False,False,False,False
+Juliet's Rescue - Heartbeats,11,False,False,False,False,False
+Juliet's Rescue - Heartbeats,12,False,False,False,False,False
+Juliet's Rescue - Heartbeats,13,False,False,False,False,False
+Juliet's Rescue - Heartbeats,14,False,False,False,False,False
+Juliet's Rescue - Heartbeats,15,False,False,False,False,False
+Juliet's Rescue - Heartbeats,16,False,False,False,False,False
+Juliet's Rescue - Heartbeats,17,False,False,False,False,False
+Juliet's Rescue - Heartbeats,18,False,False,False,False,False
+Juliet's Rescue - Heartbeats,19,False,False,False,False,False
+Juliet's Rescue - Heartbeats,20,False,False,False,False,False
+Juliet's Rescue - Heartbeats,21,False,False,False,False,False
+Juliet's Rescue - Heartbeats,22,False,False,False,False,False
+Juliet's Rescue - Heartbeats,23,False,False,False,False,False
+Juliet's Rescue - Heartbeats,24,False,False,False,False,False
+Juliet's Rescue - Heartbeats,25,False,False,False,False,False
+Juliet's Rescue - Heartbeats,26,False,False,False,False,False
+Juliet's Rescue - Heartbeats,27,False,False,False,False,False
+Juliet's Rescue - Heartbeats,28,False,False,False,False,False
+Juliet's Rescue - Heartbeats,29,False,False,False,False,False
+Juliet's Rescue - Heartbeats,30,False,False,False,False,False
+Juliet's Rescue - Heartbeats,31,False,False,False,False,False
+Juliet's Rescue - Heartbeats,32,False,False,False,False,False
+Juliet's Rescue - Heartbeats,33,False,False,False,False,False
+Juliet's Rescue - Heartbeats,34,False,False,False,False,False
+Juliet's Rescue - Heartbeats,35,False,False,False,False,False
+Juliet's Rescue - Heartbeats,36,False,False,False,False,False
+Juliet's Rescue - Heartbeats,37,False,False,False,False,False
+Juliet's Rescue - Heartbeats,38,False,False,False,False,False
+Juliet's Rescue - Heartbeats,39,False,False,False,False,False
+Juliet's Rescue - Heartbeats,40,False,False,False,False,False
+Juliet's Rescue - Heartbeats,41,False,False,False,False,False
+Juliet's Rescue - Heartbeats,42,False,False,False,True,False
+Juliet's Rescue - Heartbeats,43,False,False,False,True,False
+Juliet's Rescue - Heartbeats,44,False,False,False,True,False
+Juliet's Rescue - Heartbeats,45,False,False,False,True,False
+Juliet's Rescue - Heartbeats,46,False,False,False,True,False
+Juliet's Rescue - Heartbeats,47,False,False,False,True,False
+Juliet's Rescue - Heartbeats,48,False,False,False,True,False
+Juliet's Rescue - Heartbeats,49,False,False,False,False,False
+Juliet's Rescue - Heartbeats,50,False,False,True,False,False
+Juliet's Rescue - Heartbeats,51,False,True,True,False,False
+Juliet's Rescue - Heartbeats,52,False,True,True,False,False
+Juliet's Rescue - Heartbeats,53,True,True,True,True,True
+The Easton Ellises - Falcon 69,1,False,False,True,False,False
+The Easton Ellises - Falcon 69,2,False,False,True,True,False
+The Easton Ellises - Falcon 69,3,False,False,False,True,False
+The Easton Ellises - Falcon 69,4,False,False,False,False,False
+The Easton Ellises - Falcon 69,5,False,False,False,False,False
+The Easton Ellises - Falcon 69,6,False,False,False,False,False
+The Easton Ellises - Falcon 69,7,False,False,False,False,False
+The Easton Ellises - Falcon 69,8,False,False,False,False,False
+The Easton Ellises - Falcon 69,9,False,False,False,False,False
+The Easton Ellises - Falcon 69,10,False,False,False,False,False
+The Easton Ellises - Falcon 69,11,False,False,False,False,False
+The Easton Ellises - Falcon 69,12,False,False,False,False,False
+The Easton Ellises - Falcon 69,13,False,False,False,False,False
+The Easton Ellises - Falcon 69,14,False,False,False,False,False
+The Easton Ellises - Falcon 69,15,False,False,False,False,False
+The Easton Ellises - Falcon 69,16,False,False,False,False,False
+The Easton Ellises - Falcon 69,17,False,False,False,False,False
+The Easton Ellises - Falcon 69,18,False,False,False,False,False
+The Easton Ellises - Falcon 69,19,False,False,False,False,False
+The Easton Ellises - Falcon 69,20,False,False,False,False,False
+The Easton Ellises - Falcon 69,21,False,False,False,False,False
+The Easton Ellises - Falcon 69,22,False,False,False,False,False
+The Easton Ellises - Falcon 69,23,False,False,False,False,False
+The Easton Ellises - Falcon 69,24,False,False,False,False,False
+The Easton Ellises - Falcon 69,25,False,False,False,False,False
+The Easton Ellises - Falcon 69,26,False,False,False,False,False
+The Easton Ellises - Falcon 69,27,False,False,False,False,False
+The Easton Ellises - Falcon 69,28,False,False,False,False,False
+The Easton Ellises - Falcon 69,29,False,False,False,False,False
+The Easton Ellises - Falcon 69,30,False,False,False,False,False
+The Easton Ellises - Falcon 69,31,False,False,False,False,False
+The Easton Ellises - Falcon 69,32,False,False,False,False,False
+The Easton Ellises - Falcon 69,33,False,False,False,False,False
+The Easton Ellises - Falcon 69,34,False,False,False,False,False
+The Easton Ellises - Falcon 69,35,False,False,False,False,False
+The Easton Ellises - Falcon 69,36,False,False,False,False,False
+The Easton Ellises - Falcon 69,37,False,False,False,False,False
+The Easton Ellises - Falcon 69,38,False,False,False,False,False
+The Easton Ellises - Falcon 69,39,False,False,False,False,False
+The Easton Ellises - Falcon 69,40,False,False,False,False,False
+The Easton Ellises - Falcon 69,41,False,False,False,False,False
+The Easton Ellises - Falcon 69,42,False,False,False,False,False
+The Easton Ellises - Falcon 69,43,False,False,False,False,False
+The Easton Ellises - Falcon 69,44,False,False,False,False,False
+The Easton Ellises - Falcon 69,45,False,False,False,False,False
+The Easton Ellises - Falcon 69,46,False,False,False,False,False
+The Easton Ellises - Falcon 69,47,False,True,True,True,False
+The Easton Ellises - Falcon 69,48,False,True,True,True,False
+The Easton Ellises - Falcon 69,49,False,True,True,True,False
+Secretariat - Borderline,1,False,False,False,True,False
+Secretariat - Borderline,2,False,False,False,True,False
+Secretariat - Borderline,3,False,False,False,True,False
+Secretariat - Borderline,4,False,False,False,False,False
+Secretariat - Borderline,5,False,False,False,False,False
+Secretariat - Borderline,6,False,False,False,False,False
+Secretariat - Borderline,7,False,False,False,False,False
+Secretariat - Borderline,8,False,False,False,False,False
+Secretariat - Borderline,9,False,False,False,False,False
+Secretariat - Borderline,10,False,False,False,False,False
+Secretariat - Borderline,11,False,False,False,False,False
+Secretariat - Borderline,12,False,False,False,False,False
+Secretariat - Borderline,13,False,False,False,False,False
+Secretariat - Borderline,14,False,False,False,False,False
+Secretariat - Borderline,15,False,False,False,False,False
+Secretariat - Borderline,16,False,False,False,False,False
+Secretariat - Borderline,17,False,False,False,False,False
+Secretariat - Borderline,18,False,False,False,False,False
+Secretariat - Borderline,19,False,False,False,False,False
+Secretariat - Borderline,20,False,False,False,False,False
+Secretariat - Borderline,21,False,False,False,True,False
+Secretariat - Borderline,22,False,False,False,False,False
+Secretariat - Borderline,23,False,False,False,False,False
+Secretariat - Borderline,24,False,False,False,False,False
+Secretariat - Borderline,25,False,False,False,False,False
+Secretariat - Borderline,26,False,False,False,False,False
+Secretariat - Borderline,27,False,False,False,False,False
+Secretariat - Borderline,28,False,False,False,False,False
+Secretariat - Borderline,29,False,False,False,False,False
+Secretariat - Borderline,30,False,False,False,False,False
+Secretariat - Borderline,31,False,False,False,True,False
+Secretariat - Borderline,32,False,False,False,True,False
+Secretariat - Borderline,33,False,False,False,True,False
+Secretariat - Borderline,34,False,False,False,True,False
+Secretariat - Borderline,35,False,False,False,True,False
+Secretariat - Borderline,36,False,False,False,True,False
+Secretariat - Borderline,37,False,False,False,True,False
+Secretariat - Borderline,38,False,False,False,True,False
+Secretariat - Borderline,39,False,False,False,True,False
+Secretariat - Borderline,40,False,False,False,True,False
+Secretariat - Borderline,41,False,False,False,False,False
+Secretariat - Borderline,42,False,False,False,False,False
+Secretariat - Borderline,43,False,False,False,False,False
+Secretariat - Borderline,44,False,False,False,False,False
+Secretariat - Borderline,45,False,False,False,False,False
+Secretariat - Borderline,46,False,False,False,False,False
+Secretariat - Borderline,47,False,False,False,False,False
+Secretariat - Borderline,48,False,False,False,False,False
+Secretariat - Borderline,49,False,False,False,False,False
+Secretariat - Borderline,50,False,False,False,False,False
+Secretariat - Borderline,51,False,False,False,False,False
+Secretariat - Borderline,52,False,False,False,False,False
+Secretariat - Borderline,53,False,False,False,False,False
+Secretariat - Borderline,54,False,False,False,True,False
+Secretariat - Borderline,55,False,True,False,True,False
+Secretariat - Borderline,56,True,True,True,True,True
+Secretariat - Borderline,57,True,True,True,True,True
+The Long Wait - Dark Horses,1,False,True,True,True,False
+The Long Wait - Dark Horses,2,False,True,True,True,False
+The Long Wait - Dark Horses,3,False,False,False,True,False
+The Long Wait - Dark Horses,4,False,False,False,True,False
+The Long Wait - Dark Horses,5,False,False,False,True,False
+The Long Wait - Dark Horses,6,False,False,False,True,False
+The Long Wait - Dark Horses,7,False,False,False,False,False
+The Long Wait - Dark Horses,8,False,False,False,False,False
+The Long Wait - Dark Horses,9,False,False,False,False,False
+The Long Wait - Dark Horses,10,False,False,False,False,False
+The Long Wait - Dark Horses,11,False,False,False,False,False
+The Long Wait - Dark Horses,12,False,False,False,False,False
+The Long Wait - Dark Horses,13,False,False,False,False,False
+The Long Wait - Dark Horses,14,False,False,False,False,False
+The Long Wait - Dark Horses,15,False,False,False,False,False
+The Long Wait - Dark Horses,16,False,False,False,False,False
+The Long Wait - Dark Horses,17,False,False,False,False,False
+The Long Wait - Dark Horses,18,False,False,False,False,False
+The Long Wait - Dark Horses,19,False,False,False,False,False
+The Long Wait - Dark Horses,20,False,False,False,False,False
+The Long Wait - Dark Horses,21,False,False,False,False,False
+The Long Wait - Dark Horses,22,False,False,False,False,False
+The Long Wait - Dark Horses,23,False,False,False,False,False
+The Long Wait - Dark Horses,24,False,False,False,False,False
+The Long Wait - Dark Horses,25,False,False,False,False,False
+The Long Wait - Dark Horses,26,False,False,False,False,False
+The Long Wait - Dark Horses,27,False,False,False,False,False
+The Long Wait - Dark Horses,28,False,False,False,False,False
+The Long Wait - Dark Horses,29,False,False,False,False,False
+The Long Wait - Dark Horses,30,False,False,False,False,False
+The Long Wait - Dark Horses,31,False,False,False,False,False
+The Long Wait - Dark Horses,32,False,False,False,False,False
+The Long Wait - Dark Horses,33,False,False,False,False,False
+The Long Wait - Dark Horses,34,False,False,False,False,False
+The Long Wait - Dark Horses,35,False,False,False,False,False
+The Long Wait - Dark Horses,36,False,False,False,False,False
+The Long Wait - Dark Horses,37,False,False,False,False,False
+The Long Wait - Dark Horses,38,False,False,False,False,False
+The Long Wait - Dark Horses,39,False,False,False,False,False
+The Long Wait - Dark Horses,40,False,False,False,False,False
+The Long Wait - Dark Horses,41,False,False,False,False,False
+The Long Wait - Dark Horses,42,False,False,False,False,False
+The Long Wait - Dark Horses,43,False,False,False,False,False
+The Long Wait - Dark Horses,44,False,False,False,False,False
+The Long Wait - Dark Horses,45,False,False,False,False,False
+The Long Wait - Dark Horses,46,False,False,False,False,False
+The Long Wait - Dark Horses,47,False,False,False,False,False
+The Long Wait - Dark Horses,48,False,False,False,False,False
+The Long Wait - Dark Horses,49,False,False,False,False,False
+The Long Wait - Dark Horses,50,False,False,False,False,False
+The Long Wait - Dark Horses,51,False,False,False,False,False
+The Long Wait - Dark Horses,52,False,False,False,False,False
+The Long Wait - Dark Horses,53,False,False,False,False,False
+The Long Wait - Dark Horses,54,False,False,False,True,False
+The Long Wait - Dark Horses,55,False,False,False,True,False
+The Long Wait - Dark Horses,56,False,False,False,True,False
+The Long Wait - Dark Horses,57,False,False,False,True,False
+The Long Wait - Dark Horses,58,False,True,False,True,False
+The Long Wait - Dark Horses,59,False,True,True,True,False
+The Long Wait - Dark Horses,60,True,True,True,True,True
+The Long Wait - Dark Horses,61,True,True,True,True,True
+Sambasevam Shanmugam - Kaathaadi,1,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,2,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,3,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,4,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,5,False,False,True,True,False
+Sambasevam Shanmugam - Kaathaadi,6,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,7,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,8,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,9,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,10,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,11,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,12,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,13,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,14,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,15,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,16,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,17,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,18,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,19,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,20,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,21,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,22,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,23,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,24,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,25,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,26,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,27,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,28,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,29,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,30,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,31,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,32,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,33,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,34,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,35,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,36,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,37,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,38,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,39,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,40,False,True,False,True,False
+Sambasevam Shanmugam - Kaathaadi,41,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,42,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,43,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,44,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,45,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,46,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,47,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,48,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,49,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,50,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,51,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,52,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,53,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,54,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,55,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,56,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,57,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,58,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,59,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,60,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,61,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,62,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,63,False,True,True,True,False
+Signe Jakobsen - What Have You Done To Me,1,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,2,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,3,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,4,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,5,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,6,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,7,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,8,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,9,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,10,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,11,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,12,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,13,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,14,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,15,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,16,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,17,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,18,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,19,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,20,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,21,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,22,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,23,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,24,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,25,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,26,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,27,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,28,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,29,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,30,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,31,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,32,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,33,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,34,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,35,False,True,False,False,False
+Girls Under Glass - We Feel Alright,1,False,True,True,True,False
+Girls Under Glass - We Feel Alright,2,False,False,False,True,False
+Girls Under Glass - We Feel Alright,3,False,False,False,True,False
+Girls Under Glass - We Feel Alright,4,False,False,False,True,False
+Girls Under Glass - We Feel Alright,5,False,False,False,True,False
+Girls Under Glass - We Feel Alright,6,False,False,False,True,False
+Girls Under Glass - We Feel Alright,7,False,False,False,True,False
+Girls Under Glass - We Feel Alright,8,False,False,False,True,False
+Girls Under Glass - We Feel Alright,9,False,False,False,True,False
+Girls Under Glass - We Feel Alright,10,False,False,False,True,False
+Girls Under Glass - We Feel Alright,11,False,False,False,False,False
+Girls Under Glass - We Feel Alright,12,False,False,False,False,False
+Girls Under Glass - We Feel Alright,13,False,False,False,False,False
+Girls Under Glass - We Feel Alright,14,False,False,False,False,False
+Girls Under Glass - We Feel Alright,15,False,False,False,False,False
+Girls Under Glass - We Feel Alright,16,False,False,False,False,False
+Girls Under Glass - We Feel Alright,17,False,False,False,False,False
+Girls Under Glass - We Feel Alright,18,False,False,False,False,False
+Girls Under Glass - We Feel Alright,19,False,False,False,False,False
+Girls Under Glass - We Feel Alright,20,False,False,False,False,False
+Girls Under Glass - We Feel Alright,21,False,False,False,False,False
+Girls Under Glass - We Feel Alright,22,False,False,False,False,False
+Girls Under Glass - We Feel Alright,23,False,False,False,False,False
+Girls Under Glass - We Feel Alright,24,False,False,False,False,False
+Girls Under Glass - We Feel Alright,25,False,False,False,True,False
+Girls Under Glass - We Feel Alright,26,False,False,False,True,False
+Girls Under Glass - We Feel Alright,27,False,False,False,False,False
+Girls Under Glass - We Feel Alright,28,False,False,False,False,False
+Girls Under Glass - We Feel Alright,29,False,False,False,False,False
+Girls Under Glass - We Feel Alright,30,False,False,False,False,False
+Girls Under Glass - We Feel Alright,31,False,False,False,False,False
+Girls Under Glass - We Feel Alright,32,False,False,False,False,False
+Girls Under Glass - We Feel Alright,33,False,False,False,False,False
+Girls Under Glass - We Feel Alright,34,False,False,False,False,False
+Girls Under Glass - We Feel Alright,35,False,False,False,False,False
+Girls Under Glass - We Feel Alright,36,False,False,False,False,False
+Girls Under Glass - We Feel Alright,37,False,False,False,False,False
+Girls Under Glass - We Feel Alright,38,False,False,False,False,False
+Girls Under Glass - We Feel Alright,39,False,False,False,False,False
+Girls Under Glass - We Feel Alright,40,False,False,False,False,False
+Girls Under Glass - We Feel Alright,41,False,False,False,True,False
+Girls Under Glass - We Feel Alright,42,False,False,False,True,False
+Girls Under Glass - We Feel Alright,43,False,False,False,False,False
+Girls Under Glass - We Feel Alright,44,False,False,False,False,False
+Girls Under Glass - We Feel Alright,45,False,False,False,False,False
+Girls Under Glass - We Feel Alright,46,False,False,False,False,False
+Girls Under Glass - We Feel Alright,47,False,False,False,False,False
+Girls Under Glass - We Feel Alright,48,False,False,False,True,False
+Girls Under Glass - We Feel Alright,49,False,False,False,True,False
+Girls Under Glass - We Feel Alright,50,False,False,False,True,False
+Girls Under Glass - We Feel Alright,51,False,False,False,True,False
+Girls Under Glass - We Feel Alright,52,False,False,False,True,False
+Girls Under Glass - We Feel Alright,53,False,False,False,True,False
+Girls Under Glass - We Feel Alright,54,False,False,False,True,False
+Girls Under Glass - We Feel Alright,55,False,False,False,True,False
+Girls Under Glass - We Feel Alright,56,False,False,False,True,False
+Girls Under Glass - We Feel Alright,57,False,False,False,True,False
+Girls Under Glass - We Feel Alright,58,False,False,False,True,False
+Girls Under Glass - We Feel Alright,59,False,False,False,True,False
+Girls Under Glass - We Feel Alright,60,False,False,False,True,False
+Girls Under Glass - We Feel Alright,61,False,False,False,True,False
+Girls Under Glass - We Feel Alright,62,False,False,True,True,False
+Girls Under Glass - We Feel Alright,63,False,True,True,True,False
+Mu - Too Bright,1,False,True,True,True,False
+Mu - Too Bright,2,False,False,True,False,False
+Mu - Too Bright,3,False,False,True,False,False
+Mu - Too Bright,4,False,False,False,False,False
+Mu - Too Bright,5,False,False,False,False,False
+Mu - Too Bright,6,False,False,False,False,False
+Mu - Too Bright,7,False,False,False,False,False
+Mu - Too Bright,8,False,False,False,False,False
+Mu - Too Bright,9,False,False,False,False,False
+Mu - Too Bright,10,False,False,False,False,False
+Mu - Too Bright,11,False,True,True,False,False
+Mu - Too Bright,12,False,False,True,False,False
+Mu - Too Bright,13,False,False,True,False,False
+Mu - Too Bright,14,False,False,True,False,False
+Mu - Too Bright,15,False,False,True,False,False
+Mu - Too Bright,16,False,False,True,False,False
+Mu - Too Bright,17,False,False,True,False,False
+Mu - Too Bright,18,False,False,True,False,False
+Mu - Too Bright,19,False,False,True,False,False
+Mu - Too Bright,20,False,False,True,False,False
+Mu - Too Bright,21,False,False,True,False,False
+Mu - Too Bright,22,False,False,True,False,False
+Mu - Too Bright,23,False,False,True,False,False
+Mu - Too Bright,24,False,False,False,False,False
+Mu - Too Bright,25,False,False,False,False,False
+Mu - Too Bright,26,False,False,False,False,False
+Mu - Too Bright,27,False,False,False,False,False
+Mu - Too Bright,28,False,False,False,False,False
+Mu - Too Bright,29,False,False,False,False,False
+Mu - Too Bright,30,False,False,False,False,False
+Mu - Too Bright,31,False,False,True,False,False
+Mu - Too Bright,32,False,False,True,False,False
+Mu - Too Bright,33,False,False,True,False,False
+Mu - Too Bright,34,False,False,True,False,False
+Mu - Too Bright,35,False,False,True,False,False
+Mu - Too Bright,36,False,False,True,False,False
+Mu - Too Bright,37,False,False,True,False,False
+Mu - Too Bright,38,False,False,True,False,False
+Mu - Too Bright,39,False,False,True,False,False
+Mu - Too Bright,40,False,False,False,False,False
+Mu - Too Bright,41,False,False,False,False,False
+Mu - Too Bright,42,False,False,False,False,False
+Mu - Too Bright,43,False,False,False,False,False
+Mu - Too Bright,44,False,False,False,False,False
+Mu - Too Bright,45,False,False,True,False,False
+Mu - Too Bright,46,False,False,True,False,False
+Mu - Too Bright,47,False,False,True,False,False
+Mu - Too Bright,48,False,False,True,False,False
+Mu - Too Bright,49,False,False,True,False,False
+Mu - Too Bright,50,False,False,True,False,False
+Mu - Too Bright,51,False,False,True,False,False
+Mu - Too Bright,52,False,False,True,False,False
+Mu - Too Bright,53,False,False,True,False,False
+Mu - Too Bright,54,False,False,True,False,False
+Speak Softly - Broken Man,1,False,False,True,False,True
+Speak Softly - Broken Man,2,False,False,True,False,False
+Speak Softly - Broken Man,3,False,False,True,False,False
+Speak Softly - Broken Man,4,False,False,True,False,False
+Speak Softly - Broken Man,5,False,False,True,False,False
+Speak Softly - Broken Man,6,False,False,True,False,False
+Speak Softly - Broken Man,7,False,False,True,False,False
+Speak Softly - Broken Man,8,False,False,False,False,False
+Speak Softly - Broken Man,9,False,False,False,False,False
+Speak Softly - Broken Man,10,False,False,False,False,False
+Speak Softly - Broken Man,11,False,False,False,False,False
+Speak Softly - Broken Man,12,False,False,False,False,False
+Speak Softly - Broken Man,13,False,False,False,False,False
+Speak Softly - Broken Man,14,False,False,False,False,False
+Speak Softly - Broken Man,15,False,False,False,False,False
+Speak Softly - Broken Man,16,False,False,True,False,False
+Speak Softly - Broken Man,17,False,False,True,False,False
+Speak Softly - Broken Man,18,False,False,True,False,False
+Speak Softly - Broken Man,19,False,False,True,False,False
+Speak Softly - Broken Man,20,False,False,True,False,False
+Speak Softly - Broken Man,21,False,False,True,False,False
+Speak Softly - Broken Man,22,False,False,True,False,False
+Speak Softly - Broken Man,23,False,False,False,False,False
+Speak Softly - Broken Man,24,False,False,False,False,False
+Speak Softly - Broken Man,25,False,False,False,False,False
+Speak Softly - Broken Man,26,False,False,False,False,False
+Speak Softly - Broken Man,27,False,False,False,False,False
+Speak Softly - Broken Man,28,False,False,False,False,False
+Speak Softly - Broken Man,29,False,False,False,False,False
+Speak Softly - Broken Man,30,False,False,False,False,False
+Speak Softly - Broken Man,31,False,False,True,False,False
+Speak Softly - Broken Man,32,False,False,True,False,False
+Speak Softly - Broken Man,33,False,False,True,False,False
+Speak Softly - Broken Man,34,False,False,True,False,False
+Speak Softly - Broken Man,35,False,False,False,False,False
+Speak Softly - Broken Man,36,False,False,False,False,False
+Speak Softly - Broken Man,37,False,False,False,False,False
+Speak Softly - Broken Man,38,False,False,False,False,False
+Speak Softly - Broken Man,39,False,False,False,False,False
+Speak Softly - Broken Man,40,False,False,False,False,False
+Speak Softly - Broken Man,41,False,False,False,False,False
+Speak Softly - Broken Man,42,False,False,False,False,False
+Speak Softly - Broken Man,43,False,False,False,False,False
+Speak Softly - Broken Man,44,False,False,False,False,False
+Speak Softly - Broken Man,45,False,False,False,False,False
+Speak Softly - Broken Man,46,False,False,False,False,False
+Speak Softly - Broken Man,47,False,False,False,False,False
+Speak Softly - Broken Man,48,False,False,False,False,False
+Speak Softly - Broken Man,49,False,False,False,False,False
+Speak Softly - Broken Man,50,False,True,True,False,True
+Georgia Wonder - Siren,1,False,False,False,True,False
+Georgia Wonder - Siren,2,False,False,False,True,False
+Georgia Wonder - Siren,3,False,False,False,True,False
+Georgia Wonder - Siren,4,False,False,False,True,False
+Georgia Wonder - Siren,5,False,False,False,True,False
+Georgia Wonder - Siren,6,False,False,False,True,False
+Georgia Wonder - Siren,7,False,False,False,True,False
+Georgia Wonder - Siren,8,False,False,False,False,False
+Georgia Wonder - Siren,9,False,False,False,False,False
+Georgia Wonder - Siren,10,False,False,False,False,False
+Georgia Wonder - Siren,11,False,False,False,False,False
+Georgia Wonder - Siren,12,False,False,False,False,False
+Georgia Wonder - Siren,13,False,False,False,False,False
+Georgia Wonder - Siren,14,False,False,False,False,False
+Georgia Wonder - Siren,15,False,False,False,False,False
+Georgia Wonder - Siren,16,False,False,False,False,False
+Georgia Wonder - Siren,17,False,False,False,False,False
+Georgia Wonder - Siren,18,False,False,False,False,False
+Georgia Wonder - Siren,19,False,False,False,False,False
+Georgia Wonder - Siren,20,False,False,False,False,False
+Georgia Wonder - Siren,21,False,False,False,False,False
+Georgia Wonder - Siren,22,False,False,False,False,False
+Georgia Wonder - Siren,23,False,False,False,False,False
+Georgia Wonder - Siren,24,False,False,False,False,False
+Georgia Wonder - Siren,25,False,False,False,False,False
+Georgia Wonder - Siren,26,False,False,False,False,False
+Georgia Wonder - Siren,27,False,False,False,False,False
+Georgia Wonder - Siren,28,False,False,False,False,False
+Georgia Wonder - Siren,29,False,False,False,False,False
+Georgia Wonder - Siren,30,False,False,False,False,False
+Georgia Wonder - Siren,31,False,False,False,False,False
+Georgia Wonder - Siren,32,False,False,False,False,False
+Georgia Wonder - Siren,33,False,False,False,False,False
+Georgia Wonder - Siren,34,False,False,False,False,False
+Georgia Wonder - Siren,35,False,False,False,False,False
+Georgia Wonder - Siren,36,False,False,False,False,False
+Georgia Wonder - Siren,37,False,False,False,False,False
+Georgia Wonder - Siren,38,False,False,False,False,False
+Georgia Wonder - Siren,39,False,False,False,False,False
+Georgia Wonder - Siren,40,False,False,False,False,False
+Georgia Wonder - Siren,41,False,False,False,False,False
+Georgia Wonder - Siren,42,False,False,False,False,False
+Georgia Wonder - Siren,43,False,False,False,False,False
+Georgia Wonder - Siren,44,False,False,False,False,False
+Georgia Wonder - Siren,45,False,False,False,False,False
+Georgia Wonder - Siren,46,False,False,False,False,False
+Georgia Wonder - Siren,47,False,False,False,False,False
+Georgia Wonder - Siren,48,False,False,False,False,False
+Georgia Wonder - Siren,49,False,False,False,False,False
+Georgia Wonder - Siren,50,False,False,True,False,False
+Georgia Wonder - Siren,51,False,False,True,False,False
+Georgia Wonder - Siren,52,False,False,True,False,False
+Georgia Wonder - Siren,53,False,False,True,False,False
+Georgia Wonder - Siren,54,False,False,True,False,False
+Georgia Wonder - Siren,55,False,False,True,False,False
+Georgia Wonder - Siren,56,False,False,True,False,False
+Georgia Wonder - Siren,57,False,False,True,False,False
+Georgia Wonder - Siren,58,False,False,True,False,False
+Georgia Wonder - Siren,59,False,False,False,False,False
+Georgia Wonder - Siren,60,False,False,False,False,False
+Georgia Wonder - Siren,61,False,False,False,False,False
+Georgia Wonder - Siren,62,False,False,False,False,False
+Georgia Wonder - Siren,63,False,False,False,False,False
+Georgia Wonder - Siren,64,False,False,False,False,False
+Georgia Wonder - Siren,65,False,False,False,False,False
+Georgia Wonder - Siren,66,False,False,False,False,False
+Georgia Wonder - Siren,67,False,False,False,True,False
+Georgia Wonder - Siren,68,False,False,False,True,False
+Georgia Wonder - Siren,69,False,False,False,True,False
+Georgia Wonder - Siren,70,False,False,False,True,False
+Georgia Wonder - Siren,71,False,False,False,True,False
+Georgia Wonder - Siren,72,False,False,False,True,False
+Georgia Wonder - Siren,73,False,False,False,True,False
+Georgia Wonder - Siren,74,False,False,False,True,False
+Georgia Wonder - Siren,75,False,False,False,True,False
+Georgia Wonder - Siren,76,False,False,False,True,False
+Georgia Wonder - Siren,77,False,False,False,True,False
+Georgia Wonder - Siren,78,False,False,False,True,False
+Georgia Wonder - Siren,79,False,False,False,True,False
+Georgia Wonder - Siren,80,False,False,False,True,False
+Georgia Wonder - Siren,81,False,False,False,True,False
+Georgia Wonder - Siren,82,False,False,False,True,False
+Georgia Wonder - Siren,83,False,False,False,True,False
+Georgia Wonder - Siren,84,False,False,False,True,False
+Georgia Wonder - Siren,85,False,False,False,True,False
+Georgia Wonder - Siren,86,False,False,False,True,False
+Arise - Run Run Run,1,False,False,False,False,False
+Arise - Run Run Run,2,False,False,False,False,False
+Arise - Run Run Run,3,False,False,False,False,False
+Arise - Run Run Run,4,False,False,False,False,False
+Arise - Run Run Run,5,False,False,False,False,False
+Arise - Run Run Run,6,False,False,False,False,False
+Arise - Run Run Run,7,False,False,False,False,False
+Arise - Run Run Run,8,False,False,False,False,False
+Arise - Run Run Run,9,False,False,False,False,False
+Arise - Run Run Run,10,False,False,False,False,False
+Arise - Run Run Run,11,False,False,False,False,False
+Arise - Run Run Run,12,False,False,False,False,False
+Arise - Run Run Run,13,False,False,False,False,False
+Arise - Run Run Run,14,False,False,False,False,False
+Arise - Run Run Run,15,False,False,False,False,False
+Arise - Run Run Run,16,False,False,False,False,False
+Arise - Run Run Run,17,False,False,False,False,False
+Arise - Run Run Run,18,False,False,False,False,False
+Arise - Run Run Run,19,False,False,False,False,False
+Arise - Run Run Run,20,False,False,False,False,False
+Arise - Run Run Run,21,False,False,False,False,False
+Arise - Run Run Run,22,False,False,False,False,False
+Arise - Run Run Run,23,False,False,False,False,False
+Arise - Run Run Run,24,False,False,False,False,False
+Arise - Run Run Run,25,False,False,False,False,False
+Arise - Run Run Run,26,False,False,False,False,False
+Arise - Run Run Run,27,False,False,False,False,False
+Arise - Run Run Run,28,False,False,False,False,False
+Arise - Run Run Run,29,False,False,False,False,False
+Arise - Run Run Run,30,False,False,False,False,False
+Arise - Run Run Run,31,False,False,False,False,False
+Arise - Run Run Run,32,False,False,False,False,False
+Arise - Run Run Run,33,False,False,False,False,False
+Arise - Run Run Run,34,False,False,False,False,False
+Arise - Run Run Run,35,False,False,False,False,False
+Arise - Run Run Run,36,False,False,False,False,False
+Arise - Run Run Run,37,False,False,False,False,False
+Arise - Run Run Run,38,False,False,False,False,False
+Arise - Run Run Run,39,False,False,False,False,False
+Arise - Run Run Run,40,False,False,False,True,False
+Arise - Run Run Run,41,False,False,False,True,False
+Arise - Run Run Run,42,False,False,False,True,False
+Arise - Run Run Run,43,False,False,False,True,False
+Raft Monk - Tiring,1,True,True,True,True,True
+Raft Monk - Tiring,2,False,True,True,True,False
+Raft Monk - Tiring,3,False,True,True,True,False
+Raft Monk - Tiring,4,False,False,False,True,False
+Raft Monk - Tiring,5,False,False,False,False,False
+Raft Monk - Tiring,6,False,False,False,False,False
+Raft Monk - Tiring,7,False,False,False,False,False
+Raft Monk - Tiring,8,False,False,False,False,False
+Raft Monk - Tiring,9,False,False,False,False,False
+Raft Monk - Tiring,10,False,False,False,False,False
+Raft Monk - Tiring,11,False,False,False,False,False
+Raft Monk - Tiring,12,False,False,False,False,False
+Raft Monk - Tiring,13,False,False,False,False,False
+Raft Monk - Tiring,14,False,False,False,False,False
+Raft Monk - Tiring,15,False,False,False,False,False
+Raft Monk - Tiring,16,False,False,False,False,False
+Raft Monk - Tiring,17,False,False,False,False,False
+Raft Monk - Tiring,18,False,False,False,False,False
+Raft Monk - Tiring,19,False,False,False,False,False
+Raft Monk - Tiring,20,False,False,False,False,False
+Raft Monk - Tiring,21,False,False,False,False,False
+Raft Monk - Tiring,22,False,False,False,False,False
+Raft Monk - Tiring,23,False,False,False,False,False
+Raft Monk - Tiring,24,False,False,False,False,False
+Raft Monk - Tiring,25,False,False,False,False,False
+Raft Monk - Tiring,26,False,False,True,False,False
+Raft Monk - Tiring,27,False,False,True,False,False
+Raft Monk - Tiring,28,False,False,False,False,False
+Raft Monk - Tiring,29,False,False,False,False,False
+Raft Monk - Tiring,30,False,False,False,False,False
+Raft Monk - Tiring,31,False,False,False,False,False
+Raft Monk - Tiring,32,False,False,False,False,False
+Raft Monk - Tiring,33,False,False,False,False,False
+Raft Monk - Tiring,34,False,False,False,False,False
+Raft Monk - Tiring,35,False,False,False,False,False
+Raft Monk - Tiring,36,False,False,False,False,False
+Raft Monk - Tiring,37,False,False,False,False,False
+Raft Monk - Tiring,38,False,False,False,False,False
+Raft Monk - Tiring,39,False,False,False,False,False
+Raft Monk - Tiring,40,False,False,False,False,False
+Raft Monk - Tiring,41,False,False,False,True,False
+Raft Monk - Tiring,42,False,True,False,True,False
+M.E.R.C. Music - Knockout,1,False,True,True,True,False
+M.E.R.C. Music - Knockout,2,False,True,True,True,False
+M.E.R.C. Music - Knockout,3,False,True,True,False,False
+M.E.R.C. Music - Knockout,4,False,True,True,False,False
+M.E.R.C. Music - Knockout,5,False,True,True,False,False
+M.E.R.C. Music - Knockout,6,False,False,False,False,False
+M.E.R.C. Music - Knockout,7,False,False,False,False,False
+M.E.R.C. Music - Knockout,8,False,False,False,False,False
+M.E.R.C. Music - Knockout,9,False,False,False,False,False
+M.E.R.C. Music - Knockout,10,False,False,False,False,False
+M.E.R.C. Music - Knockout,11,False,False,False,False,False
+M.E.R.C. Music - Knockout,12,False,False,True,False,False
+M.E.R.C. Music - Knockout,13,False,False,True,False,False
+M.E.R.C. Music - Knockout,14,False,False,True,False,False
+M.E.R.C. Music - Knockout,15,False,False,False,False,False
+M.E.R.C. Music - Knockout,16,False,False,False,False,False
+M.E.R.C. Music - Knockout,17,False,False,False,False,False
+M.E.R.C. Music - Knockout,18,False,False,False,False,False
+M.E.R.C. Music - Knockout,19,False,False,False,False,False
+M.E.R.C. Music - Knockout,20,False,False,False,False,False
+M.E.R.C. Music - Knockout,21,False,False,False,False,False
+M.E.R.C. Music - Knockout,22,False,False,False,False,False
+M.E.R.C. Music - Knockout,23,False,False,False,False,False
+M.E.R.C. Music - Knockout,24,False,False,False,False,False
+M.E.R.C. Music - Knockout,25,False,False,False,False,False
+M.E.R.C. Music - Knockout,26,False,False,True,False,False
+M.E.R.C. Music - Knockout,27,False,False,True,False,False
+M.E.R.C. Music - Knockout,28,False,False,True,False,False
+M.E.R.C. Music - Knockout,29,False,False,True,False,False
+M.E.R.C. Music - Knockout,30,False,False,False,False,False
+M.E.R.C. Music - Knockout,31,False,False,False,False,False
+M.E.R.C. Music - Knockout,32,False,False,False,False,False
+M.E.R.C. Music - Knockout,33,False,False,False,False,False
+M.E.R.C. Music - Knockout,34,False,False,False,False,False
+M.E.R.C. Music - Knockout,35,False,False,False,False,False
+M.E.R.C. Music - Knockout,36,False,False,False,False,False
+M.E.R.C. Music - Knockout,37,False,False,False,False,False
+M.E.R.C. Music - Knockout,38,False,False,False,False,False
+M.E.R.C. Music - Knockout,39,False,False,False,False,False
+M.E.R.C. Music - Knockout,40,False,False,False,False,False
+M.E.R.C. Music - Knockout,41,False,False,False,False,True
+M.E.R.C. Music - Knockout,42,False,False,False,False,False
+M.E.R.C. Music - Knockout,43,False,False,False,False,False
+M.E.R.C. Music - Knockout,44,False,False,False,False,False
+M.E.R.C. Music - Knockout,45,False,False,False,False,False
+M.E.R.C. Music - Knockout,46,False,False,False,False,False
+M.E.R.C. Music - Knockout,47,False,False,False,False,False
+M.E.R.C. Music - Knockout,48,False,False,False,False,False
+M.E.R.C. Music - Knockout,49,False,False,False,False,False
+M.E.R.C. Music - Knockout,50,False,False,True,False,True
+M.E.R.C. Music - Knockout,51,False,False,True,True,True
+M.E.R.C. Music - Knockout,52,False,False,True,True,True
+M.E.R.C. Music - Knockout,53,False,False,True,True,True
+Triviul feat. The Fiend - Widow,1,False,False,False,True,False
+Triviul feat. The Fiend - Widow,2,False,False,False,True,False
+Triviul feat. The Fiend - Widow,3,False,False,False,False,False
+Triviul feat. The Fiend - Widow,4,False,False,False,False,False
+Triviul feat. The Fiend - Widow,5,False,False,False,False,False
+Triviul feat. The Fiend - Widow,6,False,False,False,False,False
+Triviul feat. The Fiend - Widow,7,False,False,False,False,False
+Triviul feat. The Fiend - Widow,8,False,False,False,False,False
+Triviul feat. The Fiend - Widow,9,False,False,False,False,False
+Triviul feat. The Fiend - Widow,10,False,False,False,False,False
+Triviul feat. The Fiend - Widow,11,False,False,False,False,False
+Triviul feat. The Fiend - Widow,12,False,False,False,False,False
+Triviul feat. The Fiend - Widow,13,False,False,False,False,False
+Triviul feat. The Fiend - Widow,14,False,False,False,False,False
+Triviul feat. The Fiend - Widow,15,False,False,False,False,False
+Triviul feat. The Fiend - Widow,16,False,False,False,False,False
+Triviul feat. The Fiend - Widow,17,False,False,False,False,False
+Triviul feat. The Fiend - Widow,18,False,False,False,False,False
+Triviul feat. The Fiend - Widow,19,False,False,False,False,False
+Triviul feat. The Fiend - Widow,20,False,False,False,False,False
+Triviul feat. The Fiend - Widow,21,False,False,False,False,False
+Triviul feat. The Fiend - Widow,22,False,False,False,False,False
+Triviul feat. The Fiend - Widow,23,False,False,False,False,False
+Triviul feat. The Fiend - Widow,24,False,False,False,False,False
+Triviul feat. The Fiend - Widow,25,False,False,False,False,False
+Triviul feat. The Fiend - Widow,26,False,False,False,False,False
+Triviul feat. The Fiend - Widow,27,False,False,False,False,False
+Triviul feat. The Fiend - Widow,28,False,False,False,False,False
+Triviul feat. The Fiend - Widow,29,False,False,False,False,False
+Triviul feat. The Fiend - Widow,30,False,False,False,False,False
+Triviul feat. The Fiend - Widow,31,False,False,False,False,False
+Triviul feat. The Fiend - Widow,32,False,False,False,False,False
+Triviul feat. The Fiend - Widow,33,False,False,False,False,False
+Triviul feat. The Fiend - Widow,34,False,False,False,False,False
+Triviul feat. The Fiend - Widow,35,False,False,False,False,False
+Triviul feat. The Fiend - Widow,36,False,False,False,False,False
+Triviul feat. The Fiend - Widow,37,False,False,False,False,False
+Triviul feat. The Fiend - Widow,38,False,False,False,False,False
+Triviul feat. The Fiend - Widow,39,False,False,False,False,False
+Triviul feat. The Fiend - Widow,40,False,False,False,False,False
+Triviul feat. The Fiend - Widow,41,False,False,False,False,False
+Triviul feat. The Fiend - Widow,42,False,False,False,False,False
+Triviul feat. The Fiend - Widow,43,False,False,False,False,False
+Triviul feat. The Fiend - Widow,44,False,False,False,False,False
+Triviul feat. The Fiend - Widow,45,False,False,True,False,True
+Triviul feat. The Fiend - Widow,46,True,True,True,True,True
+Tom McKenzie - Directions,1,False,True,True,True,False
+Tom McKenzie - Directions,2,False,True,True,True,False
+Tom McKenzie - Directions,3,False,True,True,False,False
+Tom McKenzie - Directions,4,False,True,True,False,False
+Tom McKenzie - Directions,5,False,True,True,False,False
+Tom McKenzie - Directions,6,False,True,True,False,False
+Tom McKenzie - Directions,7,False,False,True,False,False
+Tom McKenzie - Directions,8,False,False,True,False,False
+Tom McKenzie - Directions,9,False,False,True,False,False
+Tom McKenzie - Directions,10,False,False,True,False,False
+Tom McKenzie - Directions,11,False,False,True,False,False
+Tom McKenzie - Directions,12,False,False,True,True,False
+Tom McKenzie - Directions,13,False,False,False,True,False
+Tom McKenzie - Directions,14,False,False,False,False,False
+Tom McKenzie - Directions,15,False,False,False,False,False
+Tom McKenzie - Directions,16,False,False,False,False,False
+Tom McKenzie - Directions,17,False,False,False,False,False
+Tom McKenzie - Directions,18,False,False,False,False,False
+Tom McKenzie - Directions,19,False,False,False,False,False
+Tom McKenzie - Directions,20,False,False,False,False,False
+Tom McKenzie - Directions,21,False,False,False,False,False
+Tom McKenzie - Directions,22,False,False,False,False,False
+Tom McKenzie - Directions,23,False,False,False,False,False
+Tom McKenzie - Directions,24,False,False,False,False,False
+Tom McKenzie - Directions,25,False,False,False,False,False
+Tom McKenzie - Directions,26,False,False,False,False,False
+Tom McKenzie - Directions,27,False,False,False,True,False
+Tom McKenzie - Directions,28,False,False,False,False,False
+Tom McKenzie - Directions,29,False,False,False,False,False
+Tom McKenzie - Directions,30,False,False,False,False,False
+Tom McKenzie - Directions,31,False,False,False,False,False
+Tom McKenzie - Directions,32,False,False,False,False,False
+Tom McKenzie - Directions,33,False,False,False,False,False
+Tom McKenzie - Directions,34,False,False,False,False,False
+Tom McKenzie - Directions,35,False,False,False,True,False
+Timboz - Pony,1,False,False,False,False,False
+Timboz - Pony,2,False,False,False,False,False
+Timboz - Pony,3,False,False,False,False,False
+Timboz - Pony,4,False,False,False,False,False
+Timboz - Pony,5,False,False,False,False,False
+Timboz - Pony,6,False,False,False,False,False
+Timboz - Pony,7,False,False,False,False,False
+Timboz - Pony,8,False,False,False,False,False
+Timboz - Pony,9,False,False,False,False,False
+Timboz - Pony,10,False,False,False,False,False
+Timboz - Pony,11,False,False,False,False,False
+Timboz - Pony,12,False,False,False,False,False
+Timboz - Pony,13,False,False,False,False,False
+Timboz - Pony,14,False,False,False,False,False
+Timboz - Pony,15,False,False,False,False,False
+Timboz - Pony,16,False,False,False,False,False
+Timboz - Pony,17,False,False,False,False,False
+Timboz - Pony,18,False,False,False,False,False
+Timboz - Pony,19,False,False,False,False,False
+Timboz - Pony,20,False,False,False,False,False
+Timboz - Pony,21,False,False,False,False,False
+Timboz - Pony,22,False,False,False,False,False
+Timboz - Pony,23,False,False,False,False,False
+Timboz - Pony,24,False,False,False,False,False
+Timboz - Pony,25,False,False,False,False,False
+Timboz - Pony,26,False,False,False,False,False
+Timboz - Pony,27,False,False,False,False,False
+Timboz - Pony,28,False,False,False,False,False
+Timboz - Pony,29,False,False,False,False,False
+Timboz - Pony,30,False,False,False,False,False
+Timboz - Pony,31,False,False,False,False,False
+Timboz - Pony,32,False,False,False,False,False
+Timboz - Pony,33,False,False,False,False,False
+Timboz - Pony,34,False,False,False,False,False
+Timboz - Pony,35,False,False,False,False,False
+Timboz - Pony,36,False,False,False,False,False
+Timboz - Pony,37,False,False,False,False,False
+Timboz - Pony,38,False,False,False,False,False
+Timboz - Pony,39,False,False,False,False,False
+Timboz - Pony,40,False,False,False,False,False
+Timboz - Pony,41,False,False,False,False,False
+Timboz - Pony,42,False,False,False,False,False
+Timboz - Pony,43,False,False,False,False,False
+Timboz - Pony,44,False,False,False,False,False
+Timboz - Pony,45,False,False,False,False,False
+Timboz - Pony,46,False,False,False,False,False
+Timboz - Pony,47,False,False,False,False,False
+Timboz - Pony,48,False,False,False,False,False
+Timboz - Pony,49,False,False,False,False,False
+Timboz - Pony,50,False,False,False,False,False
+BKS - Bulldozer,1,False,True,True,True,False
+BKS - Bulldozer,2,False,False,True,True,False
+BKS - Bulldozer,3,False,False,True,True,False
+BKS - Bulldozer,4,False,False,False,True,False
+BKS - Bulldozer,5,False,False,False,True,False
+BKS - Bulldozer,6,False,False,False,False,False
+BKS - Bulldozer,7,False,False,False,False,False
+BKS - Bulldozer,8,False,False,False,False,False
+BKS - Bulldozer,9,False,False,False,False,False
+BKS - Bulldozer,10,False,False,False,False,False
+BKS - Bulldozer,11,False,False,False,False,False
+BKS - Bulldozer,12,False,False,False,False,False
+BKS - Bulldozer,13,False,False,False,False,False
+BKS - Bulldozer,14,False,False,False,False,False
+BKS - Bulldozer,15,False,False,False,False,False
+BKS - Bulldozer,16,False,False,False,False,False
+BKS - Bulldozer,17,False,False,False,False,False
+BKS - Bulldozer,18,False,False,False,False,False
+BKS - Bulldozer,19,False,False,False,False,False
+BKS - Bulldozer,20,False,False,False,False,False
+BKS - Bulldozer,21,False,False,False,False,False
+BKS - Bulldozer,22,False,False,False,False,False
+BKS - Bulldozer,23,False,False,False,False,False
+BKS - Bulldozer,24,False,False,False,False,False
+BKS - Bulldozer,25,False,False,False,False,False
+BKS - Bulldozer,26,False,False,False,False,False
+BKS - Bulldozer,27,False,False,False,False,False
+BKS - Bulldozer,28,False,False,False,False,False
+BKS - Bulldozer,29,False,False,False,False,False
+BKS - Bulldozer,30,False,False,False,False,False
+BKS - Bulldozer,31,False,False,False,False,False
+BKS - Bulldozer,32,False,False,False,False,False
+BKS - Bulldozer,33,False,False,False,False,False
+BKS - Bulldozer,34,False,False,False,False,False
+BKS - Bulldozer,35,False,False,False,False,False
+BKS - Bulldozer,36,False,False,False,False,False
+BKS - Bulldozer,37,False,False,False,False,False
+BKS - Bulldozer,38,False,False,False,False,False
+BKS - Bulldozer,39,False,False,True,True,False
+BKS - Bulldozer,40,False,False,False,True,False
+BKS - Bulldozer,41,False,False,False,True,False
+BKS - Bulldozer,42,False,False,False,True,False
+BKS - Bulldozer,43,False,False,False,True,False
+BKS - Bulldozer,44,False,False,False,True,False
+BKS - Bulldozer,45,False,False,False,True,False
+BKS - Bulldozer,46,False,False,False,True,False
+BKS - Bulldozer,47,False,False,False,True,False
+BKS - Bulldozer,48,False,False,False,True,False
+BKS - Bulldozer,49,False,False,False,False,False
+BKS - Bulldozer,50,False,False,False,False,False
+BKS - Bulldozer,51,False,False,False,False,False
+BKS - Bulldozer,52,False,False,False,False,False
+BKS - Bulldozer,53,False,False,False,False,False
+BKS - Bulldozer,54,False,False,False,False,False
+BKS - Bulldozer,55,False,False,False,False,False
+BKS - Bulldozer,56,False,False,False,False,False
+BKS - Bulldozer,57,False,False,False,False,False
+BKS - Bulldozer,58,False,False,False,False,False
+BKS - Bulldozer,59,False,False,False,False,False
+BKS - Bulldozer,60,False,False,False,False,False
+BKS - Bulldozer,61,False,False,False,False,False
+BKS - Bulldozer,62,False,False,False,False,False
+BKS - Bulldozer,63,False,False,False,True,False
+BKS - Bulldozer,64,False,False,False,False,False
+BKS - Bulldozer,65,False,False,False,False,False
+BKS - Bulldozer,66,False,False,False,False,False
+BKS - Bulldozer,67,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,1,False,False,False,True,False
+The Sunshine Garcia Band - For I Am The Moon,2,False,False,False,True,False
+The Sunshine Garcia Band - For I Am The Moon,3,False,False,False,True,False
+The Sunshine Garcia Band - For I Am The Moon,4,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,5,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,6,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,7,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,8,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,9,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,10,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,11,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,12,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,13,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,14,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,15,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,16,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,17,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,18,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,19,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,20,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,21,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,22,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,23,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,24,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,25,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,26,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,27,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,28,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,29,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,30,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,31,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,32,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,33,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,34,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,35,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,36,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,37,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,38,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,39,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,40,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,41,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,42,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,43,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,44,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,45,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,46,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,47,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,48,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,49,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,50,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,51,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,52,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,53,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,54,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,55,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,56,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,57,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,58,False,False,False,False,True
+The Sunshine Garcia Band - For I Am The Moon,59,False,False,True,False,True
+The Sunshine Garcia Band - For I Am The Moon,60,False,False,True,False,True
+The Sunshine Garcia Band - For I Am The Moon,61,False,True,True,False,True
+The Sunshine Garcia Band - For I Am The Moon,62,True,True,True,True,True
+The Sunshine Garcia Band - For I Am The Moon,63,True,True,True,True,True
+The Sunshine Garcia Band - For I Am The Moon,64,True,True,True,True,True
+The Easton Ellises (Baumi) - SDRNR,1,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,2,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,3,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,4,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,5,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,6,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,7,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,8,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,9,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,10,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,11,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,12,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,13,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,14,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,15,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,16,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,17,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,18,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,19,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,20,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,21,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,22,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,23,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,24,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,25,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,26,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,27,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,28,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,29,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,30,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,31,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,32,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,33,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,34,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,35,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,36,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,37,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,38,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,39,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,40,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,41,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,42,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,43,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,44,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,45,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,46,False,False,False,False,False
+AM Contra - Heart Peripheral,1,False,False,True,False,False
+AM Contra - Heart Peripheral,2,False,False,True,False,False
+AM Contra - Heart Peripheral,3,False,False,True,False,False
+AM Contra - Heart Peripheral,4,False,False,True,False,False
+AM Contra - Heart Peripheral,5,False,False,True,False,False
+AM Contra - Heart Peripheral,6,False,False,True,False,False
+AM Contra - Heart Peripheral,7,False,False,True,False,False
+AM Contra - Heart Peripheral,8,False,False,True,False,False
+AM Contra - Heart Peripheral,9,False,False,True,False,False
+AM Contra - Heart Peripheral,10,False,False,False,False,False
+AM Contra - Heart Peripheral,11,False,False,False,False,False
+AM Contra - Heart Peripheral,12,False,False,False,False,False
+AM Contra - Heart Peripheral,13,False,False,False,False,False
+AM Contra - Heart Peripheral,14,False,False,False,False,False
+AM Contra - Heart Peripheral,15,False,False,True,False,False
+AM Contra - Heart Peripheral,16,False,False,False,False,False
+AM Contra - Heart Peripheral,17,False,False,True,False,False
+AM Contra - Heart Peripheral,18,False,False,True,False,False
+AM Contra - Heart Peripheral,19,False,False,True,False,False
+AM Contra - Heart Peripheral,20,False,False,False,False,False
+AM Contra - Heart Peripheral,21,False,False,False,False,False
+AM Contra - Heart Peripheral,22,False,False,False,False,False
+AM Contra - Heart Peripheral,23,False,False,False,False,False
+AM Contra - Heart Peripheral,24,False,False,False,False,False
+AM Contra - Heart Peripheral,25,False,False,False,False,False
+AM Contra - Heart Peripheral,26,False,False,False,False,False
+AM Contra - Heart Peripheral,27,False,False,False,False,False
+AM Contra - Heart Peripheral,28,False,False,False,False,False
+AM Contra - Heart Peripheral,29,False,False,False,False,False
+AM Contra - Heart Peripheral,30,False,False,False,False,False
+AM Contra - Heart Peripheral,31,False,False,False,False,False
+AM Contra - Heart Peripheral,32,False,False,True,False,False
+AM Contra - Heart Peripheral,33,False,False,True,False,False
+AM Contra - Heart Peripheral,34,False,False,False,False,False
+AM Contra - Heart Peripheral,35,False,False,False,False,False
+AM Contra - Heart Peripheral,36,False,False,False,False,False
+AM Contra - Heart Peripheral,37,False,False,False,False,False
+AM Contra - Heart Peripheral,38,False,False,False,False,False
+AM Contra - Heart Peripheral,39,False,False,False,False,False
+AM Contra - Heart Peripheral,40,False,True,True,False,False
+AM Contra - Heart Peripheral,41,False,False,False,False,False
+The Doppler Shift - Atrophy,1,False,False,True,True,False
+The Doppler Shift - Atrophy,2,False,False,True,True,False
+The Doppler Shift - Atrophy,3,False,False,True,True,False
+The Doppler Shift - Atrophy,4,False,False,True,True,False
+The Doppler Shift - Atrophy,5,False,False,True,True,False
+The Doppler Shift - Atrophy,6,False,False,True,True,False
+The Doppler Shift - Atrophy,7,False,False,False,True,False
+The Doppler Shift - Atrophy,8,False,False,False,False,False
+The Doppler Shift - Atrophy,9,False,False,False,False,False
+The Doppler Shift - Atrophy,10,False,False,False,False,False
+The Doppler Shift - Atrophy,11,False,False,False,False,False
+The Doppler Shift - Atrophy,12,False,False,False,False,False
+The Doppler Shift - Atrophy,13,False,False,False,False,False
+The Doppler Shift - Atrophy,14,False,False,False,False,False
+The Doppler Shift - Atrophy,15,False,False,False,False,False
+The Doppler Shift - Atrophy,16,False,False,False,False,False
+The Doppler Shift - Atrophy,17,False,False,False,False,False
+The Doppler Shift - Atrophy,18,False,False,False,False,False
+The Doppler Shift - Atrophy,19,False,False,False,False,False
+The Doppler Shift - Atrophy,20,False,False,False,False,False
+The Doppler Shift - Atrophy,21,False,False,False,False,False
+The Doppler Shift - Atrophy,22,False,False,False,False,False
+The Doppler Shift - Atrophy,23,False,False,False,False,False
+The Doppler Shift - Atrophy,24,False,False,False,False,False
+The Doppler Shift - Atrophy,25,False,False,False,False,False
+The Doppler Shift - Atrophy,26,False,False,False,False,False
+The Doppler Shift - Atrophy,27,False,False,False,False,False
+The Doppler Shift - Atrophy,28,False,False,False,False,False
+The Doppler Shift - Atrophy,29,False,False,False,False,False
+The Doppler Shift - Atrophy,30,False,False,False,False,False
+The Doppler Shift - Atrophy,31,False,False,False,False,False
+The Doppler Shift - Atrophy,32,False,False,False,False,False
+The Doppler Shift - Atrophy,33,False,False,False,False,False
+The Doppler Shift - Atrophy,34,False,False,False,False,False
+The Doppler Shift - Atrophy,35,False,False,False,False,False
+The Doppler Shift - Atrophy,36,False,False,False,False,False
+The Doppler Shift - Atrophy,37,False,False,False,False,False
+The Doppler Shift - Atrophy,38,False,False,False,False,False
+The Doppler Shift - Atrophy,39,False,False,False,False,False
+The Doppler Shift - Atrophy,40,False,False,False,True,False
+The Doppler Shift - Atrophy,41,False,False,False,True,False
+The Doppler Shift - Atrophy,42,False,False,False,True,False
+The Doppler Shift - Atrophy,43,False,False,False,True,False
+The Doppler Shift - Atrophy,44,False,False,True,False,False
+The Doppler Shift - Atrophy,45,False,False,False,False,False
+The Doppler Shift - Atrophy,46,False,False,False,False,False
+The Doppler Shift - Atrophy,47,False,False,False,False,False
+The Doppler Shift - Atrophy,48,False,False,False,False,False
+The Doppler Shift - Atrophy,49,False,False,False,False,False
+The Doppler Shift - Atrophy,50,False,False,False,False,False
+The Doppler Shift - Atrophy,51,False,False,False,False,False
+The Doppler Shift - Atrophy,52,False,False,False,False,False
+The Doppler Shift - Atrophy,53,False,False,False,False,False
+The Doppler Shift - Atrophy,54,False,False,False,False,False
+The Doppler Shift - Atrophy,55,False,False,False,False,False
+The Doppler Shift - Atrophy,56,False,False,False,False,False
+The Doppler Shift - Atrophy,57,False,False,False,False,False
+The Doppler Shift - Atrophy,58,False,False,True,False,False
+The Doppler Shift - Atrophy,59,False,False,True,False,False
+The Doppler Shift - Atrophy,60,False,False,True,False,False
+The Doppler Shift - Atrophy,61,False,False,False,False,False
+The Doppler Shift - Atrophy,62,False,False,False,False,False
+The Doppler Shift - Atrophy,63,False,False,False,False,False
+The Doppler Shift - Atrophy,64,False,False,False,False,False
+The Doppler Shift - Atrophy,65,False,False,True,False,False
+The Doppler Shift - Atrophy,66,False,False,True,False,False
+Motor Tapes - Shore,1,False,False,True,True,False
+Motor Tapes - Shore,2,False,False,True,True,False
+Motor Tapes - Shore,3,False,False,False,True,False
+Motor Tapes - Shore,4,False,False,False,False,False
+Motor Tapes - Shore,5,False,False,False,False,False
+Motor Tapes - Shore,6,False,False,False,False,False
+Motor Tapes - Shore,7,False,False,False,False,False
+Motor Tapes - Shore,8,False,False,False,False,False
+Motor Tapes - Shore,9,False,False,False,False,False
+Motor Tapes - Shore,10,False,False,False,False,False
+Motor Tapes - Shore,11,False,False,False,False,False
+Motor Tapes - Shore,12,False,False,False,False,False
+Motor Tapes - Shore,13,False,False,False,False,False
+Motor Tapes - Shore,14,False,False,False,False,False
+Motor Tapes - Shore,15,False,False,False,False,False
+Motor Tapes - Shore,16,False,False,False,False,False
+Motor Tapes - Shore,17,False,False,False,False,False
+Motor Tapes - Shore,18,False,False,False,False,False
+Motor Tapes - Shore,19,False,False,False,True,False
+Motor Tapes - Shore,20,False,False,False,False,False
+Motor Tapes - Shore,21,False,False,False,False,False
+Motor Tapes - Shore,22,False,False,False,False,False
+Motor Tapes - Shore,23,False,False,False,False,False
+Motor Tapes - Shore,24,False,False,False,False,False
+Motor Tapes - Shore,25,False,False,False,False,False
+Motor Tapes - Shore,26,False,False,False,False,False
+Motor Tapes - Shore,27,False,False,False,False,False
+Motor Tapes - Shore,28,False,False,False,False,False
+Motor Tapes - Shore,29,False,False,False,False,False
+Motor Tapes - Shore,30,False,False,False,False,False
+Motor Tapes - Shore,31,False,False,False,False,False
+Motor Tapes - Shore,32,False,False,False,False,False
+Motor Tapes - Shore,33,False,False,False,False,False
+Motor Tapes - Shore,34,False,False,False,False,False
+Motor Tapes - Shore,35,False,False,True,False,False
+Motor Tapes - Shore,36,False,False,False,False,False
+Motor Tapes - Shore,37,False,False,False,False,False
+Motor Tapes - Shore,38,False,False,False,False,False
+Motor Tapes - Shore,39,False,False,False,False,False
+Motor Tapes - Shore,40,False,False,False,False,False
+Motor Tapes - Shore,41,False,False,False,False,False
+Motor Tapes - Shore,42,False,False,False,False,False
+Motor Tapes - Shore,43,False,False,False,False,False
+Motor Tapes - Shore,44,False,False,False,False,False
+Motor Tapes - Shore,45,False,False,True,False,False
+Motor Tapes - Shore,46,False,False,True,True,False
+Motor Tapes - Shore,47,True,True,True,True,True
+Motor Tapes - Shore,48,True,True,True,True,True
+Motor Tapes - Shore,49,True,True,True,True,True
+Detsky Sad - Walkie Talkie,1,False,False,True,True,True
+Detsky Sad - Walkie Talkie,2,False,False,False,True,True
+Detsky Sad - Walkie Talkie,3,False,False,False,True,True
+Detsky Sad - Walkie Talkie,4,False,False,False,True,False
+Detsky Sad - Walkie Talkie,5,False,False,False,True,False
+Detsky Sad - Walkie Talkie,6,False,False,False,True,False
+Detsky Sad - Walkie Talkie,7,False,False,False,True,False
+Detsky Sad - Walkie Talkie,8,False,False,False,True,False
+Detsky Sad - Walkie Talkie,9,False,False,False,False,False
+Detsky Sad - Walkie Talkie,10,False,False,False,False,False
+Detsky Sad - Walkie Talkie,11,False,False,False,False,False
+Detsky Sad - Walkie Talkie,12,False,False,False,False,False
+Detsky Sad - Walkie Talkie,13,False,False,False,False,False
+Detsky Sad - Walkie Talkie,14,False,False,False,False,False
+Detsky Sad - Walkie Talkie,15,False,False,False,False,False
+Detsky Sad - Walkie Talkie,16,False,False,False,False,False
+Detsky Sad - Walkie Talkie,17,False,False,False,False,False
+Detsky Sad - Walkie Talkie,18,False,False,False,False,False
+Detsky Sad - Walkie Talkie,19,False,False,False,True,False
+Detsky Sad - Walkie Talkie,20,False,False,False,True,False
+Detsky Sad - Walkie Talkie,21,False,False,False,True,False
+Detsky Sad - Walkie Talkie,22,False,False,False,True,False
+Detsky Sad - Walkie Talkie,23,False,False,False,True,False
+Detsky Sad - Walkie Talkie,24,False,False,False,False,False
+Detsky Sad - Walkie Talkie,25,False,False,False,False,False
+Detsky Sad - Walkie Talkie,26,False,False,False,False,False
+Detsky Sad - Walkie Talkie,27,False,False,False,False,False
+Detsky Sad - Walkie Talkie,28,False,False,False,False,False
+Detsky Sad - Walkie Talkie,29,False,False,False,True,False
+Detsky Sad - Walkie Talkie,30,False,False,False,True,False
+Detsky Sad - Walkie Talkie,31,False,False,False,True,False
+Detsky Sad - Walkie Talkie,32,False,False,False,True,False
+Detsky Sad - Walkie Talkie,33,False,False,False,True,False
+Detsky Sad - Walkie Talkie,34,False,False,False,True,False
+Detsky Sad - Walkie Talkie,35,False,False,False,True,False
+Detsky Sad - Walkie Talkie,36,False,False,False,True,False
+Detsky Sad - Walkie Talkie,37,False,False,False,True,False
+Detsky Sad - Walkie Talkie,38,False,False,False,True,False
+Buitraker - Revo X,1,False,False,True,True,False
+Buitraker - Revo X,2,False,False,True,True,False
+Buitraker - Revo X,3,False,False,True,True,False
+Buitraker - Revo X,4,False,False,False,True,False
+Buitraker - Revo X,5,False,False,False,True,False
+Buitraker - Revo X,6,False,False,False,True,False
+Buitraker - Revo X,7,False,False,False,True,False
+Buitraker - Revo X,8,False,False,False,True,False
+Buitraker - Revo X,9,False,False,False,True,False
+Buitraker - Revo X,10,False,False,False,False,False
+Buitraker - Revo X,11,False,False,False,False,False
+Buitraker - Revo X,12,False,False,False,False,False
+Buitraker - Revo X,13,False,False,False,False,False
+Buitraker - Revo X,14,False,False,False,False,False
+Buitraker - Revo X,15,False,False,False,False,False
+Buitraker - Revo X,16,False,False,False,False,False
+Buitraker - Revo X,17,False,False,False,False,False
+Buitraker - Revo X,18,False,False,False,False,False
+Buitraker - Revo X,19,False,False,False,False,False
+Buitraker - Revo X,20,False,False,False,False,False
+Buitraker - Revo X,21,False,False,False,False,False
+Buitraker - Revo X,22,False,False,False,False,False
+Buitraker - Revo X,23,False,False,False,False,False
+Buitraker - Revo X,24,False,False,False,False,False
+Buitraker - Revo X,25,False,False,False,False,False
+Buitraker - Revo X,26,False,False,False,False,False
+Buitraker - Revo X,27,False,False,False,False,False
+Buitraker - Revo X,28,False,False,False,False,False
+Buitraker - Revo X,29,False,False,False,True,False
+Buitraker - Revo X,30,False,False,False,False,False
+Buitraker - Revo X,31,False,False,False,False,False
+Buitraker - Revo X,32,False,False,False,False,False
+Buitraker - Revo X,33,False,False,False,False,False
+Buitraker - Revo X,34,False,False,False,False,False
+Buitraker - Revo X,35,False,False,False,False,False
+Buitraker - Revo X,36,False,False,False,False,False
+Buitraker - Revo X,37,False,False,False,False,False
+Buitraker - Revo X,38,False,False,False,False,False
+Buitraker - Revo X,39,False,False,False,False,False
+Buitraker - Revo X,40,False,False,False,False,False
+Buitraker - Revo X,41,False,False,False,False,False
+Buitraker - Revo X,42,False,False,False,False,False
+Buitraker - Revo X,43,False,False,False,False,False
+Buitraker - Revo X,44,False,False,False,False,False
+Buitraker - Revo X,45,False,False,False,False,False
+Buitraker - Revo X,46,False,False,False,False,False
+Buitraker - Revo X,47,False,False,False,False,False
+Buitraker - Revo X,48,False,False,False,False,False
+Buitraker - Revo X,49,False,False,False,False,False
+Buitraker - Revo X,50,False,False,False,False,False
+Buitraker - Revo X,51,False,False,False,False,False
+Buitraker - Revo X,52,False,False,False,False,False
+Buitraker - Revo X,53,False,False,False,False,False
+Buitraker - Revo X,54,False,False,False,True,False
+Buitraker - Revo X,55,False,True,False,True,False
+Little Chicago's Finest - My Own,1,False,True,True,True,False
+Little Chicago's Finest - My Own,2,False,False,False,False,False
+Little Chicago's Finest - My Own,3,False,False,False,False,False
+Little Chicago's Finest - My Own,4,False,False,False,False,False
+Little Chicago's Finest - My Own,5,False,False,False,False,False
+Little Chicago's Finest - My Own,6,False,False,False,False,False
+Little Chicago's Finest - My Own,7,False,False,False,False,False
+Little Chicago's Finest - My Own,8,False,False,False,False,False
+Little Chicago's Finest - My Own,9,False,False,False,False,False
+Little Chicago's Finest - My Own,10,False,False,False,False,False
+Little Chicago's Finest - My Own,11,False,False,False,False,False
+Little Chicago's Finest - My Own,12,False,False,False,False,False
+Little Chicago's Finest - My Own,13,False,False,False,False,False
+Little Chicago's Finest - My Own,14,False,False,False,False,False
+Little Chicago's Finest - My Own,15,False,False,False,False,False
+Little Chicago's Finest - My Own,16,False,False,False,False,False
+Little Chicago's Finest - My Own,17,False,False,False,False,False
+Little Chicago's Finest - My Own,18,False,False,False,False,False
+Little Chicago's Finest - My Own,19,False,False,False,False,False
+Little Chicago's Finest - My Own,20,False,True,True,False,False
+Little Chicago's Finest - My Own,21,False,False,True,False,False
+Little Chicago's Finest - My Own,22,False,False,False,False,False
+Little Chicago's Finest - My Own,23,False,False,False,False,False
+Little Chicago's Finest - My Own,24,False,False,False,False,False
+Little Chicago's Finest - My Own,25,False,False,False,False,False
+Little Chicago's Finest - My Own,26,False,False,False,False,False
+Little Chicago's Finest - My Own,27,False,False,False,False,False
+Little Chicago's Finest - My Own,28,False,False,False,False,False
+Little Chicago's Finest - My Own,29,False,False,False,False,False
+Little Chicago's Finest - My Own,30,False,False,False,False,False
+Little Chicago's Finest - My Own,31,False,False,False,False,False
+Little Chicago's Finest - My Own,32,False,False,False,False,False
+Little Chicago's Finest - My Own,33,False,False,True,False,False
+Little Chicago's Finest - My Own,34,False,False,True,False,False
+Little Chicago's Finest - My Own,35,False,False,False,False,False
+Little Chicago's Finest - My Own,36,False,False,False,False,False
+Little Chicago's Finest - My Own,37,False,False,False,False,False
+Little Chicago's Finest - My Own,38,False,False,False,False,False
+Little Chicago's Finest - My Own,39,False,False,False,False,False
+Little Chicago's Finest - My Own,40,False,False,False,False,False
+Little Chicago's Finest - My Own,41,False,False,False,False,False
+Little Chicago's Finest - My Own,42,False,False,False,False,False
+Little Chicago's Finest - My Own,43,False,False,False,False,False
+Little Chicago's Finest - My Own,44,False,False,False,False,False
+Little Chicago's Finest - My Own,45,False,False,False,False,False
+Little Chicago's Finest - My Own,46,False,False,False,False,False
+Little Chicago's Finest - My Own,47,False,False,True,False,False
+Little Chicago's Finest - My Own,48,False,False,False,False,False
+Little Chicago's Finest - My Own,49,False,False,False,False,False
+Little Chicago's Finest - My Own,50,False,False,False,False,False
+Little Chicago's Finest - My Own,51,False,False,False,False,False
+Little Chicago's Finest - My Own,52,False,False,False,False,False
+Little Chicago's Finest - My Own,53,False,False,False,False,False
+Little Chicago's Finest - My Own,54,False,False,False,False,False
+Little Chicago's Finest - My Own,55,False,False,False,False,False
+Little Chicago's Finest - My Own,56,False,False,False,True,False
+Zeno - Signs,1,False,False,False,True,False
+Zeno - Signs,2,False,False,False,True,False
+Zeno - Signs,3,False,False,False,True,False
+Zeno - Signs,4,False,False,False,True,False
+Zeno - Signs,5,False,False,False,False,False
+Zeno - Signs,6,False,False,False,False,False
+Zeno - Signs,7,False,False,False,False,False
+Zeno - Signs,8,False,False,False,False,False
+Zeno - Signs,9,False,False,False,False,False
+Zeno - Signs,10,False,False,False,False,False
+Zeno - Signs,11,False,False,False,False,False
+Zeno - Signs,12,False,False,False,False,False
+Zeno - Signs,13,False,False,False,False,False
+Zeno - Signs,14,False,False,False,False,False
+Zeno - Signs,15,False,False,False,False,False
+Zeno - Signs,16,False,False,False,False,False
+Zeno - Signs,17,False,False,False,False,False
+Zeno - Signs,18,False,False,False,False,False
+Zeno - Signs,19,False,False,False,False,False
+Zeno - Signs,20,False,False,False,False,False
+Zeno - Signs,21,False,False,False,False,False
+Zeno - Signs,22,False,False,False,False,False
+Zeno - Signs,23,False,False,False,False,False
+Zeno - Signs,24,False,False,False,False,False
+Zeno - Signs,25,False,False,False,False,False
+Zeno - Signs,26,False,False,False,False,False
+Zeno - Signs,27,False,False,False,False,False
+Zeno - Signs,28,False,False,False,False,False
+Zeno - Signs,29,False,False,False,False,False
+Zeno - Signs,30,False,False,False,False,False
+Zeno - Signs,31,False,False,False,False,False
+Zeno - Signs,32,False,False,False,False,False
+Zeno - Signs,33,False,False,False,False,False
+Zeno - Signs,34,False,False,False,False,False
+Zeno - Signs,35,False,False,False,False,False
+Zeno - Signs,36,False,False,False,False,False
+Zeno - Signs,37,False,False,False,False,False
+Zeno - Signs,38,False,False,False,False,False
+Zeno - Signs,39,False,False,False,False,False
+Zeno - Signs,40,False,False,False,False,False
+Zeno - Signs,41,False,False,False,False,False
+Zeno - Signs,42,False,False,False,False,False
+Zeno - Signs,43,False,False,False,False,False
+Zeno - Signs,44,False,False,False,False,False
+Zeno - Signs,45,False,False,False,False,False
+Zeno - Signs,46,False,False,False,False,False
+Hollow Ground - Ill Fate,1,False,False,False,True,False
+Hollow Ground - Ill Fate,2,False,False,False,True,False
+Hollow Ground - Ill Fate,3,False,False,False,True,False
+Hollow Ground - Ill Fate,4,False,False,False,False,False
+Hollow Ground - Ill Fate,5,False,False,False,False,False
+Hollow Ground - Ill Fate,6,False,False,False,False,False
+Hollow Ground - Ill Fate,7,False,False,False,False,False
+Hollow Ground - Ill Fate,8,False,False,False,False,False
+Hollow Ground - Ill Fate,9,False,False,False,False,False
+Hollow Ground - Ill Fate,10,False,False,False,False,False
+Hollow Ground - Ill Fate,11,False,False,False,False,False
+Hollow Ground - Ill Fate,12,False,False,False,False,False
+Hollow Ground - Ill Fate,13,False,False,False,True,False
+Hollow Ground - Ill Fate,14,False,False,False,False,False
+Hollow Ground - Ill Fate,15,False,False,False,False,False
+Hollow Ground - Ill Fate,16,False,False,False,False,False
+Hollow Ground - Ill Fate,17,False,False,False,False,False
+Hollow Ground - Ill Fate,18,False,False,False,False,False
+Hollow Ground - Ill Fate,19,False,False,False,False,False
+Hollow Ground - Ill Fate,20,False,False,False,False,False
+Hollow Ground - Ill Fate,21,False,False,False,False,False
+Hollow Ground - Ill Fate,22,False,False,False,True,False
+Hollow Ground - Ill Fate,23,False,False,False,False,False
+Hollow Ground - Ill Fate,24,False,False,False,False,False
+Hollow Ground - Ill Fate,25,False,False,False,False,False
+Hollow Ground - Ill Fate,26,False,False,False,True,False
+Hollow Ground - Ill Fate,27,False,True,False,True,False
+Hollow Ground - Ill Fate,28,False,True,False,True,False
+Cristina Vane - So Easy,1,False,False,True,True,False
+Cristina Vane - So Easy,2,False,False,True,True,False
+Cristina Vane - So Easy,3,False,False,False,True,False
+Cristina Vane - So Easy,4,False,False,False,True,False
+Cristina Vane - So Easy,5,False,False,False,True,False
+Cristina Vane - So Easy,6,False,False,False,True,False
+Cristina Vane - So Easy,7,False,False,False,False,False
+Cristina Vane - So Easy,8,False,False,False,False,False
+Cristina Vane - So Easy,9,False,False,False,False,False
+Cristina Vane - So Easy,10,False,False,False,False,False
+Cristina Vane - So Easy,11,False,False,False,False,False
+Cristina Vane - So Easy,12,False,False,False,False,False
+Cristina Vane - So Easy,13,False,False,False,False,False
+Cristina Vane - So Easy,14,False,False,False,False,False
+Cristina Vane - So Easy,15,False,False,False,False,False
+Cristina Vane - So Easy,16,False,False,False,False,False
+Cristina Vane - So Easy,17,False,False,False,False,False
+Cristina Vane - So Easy,18,False,False,False,False,False
+Cristina Vane - So Easy,19,False,False,False,False,False
+Cristina Vane - So Easy,20,False,False,False,False,False
+Cristina Vane - So Easy,21,False,False,False,False,False
+Cristina Vane - So Easy,22,False,False,False,False,False
+Cristina Vane - So Easy,23,False,False,False,False,False
+Cristina Vane - So Easy,24,False,False,False,False,False
+Cristina Vane - So Easy,25,False,False,False,False,False
+Cristina Vane - So Easy,26,False,False,False,False,False
+Cristina Vane - So Easy,27,False,False,False,False,False
+Cristina Vane - So Easy,28,False,False,False,False,False
+Cristina Vane - So Easy,29,False,False,False,False,False
+Cristina Vane - So Easy,30,False,False,False,False,False
+Cristina Vane - So Easy,31,False,False,False,False,False
+Cristina Vane - So Easy,32,False,False,False,False,False
+Cristina Vane - So Easy,33,False,False,False,False,False
+Cristina Vane - So Easy,34,False,False,False,False,False
+Cristina Vane - So Easy,35,False,False,False,False,False
+Cristina Vane - So Easy,36,False,False,False,False,False
+Cristina Vane - So Easy,37,False,False,False,False,False
+Cristina Vane - So Easy,38,False,False,False,False,False
+Cristina Vane - So Easy,39,False,False,False,False,False
+Cristina Vane - So Easy,40,False,False,False,False,False
+Cristina Vane - So Easy,41,False,False,False,False,False
+Cristina Vane - So Easy,42,False,False,False,False,False
+Cristina Vane - So Easy,43,False,False,False,False,False
+Cristina Vane - So Easy,44,False,False,False,False,False
+Cristina Vane - So Easy,45,False,False,False,False,False
+Cristina Vane - So Easy,46,False,False,False,False,False
+Cristina Vane - So Easy,47,False,False,False,False,False
+Cristina Vane - So Easy,48,False,False,False,False,False
+Cristina Vane - So Easy,49,False,False,False,False,False
+Cristina Vane - So Easy,50,False,False,False,False,False
+Speak Softly - Like Horses,1,False,False,True,True,False
+Speak Softly - Like Horses,2,False,False,True,False,False
+Speak Softly - Like Horses,3,False,False,True,False,False
+Speak Softly - Like Horses,4,False,False,True,False,False
+Speak Softly - Like Horses,5,False,False,True,False,False
+Speak Softly - Like Horses,6,False,False,True,False,False
+Speak Softly - Like Horses,7,False,False,True,False,False
+Speak Softly - Like Horses,8,False,False,True,False,False
+Speak Softly - Like Horses,9,False,False,True,False,False
+Speak Softly - Like Horses,10,False,False,True,False,False
+Speak Softly - Like Horses,11,False,False,True,False,False
+Speak Softly - Like Horses,12,False,False,True,False,False
+Speak Softly - Like Horses,13,False,False,True,False,False
+Speak Softly - Like Horses,14,False,False,True,False,False
+Speak Softly - Like Horses,15,False,False,True,False,False
+Speak Softly - Like Horses,16,False,False,True,False,False
+Speak Softly - Like Horses,17,False,False,True,False,False
+Speak Softly - Like Horses,18,False,False,True,False,False
+Speak Softly - Like Horses,19,False,False,False,False,False
+Speak Softly - Like Horses,20,False,False,False,False,False
+Speak Softly - Like Horses,21,False,False,False,False,False
+Speak Softly - Like Horses,22,False,False,False,False,False
+Speak Softly - Like Horses,23,False,False,False,False,False
+Speak Softly - Like Horses,24,False,False,False,False,False
+Speak Softly - Like Horses,25,False,False,False,False,False
+Speak Softly - Like Horses,26,False,False,True,False,False
+Speak Softly - Like Horses,27,False,False,True,False,False
+Speak Softly - Like Horses,28,False,False,True,False,False
+Speak Softly - Like Horses,29,False,False,True,False,False
+Speak Softly - Like Horses,30,False,False,True,False,False
+Speak Softly - Like Horses,31,False,False,True,False,False
+Speak Softly - Like Horses,32,False,False,True,False,False
+Speak Softly - Like Horses,33,False,False,True,False,False
+Speak Softly - Like Horses,34,False,False,False,False,False
+Speak Softly - Like Horses,35,False,False,False,False,False
+Speak Softly - Like Horses,36,False,False,False,False,False
+Speak Softly - Like Horses,37,False,False,False,False,False
+Speak Softly - Like Horses,38,False,False,False,False,False
+Speak Softly - Like Horses,39,False,False,False,False,False
+Speak Softly - Like Horses,40,False,False,False,False,False
+Speak Softly - Like Horses,41,False,False,False,False,False
+Speak Softly - Like Horses,42,False,False,True,False,False
+Speak Softly - Like Horses,43,False,False,True,False,False
+Speak Softly - Like Horses,44,False,False,True,False,False
+Speak Softly - Like Horses,45,False,False,True,False,False
+Speak Softly - Like Horses,46,False,False,True,False,False
+Speak Softly - Like Horses,47,False,False,True,False,False
+Speak Softly - Like Horses,48,False,False,False,False,False
+Speak Softly - Like Horses,49,False,False,False,False,False
+Speak Softly - Like Horses,50,False,False,False,False,False
+Speak Softly - Like Horses,51,False,False,False,False,False
+Speak Softly - Like Horses,52,False,False,False,False,False
+Speak Softly - Like Horses,53,False,False,False,False,False
+Speak Softly - Like Horses,54,False,False,False,False,False
+Speak Softly - Like Horses,55,False,False,False,False,False
+Speak Softly - Like Horses,56,False,False,False,False,False
+Speak Softly - Like Horses,57,False,False,False,False,False
+Speak Softly - Like Horses,58,False,False,False,False,False
+Speak Softly - Like Horses,59,False,False,True,False,False
+Speak Softly - Like Horses,60,False,True,True,True,False
+Speak Softly - Like Horses,61,True,True,True,True,True
+Speak Softly - Like Horses,62,True,True,True,True,True
+Side Effects Project - Sing With Me,1,False,False,True,False,False
+Side Effects Project - Sing With Me,2,False,False,False,False,False
+Side Effects Project - Sing With Me,3,False,False,False,False,False
+Side Effects Project - Sing With Me,4,False,False,False,False,False
+Side Effects Project - Sing With Me,5,False,False,False,False,False
+Side Effects Project - Sing With Me,6,False,False,False,False,False
+Side Effects Project - Sing With Me,7,False,False,False,False,False
+Side Effects Project - Sing With Me,8,False,False,False,False,False
+Side Effects Project - Sing With Me,9,False,False,False,False,False
+Side Effects Project - Sing With Me,10,False,False,False,False,False
+Side Effects Project - Sing With Me,11,False,False,False,False,False
+Side Effects Project - Sing With Me,12,False,False,False,False,False
+Side Effects Project - Sing With Me,13,False,False,False,False,False
+Side Effects Project - Sing With Me,14,False,False,False,False,False
+Side Effects Project - Sing With Me,15,False,False,False,False,False
+Side Effects Project - Sing With Me,16,False,False,False,False,False
+Side Effects Project - Sing With Me,17,False,False,False,False,False
+Side Effects Project - Sing With Me,18,False,False,False,False,False
+Side Effects Project - Sing With Me,19,False,False,False,False,False
+Side Effects Project - Sing With Me,20,False,False,False,False,False
+Side Effects Project - Sing With Me,21,False,False,False,False,False
+Side Effects Project - Sing With Me,22,False,False,False,False,False
+Side Effects Project - Sing With Me,23,False,False,False,False,False
+Side Effects Project - Sing With Me,24,False,False,False,False,False
+Side Effects Project - Sing With Me,25,False,False,False,False,False
+Side Effects Project - Sing With Me,26,False,False,False,False,False
+Side Effects Project - Sing With Me,27,False,False,False,False,False
+Side Effects Project - Sing With Me,28,False,False,False,False,False
+Side Effects Project - Sing With Me,29,False,False,False,False,False
+Side Effects Project - Sing With Me,30,False,False,False,False,False
+Side Effects Project - Sing With Me,31,False,False,False,False,False
+Side Effects Project - Sing With Me,32,False,False,False,False,False
+Side Effects Project - Sing With Me,33,False,False,False,False,False
+Side Effects Project - Sing With Me,34,False,False,False,False,False
+Side Effects Project - Sing With Me,35,False,False,True,False,False
+Side Effects Project - Sing With Me,36,False,False,False,False,False
+Side Effects Project - Sing With Me,37,False,False,False,False,False
+Side Effects Project - Sing With Me,38,False,False,False,False,False
+Side Effects Project - Sing With Me,39,False,False,False,False,False
+Side Effects Project - Sing With Me,40,False,False,False,False,False
+Side Effects Project - Sing With Me,41,False,False,False,False,False
+Side Effects Project - Sing With Me,42,False,False,False,False,False
+Side Effects Project - Sing With Me,43,False,False,False,False,False
+Side Effects Project - Sing With Me,44,False,False,False,False,False
+Side Effects Project - Sing With Me,45,False,False,False,False,False
+Side Effects Project - Sing With Me,46,False,False,False,False,False
+Side Effects Project - Sing With Me,47,False,False,True,False,False
+Side Effects Project - Sing With Me,48,False,False,True,True,False
+Skelpolu - Resurrection,1,False,False,True,False,False
+Skelpolu - Resurrection,2,False,False,True,True,False
+Skelpolu - Resurrection,3,False,False,True,True,False
+Skelpolu - Resurrection,4,False,False,True,True,False
+Skelpolu - Resurrection,5,False,False,True,True,False
+Skelpolu - Resurrection,6,False,False,True,True,False
+Skelpolu - Resurrection,7,False,False,True,True,False
+Skelpolu - Resurrection,8,False,False,True,True,False
+Skelpolu - Resurrection,9,False,False,False,True,False
+Skelpolu - Resurrection,10,False,False,False,True,False
+Skelpolu - Resurrection,11,False,False,False,True,False
+Skelpolu - Resurrection,12,False,False,False,True,False
+Skelpolu - Resurrection,13,False,False,False,True,False
+Skelpolu - Resurrection,14,False,False,False,True,False
+Skelpolu - Resurrection,15,False,False,False,True,False
+Skelpolu - Resurrection,16,False,False,False,True,False
+Skelpolu - Resurrection,17,False,False,False,True,False
+Skelpolu - Resurrection,18,False,False,False,True,False
+Skelpolu - Resurrection,19,False,False,False,True,False
+Skelpolu - Resurrection,20,False,False,False,True,False
+Skelpolu - Resurrection,21,False,False,False,True,False
+Skelpolu - Resurrection,22,False,False,False,True,False
+Skelpolu - Resurrection,23,False,False,False,True,False
+Skelpolu - Resurrection,24,False,False,False,True,False
+Skelpolu - Resurrection,25,False,False,False,True,False
+Skelpolu - Resurrection,26,False,False,False,True,False
+Skelpolu - Resurrection,27,False,False,False,True,False
+Skelpolu - Resurrection,28,False,False,True,True,False
+Skelpolu - Resurrection,29,False,False,True,True,False
+Skelpolu - Resurrection,30,False,False,True,True,False
+Skelpolu - Resurrection,31,False,False,False,True,False
+Skelpolu - Resurrection,32,False,False,False,True,False
+Skelpolu - Resurrection,33,False,False,False,True,False
+Skelpolu - Resurrection,34,False,False,False,True,False
+Skelpolu - Resurrection,35,False,False,False,True,False
+Skelpolu - Resurrection,36,False,False,False,True,False
+Skelpolu - Resurrection,37,False,False,False,True,False
+Skelpolu - Resurrection,38,False,False,False,True,False
+Skelpolu - Resurrection,39,False,False,False,True,False
+Skelpolu - Resurrection,40,False,False,False,True,False
+Skelpolu - Resurrection,41,False,False,False,True,False
+Skelpolu - Resurrection,42,False,False,False,True,False
+Skelpolu - Resurrection,43,False,False,False,True,False
+Skelpolu - Resurrection,44,False,False,False,True,False
+Skelpolu - Resurrection,45,False,False,False,True,False
+Skelpolu - Resurrection,46,False,False,False,True,False
+Skelpolu - Resurrection,47,False,False,True,True,False
+Skelpolu - Resurrection,48,False,False,False,True,False
+Skelpolu - Resurrection,49,False,False,False,True,False
+Skelpolu - Resurrection,50,False,False,False,True,False
+Skelpolu - Resurrection,51,False,False,False,True,False
+Skelpolu - Resurrection,52,False,False,False,True,False
+Skelpolu - Resurrection,53,False,False,False,True,False
+Skelpolu - Resurrection,54,False,False,False,True,False
+Skelpolu - Resurrection,55,False,False,False,True,False
+Skelpolu - Resurrection,56,False,False,False,True,False
+Skelpolu - Resurrection,57,False,False,False,True,False
+Skelpolu - Resurrection,58,False,False,False,True,False
+Skelpolu - Resurrection,59,False,False,False,False,False
+Skelpolu - Resurrection,60,False,False,False,False,False
+Skelpolu - Resurrection,61,False,False,False,False,False
+Skelpolu - Resurrection,62,False,False,False,False,False
+Skelpolu - Resurrection,63,False,False,False,False,False
+Skelpolu - Resurrection,64,False,False,False,False,False
+Skelpolu - Resurrection,65,False,False,False,False,False
+Skelpolu - Resurrection,66,False,False,False,False,False
+Skelpolu - Resurrection,67,False,False,False,False,False
+Skelpolu - Resurrection,68,False,False,False,True,False
+Skelpolu - Resurrection,69,False,False,False,True,False
+Skelpolu - Resurrection,70,False,False,False,True,False
+Skelpolu - Resurrection,71,False,False,False,True,False
+Skelpolu - Resurrection,72,False,False,False,False,False
+Skelpolu - Resurrection,73,False,False,False,False,False
+Skelpolu - Resurrection,74,False,False,False,False,False
+Skelpolu - Resurrection,75,False,False,False,False,False
+Skelpolu - Resurrection,76,False,False,False,False,False
+Skelpolu - Resurrection,77,False,False,False,True,False
+Skelpolu - Resurrection,78,False,False,False,False,True
+Skelpolu - Resurrection,79,True,True,True,True,True
+Nerve 9 - Pray For The Rain,1,False,True,True,False,False
+Nerve 9 - Pray For The Rain,2,False,True,False,False,False
+Nerve 9 - Pray For The Rain,3,False,False,False,False,False
+Nerve 9 - Pray For The Rain,4,False,False,False,False,False
+Nerve 9 - Pray For The Rain,5,False,False,False,False,False
+Nerve 9 - Pray For The Rain,6,False,False,False,False,False
+Nerve 9 - Pray For The Rain,7,False,False,False,False,False
+Nerve 9 - Pray For The Rain,8,False,False,False,False,False
+Nerve 9 - Pray For The Rain,9,False,False,False,False,False
+Nerve 9 - Pray For The Rain,10,False,False,False,False,False
+Nerve 9 - Pray For The Rain,11,False,False,False,False,False
+Nerve 9 - Pray For The Rain,12,False,False,False,False,False
+Nerve 9 - Pray For The Rain,13,False,False,False,False,False
+Nerve 9 - Pray For The Rain,14,False,False,False,False,False
+Nerve 9 - Pray For The Rain,15,False,False,False,False,False
+Nerve 9 - Pray For The Rain,16,False,False,False,False,False
+Nerve 9 - Pray For The Rain,17,False,False,False,False,False
+Nerve 9 - Pray For The Rain,18,False,False,False,False,False
+Nerve 9 - Pray For The Rain,19,False,False,False,False,False
+Nerve 9 - Pray For The Rain,20,False,False,False,False,False
+Nerve 9 - Pray For The Rain,21,False,False,False,False,False
+Nerve 9 - Pray For The Rain,22,False,False,False,False,False
+Nerve 9 - Pray For The Rain,23,False,False,False,False,False
+Nerve 9 - Pray For The Rain,24,False,False,False,False,False
+Nerve 9 - Pray For The Rain,25,False,False,False,False,False
+Nerve 9 - Pray For The Rain,26,False,False,False,False,False
+Nerve 9 - Pray For The Rain,27,False,False,False,False,False
+Nerve 9 - Pray For The Rain,28,False,False,False,False,False
+Nerve 9 - Pray For The Rain,29,False,False,False,False,False
+Nerve 9 - Pray For The Rain,30,False,False,False,False,False
+Nerve 9 - Pray For The Rain,31,False,False,False,False,False
+Nerve 9 - Pray For The Rain,32,False,False,False,False,False
+Nerve 9 - Pray For The Rain,33,False,False,False,False,False
+Nerve 9 - Pray For The Rain,34,False,False,False,False,False
+Nerve 9 - Pray For The Rain,35,False,False,False,False,False
+Nerve 9 - Pray For The Rain,36,False,False,False,False,False
+Nerve 9 - Pray For The Rain,37,False,False,False,False,False
+Nerve 9 - Pray For The Rain,38,False,True,False,False,False
+Nerve 9 - Pray For The Rain,39,False,True,False,False,False
+Nerve 9 - Pray For The Rain,40,False,True,False,False,False
+Nerve 9 - Pray For The Rain,41,False,True,False,False,False
+Nerve 9 - Pray For The Rain,42,False,True,False,False,False
+Nerve 9 - Pray For The Rain,43,False,True,False,False,False
+Nerve 9 - Pray For The Rain,44,False,False,False,False,False
+Nerve 9 - Pray For The Rain,45,False,False,False,False,False
+Nerve 9 - Pray For The Rain,46,False,False,False,False,False
+Nerve 9 - Pray For The Rain,47,False,False,False,False,False
+Nerve 9 - Pray For The Rain,48,False,False,False,False,False
+Nerve 9 - Pray For The Rain,49,False,False,False,False,False
+Nerve 9 - Pray For The Rain,50,False,False,False,False,False
+Nerve 9 - Pray For The Rain,51,False,False,False,False,False
+Nerve 9 - Pray For The Rain,52,False,False,False,False,False
+Nerve 9 - Pray For The Rain,53,False,False,False,True,False
+Nerve 9 - Pray For The Rain,54,False,False,False,True,False
+Nerve 9 - Pray For The Rain,55,False,False,False,True,False
+Nerve 9 - Pray For The Rain,56,False,False,False,True,False
+Nerve 9 - Pray For The Rain,57,False,False,False,True,False
+Nerve 9 - Pray For The Rain,58,False,False,False,True,False
+Nerve 9 - Pray For The Rain,59,False,False,False,True,False
+Nerve 9 - Pray For The Rain,60,False,False,False,True,False
+Nerve 9 - Pray For The Rain,61,False,False,False,True,False
+Nerve 9 - Pray For The Rain,62,False,False,False,True,False
+Nerve 9 - Pray For The Rain,63,False,False,False,True,False
+Nerve 9 - Pray For The Rain,64,False,False,False,True,False
+Nerve 9 - Pray For The Rain,65,False,False,False,True,False
+Nerve 9 - Pray For The Rain,66,False,False,True,True,False
+Nerve 9 - Pray For The Rain,67,False,True,True,True,False
+Nerve 9 - Pray For The Rain,68,False,True,True,True,False
+Louis Cressy Band - Good Time,1,False,True,True,True,False
+Louis Cressy Band - Good Time,2,False,True,True,True,False
+Louis Cressy Band - Good Time,3,False,False,True,True,False
+Louis Cressy Band - Good Time,4,False,False,False,True,False
+Louis Cressy Band - Good Time,5,False,False,False,True,False
+Louis Cressy Band - Good Time,6,False,False,False,True,False
+Louis Cressy Band - Good Time,7,False,False,False,True,False
+Louis Cressy Band - Good Time,8,False,False,False,True,False
+Louis Cressy Band - Good Time,9,False,False,False,False,False
+Louis Cressy Band - Good Time,10,False,False,False,False,False
+Louis Cressy Band - Good Time,11,False,False,False,False,False
+Louis Cressy Band - Good Time,12,False,False,False,False,False
+Louis Cressy Band - Good Time,13,False,False,False,False,False
+Louis Cressy Band - Good Time,14,False,False,False,False,False
+Louis Cressy Band - Good Time,15,False,False,False,False,False
+Louis Cressy Band - Good Time,16,False,False,False,False,False
+Louis Cressy Band - Good Time,17,False,False,False,False,False
+Louis Cressy Band - Good Time,18,False,False,False,False,False
+Louis Cressy Band - Good Time,19,False,False,False,False,False
+Louis Cressy Band - Good Time,20,False,False,False,False,False
+Louis Cressy Band - Good Time,21,False,False,False,False,False
+Louis Cressy Band - Good Time,22,False,False,False,False,False
+Louis Cressy Band - Good Time,23,False,False,False,False,False
+Louis Cressy Band - Good Time,24,False,False,False,True,False
+Louis Cressy Band - Good Time,25,False,False,False,True,False
+Louis Cressy Band - Good Time,26,False,False,False,True,False
+Louis Cressy Band - Good Time,27,False,False,False,False,False
+Louis Cressy Band - Good Time,28,False,False,False,False,False
+Louis Cressy Band - Good Time,29,False,False,False,True,False
+Louis Cressy Band - Good Time,30,False,False,False,True,False
+Louis Cressy Band - Good Time,31,False,False,False,True,False
+Louis Cressy Band - Good Time,32,False,False,False,True,False
+Louis Cressy Band - Good Time,33,False,False,False,True,False
+Louis Cressy Band - Good Time,34,False,False,False,True,False
+Louis Cressy Band - Good Time,35,False,False,False,True,False
+Louis Cressy Band - Good Time,36,False,False,False,False,False
+Louis Cressy Band - Good Time,37,False,False,False,False,False
+Louis Cressy Band - Good Time,38,False,False,False,False,False
+Louis Cressy Band - Good Time,39,False,False,False,False,False
+Louis Cressy Band - Good Time,40,False,False,False,False,False
+Louis Cressy Band - Good Time,41,False,False,False,False,False
+Louis Cressy Band - Good Time,42,False,False,False,False,False
+Louis Cressy Band - Good Time,43,False,False,False,False,False
+Louis Cressy Band - Good Time,44,False,False,False,False,False
+Louis Cressy Band - Good Time,45,False,False,False,True,False
+Louis Cressy Band - Good Time,46,False,False,False,True,False
+Louis Cressy Band - Good Time,47,False,False,False,True,False
+Louis Cressy Band - Good Time,48,False,False,False,True,False
+Louis Cressy Band - Good Time,49,False,False,False,True,False
+Louis Cressy Band - Good Time,50,False,False,False,True,False
+Louis Cressy Band - Good Time,51,False,False,False,True,False
+Louis Cressy Band - Good Time,52,False,False,False,True,False
+Louis Cressy Band - Good Time,53,False,False,False,False,False
+Louis Cressy Band - Good Time,54,False,False,False,False,False
+Louis Cressy Band - Good Time,55,False,False,False,False,False
+Louis Cressy Band - Good Time,56,False,False,False,False,False
+Louis Cressy Band - Good Time,57,False,False,False,False,False
+Louis Cressy Band - Good Time,58,False,False,True,True,False
+Angels In Amplifiers - I'm Alright,1,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,2,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,3,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,4,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,5,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,6,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,7,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,8,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,9,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,10,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,11,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,12,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,13,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,14,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,15,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,16,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,17,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,18,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,19,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,20,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,21,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,22,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,23,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,24,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,25,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,26,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,27,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,28,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,29,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,30,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,31,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,32,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,33,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,34,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,35,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,1,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,2,False,False,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,3,False,False,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,4,False,False,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,5,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,6,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,7,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,8,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,9,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,10,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,11,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,12,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,13,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,14,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,15,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,16,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,17,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,18,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,19,False,False,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,20,False,False,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,21,False,True,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,22,False,True,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,23,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,24,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,25,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,26,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,27,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,28,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,29,False,False,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,30,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,31,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,32,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,33,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,34,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,35,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,36,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,37,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,38,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,39,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,40,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,41,False,False,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,42,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,43,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,44,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,45,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,46,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,47,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,48,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,49,True,True,True,True,True
+Ben Carrigan - We'll Talk About It All Tonight,50,True,True,True,True,True
+BKS - Too Much,1,False,False,True,True,False
+BKS - Too Much,2,False,False,False,True,False
+BKS - Too Much,3,False,False,False,True,False
+BKS - Too Much,4,False,False,False,True,False
+BKS - Too Much,5,False,False,False,False,False
+BKS - Too Much,6,False,False,False,False,False
+BKS - Too Much,7,False,False,False,False,False
+BKS - Too Much,8,False,False,False,False,False
+BKS - Too Much,9,False,False,False,False,False
+BKS - Too Much,10,False,False,False,False,False
+BKS - Too Much,11,False,False,False,False,False
+BKS - Too Much,12,False,False,False,False,False
+BKS - Too Much,13,False,False,False,False,False
+BKS - Too Much,14,False,False,False,False,False
+BKS - Too Much,15,False,False,False,False,False
+BKS - Too Much,16,False,False,False,False,False
+BKS - Too Much,17,False,False,False,False,False
+BKS - Too Much,18,False,False,False,False,False
+BKS - Too Much,19,False,False,False,False,False
+BKS - Too Much,20,False,False,False,False,False
+BKS - Too Much,21,False,False,False,False,False
+BKS - Too Much,22,False,False,False,False,False
+BKS - Too Much,23,False,False,False,False,False
+BKS - Too Much,24,False,False,False,False,False
+BKS - Too Much,25,False,False,False,True,False
+BKS - Too Much,26,False,False,False,True,False
+BKS - Too Much,27,False,False,False,True,False
+BKS - Too Much,28,False,False,False,True,False
+BKS - Too Much,29,False,False,False,True,False
+BKS - Too Much,30,False,False,False,True,False
+BKS - Too Much,31,False,False,False,False,False
+BKS - Too Much,32,False,False,False,False,False
+BKS - Too Much,33,False,False,False,False,False
+BKS - Too Much,34,False,False,False,False,False
+BKS - Too Much,35,False,False,False,False,False
+BKS - Too Much,36,False,False,False,False,False
+BKS - Too Much,37,False,False,False,False,False
+BKS - Too Much,38,False,False,False,False,False
+BKS - Too Much,39,False,False,False,False,False
+BKS - Too Much,40,False,False,False,False,False
+BKS - Too Much,41,False,False,False,True,False
+BKS - Too Much,42,False,False,False,True,False
+BKS - Too Much,43,False,False,False,True,False
+Carlos Gonzalez - A Place For Us,1,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,2,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,3,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,4,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,5,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,6,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,7,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,8,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,9,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,10,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,11,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,12,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,13,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,14,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,15,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,16,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,17,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,18,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,19,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,20,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,21,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,22,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,23,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,24,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,25,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,26,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,27,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,28,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,29,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,30,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,31,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,32,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,33,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,34,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,35,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,36,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,37,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,38,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,39,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,40,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,41,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,42,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,43,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,44,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,45,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,46,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,47,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,48,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,49,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,50,False,False,True,False,False
+Secretariat - Over The Top,1,False,False,True,True,True
+Secretariat - Over The Top,2,False,False,True,True,False
+Secretariat - Over The Top,3,False,False,False,True,False
+Secretariat - Over The Top,4,False,False,False,True,False
+Secretariat - Over The Top,5,False,False,False,True,False
+Secretariat - Over The Top,6,False,False,False,False,False
+Secretariat - Over The Top,7,False,False,False,False,False
+Secretariat - Over The Top,8,False,False,False,False,False
+Secretariat - Over The Top,9,False,False,False,False,False
+Secretariat - Over The Top,10,False,False,False,False,False
+Secretariat - Over The Top,11,False,False,False,False,False
+Secretariat - Over The Top,12,False,False,False,False,False
+Secretariat - Over The Top,13,False,False,False,False,False
+Secretariat - Over The Top,14,False,False,False,False,False
+Secretariat - Over The Top,15,False,False,False,True,False
+Secretariat - Over The Top,16,False,False,False,True,False
+Secretariat - Over The Top,17,False,False,False,False,False
+Secretariat - Over The Top,18,False,False,False,False,False
+Secretariat - Over The Top,19,False,False,False,False,False
+Secretariat - Over The Top,20,False,False,False,False,False
+Secretariat - Over The Top,21,False,False,False,False,False
+Secretariat - Over The Top,22,False,False,False,False,False
+Secretariat - Over The Top,23,False,False,False,False,False
+Secretariat - Over The Top,24,False,False,False,False,False
+Secretariat - Over The Top,25,False,False,False,False,False
+Secretariat - Over The Top,26,False,False,False,False,False
+Secretariat - Over The Top,27,False,False,False,False,False
+Secretariat - Over The Top,28,False,False,False,False,False
+Secretariat - Over The Top,29,False,False,False,False,False
+Secretariat - Over The Top,30,False,False,False,False,False
+Secretariat - Over The Top,31,False,False,False,False,False
+Secretariat - Over The Top,32,False,False,False,False,False
+Secretariat - Over The Top,33,False,False,False,True,False
+Secretariat - Over The Top,34,False,False,False,True,False
+Secretariat - Over The Top,35,False,False,False,True,False
+Secretariat - Over The Top,36,False,False,False,True,False
+Secretariat - Over The Top,37,False,False,False,True,False
+Secretariat - Over The Top,38,False,False,False,False,False
+Secretariat - Over The Top,39,False,True,True,False,False
+Secretariat - Over The Top,40,False,False,False,False,False
+Secretariat - Over The Top,41,False,False,False,False,False
+Secretariat - Over The Top,42,False,False,False,False,False
+Secretariat - Over The Top,43,False,False,False,False,False
+Secretariat - Over The Top,44,False,False,False,False,False
+Secretariat - Over The Top,45,False,False,False,True,False
+Secretariat - Over The Top,46,False,False,False,True,False
+Secretariat - Over The Top,47,False,False,False,True,False
+Secretariat - Over The Top,48,False,False,False,True,False
+Secretariat - Over The Top,49,True,True,True,True,True
+Secretariat - Over The Top,50,True,True,True,True,True
+We Fell From The Sky - Not You,1,False,True,False,True,False
+We Fell From The Sky - Not You,2,False,False,False,True,False
+We Fell From The Sky - Not You,3,False,False,False,True,False
+We Fell From The Sky - Not You,4,False,False,False,True,False
+We Fell From The Sky - Not You,5,False,False,False,True,False
+We Fell From The Sky - Not You,6,False,False,False,False,False
+We Fell From The Sky - Not You,7,False,False,False,False,False
+We Fell From The Sky - Not You,8,False,False,False,False,False
+We Fell From The Sky - Not You,9,False,False,False,False,False
+We Fell From The Sky - Not You,10,False,False,False,False,False
+We Fell From The Sky - Not You,11,False,False,False,False,False
+We Fell From The Sky - Not You,12,False,False,False,False,False
+We Fell From The Sky - Not You,13,False,False,False,False,False
+We Fell From The Sky - Not You,14,False,False,False,True,False
+We Fell From The Sky - Not You,15,False,False,False,True,False
+We Fell From The Sky - Not You,16,False,False,False,False,False
+We Fell From The Sky - Not You,17,False,False,False,False,False
+We Fell From The Sky - Not You,18,False,False,False,False,False
+We Fell From The Sky - Not You,19,False,False,False,False,False
+We Fell From The Sky - Not You,20,False,False,False,False,False
+We Fell From The Sky - Not You,21,False,False,False,False,False
+We Fell From The Sky - Not You,22,False,False,False,False,False
+We Fell From The Sky - Not You,23,False,False,False,False,False
+We Fell From The Sky - Not You,24,False,False,False,True,False
+We Fell From The Sky - Not You,25,False,False,False,True,False
+We Fell From The Sky - Not You,26,False,False,False,False,False
+We Fell From The Sky - Not You,27,False,False,False,False,False
+We Fell From The Sky - Not You,28,False,False,False,False,False
+We Fell From The Sky - Not You,29,False,False,False,False,False
+We Fell From The Sky - Not You,30,False,False,False,False,False
+We Fell From The Sky - Not You,31,False,False,False,True,False
+We Fell From The Sky - Not You,32,False,False,False,True,False
+We Fell From The Sky - Not You,33,False,False,False,False,False
+We Fell From The Sky - Not You,34,False,False,False,True,False
+We Fell From The Sky - Not You,35,False,False,False,True,False
+We Fell From The Sky - Not You,36,False,False,False,True,False
+We Fell From The Sky - Not You,37,False,False,False,True,False
+We Fell From The Sky - Not You,38,False,False,False,False,False
+We Fell From The Sky - Not You,39,False,False,False,False,False
+We Fell From The Sky - Not You,40,False,False,False,False,False
+We Fell From The Sky - Not You,41,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,1,False,True,False,True,False
+Enda Reilly - Cur An Long Ag Seol,2,False,True,False,True,False
+Enda Reilly - Cur An Long Ag Seol,3,False,True,False,True,False
+Enda Reilly - Cur An Long Ag Seol,4,False,True,False,False,False
+Enda Reilly - Cur An Long Ag Seol,5,False,True,False,False,False
+Enda Reilly - Cur An Long Ag Seol,6,False,True,False,False,False
+Enda Reilly - Cur An Long Ag Seol,7,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,8,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,9,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,10,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,11,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,12,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,13,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,14,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,15,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,16,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,17,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,18,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,19,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,20,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,21,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,22,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,23,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,24,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,25,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,26,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,27,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,28,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,29,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,30,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,31,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,32,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,33,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,34,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,35,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,36,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,37,False,False,False,True,False
+Forkupines - Semantics,1,False,False,True,True,True
+Forkupines - Semantics,2,False,False,False,True,True
+Forkupines - Semantics,3,False,False,False,True,False
+Forkupines - Semantics,4,False,False,False,True,False
+Forkupines - Semantics,5,False,False,False,True,False
+Forkupines - Semantics,6,False,False,False,True,False
+Forkupines - Semantics,7,False,False,False,False,False
+Forkupines - Semantics,8,False,False,False,False,False
+Forkupines - Semantics,9,False,False,False,False,False
+Forkupines - Semantics,10,False,False,False,False,False
+Forkupines - Semantics,11,False,False,False,False,False
+Forkupines - Semantics,12,False,False,False,False,False
+Forkupines - Semantics,13,False,False,False,False,False
+Forkupines - Semantics,14,False,False,False,False,False
+Forkupines - Semantics,15,False,False,False,False,False
+Forkupines - Semantics,16,False,False,False,False,False
+Forkupines - Semantics,17,False,False,False,False,False
+Forkupines - Semantics,18,False,False,False,False,False
+Forkupines - Semantics,19,False,False,False,False,False
+Forkupines - Semantics,20,False,False,False,False,False
+Forkupines - Semantics,21,False,False,False,False,False
+Forkupines - Semantics,22,False,False,False,False,False
+Forkupines - Semantics,23,False,False,False,False,False
+Forkupines - Semantics,24,False,False,False,False,False
+Forkupines - Semantics,25,False,False,False,False,False
+Forkupines - Semantics,26,False,False,False,False,False
+Forkupines - Semantics,27,False,False,False,False,False
+Forkupines - Semantics,28,False,False,False,False,False
+Forkupines - Semantics,29,False,False,True,False,False
+Forkupines - Semantics,30,False,False,False,False,False
+Forkupines - Semantics,31,False,False,False,False,False
+Forkupines - Semantics,32,False,False,False,False,False
+Forkupines - Semantics,33,False,False,False,False,False
+Forkupines - Semantics,34,False,False,False,False,False
+Forkupines - Semantics,35,False,False,False,False,False
+Forkupines - Semantics,36,False,False,False,True,False
+Forkupines - Semantics,37,False,False,False,True,False
+Forkupines - Semantics,38,False,False,False,True,False
+Forkupines - Semantics,39,False,False,False,True,False
+Forkupines - Semantics,40,False,False,False,True,False
+Forkupines - Semantics,41,False,False,False,True,False
+Forkupines - Semantics,42,False,False,False,True,False
+Forkupines - Semantics,43,False,False,False,True,False
+Forkupines - Semantics,44,False,False,False,True,False
+Forkupines - Semantics,45,False,False,False,True,False
+Forkupines - Semantics,46,False,False,False,True,False
+Forkupines - Semantics,47,False,False,False,True,False
+Forkupines - Semantics,48,False,False,False,True,False
+Forkupines - Semantics,49,False,False,False,True,False
+Forkupines - Semantics,50,False,False,False,True,False
+Forkupines - Semantics,51,False,False,False,True,False
+Forkupines - Semantics,52,False,False,False,True,False
+Forkupines - Semantics,53,False,False,False,False,False
+Forkupines - Semantics,54,False,False,False,False,False
+PR - Happy Daze,1,False,False,False,False,False
+PR - Happy Daze,2,False,False,False,False,False
+PR - Happy Daze,3,False,False,False,False,False
+PR - Happy Daze,4,False,False,False,False,False
+PR - Happy Daze,5,False,False,False,False,False
+PR - Happy Daze,6,False,False,False,False,False
+PR - Happy Daze,7,False,False,False,False,False
+PR - Happy Daze,8,False,False,False,False,False
+PR - Happy Daze,9,False,False,False,False,False
+PR - Happy Daze,10,False,False,False,False,False
+PR - Happy Daze,11,False,False,False,False,False
+PR - Happy Daze,12,False,False,False,False,False
+PR - Happy Daze,13,False,False,False,False,False
+PR - Happy Daze,14,False,False,False,False,False
+PR - Happy Daze,15,False,False,False,False,False
+PR - Happy Daze,16,False,False,False,False,False
+PR - Happy Daze,17,False,False,False,False,False
+PR - Happy Daze,18,False,False,False,False,False
+PR - Happy Daze,19,False,False,False,False,False
+PR - Happy Daze,20,False,False,False,False,False
+PR - Happy Daze,21,False,False,False,False,False
+PR - Happy Daze,22,False,False,False,False,False
+PR - Happy Daze,23,False,False,False,False,False
+PR - Happy Daze,24,False,False,False,False,False
+PR - Happy Daze,25,False,False,False,False,False
+PR - Happy Daze,26,False,False,False,False,False
+PR - Happy Daze,27,False,False,False,False,False
+PR - Happy Daze,28,False,False,False,False,False
+PR - Happy Daze,29,False,False,False,False,False
+PR - Happy Daze,30,False,False,False,False,False
+PR - Happy Daze,31,False,False,False,False,False
+PR - Happy Daze,32,False,False,False,False,False
+PR - Oh No,1,False,False,False,False,False
+PR - Oh No,2,False,False,False,False,False
+PR - Oh No,3,False,False,False,False,False
+PR - Oh No,4,False,False,False,False,False
+PR - Oh No,5,False,False,False,False,False
+PR - Oh No,6,False,False,False,False,False
+PR - Oh No,7,False,False,False,False,False
+PR - Oh No,8,False,False,False,False,False
+PR - Oh No,9,False,False,False,False,False
+PR - Oh No,10,False,False,False,False,False
+PR - Oh No,11,False,False,False,False,False
+PR - Oh No,12,False,False,False,False,False
+PR - Oh No,13,False,False,False,False,False
+PR - Oh No,14,False,False,False,False,False
+PR - Oh No,15,False,False,False,False,False

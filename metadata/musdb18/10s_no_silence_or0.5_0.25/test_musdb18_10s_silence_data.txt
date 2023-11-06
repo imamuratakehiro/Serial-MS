@@ -1,0 +1,2420 @@
+track_name,seg,mix_silence,drums_silence,bass_silence,vocals_silence,other_silence
+Moosmusic - Big Dummy Shake,0,False,True,True,True,False
+Moosmusic - Big Dummy Shake,220500,False,True,True,True,False
+Moosmusic - Big Dummy Shake,441000,False,False,True,True,False
+Moosmusic - Big Dummy Shake,661500,False,False,True,True,False
+Moosmusic - Big Dummy Shake,882000,False,False,True,True,False
+Moosmusic - Big Dummy Shake,1102500,False,False,True,False,False
+Moosmusic - Big Dummy Shake,1323000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,1543500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,1764000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,1984500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,2205000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,2425500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,2646000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,2866500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,3087000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,3307500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,3528000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,3748500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,3969000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,4189500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,4410000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,4630500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,4851000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,5071500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,5292000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,5512500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,5733000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,5953500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,6174000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,6394500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,6615000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,6835500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,7056000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,7276500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,7497000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,7717500,False,False,False,False,False
+Moosmusic - Big Dummy Shake,7938000,False,False,False,False,False
+Moosmusic - Big Dummy Shake,8158500,False,False,False,False,False
+The Mountaineering Club - Mallory,0,False,True,True,True,False
+The Mountaineering Club - Mallory,220500,False,True,True,True,False
+The Mountaineering Club - Mallory,441000,False,True,True,True,False
+The Mountaineering Club - Mallory,661500,False,True,True,True,False
+The Mountaineering Club - Mallory,882000,False,True,False,True,False
+The Mountaineering Club - Mallory,1102500,False,True,False,True,False
+The Mountaineering Club - Mallory,1323000,False,True,False,True,False
+The Mountaineering Club - Mallory,1543500,False,True,False,True,False
+The Mountaineering Club - Mallory,1764000,False,False,False,False,False
+The Mountaineering Club - Mallory,1984500,False,False,False,False,False
+The Mountaineering Club - Mallory,2205000,False,False,False,False,False
+The Mountaineering Club - Mallory,2425500,False,False,False,False,False
+The Mountaineering Club - Mallory,2646000,False,False,False,True,False
+The Mountaineering Club - Mallory,2866500,False,False,False,True,False
+The Mountaineering Club - Mallory,3087000,False,False,False,True,False
+The Mountaineering Club - Mallory,3307500,False,False,False,True,False
+The Mountaineering Club - Mallory,3528000,False,False,False,True,False
+The Mountaineering Club - Mallory,3748500,False,False,False,False,False
+The Mountaineering Club - Mallory,3969000,False,False,False,False,False
+The Mountaineering Club - Mallory,4189500,False,False,False,False,False
+The Mountaineering Club - Mallory,4410000,False,False,False,False,False
+The Mountaineering Club - Mallory,4630500,False,False,False,True,False
+The Mountaineering Club - Mallory,4851000,False,True,False,True,False
+The Mountaineering Club - Mallory,5071500,False,True,False,False,False
+The Mountaineering Club - Mallory,5292000,False,True,False,False,False
+The Mountaineering Club - Mallory,5512500,False,True,True,False,False
+The Mountaineering Club - Mallory,5733000,False,True,True,False,False
+The Mountaineering Club - Mallory,5953500,False,True,True,False,False
+The Mountaineering Club - Mallory,6174000,False,True,True,False,False
+The Mountaineering Club - Mallory,6394500,False,True,True,False,False
+The Mountaineering Club - Mallory,6615000,False,True,True,True,False
+The Mountaineering Club - Mallory,6835500,False,True,True,True,False
+The Mountaineering Club - Mallory,7056000,False,True,True,True,False
+The Mountaineering Club - Mallory,7276500,False,False,False,True,False
+The Mountaineering Club - Mallory,7497000,False,False,False,True,False
+The Mountaineering Club - Mallory,7717500,False,False,False,True,False
+The Mountaineering Club - Mallory,7938000,False,False,False,True,False
+The Mountaineering Club - Mallory,8158500,False,False,False,False,False
+The Mountaineering Club - Mallory,8379000,False,False,False,False,False
+The Mountaineering Club - Mallory,8599500,False,False,False,False,False
+The Mountaineering Club - Mallory,8820000,False,False,False,False,False
+The Mountaineering Club - Mallory,9040500,False,False,False,False,False
+The Mountaineering Club - Mallory,9261000,False,False,False,False,False
+The Mountaineering Club - Mallory,9481500,False,False,False,False,False
+The Mountaineering Club - Mallory,9702000,False,False,False,False,False
+The Mountaineering Club - Mallory,9922500,False,False,False,False,False
+The Mountaineering Club - Mallory,10143000,False,False,False,False,False
+Bobby Nobody - Stitch Up,0,False,False,False,True,True
+Bobby Nobody - Stitch Up,220500,False,False,False,True,False
+Bobby Nobody - Stitch Up,441000,False,False,False,True,False
+Bobby Nobody - Stitch Up,661500,False,False,False,True,False
+Bobby Nobody - Stitch Up,882000,False,False,False,True,False
+Bobby Nobody - Stitch Up,1102500,False,False,False,False,False
+Bobby Nobody - Stitch Up,1323000,False,False,False,False,False
+Bobby Nobody - Stitch Up,1543500,False,False,False,False,False
+Bobby Nobody - Stitch Up,1764000,False,False,False,False,False
+Bobby Nobody - Stitch Up,1984500,False,False,False,False,False
+Bobby Nobody - Stitch Up,2205000,False,False,False,False,False
+Bobby Nobody - Stitch Up,2425500,False,False,False,False,False
+Bobby Nobody - Stitch Up,2646000,False,False,False,False,False
+Bobby Nobody - Stitch Up,2866500,False,False,False,False,False
+Bobby Nobody - Stitch Up,3087000,False,False,False,False,False
+Bobby Nobody - Stitch Up,3307500,False,False,False,False,False
+Bobby Nobody - Stitch Up,3528000,False,False,False,True,False
+Bobby Nobody - Stitch Up,3748500,False,False,False,True,False
+Bobby Nobody - Stitch Up,3969000,False,False,False,True,False
+Bobby Nobody - Stitch Up,4189500,False,False,False,True,False
+Bobby Nobody - Stitch Up,4410000,False,False,False,False,False
+Bobby Nobody - Stitch Up,4630500,False,False,False,False,False
+Bobby Nobody - Stitch Up,4851000,False,False,False,False,False
+Bobby Nobody - Stitch Up,5071500,False,False,False,False,False
+Bobby Nobody - Stitch Up,5292000,False,False,False,False,False
+Bobby Nobody - Stitch Up,5512500,False,False,False,False,False
+Bobby Nobody - Stitch Up,5733000,False,False,False,False,False
+Bobby Nobody - Stitch Up,5953500,False,False,False,False,False
+Bobby Nobody - Stitch Up,6174000,False,False,False,False,False
+Bobby Nobody - Stitch Up,6394500,False,False,False,False,False
+Bobby Nobody - Stitch Up,6615000,False,False,False,False,False
+Bobby Nobody - Stitch Up,6835500,False,False,False,False,False
+Bobby Nobody - Stitch Up,7056000,False,False,False,False,False
+Bobby Nobody - Stitch Up,7276500,False,False,False,False,False
+Bobby Nobody - Stitch Up,7497000,False,False,False,False,False
+Bobby Nobody - Stitch Up,7717500,False,False,False,False,False
+Bobby Nobody - Stitch Up,7938000,False,False,False,False,False
+Bobby Nobody - Stitch Up,8158500,False,False,False,False,False
+Bobby Nobody - Stitch Up,8379000,False,False,False,False,False
+Bobby Nobody - Stitch Up,8599500,False,False,False,False,False
+Bobby Nobody - Stitch Up,8820000,False,False,False,True,False
+Bobby Nobody - Stitch Up,9040500,False,False,False,True,False
+Bobby Nobody - Stitch Up,9261000,False,False,False,True,False
+Punkdisco - Oral Hygiene,0,False,False,True,True,False
+Punkdisco - Oral Hygiene,220500,False,False,True,False,False
+Punkdisco - Oral Hygiene,441000,False,False,False,False,False
+Punkdisco - Oral Hygiene,661500,False,False,False,False,False
+Punkdisco - Oral Hygiene,882000,False,False,False,True,False
+Punkdisco - Oral Hygiene,1102500,False,False,False,True,False
+Punkdisco - Oral Hygiene,1323000,False,False,False,True,False
+Punkdisco - Oral Hygiene,1543500,False,False,False,True,False
+Punkdisco - Oral Hygiene,1764000,False,False,False,True,False
+Punkdisco - Oral Hygiene,1984500,False,False,False,True,False
+Punkdisco - Oral Hygiene,2205000,False,False,False,False,False
+Punkdisco - Oral Hygiene,2425500,False,False,False,False,False
+Punkdisco - Oral Hygiene,2646000,False,True,False,False,False
+Punkdisco - Oral Hygiene,2866500,False,True,False,False,False
+Punkdisco - Oral Hygiene,3087000,False,False,False,False,False
+Punkdisco - Oral Hygiene,3307500,False,False,False,False,False
+Punkdisco - Oral Hygiene,3528000,False,False,False,True,False
+Punkdisco - Oral Hygiene,3748500,False,False,False,True,False
+Punkdisco - Oral Hygiene,3969000,False,False,False,True,False
+Punkdisco - Oral Hygiene,4189500,False,False,False,True,False
+Punkdisco - Oral Hygiene,4410000,False,False,False,True,False
+Punkdisco - Oral Hygiene,4630500,False,False,False,True,False
+Punkdisco - Oral Hygiene,4851000,False,True,False,True,False
+Punkdisco - Oral Hygiene,5071500,False,True,False,True,False
+Punkdisco - Oral Hygiene,5292000,False,False,False,False,False
+Punkdisco - Oral Hygiene,5512500,False,False,False,False,False
+Punkdisco - Oral Hygiene,5733000,False,False,False,False,False
+Punkdisco - Oral Hygiene,5953500,False,False,False,False,False
+Punkdisco - Oral Hygiene,6174000,False,False,False,False,False
+Punkdisco - Oral Hygiene,6394500,False,False,False,False,False
+Punkdisco - Oral Hygiene,6615000,False,False,False,False,False
+Punkdisco - Oral Hygiene,6835500,False,False,False,True,True
+Punkdisco - Oral Hygiene,7056000,False,False,False,False,False
+Punkdisco - Oral Hygiene,7276500,False,False,False,False,False
+Punkdisco - Oral Hygiene,7497000,False,False,False,True,False
+Punkdisco - Oral Hygiene,7717500,False,True,False,True,True
+Punkdisco - Oral Hygiene,7938000,False,True,False,True,True
+Punkdisco - Oral Hygiene,8158500,False,True,False,True,True
+Punkdisco - Oral Hygiene,8379000,False,False,False,True,True
+Punkdisco - Oral Hygiene,8599500,False,False,False,True,True
+Punkdisco - Oral Hygiene,8820000,False,True,True,True,True
+Punkdisco - Oral Hygiene,9040500,False,True,True,False,True
+Punkdisco - Oral Hygiene,9261000,False,True,True,False,True
+Lyndsey Ollard - Catching Up,0,False,True,True,False,False
+Lyndsey Ollard - Catching Up,220500,False,True,True,False,False
+Lyndsey Ollard - Catching Up,441000,False,False,True,False,False
+Lyndsey Ollard - Catching Up,661500,False,False,True,False,False
+Lyndsey Ollard - Catching Up,882000,False,False,True,False,False
+Lyndsey Ollard - Catching Up,1102500,False,False,True,False,False
+Lyndsey Ollard - Catching Up,1323000,False,False,True,False,False
+Lyndsey Ollard - Catching Up,1543500,False,False,True,False,False
+Lyndsey Ollard - Catching Up,1764000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,1984500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,2205000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,2425500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,2646000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,2866500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,3087000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,3307500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,3528000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,3748500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,3969000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,4189500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,4410000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,4630500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,4851000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,5071500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,5292000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,5512500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,5733000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,5953500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,6174000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,6394500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,6615000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,6835500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,7056000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,7276500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,7497000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,7717500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,7938000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,8158500,False,False,False,False,False
+Lyndsey Ollard - Catching Up,8379000,False,False,False,False,False
+Lyndsey Ollard - Catching Up,8599500,False,True,False,False,False
+Lyndsey Ollard - Catching Up,8820000,False,True,False,False,False
+Lyndsey Ollard - Catching Up,9040500,False,True,False,False,False
+Lyndsey Ollard - Catching Up,9261000,False,True,False,False,False
+Lyndsey Ollard - Catching Up,9481500,False,True,False,True,False
+Al James - Schoolboy Facination,0,False,False,False,False,False
+Al James - Schoolboy Facination,220500,False,False,False,False,False
+Al James - Schoolboy Facination,441000,False,False,False,False,False
+Al James - Schoolboy Facination,661500,False,False,False,False,False
+Al James - Schoolboy Facination,882000,False,False,False,False,False
+Al James - Schoolboy Facination,1102500,False,False,False,False,False
+Al James - Schoolboy Facination,1323000,False,False,False,False,False
+Al James - Schoolboy Facination,1543500,False,False,False,False,False
+Al James - Schoolboy Facination,1764000,False,False,False,False,False
+Al James - Schoolboy Facination,1984500,False,False,False,False,False
+Al James - Schoolboy Facination,2205000,False,False,False,False,False
+Al James - Schoolboy Facination,2425500,False,False,False,False,False
+Al James - Schoolboy Facination,2646000,False,False,True,False,False
+Al James - Schoolboy Facination,2866500,False,False,True,False,False
+Al James - Schoolboy Facination,3087000,False,False,False,False,False
+Al James - Schoolboy Facination,3307500,False,False,False,False,False
+Al James - Schoolboy Facination,3528000,False,False,False,False,False
+Al James - Schoolboy Facination,3748500,False,False,False,False,False
+Al James - Schoolboy Facination,3969000,False,False,False,False,False
+Al James - Schoolboy Facination,4189500,False,False,False,False,False
+Al James - Schoolboy Facination,4410000,False,False,False,False,False
+Al James - Schoolboy Facination,4630500,False,False,False,False,False
+Al James - Schoolboy Facination,4851000,False,False,False,False,False
+Al James - Schoolboy Facination,5071500,False,False,False,False,False
+Al James - Schoolboy Facination,5292000,False,False,False,False,False
+Al James - Schoolboy Facination,5512500,False,False,False,False,False
+Al James - Schoolboy Facination,5733000,False,False,False,False,False
+Al James - Schoolboy Facination,5953500,False,False,False,False,False
+Al James - Schoolboy Facination,6174000,False,False,False,False,False
+Al James - Schoolboy Facination,6394500,False,False,False,False,False
+Al James - Schoolboy Facination,6615000,False,False,False,False,False
+Al James - Schoolboy Facination,6835500,False,False,False,False,False
+Al James - Schoolboy Facination,7056000,False,False,False,False,False
+Al James - Schoolboy Facination,7276500,False,False,False,False,False
+Al James - Schoolboy Facination,7497000,False,False,False,False,False
+Al James - Schoolboy Facination,7717500,False,False,False,False,False
+Al James - Schoolboy Facination,7938000,False,False,False,False,False
+Al James - Schoolboy Facination,8158500,False,False,False,False,False
+Al James - Schoolboy Facination,8379000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,0,False,False,True,True,False
+James Elder & Mark M Thompson - The English Actor,220500,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,441000,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,661500,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,882000,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,1102500,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,1323000,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,1543500,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,1764000,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,1984500,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,2205000,False,False,True,False,False
+James Elder & Mark M Thompson - The English Actor,2425500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,2646000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,2866500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,3087000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,3307500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,3528000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,3748500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,3969000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,4189500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,4410000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,4630500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,4851000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,5071500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,5292000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,5512500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,5733000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,5953500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,6174000,False,False,False,True,False
+James Elder & Mark M Thompson - The English Actor,6394500,False,False,False,True,False
+James Elder & Mark M Thompson - The English Actor,6615000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,6835500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,7056000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,7276500,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,7497000,False,False,False,False,False
+James Elder & Mark M Thompson - The English Actor,7717500,False,False,False,True,False
+James Elder & Mark M Thompson - The English Actor,7938000,False,False,False,True,False
+James Elder & Mark M Thompson - The English Actor,8158500,False,False,True,True,False
+James Elder & Mark M Thompson - The English Actor,8379000,False,False,True,True,False
+James Elder & Mark M Thompson - The English Actor,8599500,True,True,True,True,True
+Juliet's Rescue - Heartbeats,0,False,False,False,True,False
+Juliet's Rescue - Heartbeats,220500,False,False,False,True,False
+Juliet's Rescue - Heartbeats,441000,False,False,False,True,False
+Juliet's Rescue - Heartbeats,661500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,882000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,1102500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,1323000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,1543500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,1764000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,1984500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,2205000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,2425500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,2646000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,2866500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,3087000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,3307500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,3528000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,3748500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,3969000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,4189500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,4410000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,4630500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,4851000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,5071500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,5292000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,5512500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,5733000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,5953500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,6174000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,6394500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,6615000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,6835500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,7056000,False,False,True,False,False
+Juliet's Rescue - Heartbeats,7276500,False,False,True,True,False
+Juliet's Rescue - Heartbeats,7497000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,7717500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,7938000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,8158500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,8379000,False,False,False,False,False
+Juliet's Rescue - Heartbeats,8599500,False,False,False,False,False
+Juliet's Rescue - Heartbeats,8820000,False,False,False,True,False
+Juliet's Rescue - Heartbeats,9040500,False,False,False,True,False
+Juliet's Rescue - Heartbeats,9261000,False,False,False,True,False
+Juliet's Rescue - Heartbeats,9481500,False,False,False,True,False
+Juliet's Rescue - Heartbeats,9702000,False,False,False,True,False
+Juliet's Rescue - Heartbeats,9922500,False,False,False,True,False
+Juliet's Rescue - Heartbeats,10143000,False,False,False,True,False
+Juliet's Rescue - Heartbeats,10363500,False,False,False,True,False
+Juliet's Rescue - Heartbeats,10584000,False,False,True,True,False
+Juliet's Rescue - Heartbeats,10804500,False,True,True,False,False
+Juliet's Rescue - Heartbeats,11025000,False,True,True,False,False
+Juliet's Rescue - Heartbeats,11245500,True,True,True,True,True
+The Easton Ellises - Falcon 69,0,False,False,True,True,False
+The Easton Ellises - Falcon 69,220500,False,False,True,True,False
+The Easton Ellises - Falcon 69,441000,False,False,False,True,False
+The Easton Ellises - Falcon 69,661500,False,False,False,True,False
+The Easton Ellises - Falcon 69,882000,False,False,False,False,False
+The Easton Ellises - Falcon 69,1102500,False,False,False,False,False
+The Easton Ellises - Falcon 69,1323000,False,False,False,False,False
+The Easton Ellises - Falcon 69,1543500,False,False,False,False,False
+The Easton Ellises - Falcon 69,1764000,False,False,False,False,False
+The Easton Ellises - Falcon 69,1984500,False,False,False,False,False
+The Easton Ellises - Falcon 69,2205000,False,False,False,False,False
+The Easton Ellises - Falcon 69,2425500,False,False,False,False,False
+The Easton Ellises - Falcon 69,2646000,False,False,False,False,False
+The Easton Ellises - Falcon 69,2866500,False,False,False,False,False
+The Easton Ellises - Falcon 69,3087000,False,False,False,False,False
+The Easton Ellises - Falcon 69,3307500,False,False,False,False,False
+The Easton Ellises - Falcon 69,3528000,False,False,False,False,False
+The Easton Ellises - Falcon 69,3748500,False,False,False,False,False
+The Easton Ellises - Falcon 69,3969000,False,False,False,False,False
+The Easton Ellises - Falcon 69,4189500,False,False,False,False,False
+The Easton Ellises - Falcon 69,4410000,False,False,False,False,False
+The Easton Ellises - Falcon 69,4630500,False,False,False,False,False
+The Easton Ellises - Falcon 69,4851000,False,False,False,False,False
+The Easton Ellises - Falcon 69,5071500,False,False,False,False,False
+The Easton Ellises - Falcon 69,5292000,False,False,False,False,False
+The Easton Ellises - Falcon 69,5512500,False,False,False,False,False
+The Easton Ellises - Falcon 69,5733000,False,False,False,False,False
+The Easton Ellises - Falcon 69,5953500,False,False,False,False,False
+The Easton Ellises - Falcon 69,6174000,False,False,False,False,False
+The Easton Ellises - Falcon 69,6394500,False,False,False,False,False
+The Easton Ellises - Falcon 69,6615000,False,False,False,False,False
+The Easton Ellises - Falcon 69,6835500,False,False,True,False,False
+The Easton Ellises - Falcon 69,7056000,False,False,True,False,False
+The Easton Ellises - Falcon 69,7276500,False,False,False,False,False
+The Easton Ellises - Falcon 69,7497000,False,False,False,False,False
+The Easton Ellises - Falcon 69,7717500,False,False,False,False,False
+The Easton Ellises - Falcon 69,7938000,False,False,False,False,False
+The Easton Ellises - Falcon 69,8158500,False,False,False,False,False
+The Easton Ellises - Falcon 69,8379000,False,False,False,False,False
+The Easton Ellises - Falcon 69,8599500,False,False,False,False,False
+The Easton Ellises - Falcon 69,8820000,False,False,False,False,False
+The Easton Ellises - Falcon 69,9040500,False,False,False,False,False
+The Easton Ellises - Falcon 69,9261000,False,False,False,False,False
+The Easton Ellises - Falcon 69,9481500,False,False,False,False,False
+The Easton Ellises - Falcon 69,9702000,False,True,False,True,False
+The Easton Ellises - Falcon 69,9922500,False,True,True,True,False
+The Easton Ellises - Falcon 69,10143000,False,True,True,True,False
+The Easton Ellises - Falcon 69,10363500,False,True,True,True,False
+Secretariat - Borderline,0,False,False,False,True,False
+Secretariat - Borderline,220500,False,False,False,True,False
+Secretariat - Borderline,441000,False,False,False,True,False
+Secretariat - Borderline,661500,False,False,False,False,False
+Secretariat - Borderline,882000,False,False,False,False,False
+Secretariat - Borderline,1102500,False,False,False,False,False
+Secretariat - Borderline,1323000,False,False,False,False,False
+Secretariat - Borderline,1543500,False,False,False,False,False
+Secretariat - Borderline,1764000,False,False,False,False,False
+Secretariat - Borderline,1984500,False,False,False,False,False
+Secretariat - Borderline,2205000,False,False,False,False,False
+Secretariat - Borderline,2425500,False,False,False,False,False
+Secretariat - Borderline,2646000,False,False,False,False,False
+Secretariat - Borderline,2866500,False,False,False,False,False
+Secretariat - Borderline,3087000,False,False,False,False,False
+Secretariat - Borderline,3307500,False,False,False,False,False
+Secretariat - Borderline,3528000,False,False,False,False,False
+Secretariat - Borderline,3748500,False,False,False,False,False
+Secretariat - Borderline,3969000,False,False,False,False,False
+Secretariat - Borderline,4189500,False,False,False,True,False
+Secretariat - Borderline,4410000,False,False,False,True,False
+Secretariat - Borderline,4630500,False,False,False,True,False
+Secretariat - Borderline,4851000,False,False,False,False,False
+Secretariat - Borderline,5071500,False,False,False,False,False
+Secretariat - Borderline,5292000,False,False,False,False,False
+Secretariat - Borderline,5512500,False,False,False,False,False
+Secretariat - Borderline,5733000,False,False,False,False,False
+Secretariat - Borderline,5953500,False,False,False,False,False
+Secretariat - Borderline,6174000,False,False,False,False,False
+Secretariat - Borderline,6394500,False,False,False,True,False
+Secretariat - Borderline,6615000,False,False,False,True,False
+Secretariat - Borderline,6835500,False,False,False,True,False
+Secretariat - Borderline,7056000,False,False,False,True,False
+Secretariat - Borderline,7276500,False,False,False,True,False
+Secretariat - Borderline,7497000,False,False,False,True,False
+Secretariat - Borderline,7717500,False,False,False,True,False
+Secretariat - Borderline,7938000,False,False,False,True,False
+Secretariat - Borderline,8158500,False,False,False,True,False
+Secretariat - Borderline,8379000,False,False,False,True,False
+Secretariat - Borderline,8599500,False,False,False,True,False
+Secretariat - Borderline,8820000,False,False,False,False,False
+Secretariat - Borderline,9040500,False,False,False,False,False
+Secretariat - Borderline,9261000,False,False,False,False,False
+Secretariat - Borderline,9481500,False,False,False,False,False
+Secretariat - Borderline,9702000,False,False,False,False,False
+Secretariat - Borderline,9922500,False,False,False,False,False
+Secretariat - Borderline,10143000,False,False,False,False,False
+Secretariat - Borderline,10363500,False,False,False,False,False
+Secretariat - Borderline,10584000,False,False,False,False,False
+Secretariat - Borderline,10804500,False,False,False,False,False
+Secretariat - Borderline,11025000,False,False,False,False,False
+Secretariat - Borderline,11245500,False,False,False,True,False
+Secretariat - Borderline,11466000,False,False,False,True,False
+Secretariat - Borderline,11686500,False,True,False,True,False
+Secretariat - Borderline,11907000,True,True,True,True,True
+Secretariat - Borderline,12127500,True,True,True,True,True
+The Long Wait - Dark Horses,0,False,True,True,True,False
+The Long Wait - Dark Horses,220500,False,True,True,True,False
+The Long Wait - Dark Horses,441000,False,True,True,True,False
+The Long Wait - Dark Horses,661500,False,False,False,True,False
+The Long Wait - Dark Horses,882000,False,False,False,True,False
+The Long Wait - Dark Horses,1102500,False,False,False,True,False
+The Long Wait - Dark Horses,1323000,False,False,False,False,False
+The Long Wait - Dark Horses,1543500,False,False,False,False,False
+The Long Wait - Dark Horses,1764000,False,False,False,False,False
+The Long Wait - Dark Horses,1984500,False,False,False,False,False
+The Long Wait - Dark Horses,2205000,False,False,False,False,False
+The Long Wait - Dark Horses,2425500,False,False,False,False,False
+The Long Wait - Dark Horses,2646000,False,False,False,False,False
+The Long Wait - Dark Horses,2866500,False,False,False,False,False
+The Long Wait - Dark Horses,3087000,False,False,False,False,False
+The Long Wait - Dark Horses,3307500,False,False,False,False,False
+The Long Wait - Dark Horses,3528000,False,False,False,False,False
+The Long Wait - Dark Horses,3748500,False,False,False,False,False
+The Long Wait - Dark Horses,3969000,False,False,False,False,False
+The Long Wait - Dark Horses,4189500,False,False,False,False,False
+The Long Wait - Dark Horses,4410000,False,False,False,False,False
+The Long Wait - Dark Horses,4630500,False,False,False,False,False
+The Long Wait - Dark Horses,4851000,False,False,False,False,False
+The Long Wait - Dark Horses,5071500,False,False,False,False,False
+The Long Wait - Dark Horses,5292000,False,False,False,False,False
+The Long Wait - Dark Horses,5512500,False,False,False,False,False
+The Long Wait - Dark Horses,5733000,False,False,False,False,False
+The Long Wait - Dark Horses,5953500,False,False,False,False,False
+The Long Wait - Dark Horses,6174000,False,False,False,False,False
+The Long Wait - Dark Horses,6394500,False,False,False,False,False
+The Long Wait - Dark Horses,6615000,False,False,False,False,False
+The Long Wait - Dark Horses,6835500,False,False,False,False,False
+The Long Wait - Dark Horses,7056000,False,False,False,False,False
+The Long Wait - Dark Horses,7276500,False,False,False,False,False
+The Long Wait - Dark Horses,7497000,False,False,False,False,False
+The Long Wait - Dark Horses,7717500,False,False,False,False,False
+The Long Wait - Dark Horses,7938000,False,False,False,False,False
+The Long Wait - Dark Horses,8158500,False,False,False,False,False
+The Long Wait - Dark Horses,8379000,False,False,False,False,False
+The Long Wait - Dark Horses,8599500,False,False,False,False,False
+The Long Wait - Dark Horses,8820000,False,False,False,False,False
+The Long Wait - Dark Horses,9040500,False,False,False,False,False
+The Long Wait - Dark Horses,9261000,False,False,False,False,False
+The Long Wait - Dark Horses,9481500,False,False,False,False,False
+The Long Wait - Dark Horses,9702000,False,False,False,False,False
+The Long Wait - Dark Horses,9922500,False,False,False,False,False
+The Long Wait - Dark Horses,10143000,False,False,False,False,False
+The Long Wait - Dark Horses,10363500,False,False,False,False,False
+The Long Wait - Dark Horses,10584000,False,False,False,False,False
+The Long Wait - Dark Horses,10804500,False,False,False,False,False
+The Long Wait - Dark Horses,11025000,False,False,False,False,False
+The Long Wait - Dark Horses,11245500,False,False,False,False,False
+The Long Wait - Dark Horses,11466000,False,False,False,True,False
+The Long Wait - Dark Horses,11686500,False,False,False,True,False
+The Long Wait - Dark Horses,11907000,False,False,False,True,False
+The Long Wait - Dark Horses,12127500,False,True,False,True,False
+The Long Wait - Dark Horses,12348000,False,True,False,True,False
+The Long Wait - Dark Horses,12568500,False,True,True,True,False
+The Long Wait - Dark Horses,12789000,True,True,True,True,True
+The Long Wait - Dark Horses,13009500,True,True,True,True,True
+Sambasevam Shanmugam - Kaathaadi,0,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,220500,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,441000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,661500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,882000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,1102500,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,1323000,False,True,True,False,False
+Sambasevam Shanmugam - Kaathaadi,1543500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,1764000,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,1984500,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,2205000,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,2425500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,2646000,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,2866500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,3087000,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,3307500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,3528000,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,3748500,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,3969000,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,4189500,False,False,True,True,False
+Sambasevam Shanmugam - Kaathaadi,4410000,False,False,True,True,False
+Sambasevam Shanmugam - Kaathaadi,4630500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,4851000,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,5071500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,5292000,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,5512500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,5733000,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,5953500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,6174000,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,6394500,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,6615000,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,6835500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,7056000,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,7276500,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,7497000,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,7717500,False,False,True,True,False
+Sambasevam Shanmugam - Kaathaadi,7938000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,8158500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,8379000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,8599500,False,True,False,True,False
+Sambasevam Shanmugam - Kaathaadi,8820000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,9040500,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,9261000,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,9481500,False,False,True,False,False
+Sambasevam Shanmugam - Kaathaadi,9702000,False,False,True,True,False
+Sambasevam Shanmugam - Kaathaadi,9922500,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,10143000,False,False,False,True,False
+Sambasevam Shanmugam - Kaathaadi,10363500,False,False,False,False,False
+Sambasevam Shanmugam - Kaathaadi,10584000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,10804500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,11025000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,11245500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,11466000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,11686500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,11907000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,12127500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,12348000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,12568500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,12789000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,13009500,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,13230000,False,True,True,True,False
+Sambasevam Shanmugam - Kaathaadi,13450500,False,True,True,True,False
+Signe Jakobsen - What Have You Done To Me,0,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,220500,False,False,True,False,False
+Signe Jakobsen - What Have You Done To Me,441000,False,False,True,False,False
+Signe Jakobsen - What Have You Done To Me,661500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,882000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,1102500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,1323000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,1543500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,1764000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,1984500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,2205000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,2425500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,2646000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,2866500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,3087000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,3307500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,3528000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,3748500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,3969000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,4189500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,4410000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,4630500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,4851000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,5071500,False,False,True,False,False
+Signe Jakobsen - What Have You Done To Me,5292000,False,False,True,False,False
+Signe Jakobsen - What Have You Done To Me,5512500,False,False,True,False,False
+Signe Jakobsen - What Have You Done To Me,5733000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,5953500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,6174000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,6394500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,6615000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,6835500,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,7056000,False,False,False,False,False
+Signe Jakobsen - What Have You Done To Me,7276500,False,True,False,False,False
+Girls Under Glass - We Feel Alright,0,False,True,True,True,False
+Girls Under Glass - We Feel Alright,220500,False,True,True,True,False
+Girls Under Glass - We Feel Alright,441000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,661500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,882000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,1102500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,1323000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,1543500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,1764000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,1984500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,2205000,False,False,False,True,True
+Girls Under Glass - We Feel Alright,2425500,False,False,False,False,True
+Girls Under Glass - We Feel Alright,2646000,False,False,False,True,True
+Girls Under Glass - We Feel Alright,2866500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,3087000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,3307500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,3528000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,3748500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,3969000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,4189500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,4410000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,4630500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,4851000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,5071500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,5292000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,5512500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,5733000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,5953500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,6174000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,6394500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,6615000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,6835500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,7056000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,7276500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,7497000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,7717500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,7938000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,8158500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,8379000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,8599500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,8820000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,9040500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,9261000,False,False,False,False,False
+Girls Under Glass - We Feel Alright,9481500,False,False,False,False,False
+Girls Under Glass - We Feel Alright,9702000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,9922500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,10143000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,10363500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,10584000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,10804500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,11025000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,11245500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,11466000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,11686500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,11907000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,12127500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,12348000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,12568500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,12789000,False,False,False,True,False
+Girls Under Glass - We Feel Alright,13009500,False,False,False,True,False
+Girls Under Glass - We Feel Alright,13230000,False,False,True,True,False
+Girls Under Glass - We Feel Alright,13450500,False,True,True,True,False
+Mu - Too Bright,0,False,True,True,True,False
+Mu - Too Bright,220500,False,True,True,True,False
+Mu - Too Bright,441000,False,False,True,False,False
+Mu - Too Bright,661500,False,False,True,False,False
+Mu - Too Bright,882000,False,False,False,False,False
+Mu - Too Bright,1102500,False,False,False,False,False
+Mu - Too Bright,1323000,False,False,False,False,False
+Mu - Too Bright,1543500,False,False,False,False,False
+Mu - Too Bright,1764000,False,False,False,False,False
+Mu - Too Bright,1984500,False,True,True,False,False
+Mu - Too Bright,2205000,False,True,True,False,False
+Mu - Too Bright,2425500,False,True,True,False,False
+Mu - Too Bright,2646000,False,False,True,False,False
+Mu - Too Bright,2866500,False,False,True,False,False
+Mu - Too Bright,3087000,False,False,True,False,False
+Mu - Too Bright,3307500,False,False,True,False,False
+Mu - Too Bright,3528000,False,False,True,False,False
+Mu - Too Bright,3748500,False,False,True,False,False
+Mu - Too Bright,3969000,False,False,True,False,False
+Mu - Too Bright,4189500,False,False,True,True,False
+Mu - Too Bright,4410000,False,False,True,True,False
+Mu - Too Bright,4630500,False,False,True,False,False
+Mu - Too Bright,4851000,False,False,True,False,False
+Mu - Too Bright,5071500,False,False,True,False,False
+Mu - Too Bright,5292000,False,False,False,False,False
+Mu - Too Bright,5512500,False,False,False,False,False
+Mu - Too Bright,5733000,False,False,False,False,False
+Mu - Too Bright,5953500,False,False,False,False,False
+Mu - Too Bright,6174000,False,False,True,False,False
+Mu - Too Bright,6394500,False,False,True,False,False
+Mu - Too Bright,6615000,False,False,True,False,False
+Mu - Too Bright,6835500,False,False,True,False,False
+Mu - Too Bright,7056000,False,False,True,False,False
+Mu - Too Bright,7276500,False,False,True,False,False
+Mu - Too Bright,7497000,False,False,True,False,False
+Mu - Too Bright,7717500,False,False,True,False,False
+Mu - Too Bright,7938000,False,False,True,False,False
+Mu - Too Bright,8158500,False,False,True,True,False
+Mu - Too Bright,8379000,False,False,True,True,False
+Mu - Too Bright,8599500,False,False,True,False,False
+Mu - Too Bright,8820000,False,False,False,False,False
+Mu - Too Bright,9040500,False,False,False,False,False
+Mu - Too Bright,9261000,False,False,False,False,False
+Mu - Too Bright,9481500,False,False,True,False,False
+Mu - Too Bright,9702000,False,True,True,False,True
+Mu - Too Bright,9922500,False,True,True,False,True
+Mu - Too Bright,10143000,False,False,True,False,False
+Mu - Too Bright,10363500,False,False,True,False,False
+Mu - Too Bright,10584000,False,False,True,False,False
+Mu - Too Bright,10804500,False,False,True,False,False
+Mu - Too Bright,11025000,False,False,True,False,False
+Mu - Too Bright,11245500,False,False,True,False,False
+Mu - Too Bright,11466000,False,True,True,True,False
+Speak Softly - Broken Man,0,False,False,True,True,True
+Speak Softly - Broken Man,220500,False,False,True,False,True
+Speak Softly - Broken Man,441000,False,False,True,False,False
+Speak Softly - Broken Man,661500,False,False,True,False,False
+Speak Softly - Broken Man,882000,False,False,True,False,False
+Speak Softly - Broken Man,1102500,False,False,True,False,False
+Speak Softly - Broken Man,1323000,False,False,True,False,False
+Speak Softly - Broken Man,1543500,False,False,True,False,False
+Speak Softly - Broken Man,1764000,False,False,False,False,False
+Speak Softly - Broken Man,1984500,False,False,False,False,False
+Speak Softly - Broken Man,2205000,False,False,False,False,False
+Speak Softly - Broken Man,2425500,False,False,False,False,False
+Speak Softly - Broken Man,2646000,False,False,False,False,False
+Speak Softly - Broken Man,2866500,False,False,True,False,False
+Speak Softly - Broken Man,3087000,False,False,True,False,True
+Speak Softly - Broken Man,3307500,False,False,True,False,True
+Speak Softly - Broken Man,3528000,False,False,True,False,False
+Speak Softly - Broken Man,3748500,False,False,True,False,False
+Speak Softly - Broken Man,3969000,False,False,True,False,False
+Speak Softly - Broken Man,4189500,False,False,True,False,False
+Speak Softly - Broken Man,4410000,False,False,True,False,False
+Speak Softly - Broken Man,4630500,False,False,True,False,False
+Speak Softly - Broken Man,4851000,False,False,False,False,False
+Speak Softly - Broken Man,5071500,False,False,False,False,False
+Speak Softly - Broken Man,5292000,False,False,False,False,False
+Speak Softly - Broken Man,5512500,False,False,False,False,False
+Speak Softly - Broken Man,5733000,False,False,False,False,False
+Speak Softly - Broken Man,5953500,False,False,False,False,False
+Speak Softly - Broken Man,6174000,False,False,True,False,False
+Speak Softly - Broken Man,6394500,False,False,True,False,False
+Speak Softly - Broken Man,6615000,False,False,True,False,False
+Speak Softly - Broken Man,6835500,False,False,True,False,False
+Speak Softly - Broken Man,7056000,False,False,True,False,False
+Speak Softly - Broken Man,7276500,False,False,True,False,False
+Speak Softly - Broken Man,7497000,False,False,False,False,False
+Speak Softly - Broken Man,7717500,False,False,False,False,False
+Speak Softly - Broken Man,7938000,False,False,False,False,False
+Speak Softly - Broken Man,8158500,False,False,False,False,False
+Speak Softly - Broken Man,8379000,False,False,False,False,False
+Speak Softly - Broken Man,8599500,False,False,False,False,False
+Speak Softly - Broken Man,8820000,False,False,False,False,False
+Speak Softly - Broken Man,9040500,False,False,False,False,False
+Speak Softly - Broken Man,9261000,False,False,True,False,False
+Speak Softly - Broken Man,9481500,False,False,False,False,False
+Speak Softly - Broken Man,9702000,False,False,False,False,False
+Speak Softly - Broken Man,9922500,False,False,False,False,False
+Speak Softly - Broken Man,10143000,False,False,False,False,False
+Speak Softly - Broken Man,10363500,False,True,True,False,True
+Speak Softly - Broken Man,10584000,False,True,True,False,True
+Georgia Wonder - Siren,0,True,True,True,True,True
+Georgia Wonder - Siren,220500,False,False,False,True,False
+Georgia Wonder - Siren,441000,False,False,False,True,False
+Georgia Wonder - Siren,661500,False,False,False,True,False
+Georgia Wonder - Siren,882000,False,False,False,True,False
+Georgia Wonder - Siren,1102500,False,False,False,True,False
+Georgia Wonder - Siren,1323000,False,False,False,True,False
+Georgia Wonder - Siren,1543500,False,False,False,True,False
+Georgia Wonder - Siren,1764000,False,False,False,False,False
+Georgia Wonder - Siren,1984500,False,False,False,False,False
+Georgia Wonder - Siren,2205000,False,False,False,False,False
+Georgia Wonder - Siren,2425500,False,False,False,False,False
+Georgia Wonder - Siren,2646000,False,False,False,False,False
+Georgia Wonder - Siren,2866500,False,False,False,False,False
+Georgia Wonder - Siren,3087000,False,False,False,False,False
+Georgia Wonder - Siren,3307500,False,False,False,False,False
+Georgia Wonder - Siren,3528000,False,False,False,False,False
+Georgia Wonder - Siren,3748500,False,False,False,False,False
+Georgia Wonder - Siren,3969000,False,False,False,False,False
+Georgia Wonder - Siren,4189500,False,False,False,False,False
+Georgia Wonder - Siren,4410000,False,False,False,False,False
+Georgia Wonder - Siren,4630500,False,False,False,False,False
+Georgia Wonder - Siren,4851000,False,False,False,False,False
+Georgia Wonder - Siren,5071500,False,False,False,False,False
+Georgia Wonder - Siren,5292000,False,False,False,False,False
+Georgia Wonder - Siren,5512500,False,False,False,False,False
+Georgia Wonder - Siren,5733000,False,False,False,False,False
+Georgia Wonder - Siren,5953500,False,False,False,False,False
+Georgia Wonder - Siren,6174000,False,False,False,False,False
+Georgia Wonder - Siren,6394500,False,False,False,False,False
+Georgia Wonder - Siren,6615000,False,False,False,False,False
+Georgia Wonder - Siren,6835500,False,False,False,False,False
+Georgia Wonder - Siren,7056000,False,False,False,False,False
+Georgia Wonder - Siren,7276500,False,False,False,False,False
+Georgia Wonder - Siren,7497000,False,False,False,False,False
+Georgia Wonder - Siren,7717500,False,False,False,False,False
+Georgia Wonder - Siren,7938000,False,False,False,False,False
+Georgia Wonder - Siren,8158500,False,False,False,False,False
+Georgia Wonder - Siren,8379000,False,False,False,False,False
+Georgia Wonder - Siren,8599500,False,False,False,False,False
+Georgia Wonder - Siren,8820000,False,False,False,False,False
+Georgia Wonder - Siren,9040500,False,False,False,False,False
+Georgia Wonder - Siren,9261000,False,False,False,False,False
+Georgia Wonder - Siren,9481500,False,False,False,False,False
+Georgia Wonder - Siren,9702000,False,False,False,False,False
+Georgia Wonder - Siren,9922500,False,False,False,False,False
+Georgia Wonder - Siren,10143000,False,False,False,False,False
+Georgia Wonder - Siren,10363500,False,False,True,False,False
+Georgia Wonder - Siren,10584000,False,False,True,True,False
+Georgia Wonder - Siren,10804500,False,False,True,True,False
+Georgia Wonder - Siren,11025000,False,False,True,True,False
+Georgia Wonder - Siren,11245500,False,False,True,True,False
+Georgia Wonder - Siren,11466000,False,False,True,True,False
+Georgia Wonder - Siren,11686500,False,False,True,True,False
+Georgia Wonder - Siren,11907000,False,False,True,True,False
+Georgia Wonder - Siren,12127500,False,False,True,False,False
+Georgia Wonder - Siren,12348000,False,False,True,False,False
+Georgia Wonder - Siren,12568500,False,False,True,False,False
+Georgia Wonder - Siren,12789000,False,False,True,False,False
+Georgia Wonder - Siren,13009500,False,False,False,False,False
+Georgia Wonder - Siren,13230000,False,False,False,False,False
+Georgia Wonder - Siren,13450500,False,False,False,False,False
+Georgia Wonder - Siren,13671000,False,False,False,False,False
+Georgia Wonder - Siren,13891500,False,False,False,False,False
+Georgia Wonder - Siren,14112000,False,False,False,False,False
+Georgia Wonder - Siren,14332500,False,False,False,True,False
+Georgia Wonder - Siren,14553000,False,False,False,True,False
+Georgia Wonder - Siren,14773500,False,False,False,True,False
+Georgia Wonder - Siren,14994000,False,False,False,True,False
+Georgia Wonder - Siren,15214500,False,False,False,True,False
+Georgia Wonder - Siren,15435000,False,False,False,True,False
+Georgia Wonder - Siren,15655500,False,False,False,True,False
+Georgia Wonder - Siren,15876000,False,False,False,True,False
+Georgia Wonder - Siren,16096500,False,False,False,True,False
+Georgia Wonder - Siren,16317000,False,False,False,True,False
+Georgia Wonder - Siren,16537500,False,False,False,True,False
+Georgia Wonder - Siren,16758000,False,False,False,True,False
+Georgia Wonder - Siren,16978500,False,False,False,True,False
+Georgia Wonder - Siren,17199000,False,False,False,True,False
+Georgia Wonder - Siren,17419500,False,False,False,True,False
+Georgia Wonder - Siren,17640000,False,False,False,True,False
+Georgia Wonder - Siren,17860500,False,False,False,True,False
+Georgia Wonder - Siren,18081000,False,False,False,True,False
+Georgia Wonder - Siren,18301500,False,False,False,True,False
+Georgia Wonder - Siren,18522000,False,False,False,True,False
+Arise - Run Run Run,0,False,False,False,False,False
+Arise - Run Run Run,220500,False,False,False,False,False
+Arise - Run Run Run,441000,False,False,False,False,False
+Arise - Run Run Run,661500,False,False,False,False,False
+Arise - Run Run Run,882000,False,False,False,False,False
+Arise - Run Run Run,1102500,False,False,False,False,False
+Arise - Run Run Run,1323000,False,False,False,False,False
+Arise - Run Run Run,1543500,False,False,False,False,False
+Arise - Run Run Run,1764000,False,False,False,False,False
+Arise - Run Run Run,1984500,False,False,False,False,False
+Arise - Run Run Run,2205000,False,False,False,False,False
+Arise - Run Run Run,2425500,False,False,False,False,False
+Arise - Run Run Run,2646000,False,False,False,False,False
+Arise - Run Run Run,2866500,False,False,False,False,False
+Arise - Run Run Run,3087000,False,False,False,False,False
+Arise - Run Run Run,3307500,False,False,False,False,False
+Arise - Run Run Run,3528000,False,False,False,False,False
+Arise - Run Run Run,3748500,False,False,False,False,False
+Arise - Run Run Run,3969000,False,False,False,False,False
+Arise - Run Run Run,4189500,False,False,False,False,False
+Arise - Run Run Run,4410000,False,False,False,False,False
+Arise - Run Run Run,4630500,False,False,False,False,False
+Arise - Run Run Run,4851000,False,False,False,False,False
+Arise - Run Run Run,5071500,False,False,False,False,False
+Arise - Run Run Run,5292000,False,False,False,False,False
+Arise - Run Run Run,5512500,False,False,False,False,False
+Arise - Run Run Run,5733000,False,False,False,False,False
+Arise - Run Run Run,5953500,False,False,False,False,False
+Arise - Run Run Run,6174000,False,False,False,False,False
+Arise - Run Run Run,6394500,False,False,False,False,False
+Arise - Run Run Run,6615000,False,False,False,False,False
+Arise - Run Run Run,6835500,False,False,False,False,False
+Arise - Run Run Run,7056000,False,False,False,False,False
+Arise - Run Run Run,7276500,False,False,False,False,False
+Arise - Run Run Run,7497000,False,False,False,False,False
+Arise - Run Run Run,7717500,False,False,False,False,False
+Arise - Run Run Run,7938000,False,False,False,False,False
+Arise - Run Run Run,8158500,False,False,False,False,False
+Arise - Run Run Run,8379000,False,False,False,True,False
+Arise - Run Run Run,8599500,False,False,False,True,False
+Arise - Run Run Run,8820000,False,False,False,True,False
+Arise - Run Run Run,9040500,False,False,False,True,False
+Raft Monk - Tiring,0,True,True,True,True,True
+Raft Monk - Tiring,220500,False,True,True,True,False
+Raft Monk - Tiring,441000,False,True,True,True,False
+Raft Monk - Tiring,661500,False,True,True,True,False
+Raft Monk - Tiring,882000,False,False,False,False,False
+Raft Monk - Tiring,1102500,False,False,False,False,False
+Raft Monk - Tiring,1323000,False,False,False,False,False
+Raft Monk - Tiring,1543500,False,False,False,False,False
+Raft Monk - Tiring,1764000,False,False,False,False,False
+Raft Monk - Tiring,1984500,False,False,False,False,False
+Raft Monk - Tiring,2205000,False,False,False,False,False
+Raft Monk - Tiring,2425500,False,False,False,False,False
+Raft Monk - Tiring,2646000,False,False,False,False,False
+Raft Monk - Tiring,2866500,False,False,False,False,False
+Raft Monk - Tiring,3087000,False,False,False,False,False
+Raft Monk - Tiring,3307500,False,False,False,False,False
+Raft Monk - Tiring,3528000,False,False,False,False,False
+Raft Monk - Tiring,3748500,False,False,False,False,False
+Raft Monk - Tiring,3969000,False,False,False,False,False
+Raft Monk - Tiring,4189500,False,False,False,False,False
+Raft Monk - Tiring,4410000,False,False,False,False,False
+Raft Monk - Tiring,4630500,False,False,False,False,False
+Raft Monk - Tiring,4851000,False,False,False,False,False
+Raft Monk - Tiring,5071500,False,False,False,False,False
+Raft Monk - Tiring,5292000,False,False,True,False,False
+Raft Monk - Tiring,5512500,False,False,True,False,False
+Raft Monk - Tiring,5733000,False,False,True,False,False
+Raft Monk - Tiring,5953500,False,False,True,False,False
+Raft Monk - Tiring,6174000,False,False,False,False,False
+Raft Monk - Tiring,6394500,False,False,False,False,False
+Raft Monk - Tiring,6615000,False,False,False,False,False
+Raft Monk - Tiring,6835500,False,False,False,False,False
+Raft Monk - Tiring,7056000,False,False,False,False,False
+Raft Monk - Tiring,7276500,False,False,False,False,False
+Raft Monk - Tiring,7497000,False,False,False,False,False
+Raft Monk - Tiring,7717500,False,False,False,False,False
+Raft Monk - Tiring,7938000,False,False,False,False,False
+Raft Monk - Tiring,8158500,False,False,False,False,False
+Raft Monk - Tiring,8379000,False,False,False,False,False
+Raft Monk - Tiring,8599500,False,True,False,True,False
+Raft Monk - Tiring,8820000,False,True,False,True,False
+M.E.R.C. Music - Knockout,0,True,True,True,True,True
+M.E.R.C. Music - Knockout,220500,False,True,True,True,False
+M.E.R.C. Music - Knockout,441000,False,True,True,True,False
+M.E.R.C. Music - Knockout,661500,False,True,True,False,False
+M.E.R.C. Music - Knockout,882000,False,True,True,False,False
+M.E.R.C. Music - Knockout,1102500,False,False,False,False,False
+M.E.R.C. Music - Knockout,1323000,False,False,False,False,False
+M.E.R.C. Music - Knockout,1543500,False,False,False,False,False
+M.E.R.C. Music - Knockout,1764000,False,False,False,False,False
+M.E.R.C. Music - Knockout,1984500,False,False,True,False,False
+M.E.R.C. Music - Knockout,2205000,False,False,True,False,False
+M.E.R.C. Music - Knockout,2425500,False,False,True,False,False
+M.E.R.C. Music - Knockout,2646000,False,False,True,False,False
+M.E.R.C. Music - Knockout,2866500,False,False,True,False,False
+M.E.R.C. Music - Knockout,3087000,False,False,True,False,False
+M.E.R.C. Music - Knockout,3307500,False,False,False,False,False
+M.E.R.C. Music - Knockout,3528000,False,False,False,False,False
+M.E.R.C. Music - Knockout,3748500,False,False,False,False,False
+M.E.R.C. Music - Knockout,3969000,False,False,False,False,False
+M.E.R.C. Music - Knockout,4189500,False,False,False,False,False
+M.E.R.C. Music - Knockout,4410000,False,False,False,False,False
+M.E.R.C. Music - Knockout,4630500,False,False,False,False,False
+M.E.R.C. Music - Knockout,4851000,False,False,False,False,False
+M.E.R.C. Music - Knockout,5071500,False,False,False,False,False
+M.E.R.C. Music - Knockout,5292000,False,False,True,False,False
+M.E.R.C. Music - Knockout,5512500,False,False,True,False,False
+M.E.R.C. Music - Knockout,5733000,False,False,True,False,False
+M.E.R.C. Music - Knockout,5953500,False,False,True,False,False
+M.E.R.C. Music - Knockout,6174000,False,False,True,False,False
+M.E.R.C. Music - Knockout,6394500,False,False,False,False,False
+M.E.R.C. Music - Knockout,6615000,False,False,False,False,False
+M.E.R.C. Music - Knockout,6835500,False,False,False,False,False
+M.E.R.C. Music - Knockout,7056000,False,False,False,False,False
+M.E.R.C. Music - Knockout,7276500,False,False,False,False,False
+M.E.R.C. Music - Knockout,7497000,False,False,False,False,False
+M.E.R.C. Music - Knockout,7717500,False,False,False,False,False
+M.E.R.C. Music - Knockout,7938000,False,False,False,False,False
+M.E.R.C. Music - Knockout,8158500,False,False,False,False,False
+M.E.R.C. Music - Knockout,8379000,False,False,True,False,True
+M.E.R.C. Music - Knockout,8599500,False,False,True,False,True
+M.E.R.C. Music - Knockout,8820000,False,False,True,False,True
+M.E.R.C. Music - Knockout,9040500,False,False,False,False,False
+M.E.R.C. Music - Knockout,9261000,False,False,False,False,False
+M.E.R.C. Music - Knockout,9481500,False,False,False,False,False
+M.E.R.C. Music - Knockout,9702000,False,False,False,False,False
+M.E.R.C. Music - Knockout,9922500,False,False,False,False,False
+M.E.R.C. Music - Knockout,10143000,False,False,False,False,False
+M.E.R.C. Music - Knockout,10363500,False,False,False,False,False
+M.E.R.C. Music - Knockout,10584000,False,False,True,False,True
+M.E.R.C. Music - Knockout,10804500,False,False,True,True,True
+M.E.R.C. Music - Knockout,11025000,False,False,True,True,True
+M.E.R.C. Music - Knockout,11245500,False,False,True,True,True
+Triviul feat. The Fiend - Widow,0,False,False,False,True,True
+Triviul feat. The Fiend - Widow,220500,False,False,False,True,True
+Triviul feat. The Fiend - Widow,441000,False,False,False,True,False
+Triviul feat. The Fiend - Widow,661500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,882000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,1102500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,1323000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,1543500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,1764000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,1984500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,2205000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,2425500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,2646000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,2866500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,3087000,False,False,False,True,True
+Triviul feat. The Fiend - Widow,3307500,False,False,False,True,False
+Triviul feat. The Fiend - Widow,3528000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,3748500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,3969000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,4189500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,4410000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,4630500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,4851000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,5071500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,5292000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,5512500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,5733000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,5953500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,6174000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,6394500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,6615000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,6835500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,7056000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,7276500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,7497000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,7717500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,7938000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,8158500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,8379000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,8599500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,8820000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,9040500,False,False,False,False,False
+Triviul feat. The Fiend - Widow,9261000,False,False,False,False,False
+Triviul feat. The Fiend - Widow,9481500,False,False,True,True,True
+Triviul feat. The Fiend - Widow,9702000,True,True,True,True,True
+Tom McKenzie - Directions,0,False,True,True,True,False
+Tom McKenzie - Directions,220500,False,True,True,True,False
+Tom McKenzie - Directions,441000,False,True,True,True,False
+Tom McKenzie - Directions,661500,False,True,True,False,False
+Tom McKenzie - Directions,882000,False,True,True,False,False
+Tom McKenzie - Directions,1102500,False,True,True,False,False
+Tom McKenzie - Directions,1323000,False,True,True,False,False
+Tom McKenzie - Directions,1543500,False,False,True,False,False
+Tom McKenzie - Directions,1764000,False,False,True,False,False
+Tom McKenzie - Directions,1984500,False,False,True,False,False
+Tom McKenzie - Directions,2205000,False,False,True,True,False
+Tom McKenzie - Directions,2425500,False,False,True,True,False
+Tom McKenzie - Directions,2646000,False,False,True,True,False
+Tom McKenzie - Directions,2866500,False,False,False,False,False
+Tom McKenzie - Directions,3087000,False,False,False,False,False
+Tom McKenzie - Directions,3307500,False,False,False,False,False
+Tom McKenzie - Directions,3528000,False,False,False,False,False
+Tom McKenzie - Directions,3748500,False,False,False,False,False
+Tom McKenzie - Directions,3969000,False,False,False,False,False
+Tom McKenzie - Directions,4189500,False,False,False,False,False
+Tom McKenzie - Directions,4410000,False,False,False,False,False
+Tom McKenzie - Directions,4630500,False,False,False,False,False
+Tom McKenzie - Directions,4851000,False,False,False,False,False
+Tom McKenzie - Directions,5071500,False,False,False,False,False
+Tom McKenzie - Directions,5292000,False,False,False,True,False
+Tom McKenzie - Directions,5512500,False,False,False,True,False
+Tom McKenzie - Directions,5733000,False,False,False,True,False
+Tom McKenzie - Directions,5953500,False,False,False,True,False
+Tom McKenzie - Directions,6174000,False,False,False,False,False
+Tom McKenzie - Directions,6394500,False,False,False,False,False
+Tom McKenzie - Directions,6615000,False,False,False,False,False
+Tom McKenzie - Directions,6835500,False,False,False,False,False
+Tom McKenzie - Directions,7056000,False,False,False,True,False
+Tom McKenzie - Directions,7276500,False,True,False,True,False
+Timboz - Pony,0,False,False,True,False,False
+Timboz - Pony,220500,False,False,False,False,False
+Timboz - Pony,441000,False,False,False,False,False
+Timboz - Pony,661500,False,False,False,False,False
+Timboz - Pony,882000,False,False,False,False,False
+Timboz - Pony,1102500,False,False,False,False,False
+Timboz - Pony,1323000,False,False,False,False,False
+Timboz - Pony,1543500,False,False,False,False,False
+Timboz - Pony,1764000,False,False,False,False,False
+Timboz - Pony,1984500,False,False,False,False,False
+Timboz - Pony,2205000,False,False,False,False,False
+Timboz - Pony,2425500,False,False,False,False,False
+Timboz - Pony,2646000,False,False,False,False,False
+Timboz - Pony,2866500,False,False,False,False,False
+Timboz - Pony,3087000,False,False,False,False,False
+Timboz - Pony,3307500,False,False,False,False,False
+Timboz - Pony,3528000,False,False,False,False,False
+Timboz - Pony,3748500,False,False,False,False,False
+Timboz - Pony,3969000,False,False,False,False,False
+Timboz - Pony,4189500,False,False,False,False,False
+Timboz - Pony,4410000,False,False,False,False,False
+Timboz - Pony,4630500,False,False,False,False,False
+Timboz - Pony,4851000,False,False,False,False,False
+Timboz - Pony,5071500,False,False,False,False,False
+Timboz - Pony,5292000,False,False,False,False,False
+Timboz - Pony,5512500,False,False,False,False,False
+Timboz - Pony,5733000,False,False,False,False,False
+Timboz - Pony,5953500,False,False,False,False,False
+Timboz - Pony,6174000,False,False,False,False,False
+Timboz - Pony,6394500,False,False,False,False,False
+Timboz - Pony,6615000,False,False,False,False,False
+Timboz - Pony,6835500,False,False,False,False,False
+Timboz - Pony,7056000,False,False,False,False,False
+Timboz - Pony,7276500,False,False,False,False,False
+Timboz - Pony,7497000,False,False,False,False,False
+Timboz - Pony,7717500,False,False,False,False,False
+Timboz - Pony,7938000,False,False,False,False,False
+Timboz - Pony,8158500,False,False,False,False,False
+Timboz - Pony,8379000,False,False,False,False,False
+Timboz - Pony,8599500,False,False,True,False,False
+Timboz - Pony,8820000,False,False,True,False,False
+Timboz - Pony,9040500,False,False,False,False,False
+Timboz - Pony,9261000,False,False,False,False,False
+Timboz - Pony,9481500,False,False,False,False,False
+Timboz - Pony,9702000,False,False,False,False,False
+Timboz - Pony,9922500,False,False,False,False,False
+Timboz - Pony,10143000,False,False,False,False,False
+Timboz - Pony,10363500,False,False,False,False,False
+Timboz - Pony,10584000,False,True,True,True,False
+BKS - Bulldozer,0,False,True,True,True,False
+BKS - Bulldozer,220500,False,True,True,True,False
+BKS - Bulldozer,441000,False,False,True,True,False
+BKS - Bulldozer,661500,False,False,False,True,False
+BKS - Bulldozer,882000,False,False,False,True,False
+BKS - Bulldozer,1102500,False,False,False,False,False
+BKS - Bulldozer,1323000,False,False,False,False,False
+BKS - Bulldozer,1543500,False,False,False,False,False
+BKS - Bulldozer,1764000,False,False,False,False,False
+BKS - Bulldozer,1984500,False,False,False,False,False
+BKS - Bulldozer,2205000,False,False,False,False,False
+BKS - Bulldozer,2425500,False,False,False,False,False
+BKS - Bulldozer,2646000,False,False,False,False,False
+BKS - Bulldozer,2866500,False,False,False,False,False
+BKS - Bulldozer,3087000,False,False,False,False,False
+BKS - Bulldozer,3307500,False,False,False,False,False
+BKS - Bulldozer,3528000,False,False,False,False,False
+BKS - Bulldozer,3748500,False,False,False,False,False
+BKS - Bulldozer,3969000,False,False,False,False,False
+BKS - Bulldozer,4189500,False,False,False,False,False
+BKS - Bulldozer,4410000,False,False,False,False,False
+BKS - Bulldozer,4630500,False,False,False,False,False
+BKS - Bulldozer,4851000,False,False,False,False,False
+BKS - Bulldozer,5071500,False,False,False,False,False
+BKS - Bulldozer,5292000,False,False,False,False,False
+BKS - Bulldozer,5512500,False,False,False,False,False
+BKS - Bulldozer,5733000,False,False,False,False,False
+BKS - Bulldozer,5953500,False,False,False,False,False
+BKS - Bulldozer,6174000,False,False,False,False,False
+BKS - Bulldozer,6394500,False,False,False,False,False
+BKS - Bulldozer,6615000,False,False,False,False,False
+BKS - Bulldozer,6835500,False,False,False,True,False
+BKS - Bulldozer,7056000,False,False,False,True,False
+BKS - Bulldozer,7276500,False,False,False,False,False
+BKS - Bulldozer,7497000,False,False,False,False,False
+BKS - Bulldozer,7717500,False,False,False,False,False
+BKS - Bulldozer,7938000,False,False,False,False,False
+BKS - Bulldozer,8158500,False,False,True,True,False
+BKS - Bulldozer,8379000,False,False,True,True,False
+BKS - Bulldozer,8599500,False,False,False,True,False
+BKS - Bulldozer,8820000,False,False,False,True,False
+BKS - Bulldozer,9040500,False,False,False,True,False
+BKS - Bulldozer,9261000,False,False,False,True,False
+BKS - Bulldozer,9481500,False,False,False,True,False
+BKS - Bulldozer,9702000,False,False,False,True,False
+BKS - Bulldozer,9922500,False,False,False,True,False
+BKS - Bulldozer,10143000,False,False,False,True,False
+BKS - Bulldozer,10363500,False,False,False,True,False
+BKS - Bulldozer,10584000,False,False,False,False,False
+BKS - Bulldozer,10804500,False,False,False,False,False
+BKS - Bulldozer,11025000,False,False,False,False,False
+BKS - Bulldozer,11245500,False,False,False,False,False
+BKS - Bulldozer,11466000,False,False,False,False,False
+BKS - Bulldozer,11686500,False,False,False,False,False
+BKS - Bulldozer,11907000,False,False,False,False,False
+BKS - Bulldozer,12127500,False,False,False,False,False
+BKS - Bulldozer,12348000,False,False,False,False,False
+BKS - Bulldozer,12568500,False,False,False,False,False
+BKS - Bulldozer,12789000,False,False,False,False,False
+BKS - Bulldozer,13009500,False,False,False,False,False
+BKS - Bulldozer,13230000,False,False,False,True,False
+BKS - Bulldozer,13450500,False,False,False,True,False
+BKS - Bulldozer,13671000,False,False,False,True,False
+BKS - Bulldozer,13891500,False,False,False,False,False
+BKS - Bulldozer,14112000,False,False,False,False,False
+BKS - Bulldozer,14332500,False,False,True,True,False
+The Sunshine Garcia Band - For I Am The Moon,0,False,False,True,True,True
+The Sunshine Garcia Band - For I Am The Moon,220500,False,False,False,True,False
+The Sunshine Garcia Band - For I Am The Moon,441000,False,False,False,True,False
+The Sunshine Garcia Band - For I Am The Moon,661500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,882000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,1102500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,1323000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,1543500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,1764000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,1984500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,2205000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,2425500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,2646000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,2866500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,3087000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,3307500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,3528000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,3748500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,3969000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,4189500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,4410000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,4630500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,4851000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,5071500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,5292000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,5512500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,5733000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,5953500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,6174000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,6394500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,6615000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,6835500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,7056000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,7276500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,7497000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,7717500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,7938000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,8158500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,8379000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,8599500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,8820000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,9040500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,9261000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,9481500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,9702000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,9922500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,10143000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,10363500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,10584000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,10804500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,11025000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,11245500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,11466000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,11686500,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,11907000,False,False,False,False,False
+The Sunshine Garcia Band - For I Am The Moon,12127500,False,False,False,False,True
+The Sunshine Garcia Band - For I Am The Moon,12348000,False,False,True,False,True
+The Sunshine Garcia Band - For I Am The Moon,12568500,False,False,True,False,True
+The Sunshine Garcia Band - For I Am The Moon,12789000,False,False,True,False,True
+The Sunshine Garcia Band - For I Am The Moon,13009500,True,True,True,True,True
+The Sunshine Garcia Band - For I Am The Moon,13230000,True,True,True,True,True
+The Sunshine Garcia Band - For I Am The Moon,13450500,True,True,True,True,True
+The Sunshine Garcia Band - For I Am The Moon,13671000,True,True,True,True,True
+The Easton Ellises (Baumi) - SDRNR,0,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,220500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,441000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,661500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,882000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,1102500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,1323000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,1543500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,1764000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,1984500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,2205000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,2425500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,2646000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,2866500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,3087000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,3307500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,3528000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,3748500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,3969000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,4189500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,4410000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,4630500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,4851000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,5071500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,5292000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,5512500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,5733000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,5953500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,6174000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,6394500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,6615000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,6835500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,7056000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,7276500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,7497000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,7717500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,7938000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,8158500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,8379000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,8599500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,8820000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,9040500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,9261000,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,9481500,False,False,False,False,False
+The Easton Ellises (Baumi) - SDRNR,9702000,False,False,False,False,False
+AM Contra - Heart Peripheral,0,False,True,True,False,True
+AM Contra - Heart Peripheral,220500,False,False,True,False,False
+AM Contra - Heart Peripheral,441000,False,False,True,False,False
+AM Contra - Heart Peripheral,661500,False,False,True,False,False
+AM Contra - Heart Peripheral,882000,False,False,True,False,False
+AM Contra - Heart Peripheral,1102500,False,False,True,False,False
+AM Contra - Heart Peripheral,1323000,False,False,True,False,False
+AM Contra - Heart Peripheral,1543500,False,False,True,False,False
+AM Contra - Heart Peripheral,1764000,False,False,True,False,False
+AM Contra - Heart Peripheral,1984500,False,False,False,False,False
+AM Contra - Heart Peripheral,2205000,False,False,False,False,False
+AM Contra - Heart Peripheral,2425500,False,False,False,False,False
+AM Contra - Heart Peripheral,2646000,False,False,False,False,False
+AM Contra - Heart Peripheral,2866500,False,False,True,False,False
+AM Contra - Heart Peripheral,3087000,False,False,True,False,False
+AM Contra - Heart Peripheral,3307500,False,False,True,False,False
+AM Contra - Heart Peripheral,3528000,False,False,True,False,False
+AM Contra - Heart Peripheral,3748500,False,False,True,False,False
+AM Contra - Heart Peripheral,3969000,False,False,True,False,False
+AM Contra - Heart Peripheral,4189500,False,False,False,False,False
+AM Contra - Heart Peripheral,4410000,False,False,False,False,False
+AM Contra - Heart Peripheral,4630500,False,False,False,False,False
+AM Contra - Heart Peripheral,4851000,False,False,False,False,False
+AM Contra - Heart Peripheral,5071500,False,False,False,False,False
+AM Contra - Heart Peripheral,5292000,False,False,False,False,False
+AM Contra - Heart Peripheral,5512500,False,False,False,False,False
+AM Contra - Heart Peripheral,5733000,False,False,False,False,False
+AM Contra - Heart Peripheral,5953500,False,False,False,False,False
+AM Contra - Heart Peripheral,6174000,False,False,False,False,False
+AM Contra - Heart Peripheral,6394500,False,True,True,False,False
+AM Contra - Heart Peripheral,6615000,False,True,True,False,False
+AM Contra - Heart Peripheral,6835500,False,True,True,False,False
+AM Contra - Heart Peripheral,7056000,False,False,True,False,False
+AM Contra - Heart Peripheral,7276500,False,False,False,False,False
+AM Contra - Heart Peripheral,7497000,False,False,False,False,False
+AM Contra - Heart Peripheral,7717500,False,False,False,False,False
+AM Contra - Heart Peripheral,7938000,False,False,False,False,False
+AM Contra - Heart Peripheral,8158500,False,False,False,False,False
+AM Contra - Heart Peripheral,8379000,False,True,True,False,False
+AM Contra - Heart Peripheral,8599500,False,True,True,False,False
+The Doppler Shift - Atrophy,0,False,False,True,True,False
+The Doppler Shift - Atrophy,220500,False,False,True,True,False
+The Doppler Shift - Atrophy,441000,False,False,True,True,False
+The Doppler Shift - Atrophy,661500,False,False,True,True,False
+The Doppler Shift - Atrophy,882000,False,False,True,True,False
+The Doppler Shift - Atrophy,1102500,False,False,True,True,False
+The Doppler Shift - Atrophy,1323000,False,False,False,True,False
+The Doppler Shift - Atrophy,1543500,False,False,False,False,False
+The Doppler Shift - Atrophy,1764000,False,False,False,False,False
+The Doppler Shift - Atrophy,1984500,False,False,False,False,False
+The Doppler Shift - Atrophy,2205000,False,False,False,False,False
+The Doppler Shift - Atrophy,2425500,False,False,False,False,False
+The Doppler Shift - Atrophy,2646000,False,False,False,False,False
+The Doppler Shift - Atrophy,2866500,False,False,False,False,False
+The Doppler Shift - Atrophy,3087000,False,False,False,False,False
+The Doppler Shift - Atrophy,3307500,False,False,False,False,False
+The Doppler Shift - Atrophy,3528000,False,False,False,False,False
+The Doppler Shift - Atrophy,3748500,False,False,False,False,False
+The Doppler Shift - Atrophy,3969000,False,False,False,False,False
+The Doppler Shift - Atrophy,4189500,False,False,False,False,False
+The Doppler Shift - Atrophy,4410000,False,False,False,False,False
+The Doppler Shift - Atrophy,4630500,False,False,False,False,False
+The Doppler Shift - Atrophy,4851000,False,False,False,False,False
+The Doppler Shift - Atrophy,5071500,False,False,False,False,False
+The Doppler Shift - Atrophy,5292000,False,False,False,False,False
+The Doppler Shift - Atrophy,5512500,False,False,False,False,False
+The Doppler Shift - Atrophy,5733000,False,False,False,False,False
+The Doppler Shift - Atrophy,5953500,False,False,False,False,False
+The Doppler Shift - Atrophy,6174000,False,False,False,False,False
+The Doppler Shift - Atrophy,6394500,False,False,False,False,False
+The Doppler Shift - Atrophy,6615000,False,False,False,False,False
+The Doppler Shift - Atrophy,6835500,False,False,False,False,False
+The Doppler Shift - Atrophy,7056000,False,False,False,False,False
+The Doppler Shift - Atrophy,7276500,False,False,False,False,False
+The Doppler Shift - Atrophy,7497000,False,False,False,False,False
+The Doppler Shift - Atrophy,7717500,False,False,False,False,False
+The Doppler Shift - Atrophy,7938000,False,False,False,False,False
+The Doppler Shift - Atrophy,8158500,False,False,False,True,False
+The Doppler Shift - Atrophy,8379000,False,False,False,True,False
+The Doppler Shift - Atrophy,8599500,False,False,False,True,False
+The Doppler Shift - Atrophy,8820000,False,False,False,True,False
+The Doppler Shift - Atrophy,9040500,False,False,True,True,False
+The Doppler Shift - Atrophy,9261000,False,False,True,True,False
+The Doppler Shift - Atrophy,9481500,False,False,True,True,False
+The Doppler Shift - Atrophy,9702000,False,False,False,False,False
+The Doppler Shift - Atrophy,9922500,False,False,False,False,False
+The Doppler Shift - Atrophy,10143000,False,False,False,False,False
+The Doppler Shift - Atrophy,10363500,False,False,False,False,False
+The Doppler Shift - Atrophy,10584000,False,False,False,False,False
+The Doppler Shift - Atrophy,10804500,False,False,False,False,False
+The Doppler Shift - Atrophy,11025000,False,False,False,False,False
+The Doppler Shift - Atrophy,11245500,False,False,False,False,False
+The Doppler Shift - Atrophy,11466000,False,False,False,False,False
+The Doppler Shift - Atrophy,11686500,False,False,False,False,False
+The Doppler Shift - Atrophy,11907000,False,False,False,False,False
+The Doppler Shift - Atrophy,12127500,False,False,True,False,False
+The Doppler Shift - Atrophy,12348000,False,False,True,False,False
+The Doppler Shift - Atrophy,12568500,False,False,True,False,False
+The Doppler Shift - Atrophy,12789000,False,False,True,False,False
+The Doppler Shift - Atrophy,13009500,False,False,True,False,False
+The Doppler Shift - Atrophy,13230000,False,False,True,False,False
+The Doppler Shift - Atrophy,13450500,False,False,False,False,False
+The Doppler Shift - Atrophy,13671000,False,False,False,False,False
+The Doppler Shift - Atrophy,13891500,False,False,True,False,False
+The Doppler Shift - Atrophy,14112000,False,False,True,False,False
+Motor Tapes - Shore,0,False,False,True,True,False
+Motor Tapes - Shore,220500,False,False,True,True,False
+Motor Tapes - Shore,441000,False,False,False,True,False
+Motor Tapes - Shore,661500,False,False,False,True,False
+Motor Tapes - Shore,882000,False,False,False,False,False
+Motor Tapes - Shore,1102500,False,False,False,False,False
+Motor Tapes - Shore,1323000,False,False,False,False,False
+Motor Tapes - Shore,1543500,False,False,False,False,False
+Motor Tapes - Shore,1764000,False,False,False,False,False
+Motor Tapes - Shore,1984500,False,False,False,False,False
+Motor Tapes - Shore,2205000,False,False,False,False,False
+Motor Tapes - Shore,2425500,False,False,False,False,False
+Motor Tapes - Shore,2646000,False,False,False,False,False
+Motor Tapes - Shore,2866500,False,False,False,False,False
+Motor Tapes - Shore,3087000,False,False,False,False,False
+Motor Tapes - Shore,3307500,False,False,False,False,False
+Motor Tapes - Shore,3528000,False,False,False,False,False
+Motor Tapes - Shore,3748500,False,False,False,True,False
+Motor Tapes - Shore,3969000,False,False,False,True,False
+Motor Tapes - Shore,4189500,False,False,False,False,False
+Motor Tapes - Shore,4410000,False,False,False,False,False
+Motor Tapes - Shore,4630500,False,False,False,False,False
+Motor Tapes - Shore,4851000,False,False,False,False,False
+Motor Tapes - Shore,5071500,False,False,False,False,False
+Motor Tapes - Shore,5292000,False,False,False,False,False
+Motor Tapes - Shore,5512500,False,False,False,False,False
+Motor Tapes - Shore,5733000,False,False,False,False,False
+Motor Tapes - Shore,5953500,False,False,False,False,False
+Motor Tapes - Shore,6174000,False,False,False,False,False
+Motor Tapes - Shore,6394500,False,False,False,False,False
+Motor Tapes - Shore,6615000,False,False,False,False,False
+Motor Tapes - Shore,6835500,False,False,False,False,False
+Motor Tapes - Shore,7056000,False,False,False,False,False
+Motor Tapes - Shore,7276500,False,False,True,False,False
+Motor Tapes - Shore,7497000,False,False,True,False,False
+Motor Tapes - Shore,7717500,False,False,False,False,False
+Motor Tapes - Shore,7938000,False,False,False,False,False
+Motor Tapes - Shore,8158500,False,False,False,False,False
+Motor Tapes - Shore,8379000,False,False,False,False,False
+Motor Tapes - Shore,8599500,False,False,False,False,False
+Motor Tapes - Shore,8820000,False,False,False,False,False
+Motor Tapes - Shore,9040500,False,False,False,True,False
+Motor Tapes - Shore,9261000,False,False,True,True,False
+Motor Tapes - Shore,9481500,False,False,True,True,False
+Motor Tapes - Shore,9702000,False,True,True,True,False
+Motor Tapes - Shore,9922500,True,True,True,True,True
+Motor Tapes - Shore,10143000,True,True,True,True,True
+Motor Tapes - Shore,10363500,True,True,True,True,True
+Detsky Sad - Walkie Talkie,0,False,False,True,True,True
+Detsky Sad - Walkie Talkie,220500,False,False,False,True,True
+Detsky Sad - Walkie Talkie,441000,False,False,False,True,True
+Detsky Sad - Walkie Talkie,661500,False,False,False,True,True
+Detsky Sad - Walkie Talkie,882000,False,False,False,True,True
+Detsky Sad - Walkie Talkie,1102500,False,False,False,True,True
+Detsky Sad - Walkie Talkie,1323000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,1543500,False,False,False,True,True
+Detsky Sad - Walkie Talkie,1764000,False,False,False,False,True
+Detsky Sad - Walkie Talkie,1984500,False,False,False,False,False
+Detsky Sad - Walkie Talkie,2205000,False,False,False,False,False
+Detsky Sad - Walkie Talkie,2425500,False,False,False,True,False
+Detsky Sad - Walkie Talkie,2646000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,2866500,False,False,False,False,False
+Detsky Sad - Walkie Talkie,3087000,False,False,False,False,False
+Detsky Sad - Walkie Talkie,3307500,False,False,False,False,False
+Detsky Sad - Walkie Talkie,3528000,False,False,True,True,True
+Detsky Sad - Walkie Talkie,3748500,False,False,True,True,True
+Detsky Sad - Walkie Talkie,3969000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,4189500,False,False,False,True,False
+Detsky Sad - Walkie Talkie,4410000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,4630500,False,False,False,True,False
+Detsky Sad - Walkie Talkie,4851000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,5071500,False,False,False,False,False
+Detsky Sad - Walkie Talkie,5292000,False,False,False,False,False
+Detsky Sad - Walkie Talkie,5512500,False,False,False,False,False
+Detsky Sad - Walkie Talkie,5733000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,5953500,False,False,True,True,False
+Detsky Sad - Walkie Talkie,6174000,False,False,True,True,False
+Detsky Sad - Walkie Talkie,6394500,False,False,False,True,False
+Detsky Sad - Walkie Talkie,6615000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,6835500,False,False,False,True,False
+Detsky Sad - Walkie Talkie,7056000,False,True,True,True,False
+Detsky Sad - Walkie Talkie,7276500,False,False,False,True,False
+Detsky Sad - Walkie Talkie,7497000,False,False,False,True,False
+Detsky Sad - Walkie Talkie,7717500,False,False,False,True,False
+Detsky Sad - Walkie Talkie,7938000,False,False,False,True,False
+Buitraker - Revo X,0,False,False,True,True,False
+Buitraker - Revo X,220500,False,False,True,True,False
+Buitraker - Revo X,441000,False,False,True,True,False
+Buitraker - Revo X,661500,False,False,False,True,False
+Buitraker - Revo X,882000,False,False,False,True,False
+Buitraker - Revo X,1102500,False,False,False,True,False
+Buitraker - Revo X,1323000,False,False,False,True,False
+Buitraker - Revo X,1543500,False,False,False,True,False
+Buitraker - Revo X,1764000,False,False,False,True,False
+Buitraker - Revo X,1984500,False,False,False,True,False
+Buitraker - Revo X,2205000,False,False,False,False,False
+Buitraker - Revo X,2425500,False,False,False,False,False
+Buitraker - Revo X,2646000,False,False,False,False,False
+Buitraker - Revo X,2866500,False,False,False,False,False
+Buitraker - Revo X,3087000,False,False,False,False,False
+Buitraker - Revo X,3307500,False,False,False,False,False
+Buitraker - Revo X,3528000,False,False,False,False,False
+Buitraker - Revo X,3748500,False,False,False,False,False
+Buitraker - Revo X,3969000,False,False,False,False,False
+Buitraker - Revo X,4189500,False,False,False,False,False
+Buitraker - Revo X,4410000,False,False,False,False,False
+Buitraker - Revo X,4630500,False,False,False,False,False
+Buitraker - Revo X,4851000,False,False,False,False,False
+Buitraker - Revo X,5071500,False,False,False,False,False
+Buitraker - Revo X,5292000,False,False,False,False,False
+Buitraker - Revo X,5512500,False,False,False,False,False
+Buitraker - Revo X,5733000,False,False,False,True,False
+Buitraker - Revo X,5953500,False,False,False,True,False
+Buitraker - Revo X,6174000,False,False,False,True,False
+Buitraker - Revo X,6394500,False,False,False,True,False
+Buitraker - Revo X,6615000,False,False,False,False,False
+Buitraker - Revo X,6835500,False,False,False,False,False
+Buitraker - Revo X,7056000,False,False,False,False,False
+Buitraker - Revo X,7276500,False,False,False,False,False
+Buitraker - Revo X,7497000,False,False,False,False,False
+Buitraker - Revo X,7717500,False,False,False,False,False
+Buitraker - Revo X,7938000,False,False,False,False,False
+Buitraker - Revo X,8158500,False,False,False,False,False
+Buitraker - Revo X,8379000,False,False,False,False,False
+Buitraker - Revo X,8599500,False,False,False,False,False
+Buitraker - Revo X,8820000,False,False,False,False,False
+Buitraker - Revo X,9040500,False,False,False,False,False
+Buitraker - Revo X,9261000,False,False,False,False,False
+Buitraker - Revo X,9481500,False,False,False,False,False
+Buitraker - Revo X,9702000,False,False,False,False,False
+Buitraker - Revo X,9922500,False,False,False,False,False
+Buitraker - Revo X,10143000,False,False,False,False,False
+Buitraker - Revo X,10363500,False,False,False,False,False
+Buitraker - Revo X,10584000,False,False,False,False,False
+Buitraker - Revo X,10804500,False,False,False,False,False
+Buitraker - Revo X,11025000,False,False,False,False,False
+Buitraker - Revo X,11245500,False,False,True,False,False
+Buitraker - Revo X,11466000,False,False,True,True,False
+Buitraker - Revo X,11686500,False,True,False,True,False
+Little Chicago's Finest - My Own,0,False,True,True,True,False
+Little Chicago's Finest - My Own,220500,False,False,True,True,False
+Little Chicago's Finest - My Own,441000,False,False,False,False,False
+Little Chicago's Finest - My Own,661500,False,False,False,False,False
+Little Chicago's Finest - My Own,882000,False,False,False,False,False
+Little Chicago's Finest - My Own,1102500,False,False,False,False,False
+Little Chicago's Finest - My Own,1323000,False,False,False,False,False
+Little Chicago's Finest - My Own,1543500,False,False,False,False,False
+Little Chicago's Finest - My Own,1764000,False,False,False,False,False
+Little Chicago's Finest - My Own,1984500,False,False,False,False,False
+Little Chicago's Finest - My Own,2205000,False,False,False,False,False
+Little Chicago's Finest - My Own,2425500,False,False,False,False,False
+Little Chicago's Finest - My Own,2646000,False,False,False,False,False
+Little Chicago's Finest - My Own,2866500,False,False,False,False,False
+Little Chicago's Finest - My Own,3087000,False,False,False,False,False
+Little Chicago's Finest - My Own,3307500,False,False,False,False,False
+Little Chicago's Finest - My Own,3528000,False,False,False,False,False
+Little Chicago's Finest - My Own,3748500,False,False,False,False,False
+Little Chicago's Finest - My Own,3969000,False,True,True,False,False
+Little Chicago's Finest - My Own,4189500,False,True,True,False,False
+Little Chicago's Finest - My Own,4410000,False,True,True,False,False
+Little Chicago's Finest - My Own,4630500,False,False,False,False,False
+Little Chicago's Finest - My Own,4851000,False,False,False,False,False
+Little Chicago's Finest - My Own,5071500,False,False,False,False,False
+Little Chicago's Finest - My Own,5292000,False,False,False,False,False
+Little Chicago's Finest - My Own,5512500,False,False,False,False,False
+Little Chicago's Finest - My Own,5733000,False,False,False,False,False
+Little Chicago's Finest - My Own,5953500,False,False,False,False,False
+Little Chicago's Finest - My Own,6174000,False,False,False,False,False
+Little Chicago's Finest - My Own,6394500,False,False,False,False,False
+Little Chicago's Finest - My Own,6615000,False,False,False,False,False
+Little Chicago's Finest - My Own,6835500,False,False,True,False,False
+Little Chicago's Finest - My Own,7056000,False,False,True,False,False
+Little Chicago's Finest - My Own,7276500,False,False,True,False,False
+Little Chicago's Finest - My Own,7497000,False,False,True,False,False
+Little Chicago's Finest - My Own,7717500,False,False,False,False,False
+Little Chicago's Finest - My Own,7938000,False,False,False,False,False
+Little Chicago's Finest - My Own,8158500,False,False,False,False,False
+Little Chicago's Finest - My Own,8379000,False,False,False,False,False
+Little Chicago's Finest - My Own,8599500,False,False,False,False,False
+Little Chicago's Finest - My Own,8820000,False,False,False,False,False
+Little Chicago's Finest - My Own,9040500,False,False,False,False,False
+Little Chicago's Finest - My Own,9261000,False,False,False,False,False
+Little Chicago's Finest - My Own,9481500,False,False,False,False,False
+Little Chicago's Finest - My Own,9702000,False,False,True,False,False
+Little Chicago's Finest - My Own,9922500,False,False,True,False,False
+Little Chicago's Finest - My Own,10143000,False,False,True,False,False
+Little Chicago's Finest - My Own,10363500,False,False,True,False,False
+Little Chicago's Finest - My Own,10584000,False,False,False,False,False
+Little Chicago's Finest - My Own,10804500,False,False,False,False,False
+Little Chicago's Finest - My Own,11025000,False,False,False,False,False
+Little Chicago's Finest - My Own,11245500,False,False,False,False,False
+Little Chicago's Finest - My Own,11466000,False,False,False,False,False
+Little Chicago's Finest - My Own,11686500,False,False,True,True,False
+Little Chicago's Finest - My Own,11907000,False,True,True,True,False
+Zeno - Signs,0,False,True,True,True,False
+Zeno - Signs,220500,False,False,False,True,False
+Zeno - Signs,441000,False,False,False,True,False
+Zeno - Signs,661500,False,False,False,True,False
+Zeno - Signs,882000,False,False,False,False,False
+Zeno - Signs,1102500,False,False,False,False,False
+Zeno - Signs,1323000,False,False,False,False,False
+Zeno - Signs,1543500,False,False,False,False,False
+Zeno - Signs,1764000,False,False,False,False,False
+Zeno - Signs,1984500,False,False,False,True,False
+Zeno - Signs,2205000,False,False,False,True,False
+Zeno - Signs,2425500,False,False,False,False,False
+Zeno - Signs,2646000,False,False,False,False,False
+Zeno - Signs,2866500,False,False,False,False,False
+Zeno - Signs,3087000,False,False,False,False,False
+Zeno - Signs,3307500,False,False,False,False,False
+Zeno - Signs,3528000,False,False,False,False,False
+Zeno - Signs,3748500,False,False,False,False,False
+Zeno - Signs,3969000,False,False,False,False,False
+Zeno - Signs,4189500,False,False,False,False,False
+Zeno - Signs,4410000,False,False,False,False,False
+Zeno - Signs,4630500,False,False,False,False,False
+Zeno - Signs,4851000,False,False,False,False,False
+Zeno - Signs,5071500,False,False,False,False,False
+Zeno - Signs,5292000,False,False,False,False,False
+Zeno - Signs,5512500,False,False,False,False,False
+Zeno - Signs,5733000,False,False,False,False,False
+Zeno - Signs,5953500,False,False,False,False,False
+Zeno - Signs,6174000,False,False,False,False,False
+Zeno - Signs,6394500,False,False,False,False,False
+Zeno - Signs,6615000,False,False,False,False,False
+Zeno - Signs,6835500,False,False,False,False,False
+Zeno - Signs,7056000,False,False,False,False,False
+Zeno - Signs,7276500,False,False,False,False,False
+Zeno - Signs,7497000,False,False,False,False,False
+Zeno - Signs,7717500,False,False,False,False,False
+Zeno - Signs,7938000,False,False,False,False,False
+Zeno - Signs,8158500,False,False,False,False,False
+Zeno - Signs,8379000,False,False,False,False,False
+Zeno - Signs,8599500,False,False,False,False,False
+Zeno - Signs,8820000,False,False,False,False,False
+Zeno - Signs,9040500,False,False,False,False,False
+Zeno - Signs,9261000,False,False,False,False,False
+Zeno - Signs,9481500,False,False,False,False,False
+Zeno - Signs,9702000,False,False,False,False,False
+Hollow Ground - Ill Fate,0,False,False,False,True,False
+Hollow Ground - Ill Fate,220500,False,False,False,True,False
+Hollow Ground - Ill Fate,441000,False,False,False,True,False
+Hollow Ground - Ill Fate,661500,False,False,False,True,False
+Hollow Ground - Ill Fate,882000,False,False,False,False,False
+Hollow Ground - Ill Fate,1102500,False,False,False,False,False
+Hollow Ground - Ill Fate,1323000,False,False,False,False,False
+Hollow Ground - Ill Fate,1543500,False,False,False,False,False
+Hollow Ground - Ill Fate,1764000,False,False,False,False,False
+Hollow Ground - Ill Fate,1984500,False,False,False,False,False
+Hollow Ground - Ill Fate,2205000,False,False,False,True,False
+Hollow Ground - Ill Fate,2425500,False,False,False,True,False
+Hollow Ground - Ill Fate,2646000,False,False,False,True,False
+Hollow Ground - Ill Fate,2866500,False,False,False,False,False
+Hollow Ground - Ill Fate,3087000,False,False,False,False,False
+Hollow Ground - Ill Fate,3307500,False,False,False,False,False
+Hollow Ground - Ill Fate,3528000,False,False,False,False,False
+Hollow Ground - Ill Fate,3748500,False,False,False,False,False
+Hollow Ground - Ill Fate,3969000,False,False,False,False,False
+Hollow Ground - Ill Fate,4189500,False,False,False,False,False
+Hollow Ground - Ill Fate,4410000,False,False,False,True,False
+Hollow Ground - Ill Fate,4630500,False,False,False,True,False
+Hollow Ground - Ill Fate,4851000,False,False,False,True,False
+Hollow Ground - Ill Fate,5071500,False,False,False,False,False
+Hollow Ground - Ill Fate,5292000,False,False,False,True,False
+Hollow Ground - Ill Fate,5512500,False,True,False,True,False
+Hollow Ground - Ill Fate,5733000,False,True,False,True,False
+Cristina Vane - So Easy,0,False,False,True,True,False
+Cristina Vane - So Easy,220500,False,False,True,True,False
+Cristina Vane - So Easy,441000,False,False,True,True,False
+Cristina Vane - So Easy,661500,False,False,False,True,False
+Cristina Vane - So Easy,882000,False,False,False,True,False
+Cristina Vane - So Easy,1102500,False,False,False,True,False
+Cristina Vane - So Easy,1323000,False,False,False,False,False
+Cristina Vane - So Easy,1543500,False,False,False,False,False
+Cristina Vane - So Easy,1764000,False,False,False,False,False
+Cristina Vane - So Easy,1984500,False,False,False,False,False
+Cristina Vane - So Easy,2205000,False,False,False,False,False
+Cristina Vane - So Easy,2425500,False,False,False,False,False
+Cristina Vane - So Easy,2646000,False,False,False,False,False
+Cristina Vane - So Easy,2866500,False,False,False,False,False
+Cristina Vane - So Easy,3087000,False,False,False,False,False
+Cristina Vane - So Easy,3307500,False,False,False,False,False
+Cristina Vane - So Easy,3528000,False,False,False,False,False
+Cristina Vane - So Easy,3748500,False,False,False,False,False
+Cristina Vane - So Easy,3969000,False,False,False,False,False
+Cristina Vane - So Easy,4189500,False,False,False,True,False
+Cristina Vane - So Easy,4410000,False,False,False,True,False
+Cristina Vane - So Easy,4630500,False,False,False,True,False
+Cristina Vane - So Easy,4851000,False,False,False,False,False
+Cristina Vane - So Easy,5071500,False,False,False,False,False
+Cristina Vane - So Easy,5292000,False,False,False,False,False
+Cristina Vane - So Easy,5512500,False,False,False,False,False
+Cristina Vane - So Easy,5733000,False,False,False,False,False
+Cristina Vane - So Easy,5953500,False,False,False,False,False
+Cristina Vane - So Easy,6174000,False,False,False,False,False
+Cristina Vane - So Easy,6394500,False,False,False,False,False
+Cristina Vane - So Easy,6615000,False,False,False,False,False
+Cristina Vane - So Easy,6835500,False,False,False,False,False
+Cristina Vane - So Easy,7056000,False,False,False,False,False
+Cristina Vane - So Easy,7276500,False,False,False,False,False
+Cristina Vane - So Easy,7497000,False,False,False,False,False
+Cristina Vane - So Easy,7717500,False,False,False,False,False
+Cristina Vane - So Easy,7938000,False,False,False,False,False
+Cristina Vane - So Easy,8158500,False,False,True,False,False
+Cristina Vane - So Easy,8379000,False,False,True,False,False
+Cristina Vane - So Easy,8599500,False,False,False,False,False
+Cristina Vane - So Easy,8820000,False,False,False,False,False
+Cristina Vane - So Easy,9040500,False,False,False,False,False
+Cristina Vane - So Easy,9261000,False,False,False,False,False
+Cristina Vane - So Easy,9481500,False,False,False,False,False
+Cristina Vane - So Easy,9702000,False,False,False,False,False
+Cristina Vane - So Easy,9922500,False,False,False,False,False
+Cristina Vane - So Easy,10143000,False,False,False,False,False
+Cristina Vane - So Easy,10363500,False,False,False,False,False
+Cristina Vane - So Easy,10584000,False,False,False,False,False
+Speak Softly - Like Horses,0,False,False,True,True,True
+Speak Softly - Like Horses,220500,False,False,True,False,False
+Speak Softly - Like Horses,441000,False,False,True,False,False
+Speak Softly - Like Horses,661500,False,False,True,False,False
+Speak Softly - Like Horses,882000,False,False,True,False,False
+Speak Softly - Like Horses,1102500,False,False,True,False,False
+Speak Softly - Like Horses,1323000,False,False,True,False,False
+Speak Softly - Like Horses,1543500,False,False,True,False,False
+Speak Softly - Like Horses,1764000,False,False,True,False,False
+Speak Softly - Like Horses,1984500,False,False,True,False,False
+Speak Softly - Like Horses,2205000,False,False,True,False,False
+Speak Softly - Like Horses,2425500,False,False,True,False,False
+Speak Softly - Like Horses,2646000,False,False,True,False,False
+Speak Softly - Like Horses,2866500,False,False,True,False,False
+Speak Softly - Like Horses,3087000,False,False,True,False,False
+Speak Softly - Like Horses,3307500,False,False,True,False,False
+Speak Softly - Like Horses,3528000,False,False,True,False,False
+Speak Softly - Like Horses,3748500,False,False,True,False,False
+Speak Softly - Like Horses,3969000,False,False,False,False,False
+Speak Softly - Like Horses,4189500,False,False,False,False,False
+Speak Softly - Like Horses,4410000,False,False,False,False,False
+Speak Softly - Like Horses,4630500,False,False,False,False,False
+Speak Softly - Like Horses,4851000,False,False,False,False,False
+Speak Softly - Like Horses,5071500,False,False,False,False,False
+Speak Softly - Like Horses,5292000,False,False,True,False,False
+Speak Softly - Like Horses,5512500,False,False,True,False,False
+Speak Softly - Like Horses,5733000,False,False,True,False,False
+Speak Softly - Like Horses,5953500,False,False,True,False,False
+Speak Softly - Like Horses,6174000,False,False,True,False,False
+Speak Softly - Like Horses,6394500,False,False,True,False,False
+Speak Softly - Like Horses,6615000,False,False,True,False,False
+Speak Softly - Like Horses,6835500,False,False,True,False,False
+Speak Softly - Like Horses,7056000,False,False,True,False,False
+Speak Softly - Like Horses,7276500,False,False,False,False,False
+Speak Softly - Like Horses,7497000,False,False,False,False,False
+Speak Softly - Like Horses,7717500,False,False,False,False,False
+Speak Softly - Like Horses,7938000,False,False,False,False,False
+Speak Softly - Like Horses,8158500,False,False,False,False,False
+Speak Softly - Like Horses,8379000,False,False,False,False,False
+Speak Softly - Like Horses,8599500,False,False,True,True,False
+Speak Softly - Like Horses,8820000,False,False,True,True,False
+Speak Softly - Like Horses,9040500,False,False,True,False,False
+Speak Softly - Like Horses,9261000,False,False,True,False,False
+Speak Softly - Like Horses,9481500,False,False,True,False,False
+Speak Softly - Like Horses,9702000,False,False,True,False,False
+Speak Softly - Like Horses,9922500,False,False,True,False,False
+Speak Softly - Like Horses,10143000,False,False,True,False,False
+Speak Softly - Like Horses,10363500,False,False,True,False,False
+Speak Softly - Like Horses,10584000,False,False,False,False,False
+Speak Softly - Like Horses,10804500,False,False,False,False,False
+Speak Softly - Like Horses,11025000,False,False,False,False,False
+Speak Softly - Like Horses,11245500,False,False,False,False,False
+Speak Softly - Like Horses,11466000,False,False,False,False,False
+Speak Softly - Like Horses,11686500,False,False,False,False,False
+Speak Softly - Like Horses,11907000,False,False,False,False,False
+Speak Softly - Like Horses,12127500,False,False,False,False,False
+Speak Softly - Like Horses,12348000,False,False,False,False,False
+Speak Softly - Like Horses,12568500,False,True,True,False,False
+Speak Softly - Like Horses,12789000,False,True,True,True,False
+Speak Softly - Like Horses,13009500,True,True,True,True,True
+Speak Softly - Like Horses,13230000,True,True,True,True,True
+Side Effects Project - Sing With Me,0,False,False,True,False,False
+Side Effects Project - Sing With Me,220500,False,False,False,False,False
+Side Effects Project - Sing With Me,441000,False,False,False,False,False
+Side Effects Project - Sing With Me,661500,False,False,False,False,False
+Side Effects Project - Sing With Me,882000,False,False,False,False,False
+Side Effects Project - Sing With Me,1102500,False,False,False,False,False
+Side Effects Project - Sing With Me,1323000,False,False,False,False,False
+Side Effects Project - Sing With Me,1543500,False,False,False,False,False
+Side Effects Project - Sing With Me,1764000,False,False,False,False,False
+Side Effects Project - Sing With Me,1984500,False,False,False,False,False
+Side Effects Project - Sing With Me,2205000,False,False,False,False,False
+Side Effects Project - Sing With Me,2425500,False,False,False,False,False
+Side Effects Project - Sing With Me,2646000,False,False,False,False,False
+Side Effects Project - Sing With Me,2866500,False,False,False,False,False
+Side Effects Project - Sing With Me,3087000,False,False,True,False,False
+Side Effects Project - Sing With Me,3307500,False,False,True,False,False
+Side Effects Project - Sing With Me,3528000,False,False,False,False,False
+Side Effects Project - Sing With Me,3748500,False,False,False,False,False
+Side Effects Project - Sing With Me,3969000,False,False,False,False,False
+Side Effects Project - Sing With Me,4189500,False,False,False,False,False
+Side Effects Project - Sing With Me,4410000,False,False,False,False,False
+Side Effects Project - Sing With Me,4630500,False,False,False,False,False
+Side Effects Project - Sing With Me,4851000,False,False,False,False,False
+Side Effects Project - Sing With Me,5071500,False,False,False,False,False
+Side Effects Project - Sing With Me,5292000,False,False,False,False,False
+Side Effects Project - Sing With Me,5512500,False,False,False,False,False
+Side Effects Project - Sing With Me,5733000,False,False,False,False,False
+Side Effects Project - Sing With Me,5953500,False,False,False,False,False
+Side Effects Project - Sing With Me,6174000,False,False,False,False,False
+Side Effects Project - Sing With Me,6394500,False,False,False,False,False
+Side Effects Project - Sing With Me,6615000,False,False,False,False,False
+Side Effects Project - Sing With Me,6835500,False,False,False,False,False
+Side Effects Project - Sing With Me,7056000,False,False,False,False,False
+Side Effects Project - Sing With Me,7276500,False,False,True,False,False
+Side Effects Project - Sing With Me,7497000,False,False,True,False,False
+Side Effects Project - Sing With Me,7717500,False,False,False,False,False
+Side Effects Project - Sing With Me,7938000,False,False,False,False,False
+Side Effects Project - Sing With Me,8158500,False,False,False,False,False
+Side Effects Project - Sing With Me,8379000,False,False,False,False,False
+Side Effects Project - Sing With Me,8599500,False,False,False,False,False
+Side Effects Project - Sing With Me,8820000,False,False,False,False,False
+Side Effects Project - Sing With Me,9040500,False,False,False,False,False
+Side Effects Project - Sing With Me,9261000,False,False,False,False,False
+Side Effects Project - Sing With Me,9481500,False,False,False,False,False
+Side Effects Project - Sing With Me,9702000,False,False,True,False,False
+Side Effects Project - Sing With Me,9922500,False,False,True,True,False
+Side Effects Project - Sing With Me,10143000,False,True,True,True,False
+Skelpolu - Resurrection,0,False,False,True,True,False
+Skelpolu - Resurrection,220500,False,False,True,True,False
+Skelpolu - Resurrection,441000,False,False,True,True,False
+Skelpolu - Resurrection,661500,False,False,True,True,False
+Skelpolu - Resurrection,882000,False,False,True,True,False
+Skelpolu - Resurrection,1102500,False,False,True,True,False
+Skelpolu - Resurrection,1323000,False,False,True,True,False
+Skelpolu - Resurrection,1543500,False,False,True,True,False
+Skelpolu - Resurrection,1764000,False,False,True,True,False
+Skelpolu - Resurrection,1984500,False,False,False,True,False
+Skelpolu - Resurrection,2205000,False,False,False,True,False
+Skelpolu - Resurrection,2425500,False,False,False,True,False
+Skelpolu - Resurrection,2646000,False,False,False,True,False
+Skelpolu - Resurrection,2866500,False,False,False,True,False
+Skelpolu - Resurrection,3087000,False,False,False,True,False
+Skelpolu - Resurrection,3307500,False,False,False,True,False
+Skelpolu - Resurrection,3528000,False,False,False,True,False
+Skelpolu - Resurrection,3748500,False,False,False,True,False
+Skelpolu - Resurrection,3969000,False,False,False,True,False
+Skelpolu - Resurrection,4189500,False,False,False,True,False
+Skelpolu - Resurrection,4410000,False,False,False,True,False
+Skelpolu - Resurrection,4630500,False,False,False,True,False
+Skelpolu - Resurrection,4851000,False,False,False,True,False
+Skelpolu - Resurrection,5071500,False,False,False,True,False
+Skelpolu - Resurrection,5292000,False,False,False,True,False
+Skelpolu - Resurrection,5512500,False,False,True,True,False
+Skelpolu - Resurrection,5733000,False,False,True,True,False
+Skelpolu - Resurrection,5953500,False,False,True,True,False
+Skelpolu - Resurrection,6174000,False,False,True,True,False
+Skelpolu - Resurrection,6394500,False,False,True,True,False
+Skelpolu - Resurrection,6615000,False,False,False,True,False
+Skelpolu - Resurrection,6835500,False,False,False,True,False
+Skelpolu - Resurrection,7056000,False,False,False,True,False
+Skelpolu - Resurrection,7276500,False,False,False,True,False
+Skelpolu - Resurrection,7497000,False,False,False,True,False
+Skelpolu - Resurrection,7717500,False,False,False,True,False
+Skelpolu - Resurrection,7938000,False,False,False,True,False
+Skelpolu - Resurrection,8158500,False,False,False,True,False
+Skelpolu - Resurrection,8379000,False,False,False,True,False
+Skelpolu - Resurrection,8599500,False,False,False,True,False
+Skelpolu - Resurrection,8820000,False,False,False,True,False
+Skelpolu - Resurrection,9040500,False,False,False,True,False
+Skelpolu - Resurrection,9261000,False,False,False,True,False
+Skelpolu - Resurrection,9481500,False,False,False,True,False
+Skelpolu - Resurrection,9702000,False,False,False,True,False
+Skelpolu - Resurrection,9922500,False,False,True,True,False
+Skelpolu - Resurrection,10143000,False,False,True,True,False
+Skelpolu - Resurrection,10363500,False,False,True,True,False
+Skelpolu - Resurrection,10584000,False,False,False,True,False
+Skelpolu - Resurrection,10804500,False,False,False,True,False
+Skelpolu - Resurrection,11025000,False,False,False,True,False
+Skelpolu - Resurrection,11245500,False,False,False,True,False
+Skelpolu - Resurrection,11466000,False,False,False,True,False
+Skelpolu - Resurrection,11686500,False,False,False,True,False
+Skelpolu - Resurrection,11907000,False,False,False,True,False
+Skelpolu - Resurrection,12127500,False,False,False,True,False
+Skelpolu - Resurrection,12348000,False,False,False,True,False
+Skelpolu - Resurrection,12568500,False,False,False,True,False
+Skelpolu - Resurrection,12789000,False,False,False,False,False
+Skelpolu - Resurrection,13009500,False,False,False,False,False
+Skelpolu - Resurrection,13230000,False,False,False,False,False
+Skelpolu - Resurrection,13450500,False,False,False,False,False
+Skelpolu - Resurrection,13671000,False,False,False,False,False
+Skelpolu - Resurrection,13891500,False,False,False,False,False
+Skelpolu - Resurrection,14112000,False,False,False,False,False
+Skelpolu - Resurrection,14332500,False,False,False,False,False
+Skelpolu - Resurrection,14553000,False,False,False,True,False
+Skelpolu - Resurrection,14773500,False,False,False,True,False
+Skelpolu - Resurrection,14994000,False,False,False,True,False
+Skelpolu - Resurrection,15214500,False,False,False,True,False
+Skelpolu - Resurrection,15435000,False,False,False,True,False
+Skelpolu - Resurrection,15655500,False,False,False,False,False
+Skelpolu - Resurrection,15876000,False,False,False,False,False
+Skelpolu - Resurrection,16096500,False,False,False,False,False
+Skelpolu - Resurrection,16317000,False,False,False,True,False
+Skelpolu - Resurrection,16537500,False,False,True,True,False
+Skelpolu - Resurrection,16758000,False,False,True,True,True
+Skelpolu - Resurrection,16978500,True,True,True,True,True
+Nerve 9 - Pray For The Rain,0,False,True,True,False,False
+Nerve 9 - Pray For The Rain,220500,False,True,True,False,False
+Nerve 9 - Pray For The Rain,441000,False,True,False,False,False
+Nerve 9 - Pray For The Rain,661500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,882000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,1102500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,1323000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,1543500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,1764000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,1984500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,2205000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,2425500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,2646000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,2866500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,3087000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,3307500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,3528000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,3748500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,3969000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,4189500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,4410000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,4630500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,4851000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,5071500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,5292000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,5512500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,5733000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,5953500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,6174000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,6394500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,6615000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,6835500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,7056000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,7276500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,7497000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,7717500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,7938000,False,True,False,False,False
+Nerve 9 - Pray For The Rain,8158500,False,True,False,False,False
+Nerve 9 - Pray For The Rain,8379000,False,True,True,False,False
+Nerve 9 - Pray For The Rain,8599500,False,True,True,False,False
+Nerve 9 - Pray For The Rain,8820000,False,True,False,False,False
+Nerve 9 - Pray For The Rain,9040500,False,True,False,False,False
+Nerve 9 - Pray For The Rain,9261000,False,True,True,False,False
+Nerve 9 - Pray For The Rain,9481500,False,True,True,False,False
+Nerve 9 - Pray For The Rain,9702000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,9922500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,10143000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,10363500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,10584000,False,False,False,False,False
+Nerve 9 - Pray For The Rain,10804500,False,False,False,False,False
+Nerve 9 - Pray For The Rain,11025000,False,False,False,True,False
+Nerve 9 - Pray For The Rain,11245500,False,False,False,True,False
+Nerve 9 - Pray For The Rain,11466000,False,False,False,True,False
+Nerve 9 - Pray For The Rain,11686500,False,False,False,True,False
+Nerve 9 - Pray For The Rain,11907000,False,False,False,True,False
+Nerve 9 - Pray For The Rain,12127500,False,False,False,True,False
+Nerve 9 - Pray For The Rain,12348000,False,False,False,True,False
+Nerve 9 - Pray For The Rain,12568500,False,False,False,True,False
+Nerve 9 - Pray For The Rain,12789000,False,False,False,True,False
+Nerve 9 - Pray For The Rain,13009500,False,False,False,True,False
+Nerve 9 - Pray For The Rain,13230000,False,False,False,True,False
+Nerve 9 - Pray For The Rain,13450500,False,False,False,True,False
+Nerve 9 - Pray For The Rain,13671000,False,False,False,True,False
+Nerve 9 - Pray For The Rain,13891500,False,False,True,True,False
+Nerve 9 - Pray For The Rain,14112000,False,False,True,True,False
+Nerve 9 - Pray For The Rain,14332500,False,True,True,True,False
+Nerve 9 - Pray For The Rain,14553000,False,True,True,True,False
+Louis Cressy Band - Good Time,0,False,True,True,True,False
+Louis Cressy Band - Good Time,220500,False,True,True,True,False
+Louis Cressy Band - Good Time,441000,False,False,True,True,False
+Louis Cressy Band - Good Time,661500,False,False,False,True,False
+Louis Cressy Band - Good Time,882000,False,False,False,True,False
+Louis Cressy Band - Good Time,1102500,False,False,False,True,False
+Louis Cressy Band - Good Time,1323000,False,False,False,True,False
+Louis Cressy Band - Good Time,1543500,False,False,False,True,False
+Louis Cressy Band - Good Time,1764000,False,False,False,False,False
+Louis Cressy Band - Good Time,1984500,False,False,False,False,False
+Louis Cressy Band - Good Time,2205000,False,False,False,False,False
+Louis Cressy Band - Good Time,2425500,False,False,False,False,False
+Louis Cressy Band - Good Time,2646000,False,False,False,False,False
+Louis Cressy Band - Good Time,2866500,False,False,False,False,False
+Louis Cressy Band - Good Time,3087000,False,False,False,False,False
+Louis Cressy Band - Good Time,3307500,False,False,False,False,False
+Louis Cressy Band - Good Time,3528000,False,False,False,False,False
+Louis Cressy Band - Good Time,3748500,False,False,False,False,False
+Louis Cressy Band - Good Time,3969000,False,False,False,False,False
+Louis Cressy Band - Good Time,4189500,False,False,False,False,False
+Louis Cressy Band - Good Time,4410000,False,False,False,False,False
+Louis Cressy Band - Good Time,4630500,False,False,False,True,False
+Louis Cressy Band - Good Time,4851000,False,False,False,True,False
+Louis Cressy Band - Good Time,5071500,False,False,False,True,False
+Louis Cressy Band - Good Time,5292000,False,False,False,True,False
+Louis Cressy Band - Good Time,5512500,False,False,False,True,False
+Louis Cressy Band - Good Time,5733000,False,False,False,True,False
+Louis Cressy Band - Good Time,5953500,False,False,False,True,False
+Louis Cressy Band - Good Time,6174000,False,False,False,True,False
+Louis Cressy Band - Good Time,6394500,False,False,False,True,False
+Louis Cressy Band - Good Time,6615000,False,False,False,True,False
+Louis Cressy Band - Good Time,6835500,False,False,False,True,False
+Louis Cressy Band - Good Time,7056000,False,False,False,True,False
+Louis Cressy Band - Good Time,7276500,False,False,False,True,False
+Louis Cressy Band - Good Time,7497000,False,False,False,True,False
+Louis Cressy Band - Good Time,7717500,False,False,False,False,False
+Louis Cressy Band - Good Time,7938000,False,False,False,False,False
+Louis Cressy Band - Good Time,8158500,False,False,False,False,False
+Louis Cressy Band - Good Time,8379000,False,False,False,False,False
+Louis Cressy Band - Good Time,8599500,False,False,False,False,False
+Louis Cressy Band - Good Time,8820000,False,False,False,False,False
+Louis Cressy Band - Good Time,9040500,False,False,False,False,False
+Louis Cressy Band - Good Time,9261000,False,False,False,False,False
+Louis Cressy Band - Good Time,9481500,False,False,False,True,False
+Louis Cressy Band - Good Time,9702000,False,False,False,True,False
+Louis Cressy Band - Good Time,9922500,False,False,False,True,False
+Louis Cressy Band - Good Time,10143000,False,False,False,True,False
+Louis Cressy Band - Good Time,10363500,False,False,False,True,False
+Louis Cressy Band - Good Time,10584000,False,False,False,True,False
+Louis Cressy Band - Good Time,10804500,False,False,False,True,False
+Louis Cressy Band - Good Time,11025000,False,False,False,True,False
+Louis Cressy Band - Good Time,11245500,False,False,False,True,False
+Louis Cressy Band - Good Time,11466000,False,False,False,True,False
+Louis Cressy Band - Good Time,11686500,False,False,False,True,False
+Louis Cressy Band - Good Time,11907000,False,False,False,True,False
+Louis Cressy Band - Good Time,12127500,False,False,True,True,False
+Louis Cressy Band - Good Time,12348000,True,True,True,True,True
+Angels In Amplifiers - I'm Alright,0,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,220500,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,441000,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,661500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,882000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,1102500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,1323000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,1543500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,1764000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,1984500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,2205000,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,2425500,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,2646000,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,2866500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,3087000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,3307500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,3528000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,3748500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,3969000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,4189500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,4410000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,4630500,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,4851000,False,False,False,True,False
+Angels In Amplifiers - I'm Alright,5071500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,5292000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,5512500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,5733000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,5953500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,6174000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,6394500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,6615000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,6835500,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,7056000,False,False,False,False,False
+Angels In Amplifiers - I'm Alright,7276500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,0,True,True,True,True,True
+Ben Carrigan - We'll Talk About It All Tonight,220500,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,441000,False,False,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,661500,False,False,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,882000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,1102500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,1323000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,1543500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,1764000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,1984500,False,False,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,2205000,False,False,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,2425500,False,False,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,2646000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,2866500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,3087000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,3307500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,3528000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,3748500,False,False,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,3969000,False,True,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,4189500,False,True,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,4410000,False,True,False,True,False
+Ben Carrigan - We'll Talk About It All Tonight,4630500,False,True,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,4851000,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,5071500,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,5292000,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,5512500,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,5733000,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,5953500,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,6174000,False,True,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,6394500,False,False,True,False,False
+Ben Carrigan - We'll Talk About It All Tonight,6615000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,6835500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,7056000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,7276500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,7497000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,7717500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,7938000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,8158500,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,8379000,False,False,False,False,False
+Ben Carrigan - We'll Talk About It All Tonight,8599500,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,8820000,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,9040500,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,9261000,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,9481500,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,9702000,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,9922500,False,True,True,True,False
+Ben Carrigan - We'll Talk About It All Tonight,10143000,True,True,True,True,True
+Ben Carrigan - We'll Talk About It All Tonight,10363500,True,True,True,True,True
+Ben Carrigan - We'll Talk About It All Tonight,10584000,True,True,True,True,True
+BKS - Too Much,0,False,False,True,True,False
+BKS - Too Much,220500,False,False,False,True,False
+BKS - Too Much,441000,False,False,False,True,False
+BKS - Too Much,661500,False,False,False,True,False
+BKS - Too Much,882000,False,False,False,False,False
+BKS - Too Much,1102500,False,False,False,False,False
+BKS - Too Much,1323000,False,False,False,False,False
+BKS - Too Much,1543500,False,False,False,False,False
+BKS - Too Much,1764000,False,False,False,False,False
+BKS - Too Much,1984500,False,False,False,False,False
+BKS - Too Much,2205000,False,False,False,False,False
+BKS - Too Much,2425500,False,False,False,False,False
+BKS - Too Much,2646000,False,False,False,False,False
+BKS - Too Much,2866500,False,False,False,False,False
+BKS - Too Much,3087000,False,False,False,False,False
+BKS - Too Much,3307500,False,False,False,False,False
+BKS - Too Much,3528000,False,False,False,False,False
+BKS - Too Much,3748500,False,False,False,False,False
+BKS - Too Much,3969000,False,False,False,False,False
+BKS - Too Much,4189500,False,False,False,False,False
+BKS - Too Much,4410000,False,False,False,False,False
+BKS - Too Much,4630500,False,False,False,False,False
+BKS - Too Much,4851000,False,False,False,True,False
+BKS - Too Much,5071500,False,False,False,True,False
+BKS - Too Much,5292000,False,False,False,True,False
+BKS - Too Much,5512500,False,False,False,True,False
+BKS - Too Much,5733000,False,False,False,True,False
+BKS - Too Much,5953500,False,False,False,True,False
+BKS - Too Much,6174000,False,False,False,True,False
+BKS - Too Much,6394500,False,False,False,True,False
+BKS - Too Much,6615000,False,False,False,False,False
+BKS - Too Much,6835500,False,False,False,False,False
+BKS - Too Much,7056000,False,False,False,False,False
+BKS - Too Much,7276500,False,False,False,False,False
+BKS - Too Much,7497000,False,False,False,False,False
+BKS - Too Much,7717500,False,False,False,False,False
+BKS - Too Much,7938000,False,False,False,False,False
+BKS - Too Much,8158500,False,False,False,False,False
+BKS - Too Much,8379000,False,False,False,False,False
+BKS - Too Much,8599500,False,False,False,True,False
+BKS - Too Much,8820000,False,False,False,True,False
+BKS - Too Much,9040500,False,False,False,True,False
+Carlos Gonzalez - A Place For Us,0,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,220500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,441000,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,661500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,882000,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,1102500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,1323000,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,1543500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,1764000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,1984500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,2205000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,2425500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,2646000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,2866500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,3087000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,3307500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,3528000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,3748500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,3969000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,4189500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,4410000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,4630500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,4851000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,5071500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,5292000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,5512500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,5733000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,5953500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,6174000,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,6394500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,6615000,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,6835500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,7056000,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,7276500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,7497000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,7717500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,7938000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,8158500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,8379000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,8599500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,8820000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,9040500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,9261000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,9481500,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,9702000,False,False,False,False,False
+Carlos Gonzalez - A Place For Us,9922500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,10143000,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,10363500,False,False,True,False,False
+Carlos Gonzalez - A Place For Us,10584000,False,False,True,False,False
+Secretariat - Over The Top,0,False,False,True,True,True
+Secretariat - Over The Top,220500,False,False,True,True,False
+Secretariat - Over The Top,441000,False,False,True,True,False
+Secretariat - Over The Top,661500,False,False,False,True,False
+Secretariat - Over The Top,882000,False,False,False,True,False
+Secretariat - Over The Top,1102500,False,False,False,False,False
+Secretariat - Over The Top,1323000,False,False,False,False,False
+Secretariat - Over The Top,1543500,False,False,False,False,False
+Secretariat - Over The Top,1764000,False,False,False,False,False
+Secretariat - Over The Top,1984500,False,False,False,False,False
+Secretariat - Over The Top,2205000,False,False,False,False,False
+Secretariat - Over The Top,2425500,False,False,False,False,False
+Secretariat - Over The Top,2646000,False,False,False,False,False
+Secretariat - Over The Top,2866500,False,False,False,True,False
+Secretariat - Over The Top,3087000,False,False,False,True,False
+Secretariat - Over The Top,3307500,False,False,False,True,False
+Secretariat - Over The Top,3528000,False,False,False,True,False
+Secretariat - Over The Top,3748500,False,False,False,False,False
+Secretariat - Over The Top,3969000,False,False,False,False,False
+Secretariat - Over The Top,4189500,False,False,False,False,False
+Secretariat - Over The Top,4410000,False,False,False,False,False
+Secretariat - Over The Top,4630500,False,False,False,False,False
+Secretariat - Over The Top,4851000,False,False,False,False,False
+Secretariat - Over The Top,5071500,False,False,False,False,False
+Secretariat - Over The Top,5292000,False,False,False,True,False
+Secretariat - Over The Top,5512500,False,False,False,True,False
+Secretariat - Over The Top,5733000,False,False,False,False,False
+Secretariat - Over The Top,5953500,False,False,False,False,False
+Secretariat - Over The Top,6174000,False,False,False,False,False
+Secretariat - Over The Top,6394500,False,False,False,False,False
+Secretariat - Over The Top,6615000,False,False,False,False,False
+Secretariat - Over The Top,6835500,False,False,False,True,False
+Secretariat - Over The Top,7056000,False,False,False,True,False
+Secretariat - Over The Top,7276500,False,False,False,True,False
+Secretariat - Over The Top,7497000,False,False,False,True,False
+Secretariat - Over The Top,7717500,False,False,False,True,False
+Secretariat - Over The Top,7938000,False,False,False,True,False
+Secretariat - Over The Top,8158500,False,True,True,False,False
+Secretariat - Over The Top,8379000,False,True,True,False,False
+Secretariat - Over The Top,8599500,False,True,True,False,False
+Secretariat - Over The Top,8820000,False,False,False,False,False
+Secretariat - Over The Top,9040500,False,False,False,False,False
+Secretariat - Over The Top,9261000,False,False,False,True,False
+Secretariat - Over The Top,9481500,False,False,False,True,False
+Secretariat - Over The Top,9702000,False,False,False,True,False
+Secretariat - Over The Top,9922500,False,False,False,True,False
+Secretariat - Over The Top,10143000,False,False,False,True,False
+Secretariat - Over The Top,10363500,True,True,True,True,True
+Secretariat - Over The Top,10584000,True,True,True,True,True
+We Fell From The Sky - Not You,0,True,True,True,True,True
+We Fell From The Sky - Not You,220500,False,False,False,True,False
+We Fell From The Sky - Not You,441000,False,False,False,True,False
+We Fell From The Sky - Not You,661500,False,False,False,True,False
+We Fell From The Sky - Not You,882000,False,False,False,True,False
+We Fell From The Sky - Not You,1102500,False,False,False,False,False
+We Fell From The Sky - Not You,1323000,False,False,False,False,False
+We Fell From The Sky - Not You,1543500,False,False,False,False,False
+We Fell From The Sky - Not You,1764000,False,False,False,False,False
+We Fell From The Sky - Not You,1984500,False,False,False,False,False
+We Fell From The Sky - Not You,2205000,False,False,False,False,False
+We Fell From The Sky - Not You,2425500,False,False,False,False,False
+We Fell From The Sky - Not You,2646000,False,False,False,True,False
+We Fell From The Sky - Not You,2866500,False,False,False,True,False
+We Fell From The Sky - Not You,3087000,False,False,False,True,False
+We Fell From The Sky - Not You,3307500,False,False,False,False,False
+We Fell From The Sky - Not You,3528000,False,False,False,False,False
+We Fell From The Sky - Not You,3748500,False,False,False,False,False
+We Fell From The Sky - Not You,3969000,False,False,False,False,False
+We Fell From The Sky - Not You,4189500,False,False,False,False,False
+We Fell From The Sky - Not You,4410000,False,False,False,False,False
+We Fell From The Sky - Not You,4630500,False,False,False,False,False
+We Fell From The Sky - Not You,4851000,False,False,False,True,False
+We Fell From The Sky - Not You,5071500,False,False,False,True,False
+We Fell From The Sky - Not You,5292000,False,False,False,True,False
+We Fell From The Sky - Not You,5512500,False,False,False,False,False
+We Fell From The Sky - Not You,5733000,False,False,False,False,False
+We Fell From The Sky - Not You,5953500,False,False,False,False,False
+We Fell From The Sky - Not You,6174000,False,False,False,False,False
+We Fell From The Sky - Not You,6394500,False,False,False,True,False
+We Fell From The Sky - Not You,6615000,False,False,False,True,False
+We Fell From The Sky - Not You,6835500,False,False,False,True,False
+We Fell From The Sky - Not You,7056000,False,False,False,True,False
+We Fell From The Sky - Not You,7276500,False,False,False,True,False
+We Fell From The Sky - Not You,7497000,False,False,False,True,False
+We Fell From The Sky - Not You,7717500,False,False,False,True,False
+We Fell From The Sky - Not You,7938000,False,False,False,True,False
+We Fell From The Sky - Not You,8158500,False,False,False,False,False
+We Fell From The Sky - Not You,8379000,False,False,False,False,False
+We Fell From The Sky - Not You,8599500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,0,False,True,False,True,False
+Enda Reilly - Cur An Long Ag Seol,220500,False,True,False,True,False
+Enda Reilly - Cur An Long Ag Seol,441000,False,True,False,True,False
+Enda Reilly - Cur An Long Ag Seol,661500,False,True,False,False,False
+Enda Reilly - Cur An Long Ag Seol,882000,False,True,False,False,False
+Enda Reilly - Cur An Long Ag Seol,1102500,False,True,False,False,False
+Enda Reilly - Cur An Long Ag Seol,1323000,False,True,False,False,False
+Enda Reilly - Cur An Long Ag Seol,1543500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,1764000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,1984500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,2205000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,2425500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,2646000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,2866500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,3087000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,3307500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,3528000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,3748500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,3969000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,4189500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,4410000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,4630500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,4851000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,5071500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,5292000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,5512500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,5733000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,5953500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,6174000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,6394500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,6615000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,6835500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,7056000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,7276500,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,7497000,False,False,False,False,False
+Enda Reilly - Cur An Long Ag Seol,7717500,False,False,False,True,False
+Forkupines - Semantics,0,True,True,True,True,True
+Forkupines - Semantics,220500,False,False,True,True,True
+Forkupines - Semantics,441000,False,False,False,True,True
+Forkupines - Semantics,661500,False,False,False,True,False
+Forkupines - Semantics,882000,False,False,False,True,False
+Forkupines - Semantics,1102500,False,False,False,True,True
+Forkupines - Semantics,1323000,False,False,False,False,True
+Forkupines - Semantics,1543500,False,False,False,False,False
+Forkupines - Semantics,1764000,False,False,False,False,False
+Forkupines - Semantics,1984500,False,False,False,False,False
+Forkupines - Semantics,2205000,False,False,False,False,False
+Forkupines - Semantics,2425500,False,False,False,False,False
+Forkupines - Semantics,2646000,False,False,False,False,False
+Forkupines - Semantics,2866500,False,False,False,False,False
+Forkupines - Semantics,3087000,False,False,False,False,False
+Forkupines - Semantics,3307500,False,False,False,False,False
+Forkupines - Semantics,3528000,False,False,True,True,False
+Forkupines - Semantics,3748500,False,False,False,False,False
+Forkupines - Semantics,3969000,False,False,False,False,False
+Forkupines - Semantics,4189500,False,False,False,True,False
+Forkupines - Semantics,4410000,False,False,False,True,False
+Forkupines - Semantics,4630500,False,False,False,False,False
+Forkupines - Semantics,4851000,False,False,False,False,False
+Forkupines - Semantics,5071500,False,False,False,False,False
+Forkupines - Semantics,5292000,False,False,False,False,False
+Forkupines - Semantics,5512500,False,False,False,False,False
+Forkupines - Semantics,5733000,False,False,True,False,False
+Forkupines - Semantics,5953500,False,False,True,False,False
+Forkupines - Semantics,6174000,False,False,True,False,False
+Forkupines - Semantics,6394500,False,False,True,False,False
+Forkupines - Semantics,6615000,False,False,False,False,False
+Forkupines - Semantics,6835500,False,False,False,False,False
+Forkupines - Semantics,7056000,False,False,False,False,False
+Forkupines - Semantics,7276500,False,False,False,False,False
+Forkupines - Semantics,7497000,False,False,False,True,True
+Forkupines - Semantics,7717500,False,True,False,True,True
+Forkupines - Semantics,7938000,False,True,False,True,True
+Forkupines - Semantics,8158500,False,False,False,True,False
+Forkupines - Semantics,8379000,False,False,False,True,False
+Forkupines - Semantics,8599500,False,False,False,True,False
+Forkupines - Semantics,8820000,False,False,False,True,False
+Forkupines - Semantics,9040500,False,False,True,True,False
+Forkupines - Semantics,9261000,False,False,True,True,False
+Forkupines - Semantics,9481500,False,False,False,True,False
+Forkupines - Semantics,9702000,False,False,False,True,False
+Forkupines - Semantics,9922500,False,False,False,True,False
+Forkupines - Semantics,10143000,False,False,False,True,False
+Forkupines - Semantics,10363500,False,False,False,True,False
+Forkupines - Semantics,10584000,False,False,False,True,False
+Forkupines - Semantics,10804500,False,False,False,True,False
+Forkupines - Semantics,11025000,False,False,False,True,False
+Forkupines - Semantics,11245500,False,False,False,True,False
+Forkupines - Semantics,11466000,False,False,False,True,False
+PR - Happy Daze,0,False,False,False,False,False
+PR - Happy Daze,220500,False,False,False,False,False
+PR - Happy Daze,441000,False,False,False,False,False
+PR - Happy Daze,661500,False,False,False,False,False
+PR - Happy Daze,882000,False,False,False,False,False
+PR - Happy Daze,1102500,False,False,False,False,False
+PR - Happy Daze,1323000,False,False,False,False,False
+PR - Happy Daze,1543500,False,False,False,False,False
+PR - Happy Daze,1764000,False,False,False,False,False
+PR - Happy Daze,1984500,False,False,False,False,False
+PR - Happy Daze,2205000,False,False,False,False,False
+PR - Happy Daze,2425500,False,False,False,False,False
+PR - Happy Daze,2646000,False,False,False,False,False
+PR - Happy Daze,2866500,False,False,False,False,False
+PR - Happy Daze,3087000,False,False,False,False,False
+PR - Happy Daze,3307500,False,False,False,False,False
+PR - Happy Daze,3528000,False,False,False,False,False
+PR - Happy Daze,3748500,False,False,False,False,False
+PR - Happy Daze,3969000,False,False,False,False,False
+PR - Happy Daze,4189500,False,False,False,False,False
+PR - Happy Daze,4410000,False,False,False,False,False
+PR - Happy Daze,4630500,False,False,False,False,False
+PR - Happy Daze,4851000,False,False,False,False,False
+PR - Happy Daze,5071500,False,False,False,False,False
+PR - Happy Daze,5292000,False,False,False,False,False
+PR - Happy Daze,5512500,False,False,False,False,False
+PR - Happy Daze,5733000,False,False,False,False,False
+PR - Happy Daze,5953500,False,False,False,False,False
+PR - Happy Daze,6174000,False,False,False,False,False
+PR - Happy Daze,6394500,False,False,False,False,False
+PR - Happy Daze,6615000,False,False,False,False,False
+PR - Oh No,0,False,False,False,False,False
+PR - Oh No,220500,False,False,False,False,False
+PR - Oh No,441000,False,False,False,False,False
+PR - Oh No,661500,False,False,False,False,False
+PR - Oh No,882000,False,False,False,False,False
+PR - Oh No,1102500,False,False,False,False,False
+PR - Oh No,1323000,False,False,False,False,False
+PR - Oh No,1543500,False,False,False,False,False
+PR - Oh No,1764000,False,False,False,False,False
+PR - Oh No,1984500,False,False,False,False,False
+PR - Oh No,2205000,False,False,False,False,False
+PR - Oh No,2425500,False,False,False,False,False
+PR - Oh No,2646000,False,False,False,False,False
+PR - Oh No,2866500,False,False,False,False,False

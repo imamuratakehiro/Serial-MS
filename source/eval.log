@@ -1,0 +1,503 @@
+
+=== Using cuda(utils.func). ===
+
+
+=== Using cuda(utils.logger). ===
+
+[[36m2023-10-29 04:19:14,626[0m][[34mutils.utils[0m][[32mINFO[0m] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>[0m
+[[36m2023-10-29 04:19:14,633[0m][[34mutils.utils[0m][[32mINFO[0m] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>[0m
+[[36m2023-10-29 04:19:14,634[0m][[34mutils.rich_utils[0m][[33mWARNING[0m] - [rank: 0] Field 'callbacks' not found in config. Skipping 'callbacks' config printing...[0m
+[[36m2023-10-29 04:19:14,634[0m][[34mutils.rich_utils[0m][[33mWARNING[0m] - [rank: 0] Field 'logger' not found in config. Skipping 'logger' config printing...[0m
+CONFIG
+├── data
+│   └── _target_: dataset.PreTrainDataModule                                    
+│       cfg:                                                                    
+│         n_epoch: 100                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         batch_train: 16                                                       
+│         batch_test: 64                                                        
+│         num_workers: 4                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         train_dirname: 3s_on1.5                                               
+│         test_dirname: 3s_on1.5                                                
+│         normalize128: false                                                   
+│         condition32: true                                                     
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         seconds_train: 3                                                      
+│         seconds_test: 3                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         lr: 0.001                                                             
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         monitor_sch: train/loss_mix                                           
+│         monitor_mode_sch: min                                                 
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         output_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/lo
+│                                                                               
+├── model
+│   └── _target_: model.PreTrain32                                              
+│       optimizer:                                                              
+│         _target_: torch.optim.Adam                                            
+│         _partial_: true                                                       
+│         lr: 0.001                                                             
+│         weight_decay: 0.0                                                     
+│       scheduler: null                                                         
+│       net:                                                                    
+│         _target_: model.UNetForTriplet_2d_de5_to1d640                         
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         f_size: 2048                                                          
+│         mono: true                                                            
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│       cfg:                                                                    
+│         n_epoch: 100                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         batch_train: 16                                                       
+│         batch_test: 64                                                        
+│         num_workers: 4                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         train_dirname: 3s_on1.5                                               
+│         test_dirname: 3s_on1.5                                                
+│         normalize128: false                                                   
+│         condition32: true                                                     
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         seconds_train: 3                                                      
+│         seconds_test: 3                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         lr: 0.001                                                             
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         monitor_sch: train/loss_mix                                           
+│         monitor_mode_sch: min                                                 
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         output_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/lo
+│                                                                               
+├── trainer
+│   └── _target_: pytorch_lightning.trainer.Trainer                             
+│       default_root_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNe
+│       min_epochs: 1                                                           
+│       max_epochs: 100                                                         
+│       accelerator: gpu                                                        
+│       devices: 1                                                              
+│       check_val_every_n_epoch: 1                                              
+│       deterministic: false                                                    
+│       enable_progress_bar: true                                               
+│       log_every_n_steps: 10                                                   
+│                                                                               
+├── paths
+│   └── root_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet       
+│       data_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/datase
+│       log_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/logs/  
+│       output_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/logs
+│       work_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet  
+│                                                                               
+├── extras
+│   └── ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── task_name
+│   └── eval                                                                    
+├── tags
+│   └── ['dev']                                                                 
+├── ckpt_path
+│   └── ./outputs/2023-10-28/21-07-02/checkpoints/epoch_003.ckpt                
+└── train
+    └── n_epoch: 100                                                            
+        inst_list:                                                              
+        - drums                                                                 
+        - bass                                                                  
+        - piano                                                                 
+        - guitar                                                                
+        - residuals                                                             
+        dataset_dir: /nas03/assets/Dataset/slakh                                
+        batch_train: 16                                                         
+        batch_test: 64                                                          
+        num_workers: 4                                                          
+        pin_memory: true                                                        
+        datasetname: slakh                                                      
+        train_dirname: 3s_on1.5                                                 
+        test_dirname: 3s_on1.5                                                  
+        normalize128: false                                                     
+        condition32: true                                                       
+        mono: true                                                              
+        f_size: 2048                                                            
+        hop_length: 512                                                         
+        seconds_train: 3                                                        
+        seconds_test: 3                                                         
+        sr: 44100                                                               
+        mel: false                                                              
+        db: true                                                                
+        target: model.UNetForTriplet_2d_de5_to1d640                             
+        to1d_mode: mean_linear                                                  
+        order: timefreq                                                         
+        margin: 0.2                                                             
+        lr: 0.001                                                               
+        monitor_es: val/knn_avr                                                 
+        monitor_mode_es: max                                                    
+        monitor_sch: train/loss_mix                                             
+        monitor_mode_sch: min                                                   
+        triplet_rate: 1                                                         
+        unet_rate: 0                                                            
+        recog_rate: 0                                                           
+        output_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/logs
+                                                                                
+[[36m2023-10-29 04:19:14,713[0m][[34msource.eval[0m][[32mINFO[0m] - [rank: 0] Instantiating datamodule <dataset.PreTrainDataModule>[0m
+[[36m2023-10-29 04:19:14,731[0m][[34msource.eval[0m][[32mINFO[0m] - [rank: 0] Instantiating model <model.PreTrain32>[0m
+
+=== Using cuda(model.csn). ===
+
+
+=== Using cuda(model.unet5.model_csn_640). ===
+
+
+=== Using cuda(model.unet5.model_csn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_normal). ===
+
+
+=== Using cuda(model.unet5.model_notcsn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_unet5_1d_de5). ===
+
+
+=== Using cuda(model.waveunet.model_waveunet5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_128_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_inst). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_ae_embnet). ===
+
+
+=== Using cuda(model.to1d.model_linear). ===
+
+
+=== Using cuda(model.to1d.model_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_de5_to1d_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d_embnet_silence). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_de5_to1d_embnet_lastmean). ===
+
+
+=== Using cuda(model.triplet.model_nnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de5_to1d640). ===
+
+
+=== Using cuda(model.jnet.model_jnet_128_embnet). ===
+
+
+=== Using cuda(model.AE.model_ae). ===
+
+
+=== Using cuda(model.demucs.model_demucs). ===
+
+
+=== Using cuda(model.demucs.model_hdemucs). ===
+
+
+=== Using cuda(model.jnet.model_jnet_attention). ===
+
+[[36m2023-10-29 04:19:20,824[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmpwbrktvtn[0m
+[[36m2023-10-29 04:19:20,826[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmpwbrktvtn/_remote_module_non_scriptable.py[0m
+UNetForTriplet_2d_de5_to1d640(
+  (encoder): UNetEncoder(
+    (conv1): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(1, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv2): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv3): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv4): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv5): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv6): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(256, 640, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+      )
+    )
+  )
+  (decoder_drums): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_bass): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_piano): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_guitar): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_residuals): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (to1d): To1D640(
+    (to1d): To1D640timefreq(
+      (fc1): Linear(in_features=10880, out_features=640, bias=True)
+    )
+  )
+  (sigmoid): Sigmoid()
+)
+[[36m2023-10-29 04:19:20,928[0m][[34msource.eval[0m][[32mINFO[0m] - [rank: 0] Instantiating loggers...[0m
+[[36m2023-10-29 04:19:20,929[0m][[34mutils.instantiators[0m][[33mWARNING[0m] - [rank: 0] No logger configs found! Skipping...[0m
+[[36m2023-10-29 04:19:20,929[0m][[34msource.eval[0m][[32mINFO[0m] - [rank: 0] Instantiating trainer <pytorch_lightning.trainer.Trainer>[0m
+[[36m2023-10-29 04:19:21,253[0m][[34msource.eval[0m][[32mINFO[0m] - [rank: 0] Starting testing![0m
+
+----------------------------------------
+Use dataset slakh.
+The frame size is setted to 2048.
+The length of seg for train is 3s.
+The length of seg for valid and test is 3s.
+----------------------------------------
+[[36m2023-10-29 04:19:25,191[0m][[34mutils.utils[0m][[31mERROR[0m] - [rank: 0] [0m
+Traceback (most recent call last):
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 68, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/eval.py", line 76, in evaluate
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=cfg.ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 755, in test
+    return call._call_and_handle_interrupt(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 795, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 956, in _run
+    self._checkpoint_connector._restore_modules_and_callbacks(ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/checkpoint_connector.py", line 396, in _restore_modules_and_callbacks
+    self.restore_model()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/checkpoint_connector.py", line 276, in restore_model
+    trainer.strategy.load_model_state_dict(self._loaded_checkpoint)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 363, in load_model_state_dict
+    self.lightning_module.load_state_dict(checkpoint["state_dict"])
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1604, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for PreTrain32:
+	Unexpected key(s) in state_dict: "csn_valid.masks.weight", "csn_train.masks.weight", "net.csn.masks.weight". 
+[[36m2023-10-29 04:19:25,205[0m][[34mutils.utils[0m][[32mINFO[0m] - [rank: 0] Output dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/logs/eval/runs/2023-10-29_04-19-14[0m

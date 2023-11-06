@@ -1,0 +1,402 @@
+
+=== Using cuda(utils.func). ===
+
+
+=== Using cuda(utils.logger). ===
+
+[2023-10-26 12:06:31,519][utils.utils][INFO] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>
+[2023-10-26 12:06:31,524][utils.utils][INFO] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>
+CONFIG
+├── data
+│   └── _target_: dataset.TripletDataModuleOneInst                              
+│       cfg:                                                                    
+│         n_epoch: 100                                                          
+│         inst: residuals                                                       
+│         inst_list:                                                            
+│         - residuals                                                           
+│         n_triplet_train: 40000                                                
+│         n_triplet_valid: 1000                                                 
+│         n_triplet_test: 1000                                                  
+│         n_triplet_pred: 1000                                                  
+│         batch: 64                                                             
+│         num_workers: 4                                                        
+│         pin_memory: true                                                      
+│         valid_knn: true                                                       
+│         datasetname: slakh                                                    
+│         reduce_silence: stems                                                 
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         seconds_train: 3                                                      
+│         seconds_test: 3                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         db: true                                                              
+│         target: model.JNet128Embnet                                           
+│         to1d_mode: mean_linear                                                
+│         order: freqtime                                                       
+│         margin: 0.2                                                           
+│         lr: 0.001                                                             
+│         monitor_es: val/knn                                                   
+│         monitor_mode_es: max                                                  
+│         monitor_sch: val/loss_all                                             
+│         monitor_mode_sch: min                                                 
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUN
+│                                                                               
+├── model
+│   └── _target_: model.JNetValidKnn                                            
+│       optimizer:                                                              
+│         _target_: torch.optim.Adam                                            
+│         _partial_: true                                                       
+│         lr: 0.001                                                             
+│         weight_decay: 0.0                                                     
+│       scheduler:                                                              
+│         _target_: torch.optim.lr_scheduler.ReduceLROnPlateau                  
+│         _partial_: true                                                       
+│         mode: min                                                             
+│         factor: 0.1                                                           
+│         patience: 10                                                          
+│       net:                                                                    
+│         _target_: model.JNet128Embnet                                         
+│         inst_list:                                                            
+│         - residuals                                                           
+│         f_size: 2048                                                          
+│         mono: true                                                            
+│         to1d_mode: mean_linear                                                
+│         order: freqtime                                                       
+│       cfg:                                                                    
+│         n_epoch: 100                                                          
+│         inst: residuals                                                       
+│         inst_list:                                                            
+│         - residuals                                                           
+│         n_triplet_train: 40000                                                
+│         n_triplet_valid: 1000                                                 
+│         n_triplet_test: 1000                                                  
+│         n_triplet_pred: 1000                                                  
+│         batch: 64                                                             
+│         num_workers: 4                                                        
+│         pin_memory: true                                                      
+│         valid_knn: true                                                       
+│         datasetname: slakh                                                    
+│         reduce_silence: stems                                                 
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         seconds_train: 3                                                      
+│         seconds_test: 3                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         db: true                                                              
+│         target: model.JNet128Embnet                                           
+│         to1d_mode: mean_linear                                                
+│         order: freqtime                                                       
+│         margin: 0.2                                                           
+│         lr: 0.001                                                             
+│         monitor_es: val/knn                                                   
+│         monitor_mode_es: max                                                  
+│         monitor_sch: val/loss_all                                             
+│         monitor_mode_sch: min                                                 
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUN
+│                                                                               
+├── callbacks
+│   └── model_checkpoint:                                                       
+│         _target_: pytorch_lightning.callbacks.ModelCheckpoint                 
+│         dirpath: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/
+│         filename: epoch_{epoch:03d}                                           
+│         monitor: val/knn                                                      
+│         verbose: true                                                         
+│         save_last: true                                                       
+│         save_top_k: 1                                                         
+│         mode: max                                                             
+│         auto_insert_metric_name: false                                        
+│         save_weights_only: false                                              
+│         every_n_train_steps: null                                             
+│         train_time_interval: null                                             
+│         every_n_epochs: null                                                  
+│         save_on_train_epoch_end: null                                         
+│       early_stopping:                                                         
+│         _target_: pytorch_lightning.callbacks.EarlyStopping                   
+│         monitor: val/knn                                                      
+│         min_delta: 0.0                                                        
+│         patience: 10                                                          
+│         verbose: true                                                         
+│         mode: max                                                             
+│         strict: true                                                          
+│         check_finite: true                                                    
+│         stopping_threshold: null                                              
+│         divergence_threshold: null                                            
+│         check_on_train_epoch_end: null                                        
+│       tqdm_progress_bar:                                                      
+│         _target_: pytorch_lightning.callbacks.TQDMProgressBar                 
+│         refresh_rate: 50                                                      
+│                                                                               
+├── logger
+│   └── tensorboard:                                                            
+│         _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger     
+│         save_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet
+│         name: lightning_logs                                                  
+│         log_graph: false                                                      
+│         default_hp_metric: true                                               
+│         prefix: ''                                                            
+│                                                                               
+├── trainer
+│   └── _target_: pytorch_lightning.trainer.Trainer                             
+│       default_root_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWi
+│       min_epochs: 1                                                           
+│       max_epochs: 100                                                         
+│       accelerator: gpu                                                        
+│       devices: 1                                                              
+│       check_val_every_n_epoch: 1                                              
+│       deterministic: false                                                    
+│       enable_progress_bar: true                                               
+│       log_every_n_steps: 10                                                   
+│                                                                               
+├── paths
+│   └── root_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet       
+│       data_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/datase
+│       log_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/logs/  
+│       output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet
+│       work_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet  
+│                                                                               
+├── extras
+│   └── ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── task_name
+│   └── jnet_residuals                                                          
+├── train
+│   └── n_epoch: 100                                                            
+│       inst: residuals                                                         
+│       inst_list:                                                              
+│       - residuals                                                             
+│       n_triplet_train: 40000                                                  
+│       n_triplet_valid: 1000                                                   
+│       n_triplet_test: 1000                                                    
+│       n_triplet_pred: 1000                                                    
+│       batch: 64                                                               
+│       num_workers: 4                                                          
+│       pin_memory: true                                                        
+│       valid_knn: true                                                         
+│       datasetname: slakh                                                      
+│       reduce_silence: stems                                                   
+│       mono: true                                                              
+│       f_size: 2048                                                            
+│       seconds_train: 3                                                        
+│       seconds_test: 3                                                         
+│       sr: 44100                                                               
+│       mel: false                                                              
+│       db: true                                                                
+│       target: model.JNet128Embnet                                             
+│       to1d_mode: mean_linear                                                  
+│       order: freqtime                                                         
+│       margin: 0.2                                                             
+│       lr: 0.001                                                               
+│       monitor_es: val/knn                                                     
+│       monitor_mode_es: max                                                    
+│       monitor_sch: val/loss_all                                               
+│       monitor_mode_sch: min                                                   
+│       triplet_rate: 1                                                         
+│       unet_rate: 0                                                            
+│       recog_rate: 0                                                           
+│       output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet
+│                                                                               
+├── test
+│   └── True                                                                    
+├── tags
+│   └── ['dev']                                                                 
+├── ckpt_path
+│   └── None                                                                    
+└── seed
+    └── None                                                                    
+[2023-10-26 12:06:31,672][source.train][INFO] - [rank: 0] Instantiating datamodule <dataset.TripletDataModuleOneInst>
+[2023-10-26 12:06:31,697][source.train][INFO] - [rank: 0] Instantiating model <model.JNetValidKnn>
+
+=== Using cuda(model.csn). ===
+
+
+=== Using cuda(model.unet5.model_csn_640). ===
+
+
+=== Using cuda(model.unet5.model_csn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_normal). ===
+
+
+=== Using cuda(model.unet5.model_notcsn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_unet5_1d_de5). ===
+
+
+=== Using cuda(model.waveunet.model_waveunet5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_128_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_inst). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_ae_embnet). ===
+
+
+=== Using cuda(model.to1d.model_linear). ===
+
+
+=== Using cuda(model.to1d.model_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_de5_to1d_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d_embnet_silence). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_de5_to1d_embnet_lastmean). ===
+
+
+=== Using cuda(model.triplet.model_nnet). ===
+
+
+=== Using cuda(model.AE.model_ae). ===
+
+
+=== Using cuda(model.demucs.model_demucs). ===
+
+
+=== Using cuda(model.demucs.model_hdemucs). ===
+
+
+=== Using cuda(model.jnet.model_jnet_128_embnet). ===
+
+
+=== Using cuda(model.jnet.model_jnet_attention). ===
+
+[2023-10-26 12:06:34,751][torch.distributed.nn.jit.instantiator][INFO] - Created a temporary directory at /tmp/tmpiwld5xc7
+[2023-10-26 12:06:34,752][torch.distributed.nn.jit.instantiator][INFO] - Writing /tmp/tmpiwld5xc7/_remote_module_non_scriptable.py
+JNet128Embnet(
+  (encoder): UNetEncoder(
+    (conv1): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(1, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv2): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv3): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv4): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv5): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv6): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+      )
+    )
+  )
+  (embnet_residuals): To1D(
+    (recog): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (sigmoid): Sigmoid()
+)
+[2023-10-26 12:06:34,802][source.train][INFO] - [rank: 0] Instantiating callbacks...
+[2023-10-26 12:06:34,802][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>
+[2023-10-26 12:06:34,808][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2023-10-26 12:06:34,809][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.TQDMProgressBar>
+[2023-10-26 12:06:34,810][source.train][INFO] - [rank: 0] Instantiating loggers...
+[2023-10-26 12:06:34,810][utils.instantiators][INFO] - [rank: 0] Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2023-10-26 12:06:34,901][source.train][INFO] - [rank: 0] Instantiating trainer <pytorch_lightning.trainer.Trainer>
+[2023-10-26 12:06:35,173][source.train][INFO] - [rank: 0] Logging hyperparameters!
+[2023-10-26 12:06:35,451][source.train][INFO] - [rank: 0] Starting training!
+
+----------------------------------------
+Use dataset slakh.
+The seg is reduced silence with stems.
+The frame size is setted to 2048.
+The length of seg for train is 3s.
+The length of seg for valid and test is 3s.
+----------------------------------------
+	Loading dataset...
+	dataset was loaded!
+	* Loading time is 46.80888891220093 sec. *
+Sanity Checking: |          | 0/? [00:00<?, ?it/s]Sanity Checking:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s][2023-10-26 12:07:33,498][utils.utils][ERROR] - [rank: 0] 
+Traceback (most recent call last):
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 68, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 92, in train
+    trainer.fit(model=model, datamodule=datamodule, ckpt_path=cfg.get("ckpt_path"))
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 545, in fit
+    call._call_and_handle_interrupt(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 581, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 990, in _run
+    results = self._run_stage()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1034, in _run_stage
+    self._run_sanity_check()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1063, in _run_sanity_check
+    val_loop.run()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 181, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 134, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 391, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 403, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/jnet/jnet_validknn.py", line 209, in validation_step
+    e = self.forward(X)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/jnet/jnet_validknn.py", line 150, in forward
+    embedded_vec, _ = self.net(X)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/jnet/model_jnet_128_embnet.py", line 176, in forward
+    emb, recog_probability = embnet[inst](conv6_out)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/to1d/model_linear.py", line 187, in forward
+    emb_vec = self.to1d(input)
+TypeError: 'tuple' object is not callable
+[2023-10-26 12:07:34,536][utils.utils][INFO] - [rank: 0] Output dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-26/12-06-31
+                                                                   

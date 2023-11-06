@@ -1,0 +1,55 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./eval.py ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Restoring states from the checkpoint path at ./outputs/2023-10-28/21-07-02/checkpoints/epoch_003.ckpt
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/./eval.py", line 20, in <module>
+    eval()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/eval.py", line 96, in main
+    evaluate(cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 78, in wrap
+    raise ex
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 68, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/eval.py", line 76, in evaluate
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=cfg.ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 755, in test
+    return call._call_and_handle_interrupt(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 795, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 956, in _run
+    self._checkpoint_connector._restore_modules_and_callbacks(ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/checkpoint_connector.py", line 396, in _restore_modules_and_callbacks
+    self.restore_model()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/checkpoint_connector.py", line 276, in restore_model
+    trainer.strategy.load_model_state_dict(self._loaded_checkpoint)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 363, in load_model_state_dict
+    self.lightning_module.load_state_dict(checkpoint["state_dict"])
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1604, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for PreTrain32:
+	Unexpected key(s) in state_dict: "csn_valid.masks.weight", "csn_train.masks.weight", "net.csn.masks.weight". 

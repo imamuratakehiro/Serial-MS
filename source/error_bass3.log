@@ -1,0 +1,90 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name         | Type              | Params
+---------------------------------------------------
+0 | net          | JNet128Attention  | 157 M 
+1 | loss_triplet | MarginRankingLoss | 0     
+2 | train_loss   | MeanMetric        | 0     
+3 | val_loss     | MeanMetric        | 0     
+---------------------------------------------------
+157 M     Trainable params
+0         Non-trainable params
+157 M     Total params
+628.775   Total estimated model params size (MB)
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:492: Your `val_dataloader`'s sampler has shuffling enabled, it is strongly recommended that you turn shuffling off for val/test dataloaders.
+Metric val/knn improved. New best score: 0.757
+Epoch 0, global step 625: 'val/knn' reached 0.75735 (best 0.75735), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_000.ckpt' as top 1
+Metric val/knn improved by 0.013 >= min_delta = 0.0. New best score: 0.770
+Epoch 1, global step 1250: 'val/knn' reached 0.77034 (best 0.77034), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_001.ckpt' as top 1
+Metric val/knn improved by 0.009 >= min_delta = 0.0. New best score: 0.780
+Epoch 2, global step 1875: 'val/knn' reached 0.77960 (best 0.77960), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_002.ckpt' as top 1
+Epoch 3, global step 2500: 'val/knn' was not in top 1
+Metric val/knn improved by 0.011 >= min_delta = 0.0. New best score: 0.791
+Epoch 4, global step 3125: 'val/knn' reached 0.79081 (best 0.79081), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_004.ckpt' as top 1
+Metric val/knn improved by 0.022 >= min_delta = 0.0. New best score: 0.813
+Epoch 5, global step 3750: 'val/knn' reached 0.81257 (best 0.81257), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_005.ckpt' as top 1
+Metric val/knn improved by 0.004 >= min_delta = 0.0. New best score: 0.817
+Epoch 6, global step 4375: 'val/knn' reached 0.81679 (best 0.81679), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_006.ckpt' as top 1
+Epoch 7, global step 5000: 'val/knn' was not in top 1
+Epoch 8, global step 5625: 'val/knn' was not in top 1
+Epoch 9, global step 6250: 'val/knn' was not in top 1
+Epoch 10, global step 6875: 'val/knn' was not in top 1
+Epoch 11, global step 7500: 'val/knn' was not in top 1
+Metric val/knn improved by 0.006 >= min_delta = 0.0. New best score: 0.822
+Epoch 12, global step 8125: 'val/knn' reached 0.82232 (best 0.82232), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_012.ckpt' as top 1
+Metric val/knn improved by 0.021 >= min_delta = 0.0. New best score: 0.843
+Epoch 13, global step 8750: 'val/knn' reached 0.84327 (best 0.84327), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_013.ckpt' as top 1
+Epoch 14, global step 9375: 'val/knn' was not in top 1
+Epoch 15, global step 10000: 'val/knn' was not in top 1
+Epoch 16, global step 10625: 'val/knn' was not in top 1
+Metric val/knn improved by 0.000 >= min_delta = 0.0. New best score: 0.844
+Epoch 17, global step 11250: 'val/knn' reached 0.84359 (best 0.84359), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_017.ckpt' as top 1
+Metric val/knn improved by 0.008 >= min_delta = 0.0. New best score: 0.852
+Epoch 18, global step 11875: 'val/knn' reached 0.85188 (best 0.85188), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_018.ckpt' as top 1
+Epoch 19, global step 12500: 'val/knn' was not in top 1
+Metric val/knn improved by 0.002 >= min_delta = 0.0. New best score: 0.854
+Epoch 20, global step 13125: 'val/knn' reached 0.85366 (best 0.85366), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_020.ckpt' as top 1
+Epoch 21, global step 13750: 'val/knn' was not in top 1
+Epoch 22, global step 14375: 'val/knn' was not in top 1
+Epoch 23, global step 15000: 'val/knn' was not in top 1
+Epoch 24, global step 15625: 'val/knn' was not in top 1
+Epoch 25, global step 16250: 'val/knn' was not in top 1
+Epoch 26, global step 16875: 'val/knn' was not in top 1
+Epoch 27, global step 17500: 'val/knn' was not in top 1
+Epoch 28, global step 18125: 'val/knn' was not in top 1
+Metric val/knn improved by 0.002 >= min_delta = 0.0. New best score: 0.855
+Epoch 29, global step 18750: 'val/knn' reached 0.85545 (best 0.85545), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_029.ckpt' as top 1
+Epoch 30, global step 19375: 'val/knn' was not in top 1
+Epoch 31, global step 20000: 'val/knn' was not in top 1
+Metric val/knn improved by 0.001 >= min_delta = 0.0. New best score: 0.857
+Epoch 32, global step 20625: 'val/knn' reached 0.85691 (best 0.85691), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_032.ckpt' as top 1
+Epoch 33, global step 21250: 'val/knn' was not in top 1
+Metric val/knn improved by 0.002 >= min_delta = 0.0. New best score: 0.859
+Epoch 34, global step 21875: 'val/knn' reached 0.85870 (best 0.85870), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_034.ckpt' as top 1
+Epoch 35, global step 22500: 'val/knn' was not in top 1
+Metric val/knn improved by 0.001 >= min_delta = 0.0. New best score: 0.860
+Epoch 36, global step 23125: 'val/knn' reached 0.86016 (best 0.86016), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_036.ckpt' as top 1
+Metric val/knn improved by 0.000 >= min_delta = 0.0. New best score: 0.861
+Epoch 37, global step 23750: 'val/knn' reached 0.86065 (best 0.86065), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_037.ckpt' as top 1
+Metric val/knn improved by 0.001 >= min_delta = 0.0. New best score: 0.861
+Epoch 38, global step 24375: 'val/knn' reached 0.86146 (best 0.86146), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_038.ckpt' as top 1
+Epoch 39, global step 25000: 'val/knn' was not in top 1
+Epoch 40, global step 25625: 'val/knn' was not in top 1
+Epoch 41, global step 26250: 'val/knn' was not in top 1
+Epoch 42, global step 26875: 'val/knn' was not in top 1
+Epoch 43, global step 27500: 'val/knn' was not in top 1
+Epoch 44, global step 28125: 'val/knn' was not in top 1
+Epoch 45, global step 28750: 'val/knn' was not in top 1
+Epoch 46, global step 29375: 'val/knn' was not in top 1
+Epoch 47, global step 30000: 'val/knn' was not in top 1
+Monitored metric val/knn did not improve in the last 10 records. Best score: 0.861. Signaling Trainer to stop.
+Epoch 48, global step 30625: 'val/knn' was not in top 1
+Restoring states from the checkpoint path at /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_038.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-19/03-11-15/checkpoints/epoch_038.ckpt

@@ -1,0 +1,49 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name         | Type              | Params
+---------------------------------------------------
+0 | net          | JNet128Embnet     | 5.7 M 
+1 | loss_triplet | MarginRankingLoss | 0     
+2 | train_loss   | MeanMetric        | 0     
+3 | val_loss     | MeanMetric        | 0     
+---------------------------------------------------
+5.7 M     Trainable params
+0         Non-trainable params
+5.7 M     Total params
+22.983    Total estimated model params size (MB)
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:492: Your `val_dataloader`'s sampler has shuffling enabled, it is strongly recommended that you turn shuffling off for val/test dataloaders.
+Metric val/knn improved. New best score: 0.067
+Epoch 0, global step 625: 'val/knn' reached 0.06749 (best 0.06749), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-27/21-31-41/checkpoints/epoch_000.ckpt' as top 1
+Metric val/knn improved by 0.024 >= min_delta = 0.0. New best score: 0.091
+Epoch 1, global step 1250: 'val/knn' reached 0.09133 (best 0.09133), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-27/21-31-41/checkpoints/epoch_001.ckpt' as top 1
+Epoch 2, global step 1875: 'val/knn' was not in top 1
+Epoch 3, global step 2500: 'val/knn' was not in top 1
+Epoch 4, global step 3125: 'val/knn' was not in top 1
+Epoch 5, global step 3750: 'val/knn' was not in top 1
+Epoch 6, global step 4375: 'val/knn' was not in top 1
+Epoch 7, global step 5000: 'val/knn' was not in top 1
+Metric val/knn improved by 0.008 >= min_delta = 0.0. New best score: 0.100
+Epoch 8, global step 5625: 'val/knn' reached 0.09976 (best 0.09976), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-27/21-31-41/checkpoints/epoch_008.ckpt' as top 1
+Epoch 9, global step 6250: 'val/knn' was not in top 1
+Metric val/knn improved by 0.056 >= min_delta = 0.0. New best score: 0.156
+Epoch 10, global step 6875: 'val/knn' reached 0.15557 (best 0.15557), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-27/21-31-41/checkpoints/epoch_010.ckpt' as top 1
+Epoch 11, global step 7500: 'val/knn' was not in top 1
+Epoch 12, global step 8125: 'val/knn' was not in top 1
+Epoch 13, global step 8750: 'val/knn' was not in top 1
+Epoch 14, global step 9375: 'val/knn' was not in top 1
+Epoch 15, global step 10000: 'val/knn' was not in top 1
+Epoch 16, global step 10625: 'val/knn' was not in top 1
+Epoch 17, global step 11250: 'val/knn' was not in top 1
+Epoch 18, global step 11875: 'val/knn' was not in top 1
+Epoch 19, global step 12500: 'val/knn' was not in top 1
+Monitored metric val/knn did not improve in the last 10 records. Best score: 0.156. Signaling Trainer to stop.
+Epoch 20, global step 13125: 'val/knn' was not in top 1
+Restoring states from the checkpoint path at /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-27/21-31-41/checkpoints/epoch_010.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-27/21-31-41/checkpoints/epoch_010.ckpt
