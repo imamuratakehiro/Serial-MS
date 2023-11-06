@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: null # choose datamodule with `test_dataloader()` for evaluation
+  - train: null
+  - model: null
+  - experiment: triplet_with_unet
+  - logger: null
+  - trainer: default
+  - paths: default
+  - extras: default
+  - hydra: default
+  #- override hydra/job_logging: colorlog
+  #- override hydra/hydra_logging: colorlog
+
+task_name: "eval_triplet_with_unet"
+
+# なんか入れんと動かん、extrasのtagのやつfalseもあり
+tags: ["dev"]
+
+# passing checkpoint path is necessary for evaluation
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/09-41-24/checkpoints/epoch_028.ckpt
+ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/07-49-24/checkpoints/epoch_028.ckpt

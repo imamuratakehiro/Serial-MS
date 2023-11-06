@@ -1,0 +1,48 @@
+
+# hyper parameter
+n_epoch: 100
+inst: "bass"
+inst_list: ["bass"] # datasetがバグるから引数の楽器は一つまで
+
+# data
+n_triplet_train: 40000
+n_triplet_valid: 1000
+n_triplet_test: 1000
+n_triplet_pred: 1000
+batch: 64
+num_workers: 4
+pin_memory: true
+
+valid_knn: True
+datasetname: "slakh"
+reduce_silence: "stems"
+mono: True
+f_size: 2048
+hop_length: 512
+seconds_train: 3
+seconds_test: 3
+sr: 44100
+mel: False
+db: True
+
+# model
+target: model.JNet128Embnet
+#to1d_mode: "mean_linear"
+to1d_mode: "lstm_linear"
+#order: "timefreq"
+order: "freqtime"
+#order: "bilstm"
+margin: 0.2
+lr: 1e-3
+# monitor
+monitor_es: "val/knn"
+monitor_mode_es: "max"
+monitor_sch: "val/loss_all"
+monitor_mode_sch: "min"
+# rate of loss
+triplet_rate: 1
+unet_rate: 0
+recog_rate: 0
+
+# path
+output_dir: ${paths.output_dir}/figure

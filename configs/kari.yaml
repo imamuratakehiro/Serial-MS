@@ -1,0 +1,42 @@
+
+defaults:
+  - _self_
+  - data: null
+#  - data: pretrain
+  - train: null
+  - kari: kari
+#  - train: pretrain
+  - model: null
+#  - model: pretrain
+  - trainer: default
+  - extras: default
+  - callbacks: default
+  - paths: default
+  - logger: tensorboard
+  - hydra: default
+
+  - experiment: triplet_with_unet
+# task name, determines output directory path
+task_name: triplet_with_unet
+#task_name: pretrain
+train: true
+test: true
+
+# なんか入れんと動かん、extrasのtagのやつfalseもあり
+tags: ["dev"]
+
+# simply provide checkpoint path to resume training
+#ckpt_path: /home/imamura23/nas02home/outputs/2023-10-29/18-45-05/checkpoints/epoch_006.ckpt
+ckpt_path: null
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: null
+
+stft_mel :
+  _target_: utils.func.TorchSTFT
+  cfg: ${train}
+
+stft_no_mel :
+  _target_: utils.func.TorchSTFT
+  cfg: ${kari}
+

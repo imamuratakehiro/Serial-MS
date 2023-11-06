@@ -1,0 +1,54 @@
+
+# hyper parameter
+n_epoch: 100
+inst_list: ['drums', 'bass', 'piano', 'guitar', 'residuals']
+
+# data
+dataset_dir: "/nas03/assets/Dataset/slakh"
+n_dataset_test: 1000
+batch_train: 32
+batch_test: 32
+num_workers: 8
+pin_memory: true
+
+datasetname: "slakh"
+seconds_psd_train: 3
+seconds_psd_valid: 10
+seconds_psd_test: 10
+offset_psd_train: 1.5
+offset_psd_valid: 5.0
+offset_psd_test: 10.0
+seconds_triplet_train: 3
+seconds_triplet_valid: 3
+#seconds_triplet_test: 10
+offset_triplet_train: 1.5
+offset_triplet_valid: 1.5
+#offset_triplet_test: 10.0
+normalize128: False
+condition32: True
+load_using_librosa: True
+mono: True
+f_size: 2048
+hop_length: 512
+sr: 44100
+mel: True
+n_mels: 259
+db: True
+
+# model
+target: model.UNetForTriplet_2d_de5_to1d640
+to1d_mode: "mean_linear"
+order: "timefreq"
+#order: "freqtime"
+#order: "bilstm"
+margin: 0.2
+lr: 1e-3
+# monitor
+monitor_es: "val/knn_avr"
+monitor_mode_es: "max"
+#monitor_sch: "train/loss_mix"
+#monitor_mode_sch: "min"
+test_psd_mine: false
+
+# path
+output_dir: ${paths.output_dir}

@@ -1,0 +1,25 @@
+_target_: model.JNetValidKnn
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: ${train.monitor_mode_sch}
+  factor: 0.1
+  patience: 10
+
+net:
+  _target_: ${train.target}
+  #_target_: model.JNet128Attention
+  inst_list: ${train.inst_list}
+  f_size: ${train.f_size}
+  mono: ${train.mono}
+  to1d_mode: ${train.to1d_mode}
+  order: ${train.order}
+
+cfg: ${train}
