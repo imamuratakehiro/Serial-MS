@@ -356,7 +356,8 @@ class Triplet(LightningModule):
         with torch.no_grad():
             _, data, _ = self.stft.transform(data_wave)
         embvec, _, _ = self.net(data)
-        embvec = torch.nn.functional.normalize(embvec, dim=1)
+        if self.cfg.test_valid_norm:
+            embvec = torch.nn.functional.normalize(embvec, dim=1)
         csn_valid = ConditionalSimNet1d()
         self.recorder_psd[mode]["label"][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
         self.recorder_psd[mode]["vec"][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))

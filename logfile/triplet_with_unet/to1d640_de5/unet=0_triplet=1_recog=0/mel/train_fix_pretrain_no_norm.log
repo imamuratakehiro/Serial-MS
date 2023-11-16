@@ -1,0 +1,1238 @@
+
+=== Using cuda(utils.func). ===
+
+[2023-11-16 22:16:06,299][utils.utils][INFO] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>
+[2023-11-16 22:16:06,305][utils.utils][INFO] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>
+CONFIG
+├── data
+│   └── _target_: dataset.TripletDataModule                                     
+│       cfg:                                                                    
+│         n_epoch: 400                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         n_dataset_test: 1000                                                  
+│         batch_train: 64                                                       
+│         batch_test: 64                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         load_using_librosa: false                                             
+│         test_valid_norm: false                                                
+│         mix_minus_inst: false                                                 
+│         test_psd_mine: false                                                  
+│         mel: true                                                             
+│         n_mels: 259                                                           
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         seconds_psd_train: 3                                                  
+│         seconds_psd_valid: 10                                                 
+│         seconds_psd_test: 10                                                  
+│         offset_psd_train: 1.5                                                 
+│         offset_psd_valid: 5.0                                                 
+│         offset_psd_test: 10.0                                                 
+│         seconds_triplet_train: 3                                              
+│         seconds_triplet_valid: 3                                              
+│         offset_triplet_train: 1.5                                             
+│         offset_triplet_valid: 1.5                                             
+│         seconds_c32_train: 3                                                  
+│         seconds_c32_valid: 10                                                 
+│         seconds_c32_test: 10                                                  
+│         offset_c32_train: 1.5                                                 
+│         offset_c32_valid: 5.0                                                 
+│         offset_c32_test: 10.0                                                 
+│         sr: 44100                                                             
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         monitor_es: Valid/knn_avr                                             
+│         monitor_mode_es: max                                                  
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/
+│         output_dir: /home/imamura23/nas02home/outputs/triplet_with_unet/runs/2
+│                                                                               
+├── model
+│   └── _target_: model.Triplet                                                 
+│       optimizer:                                                              
+│         _target_: torch.optim.Adam                                            
+│         _partial_: true                                                       
+│         lr: 0.001                                                             
+│         weight_decay: 0.0                                                     
+│       scheduler: null                                                         
+│       net:                                                                    
+│         _target_: model.UNetForTriplet_2d_de5_to1d640                         
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         f_size: 2048                                                          
+│         mono: true                                                            
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         mel: true                                                             
+│         n_mels: 259                                                           
+│       ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/20
+│       cfg:                                                                    
+│         n_epoch: 400                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         n_dataset_test: 1000                                                  
+│         batch_train: 64                                                       
+│         batch_test: 64                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         load_using_librosa: false                                             
+│         test_valid_norm: false                                                
+│         mix_minus_inst: false                                                 
+│         test_psd_mine: false                                                  
+│         mel: true                                                             
+│         n_mels: 259                                                           
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         seconds_psd_train: 3                                                  
+│         seconds_psd_valid: 10                                                 
+│         seconds_psd_test: 10                                                  
+│         offset_psd_train: 1.5                                                 
+│         offset_psd_valid: 5.0                                                 
+│         offset_psd_test: 10.0                                                 
+│         seconds_triplet_train: 3                                              
+│         seconds_triplet_valid: 3                                              
+│         offset_triplet_train: 1.5                                             
+│         offset_triplet_valid: 1.5                                             
+│         seconds_c32_train: 3                                                  
+│         seconds_c32_valid: 10                                                 
+│         seconds_c32_test: 10                                                  
+│         offset_c32_train: 1.5                                                 
+│         offset_c32_valid: 5.0                                                 
+│         offset_c32_test: 10.0                                                 
+│         sr: 44100                                                             
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         monitor_es: Valid/knn_avr                                             
+│         monitor_mode_es: max                                                  
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/
+│         output_dir: /home/imamura23/nas02home/outputs/triplet_with_unet/runs/2
+│                                                                               
+├── callbacks
+│   └── model_checkpoint:                                                       
+│         _target_: pytorch_lightning.callbacks.ModelCheckpoint                 
+│         dirpath: /home/imamura23/nas02home/outputs/triplet_with_unet/runs/2023
+│         filename: epoch_{epoch:03d}                                           
+│         monitor: Valid/knn_avr                                                
+│         verbose: true                                                         
+│         save_last: true                                                       
+│         save_top_k: -1                                                        
+│         mode: max                                                             
+│         auto_insert_metric_name: false                                        
+│         save_weights_only: false                                              
+│         every_n_train_steps: null                                             
+│         train_time_interval: null                                             
+│         every_n_epochs: null                                                  
+│         save_on_train_epoch_end: null                                         
+│       early_stopping:                                                         
+│         _target_: pytorch_lightning.callbacks.EarlyStopping                   
+│         monitor: Valid/knn_avr                                                
+│         min_delta: 0.0                                                        
+│         patience: 200                                                         
+│         verbose: true                                                         
+│         mode: max                                                             
+│         strict: true                                                          
+│         check_finite: true                                                    
+│         stopping_threshold: null                                              
+│         divergence_threshold: null                                            
+│         check_on_train_epoch_end: null                                        
+│       tqdm_progress_bar:                                                      
+│         _target_: pytorch_lightning.callbacks.TQDMProgressBar                 
+│         refresh_rate: 50                                                      
+│                                                                               
+├── logger
+│   └── tensorboard:                                                            
+│         _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger     
+│         save_dir: /home/imamura23/nas02home/outputs/triplet_with_unet/runs/202
+│         name: lightning_logs                                                  
+│         log_graph: false                                                      
+│         default_hp_metric: true                                               
+│         prefix: ''                                                            
+│                                                                               
+├── trainer
+│   └── _target_: pytorch_lightning.trainer.Trainer                             
+│       default_root_dir: /home/imamura23/nas02home/outputs/triplet_with_unet/ru
+│       min_epochs: 1                                                           
+│       max_epochs: 400                                                         
+│       accelerator: auto                                                       
+│       devices: 1                                                              
+│       precision: 16                                                           
+│       num_sanity_val_steps: 0                                                 
+│       check_val_every_n_epoch: 1                                              
+│       deterministic: false                                                    
+│       enable_progress_bar: true                                               
+│       log_every_n_steps: 10                                                   
+│                                                                               
+├── paths
+│   └── root_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet       
+│       data_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/datase
+│       log_dir: /home/imamura23/nas02home/outputs/                             
+│       output_dir: /home/imamura23/nas02home/outputs/triplet_with_unet/runs/202
+│       work_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet  
+│                                                                               
+├── extras
+│   └── ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── task_name
+│   └── triplet_with_unet                                                       
+├── train
+│   └── n_epoch: 400                                                            
+│       inst_list:                                                              
+│       - drums                                                                 
+│       - bass                                                                  
+│       - piano                                                                 
+│       - guitar                                                                
+│       - residuals                                                             
+│       dataset_dir: /nas03/assets/Dataset/slakh                                
+│       n_dataset_test: 1000                                                    
+│       batch_train: 64                                                         
+│       batch_test: 64                                                          
+│       num_workers: 8                                                          
+│       pin_memory: true                                                        
+│       datasetname: slakh                                                      
+│       load_using_librosa: false                                               
+│       test_valid_norm: false                                                  
+│       mix_minus_inst: false                                                   
+│       test_psd_mine: false                                                    
+│       mel: true                                                               
+│       n_mels: 259                                                             
+│       mono: true                                                              
+│       f_size: 2048                                                            
+│       hop_length: 512                                                         
+│       seconds_psd_train: 3                                                    
+│       seconds_psd_valid: 10                                                   
+│       seconds_psd_test: 10                                                    
+│       offset_psd_train: 1.5                                                   
+│       offset_psd_valid: 5.0                                                   
+│       offset_psd_test: 10.0                                                   
+│       seconds_triplet_train: 3                                                
+│       seconds_triplet_valid: 3                                                
+│       offset_triplet_train: 1.5                                               
+│       offset_triplet_valid: 1.5                                               
+│       seconds_c32_train: 3                                                    
+│       seconds_c32_valid: 10                                                   
+│       seconds_c32_test: 10                                                    
+│       offset_c32_train: 1.5                                                   
+│       offset_c32_valid: 5.0                                                   
+│       offset_c32_test: 10.0                                                   
+│       sr: 44100                                                               
+│       db: true                                                                
+│       target: model.UNetForTriplet_2d_de5_to1d640                             
+│       to1d_mode: mean_linear                                                  
+│       order: timefreq                                                         
+│       margin: 0.2                                                             
+│       monitor_es: Valid/knn_avr                                               
+│       monitor_mode_es: max                                                    
+│       triplet_rate: 1                                                         
+│       unet_rate: 0                                                            
+│       recog_rate: 0                                                           
+│       ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/20
+│       output_dir: /home/imamura23/nas02home/outputs/triplet_with_unet/runs/202
+│                                                                               
+├── test
+│   └── True                                                                    
+├── tags
+│   └── ['triplet', 'model_2d_to1d640_de5']                                     
+├── ckpt_path
+│   └── None                                                                    
+└── seed
+    └── None                                                                    
+[2023-11-16 22:16:06,403][source.train][INFO] - [rank: 0] Instantiating datamodule <dataset.TripletDataModule>
+[2023-11-16 22:16:06,419][source.train][INFO] - [rank: 0] Instantiating model <model.Triplet>
+
+=== Using cuda(model.csn). ===
+
+
+=== Using cuda(model.unet5.model_csn_640). ===
+
+
+=== Using cuda(model.unet5.model_csn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_normal). ===
+
+
+=== Using cuda(model.unet5.model_notcsn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_unet5_1d_de5). ===
+
+
+=== Using cuda(model.waveunet.model_waveunet5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_128_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_inst). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_ae_embnet). ===
+
+
+=== Using cuda(model.to1d.model_linear). ===
+
+
+=== Using cuda(model.to1d.model_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_de5_to1d_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d_embnet_silence). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_de5_to1d_embnet_lastmean). ===
+
+
+=== Using cuda(model.triplet.model_nnet_old). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de5_to1d640). ===
+
+
+=== Using cuda(model.jnet.model_jnet_128_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_to1d640_1dde5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d640_1dde1_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de5_to1d640_addencoder). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de1_to1d640). ===
+
+
+=== Using cuda(model.triplet.model_nnet). ===
+
+
+=== Using cuda(model.AE.model_ae). ===
+
+
+=== Using cuda(model.demucs.model_demucs). ===
+
+
+=== Using cuda(model.demucs.model_hdemucs). ===
+
+
+=== Using cuda(model.jnet.model_jnet_attention). ===
+
+[2023-11-16 22:16:08,440][torch.distributed.nn.jit.instantiator][INFO] - Created a temporary directory at /tmp/tmpjnfbg0rx
+[2023-11-16 22:16:08,441][torch.distributed.nn.jit.instantiator][INFO] - Writing /tmp/tmpjnfbg0rx/_remote_module_non_scriptable.py
+== Loading pretrained model...
+== pretrained model was loaded!
+UNetForTriplet_2d_de5_to1d640(
+  (encoder): UNetEncoder(
+    (conv1): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(1, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv2): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv3): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv4): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv5): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv6): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(256, 640, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+  )
+  (decoder_drums): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_bass): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_piano): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_guitar): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_residuals): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (to1d): To1D640(
+    (to1d): To1D640timefreq(
+      (fc1): Linear(in_features=3200, out_features=640, bias=True)
+    )
+  )
+  (sigmoid): Sigmoid()
+)
+[2023-11-16 22:16:09,219][source.train][INFO] - [rank: 0] Instantiating callbacks...
+[2023-11-16 22:16:09,220][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>
+[2023-11-16 22:16:09,225][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2023-11-16 22:16:09,227][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.TQDMProgressBar>
+[2023-11-16 22:16:09,228][source.train][INFO] - [rank: 0] Instantiating loggers...
+[2023-11-16 22:16:09,228][utils.instantiators][INFO] - [rank: 0] Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2023-11-16 22:16:09,261][source.train][INFO] - [rank: 0] Instantiating trainer <pytorch_lightning.trainer.Trainer>
+[2023-11-16 22:16:09,612][source.train][INFO] - [rank: 0] Logging hyperparameters!
+[2023-11-16 22:16:09,770][source.train][INFO] - [rank: 0] Starting training!
+
+----------------------------------------
+Use dataset slakh.
+The frame size is setted to 2048.
+----------------------------------------
+	Loading dataset...
+	dataset was loaded!
+	* Loading time is 0.7119340896606445 sec. *
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/313 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/313 [00:00<?, ?it/s] Epoch 0:  16%|█▌        | 50/313 [01:26<07:33,  0.58it/s]Epoch 0:  16%|█▌        | 50/313 [01:26<07:33,  0.58it/s, v_num=0, Train/loss_all_step=0.171, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.171, Train/loss_recog_step=2.100]Epoch 0:  32%|███▏      | 100/313 [02:32<05:25,  0.65it/s, v_num=0, Train/loss_all_step=0.171, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.171, Train/loss_recog_step=2.100]Epoch 0:  32%|███▏      | 100/313 [02:32<05:25,  0.65it/s, v_num=0, Train/loss_all_step=0.176, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.176, Train/loss_recog_step=1.940]Epoch 0:  48%|████▊     | 150/313 [03:40<03:59,  0.68it/s, v_num=0, Train/loss_all_step=0.176, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.176, Train/loss_recog_step=1.940]Epoch 0:  48%|████▊     | 150/313 [03:40<03:59,  0.68it/s, v_num=0, Train/loss_all_step=0.180, Train/loss_unet_all_step=0.569, Train/loss_triplet_all_step=0.180, Train/loss_recog_step=1.520]Epoch 0:  64%|██████▍   | 200/313 [04:51<02:44,  0.69it/s, v_num=0, Train/loss_all_step=0.180, Train/loss_unet_all_step=0.569, Train/loss_triplet_all_step=0.180, Train/loss_recog_step=1.520]Epoch 0:  64%|██████▍   | 200/313 [04:51<02:44,  0.69it/s, v_num=0, Train/loss_all_step=0.143, Train/loss_unet_all_step=0.562, Train/loss_triplet_all_step=0.143, Train/loss_recog_step=1.480]Epoch 0:  80%|███████▉  | 250/313 [06:02<01:31,  0.69it/s, v_num=0, Train/loss_all_step=0.143, Train/loss_unet_all_step=0.562, Train/loss_triplet_all_step=0.143, Train/loss_recog_step=1.480]Epoch 0:  80%|███████▉  | 250/313 [06:02<01:31,  0.69it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.543, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.440]Epoch 0:  96%|█████████▌| 300/313 [07:09<00:18,  0.70it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.543, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.440]Epoch 0:  96%|█████████▌| 300/313 [07:09<00:18,  0.70it/s, v_num=0, Train/loss_all_step=0.147, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.147, Train/loss_recog_step=1.530]Epoch 0: 100%|██████████| 313/313 [07:23<00:00,  0.71it/s, v_num=0, Train/loss_all_step=0.147, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.147, Train/loss_recog_step=1.530]Epoch 0: 100%|██████████| 313/313 [07:23<00:00,  0.71it/s, v_num=0, Train/loss_all_step=0.173, Train/loss_unet_all_step=0.609, Train/loss_triplet_all_step=0.173, Train/loss_recog_step=1.510]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.56it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:04<00:00,  2.61it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:04<00:00,  2.70it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 12/12 [00:04<00:00,  2.75it/s][A
+Validation DataLoader 3:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 10/10 [00:03<00:00,  2.81it/s][A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 5:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 5: 100%|██████████| 10/10 [00:03<00:00,  2.71it/s][A
+
+== U-Net Loss ==
+Valid average loss UNet (anchor, positive, negative)  : 0.180956, 0.184483, 0.188442
+Valid average loss UNet            (all)              : 0.553881
+
+== Triplet Loss ==
+Valid average loss drums    (Triplet, dist_p, dist_n) : 0.065230, 0.260822, 0.541698
+Valid average loss bass     (Triplet, dist_p, dist_n) : 0.211296, 0.316881, 0.328764
+Valid average loss piano    (Triplet, dist_p, dist_n) : 0.201535, 0.302771, 0.304564
+Valid average loss guitar   (Triplet, dist_p, dist_n) : 0.149304, 0.234769, 0.300217
+Valid average loss residuals(Triplet, dist_p, dist_n) : 0.108568, 0.329470, 0.455378
+Valid average loss all      (Triplet)                 : 0.159179
+
+== Recognize ==
+Valid average loss Recognize     : 1.522603
+Valid average accuracy drums     : 83.333328 %
+Valid average accuracy bass      : 97.666672 %
+Valid average accuracy piano     : 94.333336 %
+Valid average accuracy guitar    : 53.666668 %
+Valid average accuracy residuals : 68.666664 %
+
+== Valid average loss all : 0.159179
+
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 18.407108545303345 sec. =
+Valid knn accuracy drums     : 74.41176470588235%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 19.41761541366577 sec. =
+Valid knn accuracy bass      : 17.296511627906977%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 20.015772819519043 sec. =
+Valid knn accuracy piano     : 34.054054054054056%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 16.767513036727905 sec. =
+Valid knn accuracy guitar    : 35.38961038961039%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 17.17641043663025 sec. =
+Valid knn accuracy residuals : 61.32075471698113%
+
+Valid knn accuracy average   : 44.494539098886975%
+
+                                                                        [AEpoch 0: 100%|██████████| 313/313 [10:02<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.173, Train/loss_unet_all_step=0.609, Train/loss_triplet_all_step=0.173, Train/loss_recog_step=1.510, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445]Epoch 0: 100%|██████████| 313/313 [10:02<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.173, Train/loss_unet_all_step=0.609, Train/loss_triplet_all_step=0.173, Train/loss_recog_step=1.510, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]
+
+== U-Net Loss ==
+Train average loss UNet (anchor, positive, negative)  : 0.186359, 0.186692, 0.185503
+Train average loss UNet            (all)              : 0.558554
+
+== Triplet Loss ==
+Train average loss drums    (Triplet, dist_p, dist_n) : 0.082836, 0.321669, 0.600392
+Train average loss bass     (Triplet, dist_p, dist_n) : 0.212789, 0.315296, 0.310723
+Train average loss piano    (Triplet, dist_p, dist_n) : 0.198117, 0.391689, 0.410051
+Train average loss guitar   (Triplet, dist_p, dist_n) : 0.180888, 0.383762, 0.433253
+Train average loss residuals(Triplet, dist_p, dist_n) : 0.159005, 0.447053, 0.528542
+Train average loss all      (Triplet)                 : 0.167761
+
+== Recognize ==
+Train average loss Recognize     : 1.759474
+Train average accuracy drums     : 39.721668 %
+Train average accuracy bass      : 52.130001 %
+Train average accuracy piano     : 69.471672 %
+Train average accuracy guitar    : 59.176666 %
+Train average accuracy residuals : 68.449997 %
+
+== Train average loss all : 0.167761
+
+Epoch 0:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.173, Train/loss_unet_all_step=0.609, Train/loss_triplet_all_step=0.173, Train/loss_recog_step=1.510, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]          Epoch 1:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.173, Train/loss_unet_all_step=0.609, Train/loss_triplet_all_step=0.173, Train/loss_recog_step=1.510, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  16%|█▌        | 50/313 [01:14<06:33,  0.67it/s, v_num=0, Train/loss_all_step=0.173, Train/loss_unet_all_step=0.609, Train/loss_triplet_all_step=0.173, Train/loss_recog_step=1.510, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  16%|█▌        | 50/313 [01:14<06:33,  0.67it/s, v_num=0, Train/loss_all_step=0.154, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.154, Train/loss_recog_step=1.420, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  32%|███▏      | 100/313 [02:20<05:00,  0.71it/s, v_num=0, Train/loss_all_step=0.154, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.154, Train/loss_recog_step=1.420, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  32%|███▏      | 100/313 [02:20<05:00,  0.71it/s, v_num=0, Train/loss_all_step=0.127, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.127, Train/loss_recog_step=1.450, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  48%|████▊     | 150/313 [03:30<03:48,  0.71it/s, v_num=0, Train/loss_all_step=0.127, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.127, Train/loss_recog_step=1.450, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  48%|████▊     | 150/313 [03:30<03:48,  0.71it/s, v_num=0, Train/loss_all_step=0.128, Train/loss_unet_all_step=0.572, Train/loss_triplet_all_step=0.128, Train/loss_recog_step=1.340, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  64%|██████▍   | 200/313 [04:39<02:37,  0.72it/s, v_num=0, Train/loss_all_step=0.128, Train/loss_unet_all_step=0.572, Train/loss_triplet_all_step=0.128, Train/loss_recog_step=1.340, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  64%|██████▍   | 200/313 [04:39<02:37,  0.72it/s, v_num=0, Train/loss_all_step=0.129, Train/loss_unet_all_step=0.564, Train/loss_triplet_all_step=0.129, Train/loss_recog_step=1.390, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  80%|███████▉  | 250/313 [05:48<01:27,  0.72it/s, v_num=0, Train/loss_all_step=0.129, Train/loss_unet_all_step=0.564, Train/loss_triplet_all_step=0.129, Train/loss_recog_step=1.390, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  80%|███████▉  | 250/313 [05:48<01:27,  0.72it/s, v_num=0, Train/loss_all_step=0.128, Train/loss_unet_all_step=0.545, Train/loss_triplet_all_step=0.128, Train/loss_recog_step=1.360, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  96%|█████████▌| 300/313 [06:57<00:18,  0.72it/s, v_num=0, Train/loss_all_step=0.128, Train/loss_unet_all_step=0.545, Train/loss_triplet_all_step=0.128, Train/loss_recog_step=1.360, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1:  96%|█████████▌| 300/313 [06:57<00:18,  0.72it/s, v_num=0, Train/loss_all_step=0.137, Train/loss_unet_all_step=0.553, Train/loss_triplet_all_step=0.137, Train/loss_recog_step=1.490, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1: 100%|██████████| 313/313 [07:11<00:00,  0.73it/s, v_num=0, Train/loss_all_step=0.137, Train/loss_unet_all_step=0.553, Train/loss_triplet_all_step=0.137, Train/loss_recog_step=1.490, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1: 100%|██████████| 313/313 [07:11<00:00,  0.73it/s, v_num=0, Train/loss_all_step=0.158, Train/loss_unet_all_step=0.601, Train/loss_triplet_all_step=0.158, Train/loss_recog_step=1.420, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.510, Valid/loss_all_epoch=0.159, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.159, Valid/loss_recog_epoch=1.520, Valid/knn_avr=0.445, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.68it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:03<00:00,  2.75it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:04<00:00,  2.75it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 12/12 [00:04<00:00,  2.69it/s][A
+Validation DataLoader 3:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 10/10 [00:03<00:00,  2.85it/s][A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 5:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 5: 100%|██████████| 10/10 [00:03<00:00,  2.67it/s][A
+
+== U-Net Loss ==
+Valid average loss UNet (anchor, positive, negative)  : 0.179612, 0.182852, 0.187979
+Valid average loss UNet            (all)              : 0.550443
+
+== Triplet Loss ==
+Valid average loss drums    (Triplet, dist_p, dist_n) : 0.075960, 0.291946, 0.598025
+Valid average loss bass     (Triplet, dist_p, dist_n) : 0.186498, 0.236252, 0.251047
+Valid average loss piano    (Triplet, dist_p, dist_n) : 0.204437, 0.340883, 0.386769
+Valid average loss guitar   (Triplet, dist_p, dist_n) : 0.147140, 0.281870, 0.355485
+Valid average loss residuals(Triplet, dist_p, dist_n) : 0.122548, 0.390553, 0.549982
+Valid average loss all      (Triplet)                 : 0.152029
+
+== Recognize ==
+Valid average loss Recognize     : 1.378980
+Valid average accuracy drums     : 28.333334 %
+Valid average accuracy bass      : 5.000000 %
+Valid average accuracy piano     : 94.666664 %
+Valid average accuracy guitar    : 89.333328 %
+Valid average accuracy residuals : 90.333328 %
+
+== Valid average loss all : 0.152029
+
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 18.304844617843628 sec. =
+Valid knn accuracy drums     : 71.32352941176471%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 18.538429498672485 sec. =
+Valid knn accuracy bass      : 26.453488372093027%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.810721158981323 sec. =
+Valid knn accuracy piano     : 26.756756756756754%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 17.249803066253662 sec. =
+Valid knn accuracy guitar    : 33.116883116883116%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 16.11098289489746 sec. =
+Valid knn accuracy residuals : 59.27672955974843%
+
+Valid knn accuracy average   : 43.38547744344921%
+
+                                                                        [AEpoch 1: 100%|██████████| 313/313 [09:47<00:00,  0.53it/s, v_num=0, Train/loss_all_step=0.158, Train/loss_unet_all_step=0.601, Train/loss_triplet_all_step=0.158, Train/loss_recog_step=1.420, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.168, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.168, Train/loss_recog_epoch=1.760]Epoch 1: 100%|██████████| 313/313 [09:47<00:00,  0.53it/s, v_num=0, Train/loss_all_step=0.158, Train/loss_unet_all_step=0.601, Train/loss_triplet_all_step=0.158, Train/loss_recog_step=1.420, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]
+
+== U-Net Loss ==
+Train average loss UNet (anchor, positive, negative)  : 0.186541, 0.186872, 0.185698
+Train average loss UNet            (all)              : 0.559111
+
+== Triplet Loss ==
+Train average loss drums    (Triplet, dist_p, dist_n) : 0.063646, 0.264683, 0.608914
+Train average loss bass     (Triplet, dist_p, dist_n) : 0.188026, 0.250428, 0.279508
+Train average loss piano    (Triplet, dist_p, dist_n) : 0.173298, 0.311868, 0.358480
+Train average loss guitar   (Triplet, dist_p, dist_n) : 0.155273, 0.298950, 0.387999
+Train average loss residuals(Triplet, dist_p, dist_n) : 0.137443, 0.358309, 0.468841
+Train average loss all      (Triplet)                 : 0.144598
+
+== Recognize ==
+Train average loss Recognize     : 1.432256
+Train average accuracy drums     : 57.058334 %
+Train average accuracy bass      : 58.151669 %
+Train average accuracy piano     : 89.803329 %
+Train average accuracy guitar    : 71.020004 %
+Train average accuracy residuals : 78.806671 %
+
+== Train average loss all : 0.144598
+
+Epoch 1:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.158, Train/loss_unet_all_step=0.601, Train/loss_triplet_all_step=0.158, Train/loss_recog_step=1.420, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]          Epoch 2:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.158, Train/loss_unet_all_step=0.601, Train/loss_triplet_all_step=0.158, Train/loss_recog_step=1.420, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  16%|█▌        | 50/313 [01:15<06:38,  0.66it/s, v_num=0, Train/loss_all_step=0.158, Train/loss_unet_all_step=0.601, Train/loss_triplet_all_step=0.158, Train/loss_recog_step=1.420, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  16%|█▌        | 50/313 [01:15<06:38,  0.66it/s, v_num=0, Train/loss_all_step=0.136, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.136, Train/loss_recog_step=1.490, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  32%|███▏      | 100/313 [02:22<05:03,  0.70it/s, v_num=0, Train/loss_all_step=0.136, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.136, Train/loss_recog_step=1.490, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  32%|███▏      | 100/313 [02:22<05:03,  0.70it/s, v_num=0, Train/loss_all_step=0.117, Train/loss_unet_all_step=0.557, Train/loss_triplet_all_step=0.117, Train/loss_recog_step=1.540, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  48%|████▊     | 150/313 [03:31<03:49,  0.71it/s, v_num=0, Train/loss_all_step=0.117, Train/loss_unet_all_step=0.557, Train/loss_triplet_all_step=0.117, Train/loss_recog_step=1.540, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  48%|████▊     | 150/313 [03:31<03:49,  0.71it/s, v_num=0, Train/loss_all_step=0.124, Train/loss_unet_all_step=0.575, Train/loss_triplet_all_step=0.124, Train/loss_recog_step=1.310, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  64%|██████▍   | 200/313 [04:41<02:38,  0.71it/s, v_num=0, Train/loss_all_step=0.124, Train/loss_unet_all_step=0.575, Train/loss_triplet_all_step=0.124, Train/loss_recog_step=1.310, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  64%|██████▍   | 200/313 [04:41<02:38,  0.71it/s, v_num=0, Train/loss_all_step=0.0929, Train/loss_unet_all_step=0.563, Train/loss_triplet_all_step=0.0929, Train/loss_recog_step=1.500, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  80%|███████▉  | 250/313 [05:50<01:28,  0.71it/s, v_num=0, Train/loss_all_step=0.0929, Train/loss_unet_all_step=0.563, Train/loss_triplet_all_step=0.0929, Train/loss_recog_step=1.500, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  80%|███████▉  | 250/313 [05:50<01:28,  0.71it/s, v_num=0, Train/loss_all_step=0.118, Train/loss_unet_all_step=0.548, Train/loss_triplet_all_step=0.118, Train/loss_recog_step=1.360, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]  Epoch 2:  96%|█████████▌| 300/313 [07:00<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.118, Train/loss_unet_all_step=0.548, Train/loss_triplet_all_step=0.118, Train/loss_recog_step=1.360, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2:  96%|█████████▌| 300/313 [07:00<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.135, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.135, Train/loss_recog_step=1.400, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2: 100%|██████████| 313/313 [07:14<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.135, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.135, Train/loss_recog_step=1.400, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2: 100%|██████████| 313/313 [07:14<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.122, Train/loss_unet_all_step=0.604, Train/loss_triplet_all_step=0.122, Train/loss_recog_step=1.400, Valid/loss_all_step=0.151, Valid/loss_unet_all_step=0.554, Valid/loss_triplet_all_step=0.151, Valid/loss_recog_step=1.380, Valid/loss_all_epoch=0.152, Valid/loss_unet_all_epoch=0.550, Valid/loss_triplet_all_epoch=0.152, Valid/loss_recog_epoch=1.380, Valid/knn_avr=0.434, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.78it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:03<00:00,  2.76it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:04<00:00,  2.63it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 12/12 [00:04<00:00,  2.72it/s][A
+Validation DataLoader 3:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 10/10 [00:03<00:00,  2.84it/s][A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 5:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 5: 100%|██████████| 10/10 [00:03<00:00,  2.66it/s][A
+
+== U-Net Loss ==
+Valid average loss UNet (anchor, positive, negative)  : 0.180712, 0.184018, 0.188602
+Valid average loss UNet            (all)              : 0.553332
+
+== Triplet Loss ==
+Valid average loss drums    (Triplet, dist_p, dist_n) : 0.100269, 0.325941, 0.621911
+Valid average loss bass     (Triplet, dist_p, dist_n) : 0.202324, 0.288141, 0.304257
+Valid average loss piano    (Triplet, dist_p, dist_n) : 0.227976, 0.378081, 0.377201
+Valid average loss guitar   (Triplet, dist_p, dist_n) : 0.129899, 0.305355, 0.434842
+Valid average loss residuals(Triplet, dist_p, dist_n) : 0.102467, 0.367617, 0.505818
+Valid average loss all      (Triplet)                 : 0.161139
+
+== Recognize ==
+Valid average loss Recognize     : 1.401473
+Valid average accuracy drums     : 13.333334 %
+Valid average accuracy bass      : 92.666664 %
+Valid average accuracy piano     : 94.666664 %
+Valid average accuracy guitar    : 89.333328 %
+Valid average accuracy residuals : 89.666664 %
+
+== Valid average loss all : 0.161139
+
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.00821304321289 sec. =
+Valid knn accuracy drums     : 69.55882352941177%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.03077483177185 sec. =
+Valid knn accuracy bass      : 20.49418604651163%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 20.486313343048096 sec. =
+Valid knn accuracy piano     : 30.270270270270274%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 17.74838376045227 sec. =
+Valid knn accuracy guitar    : 40.74675324675325%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 17.637112617492676 sec. =
+Valid knn accuracy residuals : 57.38993710691824%
+
+Valid knn accuracy average   : 43.69199403997303%
+
+                                                                        [AEpoch 2: 100%|██████████| 313/313 [09:55<00:00,  0.53it/s, v_num=0, Train/loss_all_step=0.122, Train/loss_unet_all_step=0.604, Train/loss_triplet_all_step=0.122, Train/loss_recog_step=1.400, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.145, Train/loss_unet_all_epoch=0.559, Train/loss_triplet_all_epoch=0.145, Train/loss_recog_epoch=1.430]Epoch 2: 100%|██████████| 313/313 [09:55<00:00,  0.53it/s, v_num=0, Train/loss_all_step=0.122, Train/loss_unet_all_step=0.604, Train/loss_triplet_all_step=0.122, Train/loss_recog_step=1.400, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]
+
+== U-Net Loss ==
+Train average loss UNet (anchor, positive, negative)  : 0.187694, 0.188005, 0.186807
+Train average loss UNet            (all)              : 0.562505
+
+== Triplet Loss ==
+Train average loss drums    (Triplet, dist_p, dist_n) : 0.056296, 0.290258, 0.673449
+Train average loss bass     (Triplet, dist_p, dist_n) : 0.173459, 0.266562, 0.318162
+Train average loss piano    (Triplet, dist_p, dist_n) : 0.159650, 0.344718, 0.416217
+Train average loss guitar   (Triplet, dist_p, dist_n) : 0.141341, 0.325429, 0.442907
+Train average loss residuals(Triplet, dist_p, dist_n) : 0.123520, 0.393865, 0.535504
+Train average loss all      (Triplet)                 : 0.131849
+
+== Recognize ==
+Train average loss Recognize     : 1.455924
+Train average accuracy drums     : 60.325005 %
+Train average accuracy bass      : 31.763332 %
+Train average accuracy piano     : 89.813332 %
+Train average accuracy guitar    : 71.989998 %
+Train average accuracy residuals : 49.169998 %
+
+== Train average loss all : 0.131849
+
+Epoch 2:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.122, Train/loss_unet_all_step=0.604, Train/loss_triplet_all_step=0.122, Train/loss_recog_step=1.400, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]          Epoch 3:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.122, Train/loss_unet_all_step=0.604, Train/loss_triplet_all_step=0.122, Train/loss_recog_step=1.400, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  16%|█▌        | 50/313 [01:17<06:48,  0.64it/s, v_num=0, Train/loss_all_step=0.122, Train/loss_unet_all_step=0.604, Train/loss_triplet_all_step=0.122, Train/loss_recog_step=1.400, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  16%|█▌        | 50/313 [01:17<06:48,  0.64it/s, v_num=0, Train/loss_all_step=0.121, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.121, Train/loss_recog_step=1.400, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  32%|███▏      | 100/313 [02:25<05:10,  0.69it/s, v_num=0, Train/loss_all_step=0.121, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.121, Train/loss_recog_step=1.400, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  32%|███▏      | 100/313 [02:25<05:10,  0.69it/s, v_num=0, Train/loss_all_step=0.105, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.105, Train/loss_recog_step=1.440, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  48%|████▊     | 150/313 [03:34<03:53,  0.70it/s, v_num=0, Train/loss_all_step=0.105, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.105, Train/loss_recog_step=1.440, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  48%|████▊     | 150/313 [03:34<03:53,  0.70it/s, v_num=0, Train/loss_all_step=0.118, Train/loss_unet_all_step=0.576, Train/loss_triplet_all_step=0.118, Train/loss_recog_step=1.290, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  64%|██████▍   | 200/313 [04:44<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.118, Train/loss_unet_all_step=0.576, Train/loss_triplet_all_step=0.118, Train/loss_recog_step=1.290, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  64%|██████▍   | 200/313 [04:44<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.102, Train/loss_unet_all_step=0.561, Train/loss_triplet_all_step=0.102, Train/loss_recog_step=1.440, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  80%|███████▉  | 250/313 [05:54<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.102, Train/loss_unet_all_step=0.561, Train/loss_triplet_all_step=0.102, Train/loss_recog_step=1.440, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  80%|███████▉  | 250/313 [05:54<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.104, Train/loss_unet_all_step=0.547, Train/loss_triplet_all_step=0.104, Train/loss_recog_step=1.410, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  96%|█████████▌| 300/313 [07:03<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.104, Train/loss_unet_all_step=0.547, Train/loss_triplet_all_step=0.104, Train/loss_recog_step=1.410, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3:  96%|█████████▌| 300/313 [07:03<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.126, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.126, Train/loss_recog_step=1.420, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3: 100%|██████████| 313/313 [07:17<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.126, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.126, Train/loss_recog_step=1.420, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3: 100%|██████████| 313/313 [07:17<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.603, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.320, Valid/loss_all_step=0.188, Valid/loss_unet_all_step=0.558, Valid/loss_triplet_all_step=0.188, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.161, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.161, Valid/loss_recog_epoch=1.400, Valid/knn_avr=0.437, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.76it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:03<00:00,  2.75it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:04<00:00,  2.69it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 12/12 [00:04<00:00,  2.83it/s][A
+Validation DataLoader 3:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 10/10 [00:03<00:00,  2.84it/s][A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 5:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 5: 100%|██████████| 10/10 [00:03<00:00,  2.72it/s][A
+
+== U-Net Loss ==
+Valid average loss UNet (anchor, positive, negative)  : 0.180619, 0.183963, 0.188497
+Valid average loss UNet            (all)              : 0.553078
+
+== Triplet Loss ==
+Valid average loss drums    (Triplet, dist_p, dist_n) : 0.081511, 0.392061, 0.837750
+Valid average loss bass     (Triplet, dist_p, dist_n) : 0.214025, 0.330850, 0.328935
+Valid average loss piano    (Triplet, dist_p, dist_n) : 0.230485, 0.492728, 0.507277
+Valid average loss guitar   (Triplet, dist_p, dist_n) : 0.145217, 0.385524, 0.520994
+Valid average loss residuals(Triplet, dist_p, dist_n) : 0.121721, 0.459946, 0.608280
+Valid average loss all      (Triplet)                 : 0.168376
+
+== Recognize ==
+Valid average loss Recognize     : 1.369906
+Valid average accuracy drums     : 67.000000 %
+Valid average accuracy bass      : 84.666672 %
+Valid average accuracy piano     : 94.666664 %
+Valid average accuracy guitar    : 89.333328 %
+Valid average accuracy residuals : 90.333328 %
+
+== Valid average loss all : 0.168376
+
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 18.833116054534912 sec. =
+Valid knn accuracy drums     : 77.3529411764706%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.058786630630493 sec. =
+Valid knn accuracy bass      : 23.401162790697676%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 21.877809762954712 sec. =
+Valid knn accuracy piano     : 29.324324324324323%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 18.25406503677368 sec. =
+Valid knn accuracy guitar    : 37.82467532467532%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 16.472843408584595 sec. =
+Valid knn accuracy residuals : 61.0062893081761%
+
+Valid knn accuracy average   : 45.78187858486881%
+
+                                                                        [AEpoch 3: 100%|██████████| 313/313 [09:57<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.603, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.320, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.132, Train/loss_unet_all_epoch=0.563, Train/loss_triplet_all_epoch=0.132, Train/loss_recog_epoch=1.460]Epoch 3: 100%|██████████| 313/313 [09:57<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.603, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.320, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]
+
+== U-Net Loss ==
+Train average loss UNet (anchor, positive, negative)  : 0.187089, 0.187411, 0.186248
+Train average loss UNet            (all)              : 0.560748
+
+== Triplet Loss ==
+Train average loss drums    (Triplet, dist_p, dist_n) : 0.049521, 0.327685, 0.760148
+Train average loss bass     (Triplet, dist_p, dist_n) : 0.164554, 0.294879, 0.361688
+Train average loss piano    (Triplet, dist_p, dist_n) : 0.146493, 0.377261, 0.471125
+Train average loss guitar   (Triplet, dist_p, dist_n) : 0.130092, 0.368564, 0.512484
+Train average loss residuals(Triplet, dist_p, dist_n) : 0.113558, 0.436626, 0.603818
+Train average loss all      (Triplet)                 : 0.122125
+
+== Recognize ==
+Train average loss Recognize     : 1.406541
+Train average accuracy drums     : 51.376663 %
+Train average accuracy bass      : 78.349998 %
+Train average accuracy piano     : 89.813332 %
+Train average accuracy guitar    : 82.726669 %
+Train average accuracy residuals : 89.360001 %
+
+== Train average loss all : 0.122125
+
+Epoch 3:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.603, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.320, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]          Epoch 4:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.603, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.320, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  16%|█▌        | 50/313 [01:15<06:36,  0.66it/s, v_num=0, Train/loss_all_step=0.112, Train/loss_unet_all_step=0.603, Train/loss_triplet_all_step=0.112, Train/loss_recog_step=1.320, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  16%|█▌        | 50/313 [01:15<06:36,  0.66it/s, v_num=0, Train/loss_all_step=0.0882, Train/loss_unet_all_step=0.554, Train/loss_triplet_all_step=0.0882, Train/loss_recog_step=1.430, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  32%|███▏      | 100/313 [02:22<05:02,  0.70it/s, v_num=0, Train/loss_all_step=0.0882, Train/loss_unet_all_step=0.554, Train/loss_triplet_all_step=0.0882, Train/loss_recog_step=1.430, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  32%|███▏      | 100/313 [02:22<05:02,  0.70it/s, v_num=0, Train/loss_all_step=0.115, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.115, Train/loss_recog_step=1.390, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]  Epoch 4:  48%|████▊     | 150/313 [03:32<03:50,  0.71it/s, v_num=0, Train/loss_all_step=0.115, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.115, Train/loss_recog_step=1.390, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  48%|████▊     | 150/313 [03:32<03:50,  0.71it/s, v_num=0, Train/loss_all_step=0.115, Train/loss_unet_all_step=0.575, Train/loss_triplet_all_step=0.115, Train/loss_recog_step=1.270, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  64%|██████▍   | 200/313 [04:41<02:38,  0.71it/s, v_num=0, Train/loss_all_step=0.115, Train/loss_unet_all_step=0.575, Train/loss_triplet_all_step=0.115, Train/loss_recog_step=1.270, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  64%|██████▍   | 200/313 [04:41<02:38,  0.71it/s, v_num=0, Train/loss_all_step=0.0864, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.0864, Train/loss_recog_step=1.280, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  80%|███████▉  | 250/313 [05:51<01:28,  0.71it/s, v_num=0, Train/loss_all_step=0.0864, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.0864, Train/loss_recog_step=1.280, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  80%|███████▉  | 250/313 [05:51<01:28,  0.71it/s, v_num=0, Train/loss_all_step=0.0996, Train/loss_unet_all_step=0.544, Train/loss_triplet_all_step=0.0996, Train/loss_recog_step=1.250, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  96%|█████████▌| 300/313 [06:59<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.0996, Train/loss_unet_all_step=0.544, Train/loss_triplet_all_step=0.0996, Train/loss_recog_step=1.250, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4:  96%|█████████▌| 300/313 [06:59<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.126, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.126, Train/loss_recog_step=1.320, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]  Epoch 4: 100%|██████████| 313/313 [07:13<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.126, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.126, Train/loss_recog_step=1.320, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4: 100%|██████████| 313/313 [07:13<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.0898, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0898, Train/loss_recog_step=1.220, Valid/loss_all_step=0.203, Valid/loss_unet_all_step=0.559, Valid/loss_triplet_all_step=0.203, Valid/loss_recog_step=1.400, Valid/loss_all_epoch=0.168, Valid/loss_unet_all_epoch=0.553, Valid/loss_triplet_all_epoch=0.168, Valid/loss_recog_epoch=1.370, Valid/knn_avr=0.458, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.71it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:03<00:00,  2.91it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:03<00:00,  2.82it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 12/12 [00:04<00:00,  2.74it/s][A
+Validation DataLoader 3:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 10/10 [00:03<00:00,  2.76it/s][A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 5:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 5: 100%|██████████| 10/10 [00:03<00:00,  2.72it/s][A
+
+== U-Net Loss ==
+Valid average loss UNet (anchor, positive, negative)  : 0.181151, 0.184374, 0.188683
+Valid average loss UNet            (all)              : 0.554208
+
+== Triplet Loss ==
+Valid average loss drums    (Triplet, dist_p, dist_n) : 0.089300, 0.427118, 0.933152
+Valid average loss bass     (Triplet, dist_p, dist_n) : 0.232121, 0.363707, 0.343659
+Valid average loss piano    (Triplet, dist_p, dist_n) : 0.257810, 0.545456, 0.552922
+Valid average loss guitar   (Triplet, dist_p, dist_n) : 0.172651, 0.452057, 0.563164
+Valid average loss residuals(Triplet, dist_p, dist_n) : 0.121297, 0.540338, 0.714608
+Valid average loss all      (Triplet)                 : 0.187631
+
+== Recognize ==
+Valid average loss Recognize     : 1.266280
+Valid average accuracy drums     : 50.000000 %
+Valid average accuracy bass      : 97.666672 %
+Valid average accuracy piano     : 94.666664 %
+Valid average accuracy guitar    : 89.333328 %
+Valid average accuracy residuals : 90.333328 %
+
+== Valid average loss all : 0.187631
+
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 23.228256464004517 sec. =
+Valid knn accuracy drums     : 76.3235294117647%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.380828380584717 sec. =
+Valid knn accuracy bass      : 20.63953488372093%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 20.83709955215454 sec. =
+Valid knn accuracy piano     : 30.810810810810814%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 16.556031227111816 sec. =
+Valid knn accuracy guitar    : 32.62987012987013%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 16.965267181396484 sec. =
+Valid knn accuracy residuals : 64.77987421383648%
+
+Valid knn accuracy average   : 45.036723890000616%
+
+                                                                        [AEpoch 4: 100%|██████████| 313/313 [09:57<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.0898, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0898, Train/loss_recog_step=1.220, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.122, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.122, Train/loss_recog_epoch=1.410]Epoch 4: 100%|██████████| 313/313 [09:57<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.0898, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0898, Train/loss_recog_step=1.220, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]
+
+== U-Net Loss ==
+Train average loss UNet (anchor, positive, negative)  : 0.186912, 0.187215, 0.186035
+Train average loss UNet            (all)              : 0.560162
+
+== Triplet Loss ==
+Train average loss drums    (Triplet, dist_p, dist_n) : 0.044181, 0.375962, 0.861157
+Train average loss bass     (Triplet, dist_p, dist_n) : 0.158282, 0.337509, 0.420109
+Train average loss piano    (Triplet, dist_p, dist_n) : 0.135961, 0.427056, 0.546278
+Train average loss guitar   (Triplet, dist_p, dist_n) : 0.120219, 0.418233, 0.590275
+Train average loss residuals(Triplet, dist_p, dist_n) : 0.103497, 0.478444, 0.669870
+Train average loss all      (Triplet)                 : 0.113540
+
+== Recognize ==
+Train average loss Recognize     : 1.336322
+Train average accuracy drums     : 50.615002 %
+Train average accuracy bass      : 88.950005 %
+Train average accuracy piano     : 89.580002 %
+Train average accuracy guitar    : 86.070000 %
+Train average accuracy residuals : 92.686668 %
+
+== Train average loss all : 0.113540
+
+Epoch 4:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.0898, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0898, Train/loss_recog_step=1.220, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]          Epoch 5:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.0898, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0898, Train/loss_recog_step=1.220, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  16%|█▌        | 50/313 [01:14<06:34,  0.67it/s, v_num=0, Train/loss_all_step=0.0898, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0898, Train/loss_recog_step=1.220, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  16%|█▌        | 50/313 [01:14<06:34,  0.67it/s, v_num=0, Train/loss_all_step=0.0975, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.0975, Train/loss_recog_step=1.400, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  32%|███▏      | 100/313 [02:24<05:06,  0.69it/s, v_num=0, Train/loss_all_step=0.0975, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.0975, Train/loss_recog_step=1.400, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  32%|███▏      | 100/313 [02:24<05:06,  0.69it/s, v_num=0, Train/loss_all_step=0.0998, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.0998, Train/loss_recog_step=1.320, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  48%|████▊     | 150/313 [03:35<03:53,  0.70it/s, v_num=0, Train/loss_all_step=0.0998, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.0998, Train/loss_recog_step=1.320, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  48%|████▊     | 150/313 [03:35<03:53,  0.70it/s, v_num=0, Train/loss_all_step=0.127, Train/loss_unet_all_step=0.578, Train/loss_triplet_all_step=0.127, Train/loss_recog_step=1.160, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]  Epoch 5:  64%|██████▍   | 200/313 [04:44<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.127, Train/loss_unet_all_step=0.578, Train/loss_triplet_all_step=0.127, Train/loss_recog_step=1.160, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  64%|██████▍   | 200/313 [04:44<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.0831, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.0831, Train/loss_recog_step=1.260, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  80%|███████▉  | 250/313 [05:54<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.0831, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.0831, Train/loss_recog_step=1.260, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  80%|███████▉  | 250/313 [05:54<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.0891, Train/loss_unet_all_step=0.545, Train/loss_triplet_all_step=0.0891, Train/loss_recog_step=1.170, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  96%|█████████▌| 300/313 [07:03<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.0891, Train/loss_unet_all_step=0.545, Train/loss_triplet_all_step=0.0891, Train/loss_recog_step=1.170, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5:  96%|█████████▌| 300/313 [07:03<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.118, Train/loss_unet_all_step=0.559, Train/loss_triplet_all_step=0.118, Train/loss_recog_step=1.270, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]  Epoch 5: 100%|██████████| 313/313 [07:18<00:00,  0.71it/s, v_num=0, Train/loss_all_step=0.118, Train/loss_unet_all_step=0.559, Train/loss_triplet_all_step=0.118, Train/loss_recog_step=1.270, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5: 100%|██████████| 313/313 [07:18<00:00,  0.71it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.170, Valid/loss_all_step=0.243, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.243, Valid/loss_recog_step=1.280, Valid/loss_all_epoch=0.188, Valid/loss_unet_all_epoch=0.554, Valid/loss_triplet_all_epoch=0.188, Valid/loss_recog_epoch=1.270, Valid/knn_avr=0.450, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.60it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:04<00:00,  2.71it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:03<00:00,  2.95it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 12/12 [00:04<00:00,  2.99it/s][A
+Validation DataLoader 3:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 10/10 [00:03<00:00,  3.15it/s][A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 5:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 5: 100%|██████████| 10/10 [00:03<00:00,  2.97it/s][A
+
+== U-Net Loss ==
+Valid average loss UNet (anchor, positive, negative)  : 0.181358, 0.184429, 0.188868
+Valid average loss UNet            (all)              : 0.554655
+
+== Triplet Loss ==
+Valid average loss drums    (Triplet, dist_p, dist_n) : 0.102992, 0.459218, 0.959789
+Valid average loss bass     (Triplet, dist_p, dist_n) : 0.222316, 0.410040, 0.402508
+Valid average loss piano    (Triplet, dist_p, dist_n) : 0.264478, 0.553004, 0.544093
+Valid average loss guitar   (Triplet, dist_p, dist_n) : 0.173566, 0.511866, 0.625477
+Valid average loss residuals(Triplet, dist_p, dist_n) : 0.090956, 0.559634, 0.764382
+Valid average loss all      (Triplet)                 : 0.182218
+
+== Recognize ==
+Valid average loss Recognize     : 1.226308
+Valid average accuracy drums     : 92.000000 %
+Valid average accuracy bass      : 97.666672 %
+Valid average accuracy piano     : 90.000000 %
+Valid average accuracy guitar    : 89.333328 %
+Valid average accuracy residuals : 90.333328 %
+
+== Valid average loss all : 0.182218
+
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 18.428925275802612 sec. =
+Valid knn accuracy drums     : 72.05882352941177%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.843551635742188 sec. =
+Valid knn accuracy bass      : 20.058139534883722%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 20.570095539093018 sec. =
+Valid knn accuracy piano     : 30.810810810810814%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 17.05522060394287 sec. =
+Valid knn accuracy guitar    : 42.857142857142854%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 16.470608234405518 sec. =
+Valid knn accuracy residuals : 61.32075471698113%
+
+Valid knn accuracy average   : 45.42113428984605%
+
+                                                                        [AEpoch 5: 100%|██████████| 313/313 [09:54<00:00,  0.53it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.114, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.114, Train/loss_recog_epoch=1.340]Epoch 5: 100%|██████████| 313/313 [09:54<00:00,  0.53it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]
+
+== U-Net Loss ==
+Train average loss UNet (anchor, positive, negative)  : 0.186816, 0.187126, 0.185963
+Train average loss UNet            (all)              : 0.559905
+
+== Triplet Loss ==
+Train average loss drums    (Triplet, dist_p, dist_n) : 0.037541, 0.416967, 0.949183
+Train average loss bass     (Triplet, dist_p, dist_n) : 0.150875, 0.389285, 0.489407
+Train average loss piano    (Triplet, dist_p, dist_n) : 0.125548, 0.486191, 0.632904
+Train average loss guitar   (Triplet, dist_p, dist_n) : 0.106878, 0.478372, 0.685765
+Train average loss residuals(Triplet, dist_p, dist_n) : 0.092901, 0.540496, 0.760492
+Train average loss all      (Triplet)                 : 0.103826
+
+== Recognize ==
+Train average loss Recognize     : 1.269538
+Train average accuracy drums     : 82.510002 %
+Train average accuracy bass      : 91.659996 %
+Train average accuracy piano     : 89.770004 %
+Train average accuracy guitar    : 88.996666 %
+Train average accuracy residuals : 92.686668 %
+
+== Train average loss all : 0.103826
+
+Epoch 5:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]          Epoch 6:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  16%|█▌        | 50/313 [01:15<06:38,  0.66it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  16%|█▌        | 50/313 [01:15<06:38,  0.66it/s, v_num=0, Train/loss_all_step=0.0836, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.0836, Train/loss_recog_step=1.300, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  32%|███▏      | 100/313 [02:24<05:08,  0.69it/s, v_num=0, Train/loss_all_step=0.0836, Train/loss_unet_all_step=0.555, Train/loss_triplet_all_step=0.0836, Train/loss_recog_step=1.300, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  32%|███▏      | 100/313 [02:24<05:08,  0.69it/s, v_num=0, Train/loss_all_step=0.0944, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.0944, Train/loss_recog_step=1.290, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  48%|████▊     | 150/313 [03:34<03:52,  0.70it/s, v_num=0, Train/loss_all_step=0.0944, Train/loss_unet_all_step=0.560, Train/loss_triplet_all_step=0.0944, Train/loss_recog_step=1.290, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  48%|████▊     | 150/313 [03:34<03:52,  0.70it/s, v_num=0, Train/loss_all_step=0.114, Train/loss_unet_all_step=0.578, Train/loss_triplet_all_step=0.114, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]  Epoch 6:  64%|██████▍   | 200/313 [04:43<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.114, Train/loss_unet_all_step=0.578, Train/loss_triplet_all_step=0.114, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  64%|██████▍   | 200/313 [04:43<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.097, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.097, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  80%|███████▉  | 250/313 [05:53<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.097, Train/loss_unet_all_step=0.558, Train/loss_triplet_all_step=0.097, Train/loss_recog_step=1.170, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  80%|███████▉  | 250/313 [05:53<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.543, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.120, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  96%|█████████▌| 300/313 [07:02<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.0764, Train/loss_unet_all_step=0.543, Train/loss_triplet_all_step=0.0764, Train/loss_recog_step=1.120, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6:  96%|█████████▌| 300/313 [07:02<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.0912, Train/loss_unet_all_step=0.562, Train/loss_triplet_all_step=0.0912, Train/loss_recog_step=1.240, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6: 100%|██████████| 313/313 [07:16<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.0912, Train/loss_unet_all_step=0.562, Train/loss_triplet_all_step=0.0912, Train/loss_recog_step=1.240, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6: 100%|██████████| 313/313 [07:16<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.0531, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0531, Train/loss_recog_step=1.130, Valid/loss_all_step=0.235, Valid/loss_unet_all_step=0.562, Valid/loss_triplet_all_step=0.235, Valid/loss_recog_step=1.250, Valid/loss_all_epoch=0.182, Valid/loss_unet_all_epoch=0.555, Valid/loss_triplet_all_epoch=0.182, Valid/loss_recog_epoch=1.230, Valid/knn_avr=0.454, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.66it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:04<00:00,  2.73it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:04<00:00,  2.71it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 12/12 [00:04<00:00,  2.81it/s][A
+Validation DataLoader 3:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 10/10 [00:03<00:00,  2.86it/s][A
+Validation DataLoader 4:   0%|          | 0/10 [00:00<?, ?it/s]         [A
+Validation DataLoader 5:   0%|          | 0/10 [00:00<?, ?it/s][A
+Validation DataLoader 5: 100%|██████████| 10/10 [00:03<00:00,  2.68it/s][A
+
+== U-Net Loss ==
+Valid average loss UNet (anchor, positive, negative)  : 0.179997, 0.183216, 0.187445
+Valid average loss UNet            (all)              : 0.550658
+
+== Triplet Loss ==
+Valid average loss drums    (Triplet, dist_p, dist_n) : 0.097830, 0.497354, 1.005536
+Valid average loss bass     (Triplet, dist_p, dist_n) : 0.218710, 0.425638, 0.415460
+Valid average loss piano    (Triplet, dist_p, dist_n) : 0.235373, 0.573985, 0.588518
+Valid average loss guitar   (Triplet, dist_p, dist_n) : 0.159863, 0.528097, 0.671716
+Valid average loss residuals(Triplet, dist_p, dist_n) : 0.106606, 0.626675, 0.803455
+Valid average loss all      (Triplet)                 : 0.171908
+
+== Recognize ==
+Valid average loss Recognize     : 1.182629
+Valid average accuracy drums     : 95.666664 %
+Valid average accuracy bass      : 97.666672 %
+Valid average accuracy piano     : 94.666664 %
+Valid average accuracy guitar    : 89.333328 %
+Valid average accuracy residuals : 90.333328 %
+
+== Valid average loss all : 0.171908
+
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 20.635948419570923 sec. =
+Valid knn accuracy drums     : 72.79411764705883%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.67332649230957 sec. =
+Valid knn accuracy bass      : 21.22093023255814%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.65069055557251 sec. =
+Valid knn accuracy piano     : 38.108108108108105%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 18.511632919311523 sec. =
+Valid knn accuracy guitar    : 40.42207792207792%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 17.28618574142456 sec. =
+Valid knn accuracy residuals : 61.94968553459119%
+
+Valid knn accuracy average   : 46.898983888878846%
+
+                                                                        [AEpoch 6: 100%|██████████| 313/313 [09:58<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.0531, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0531, Train/loss_recog_step=1.130, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.104, Train/loss_unet_all_epoch=0.560, Train/loss_triplet_all_epoch=0.104, Train/loss_recog_epoch=1.270]Epoch 6: 100%|██████████| 313/313 [09:58<00:00,  0.52it/s, v_num=0, Train/loss_all_step=0.0531, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0531, Train/loss_recog_step=1.130, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]
+
+== U-Net Loss ==
+Train average loss UNet (anchor, positive, negative)  : 0.187077, 0.187418, 0.186217
+Train average loss UNet            (all)              : 0.560712
+
+== Triplet Loss ==
+Train average loss drums    (Triplet, dist_p, dist_n) : 0.032823, 0.479894, 1.084651
+Train average loss bass     (Triplet, dist_p, dist_n) : 0.139804, 0.433936, 0.556736
+Train average loss piano    (Triplet, dist_p, dist_n) : 0.114714, 0.540570, 0.713562
+Train average loss guitar   (Triplet, dist_p, dist_n) : 0.100234, 0.542359, 0.777939
+Train average loss residuals(Triplet, dist_p, dist_n) : 0.085290, 0.600144, 0.847500
+Train average loss all      (Triplet)                 : 0.095798
+
+== Recognize ==
+Train average loss Recognize     : 1.221005
+Train average accuracy drums     : 89.166664 %
+Train average accuracy bass      : 96.453331 %
+Train average accuracy piano     : 89.743332 %
+Train average accuracy guitar    : 88.913330 %
+Train average accuracy residuals : 92.686668 %
+
+== Train average loss all : 0.095798
+
+Epoch 6:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.0531, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0531, Train/loss_recog_step=1.130, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]          Epoch 7:   0%|          | 0/313 [00:00<?, ?it/s, v_num=0, Train/loss_all_step=0.0531, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0531, Train/loss_recog_step=1.130, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  16%|█▌        | 50/313 [01:14<06:31,  0.67it/s, v_num=0, Train/loss_all_step=0.0531, Train/loss_unet_all_step=0.605, Train/loss_triplet_all_step=0.0531, Train/loss_recog_step=1.130, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  16%|█▌        | 50/313 [01:14<06:31,  0.67it/s, v_num=0, Train/loss_all_step=0.077, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.077, Train/loss_recog_step=1.140, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]  Epoch 7:  32%|███▏      | 100/313 [02:23<05:05,  0.70it/s, v_num=0, Train/loss_all_step=0.077, Train/loss_unet_all_step=0.556, Train/loss_triplet_all_step=0.077, Train/loss_recog_step=1.140, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  32%|███▏      | 100/313 [02:23<05:05,  0.70it/s, v_num=0, Train/loss_all_step=0.0935, Train/loss_unet_all_step=0.561, Train/loss_triplet_all_step=0.0935, Train/loss_recog_step=1.190, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  48%|████▊     | 150/313 [03:33<03:51,  0.70it/s, v_num=0, Train/loss_all_step=0.0935, Train/loss_unet_all_step=0.561, Train/loss_triplet_all_step=0.0935, Train/loss_recog_step=1.190, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  48%|████▊     | 150/313 [03:33<03:51,  0.70it/s, v_num=0, Train/loss_all_step=0.101, Train/loss_unet_all_step=0.577, Train/loss_triplet_all_step=0.101, Train/loss_recog_step=1.120, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]  Epoch 7:  64%|██████▍   | 200/313 [04:43<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.101, Train/loss_unet_all_step=0.577, Train/loss_triplet_all_step=0.101, Train/loss_recog_step=1.120, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  64%|██████▍   | 200/313 [04:43<02:40,  0.70it/s, v_num=0, Train/loss_all_step=0.0688, Train/loss_unet_all_step=0.561, Train/loss_triplet_all_step=0.0688, Train/loss_recog_step=1.160, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  80%|███████▉  | 250/313 [05:53<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.0688, Train/loss_unet_all_step=0.561, Train/loss_triplet_all_step=0.0688, Train/loss_recog_step=1.160, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  80%|███████▉  | 250/313 [05:53<01:29,  0.71it/s, v_num=0, Train/loss_all_step=0.0593, Train/loss_unet_all_step=0.542, Train/loss_triplet_all_step=0.0593, Train/loss_recog_step=1.140, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  96%|█████████▌| 300/313 [07:02<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.0593, Train/loss_unet_all_step=0.542, Train/loss_triplet_all_step=0.0593, Train/loss_recog_step=1.140, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7:  96%|█████████▌| 300/313 [07:02<00:18,  0.71it/s, v_num=0, Train/loss_all_step=0.0883, Train/loss_unet_all_step=0.562, Train/loss_triplet_all_step=0.0883, Train/loss_recog_step=1.210, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7: 100%|██████████| 313/313 [07:16<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.0883, Train/loss_unet_all_step=0.562, Train/loss_triplet_all_step=0.0883, Train/loss_recog_step=1.210, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]Epoch 7: 100%|██████████| 313/313 [07:16<00:00,  0.72it/s, v_num=0, Train/loss_all_step=0.0301, Train/loss_unet_all_step=0.607, Train/loss_triplet_all_step=0.0301, Train/loss_recog_step=1.140, Valid/loss_all_step=0.192, Valid/loss_unet_all_step=0.553, Valid/loss_triplet_all_step=0.192, Valid/loss_recog_step=1.210, Valid/loss_all_epoch=0.172, Valid/loss_unet_all_epoch=0.551, Valid/loss_triplet_all_epoch=0.172, Valid/loss_recog_epoch=1.180, Valid/knn_avr=0.469, Train/loss_all_epoch=0.0958, Train/loss_unet_all_epoch=0.561, Train/loss_triplet_all_epoch=0.0958, Train/loss_recog_epoch=1.220]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 4/4 [00:02<00:00,  1.85it/s][A
+Validation DataLoader 0:   0%|          | 0/11 [00:00<?, ?it/s]       [A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 11/11 [00:04<00:00,  2.75it/s][A
+Validation DataLoader 1:   0%|          | 0/11 [00:00<?, ?it/s]         [A
+Validation DataLoader 2:   0%|          | 0/11 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 11/11 [00:03<00:00,  2.78it/s][A
+Validation DataLoader 2:   0%|          | 0/12 [00:00<?, ?it/s]         [A
+Validation DataLoader 3:   0%|          | 0/12 [00:00<?, ?it/s][A

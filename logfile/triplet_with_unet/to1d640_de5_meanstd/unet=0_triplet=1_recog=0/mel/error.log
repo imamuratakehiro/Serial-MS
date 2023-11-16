@@ -715,3 +715,21 @@ Epoch 223, global step 140000: 'Valid/knn_avr' reached 0.49169 (best 0.52383), s
 /home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
   warnings.warn(*args, **kwargs)  # noqa: B028
 Epoch 224, global step 140625: 'Valid/knn_avr' reached 0.48361 (best 0.52383), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-12/10-42-13/checkpoints/epoch_224.ckpt' as top 225
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 225, global step 141250: 'Valid/knn_avr' reached 0.48976 (best 0.52383), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-12/10-42-13/checkpoints/epoch_225.ckpt' as top 226
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 226, global step 141875: 'Valid/knn_avr' reached 0.50441 (best 0.52383), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-12/10-42-13/checkpoints/epoch_226.ckpt' as top 227
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 227, global step 142500: 'Valid/knn_avr' reached 0.49007 (best 0.52383), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-12/10-42-13/checkpoints/epoch_227.ckpt' as top 228
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 228, global step 143125: 'Valid/knn_avr' reached 0.48733 (best 0.52383), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-12/10-42-13/checkpoints/epoch_228.ckpt' as top 229
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 229, global step 143750: 'Valid/knn_avr' reached 0.49518 (best 0.52383), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-12/10-42-13/checkpoints/epoch_229.ckpt' as top 230
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+slurmstepd-compute04: error: *** JOB 71016 ON compute04 CANCELLED AT 2023-11-16T23:35:55 ***

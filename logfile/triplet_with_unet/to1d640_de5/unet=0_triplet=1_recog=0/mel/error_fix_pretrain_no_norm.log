@@ -1,0 +1,51 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py experiment=triplet_with_unet/y task_name ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name               | Type                          | Params
+---------------------------------------------------------------------
+0 | net                | UNetForTriplet_2d_de5_to1d640 | 38.6 M
+1 | loss_unet          | L1Loss                        | 0     
+2 | loss_triplet       | MarginRankingLoss             | 0     
+3 | loss_l2            | MSELoss                       | 0     
+4 | loss_mrl           | MarginRankingLoss             | 0     
+5 | loss_cross_entropy | BCEWithLogitsLoss             | 0     
+6 | recorder           | ModuleDict                    | 0     
+---------------------------------------------------------------------
+38.6 M    Trainable params
+0         Non-trainable params
+38.6 M    Total params
+154.432   Total estimated model params size (MB)
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Metric Valid/knn_avr improved. New best score: 0.445
+Epoch 0, global step 313: 'Valid/knn_avr' reached 0.44495 (best 0.44495), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-16/22-16-06/checkpoints/epoch_000.ckpt' as top 1
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 1, global step 626: 'Valid/knn_avr' reached 0.43385 (best 0.44495), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-16/22-16-06/checkpoints/epoch_001.ckpt' as top 2
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 2, global step 939: 'Valid/knn_avr' reached 0.43692 (best 0.44495), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-16/22-16-06/checkpoints/epoch_002.ckpt' as top 3
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Metric Valid/knn_avr improved by 0.013 >= min_delta = 0.0. New best score: 0.458
+Epoch 3, global step 1252: 'Valid/knn_avr' reached 0.45782 (best 0.45782), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-16/22-16-06/checkpoints/epoch_003.ckpt' as top 4
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 4, global step 1565: 'Valid/knn_avr' reached 0.45037 (best 0.45782), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-16/22-16-06/checkpoints/epoch_004.ckpt' as top 5
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Epoch 5, global step 1878: 'Valid/knn_avr' reached 0.45421 (best 0.45782), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-16/22-16-06/checkpoints/epoch_005.ckpt' as top 6
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Metric Valid/knn_avr improved by 0.011 >= min_delta = 0.0. New best score: 0.469
+Epoch 6, global step 2191: 'Valid/knn_avr' reached 0.46899 (best 0.46899), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-16/22-16-06/checkpoints/epoch_006.ckpt' as top 7
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+slurmstepd-mrcompute01: error: *** JOB 71384 ON mrcompute01 CANCELLED AT 2023-11-16T23:33:34 ***
