@@ -1,0 +1,638 @@
+
+=== Using cuda(utils.func). ===
+
+[2023-11-08 09:27:25,118][utils.utils][INFO] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>
+[2023-11-08 09:27:25,124][utils.utils][INFO] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>
+CONFIG
+├── data
+│   └── _target_: dataset.PreTrainDataModule                                    
+│       cfg:                                                                    
+│         n_epoch: 400                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         n_dataset_test: 1000                                                  
+│         batch_train: 64                                                       
+│         batch_test: 64                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         seconds_psd_train: 3                                                  
+│         seconds_psd_valid: 10                                                 
+│         seconds_psd_test: 10                                                  
+│         offset_psd_train: 1.5                                                 
+│         offset_psd_valid: 5.0                                                 
+│         offset_psd_test: 10.0                                                 
+│         seconds_triplet_train: 3                                              
+│         seconds_triplet_valid: 3                                              
+│         offset_triplet_train: 1.5                                             
+│         offset_triplet_valid: 1.5                                             
+│         normalize128: false                                                   
+│         condition32: true                                                     
+│         load_using_librosa: true                                              
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         n_mels: 259                                                           
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         test_psd_mine: false                                                  
+│         output_dir: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-08
+│                                                                               
+├── model
+│   └── _target_: model.PreTrain                                                
+│       optimizer:                                                              
+│         _target_: torch.optim.Adam                                            
+│         _partial_: true                                                       
+│         lr: 0.001                                                             
+│         weight_decay: 0.0                                                     
+│       scheduler: null                                                         
+│       net:                                                                    
+│         _target_: model.UNetForTriplet_2d_de5_to1d640                         
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         f_size: 2048                                                          
+│         mono: true                                                            
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         mel: false                                                            
+│         n_mels: 259                                                           
+│       cfg:                                                                    
+│         n_epoch: 400                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         n_dataset_test: 1000                                                  
+│         batch_train: 64                                                       
+│         batch_test: 64                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         seconds_psd_train: 3                                                  
+│         seconds_psd_valid: 10                                                 
+│         seconds_psd_test: 10                                                  
+│         offset_psd_train: 1.5                                                 
+│         offset_psd_valid: 5.0                                                 
+│         offset_psd_test: 10.0                                                 
+│         seconds_triplet_train: 3                                              
+│         seconds_triplet_valid: 3                                              
+│         offset_triplet_train: 1.5                                             
+│         offset_triplet_valid: 1.5                                             
+│         normalize128: false                                                   
+│         condition32: true                                                     
+│         load_using_librosa: true                                              
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         n_mels: 259                                                           
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         test_psd_mine: false                                                  
+│         output_dir: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-08
+│                                                                               
+├── callbacks
+│   └── model_checkpoint:                                                       
+│         _target_: pytorch_lightning.callbacks.ModelCheckpoint                 
+│         dirpath: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-08/09
+│         filename: epoch_{epoch:03d}                                           
+│         monitor: val/knn_avr                                                  
+│         verbose: true                                                         
+│         save_last: true                                                       
+│         save_top_k: -1                                                        
+│         mode: max                                                             
+│         auto_insert_metric_name: false                                        
+│         save_weights_only: false                                              
+│         every_n_train_steps: null                                             
+│         train_time_interval: null                                             
+│         every_n_epochs: null                                                  
+│         save_on_train_epoch_end: null                                         
+│       early_stopping:                                                         
+│         _target_: pytorch_lightning.callbacks.EarlyStopping                   
+│         monitor: val/knn_avr                                                  
+│         min_delta: 0.0                                                        
+│         patience: 100                                                         
+│         verbose: true                                                         
+│         mode: max                                                             
+│         strict: true                                                          
+│         check_finite: true                                                    
+│         stopping_threshold: null                                              
+│         divergence_threshold: null                                            
+│         check_on_train_epoch_end: null                                        
+│       tqdm_progress_bar:                                                      
+│         _target_: pytorch_lightning.callbacks.TQDMProgressBar                 
+│         refresh_rate: 50                                                      
+│                                                                               
+├── logger
+│   └── tensorboard:                                                            
+│         _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger     
+│         save_dir: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-08/0
+│         name: lightning_logs                                                  
+│         log_graph: false                                                      
+│         default_hp_metric: true                                               
+│         prefix: ''                                                            
+│                                                                               
+├── trainer
+│   └── _target_: pytorch_lightning.trainer.Trainer                             
+│       default_root_dir: /home/imamura23/nas02home/outputs/pretrain/runs/2023-1
+│       min_epochs: 1                                                           
+│       max_epochs: 400                                                         
+│       accelerator: auto                                                       
+│       devices: 1                                                              
+│       precision: 16                                                           
+│       check_val_every_n_epoch: 1                                              
+│       deterministic: false                                                    
+│       enable_progress_bar: true                                               
+│       log_every_n_steps: 10                                                   
+│                                                                               
+├── paths
+│   └── root_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet       
+│       data_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/datase
+│       log_dir: /home/imamura23/nas02home/outputs/                             
+│       output_dir: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-08/0
+│       work_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet  
+│                                                                               
+├── extras
+│   └── ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── task_name
+│   └── pretrain                                                                
+├── train
+│   └── n_epoch: 400                                                            
+│       inst_list:                                                              
+│       - drums                                                                 
+│       - bass                                                                  
+│       - piano                                                                 
+│       - guitar                                                                
+│       - residuals                                                             
+│       dataset_dir: /nas03/assets/Dataset/slakh                                
+│       n_dataset_test: 1000                                                    
+│       batch_train: 64                                                         
+│       batch_test: 64                                                          
+│       num_workers: 8                                                          
+│       pin_memory: true                                                        
+│       datasetname: slakh                                                      
+│       seconds_psd_train: 3                                                    
+│       seconds_psd_valid: 10                                                   
+│       seconds_psd_test: 10                                                    
+│       offset_psd_train: 1.5                                                   
+│       offset_psd_valid: 5.0                                                   
+│       offset_psd_test: 10.0                                                   
+│       seconds_triplet_train: 3                                                
+│       seconds_triplet_valid: 3                                                
+│       offset_triplet_train: 1.5                                               
+│       offset_triplet_valid: 1.5                                               
+│       normalize128: false                                                     
+│       condition32: true                                                       
+│       load_using_librosa: true                                                
+│       mono: true                                                              
+│       f_size: 2048                                                            
+│       hop_length: 512                                                         
+│       sr: 44100                                                               
+│       mel: false                                                              
+│       n_mels: 259                                                             
+│       db: true                                                                
+│       target: model.UNetForTriplet_2d_de5_to1d640                             
+│       to1d_mode: mean_linear                                                  
+│       order: timefreq                                                         
+│       margin: 0.2                                                             
+│       monitor_es: val/knn_avr                                                 
+│       monitor_mode_es: max                                                    
+│       test_psd_mine: false                                                    
+│       output_dir: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-08/0
+│                                                                               
+├── test
+│   └── True                                                                    
+├── tags
+│   └── ['pretrain', 'model_2d_de5_to1d640', 'lr=0.005']                        
+├── ckpt_path
+│   └── /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-08/02-59-37
+└── seed
+    └── None                                                                    
+[2023-11-08 09:27:25,207][source.train][INFO] - [rank: 0] Instantiating datamodule <dataset.PreTrainDataModule>
+[2023-11-08 09:27:25,231][source.train][INFO] - [rank: 0] Instantiating model <model.PreTrain>
+
+=== Using cuda(model.csn). ===
+
+
+=== Using cuda(model.unet5.model_csn_640). ===
+
+
+=== Using cuda(model.unet5.model_csn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_normal). ===
+
+
+=== Using cuda(model.unet5.model_notcsn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_unet5_1d_de5). ===
+
+
+=== Using cuda(model.waveunet.model_waveunet5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_128_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_inst). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_ae_embnet). ===
+
+
+=== Using cuda(model.to1d.model_linear). ===
+
+
+=== Using cuda(model.to1d.model_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_de5_to1d_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d_embnet_silence). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_de5_to1d_embnet_lastmean). ===
+
+
+=== Using cuda(model.triplet.model_nnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de5_to1d640). ===
+
+
+=== Using cuda(model.jnet.model_jnet_128_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_to1d640_1dde5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d640_1dde1_embedding). ===
+
+
+=== Using cuda(model.AE.model_ae). ===
+
+
+=== Using cuda(model.demucs.model_demucs). ===
+
+
+=== Using cuda(model.demucs.model_hdemucs). ===
+
+
+=== Using cuda(model.jnet.model_jnet_attention). ===
+
+[2023-11-08 09:27:28,742][torch.distributed.nn.jit.instantiator][INFO] - Created a temporary directory at /tmp/tmpincr3c_o
+[2023-11-08 09:27:28,742][torch.distributed.nn.jit.instantiator][INFO] - Writing /tmp/tmpincr3c_o/_remote_module_non_scriptable.py
+UNetForTriplet_2d_de5_to1d640(
+  (encoder): UNetEncoder(
+    (conv1): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(1, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv2): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv3): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv4): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv5): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv6): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(256, 640, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+  )
+  (decoder_drums): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_bass): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_piano): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_guitar): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_residuals): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (to1d): To1D640(
+    (to1d): To1D640timefreq(
+      (fc1): Linear(in_features=10880, out_features=640, bias=True)
+    )
+  )
+  (sigmoid): Sigmoid()
+)
+[2023-11-08 09:27:28,823][source.train][INFO] - [rank: 0] Instantiating callbacks...
+[2023-11-08 09:27:28,823][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>
+[2023-11-08 09:27:28,829][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2023-11-08 09:27:28,831][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.TQDMProgressBar>
+[2023-11-08 09:27:28,831][source.train][INFO] - [rank: 0] Instantiating loggers...
+[2023-11-08 09:27:28,832][utils.instantiators][INFO] - [rank: 0] Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2023-11-08 09:27:28,896][source.train][INFO] - [rank: 0] Instantiating trainer <pytorch_lightning.trainer.Trainer>
+[2023-11-08 09:27:29,261][source.train][INFO] - [rank: 0] Logging hyperparameters!
+[2023-11-08 09:27:29,581][source.train][INFO] - [rank: 0] Starting training!
+
+----------------------------------------
+Use dataset slakh.
+The frame size is setted to 2048.
+----------------------------------------
+	Loading dataset...
+	dataset was loaded!
+	* Loading time is 0.044677734375 sec. *
+Sanity Checking: |          | 0/? [00:00<?, ?it/s]Sanity Checking:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:08<00:00,  0.24it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 1:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 1: 100%|██████████| 2/2 [00:01<00:00,  1.61it/s]Sanity Checking DataLoader 1:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 2:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 2: 100%|██████████| 2/2 [00:01<00:00,  1.49it/s]Sanity Checking DataLoader 2:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 3:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 3: 100%|██████████| 2/2 [00:01<00:00,  1.61it/s]Sanity Checking DataLoader 3:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 4:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 4: 100%|██████████| 2/2 [00:01<00:00,  1.57it/s]knn
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 2.5789589881896973 sec. =
+knn accuracy valid drums     : 97.65625%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 2.5904791355133057 sec. =
+knn accuracy valid bass      : 50.0%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 2.5866329669952393 sec. =
+knn accuracy valid piano     : 85.9375%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 2.5158677101135254 sec. =
+knn accuracy valid guitar    : 63.28125%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 2.3463363647460938 sec. =
+knn accuracy valid residuals : 99.21875%
+
+knn accuracy valid average   : 79.21875%
+                                                                           Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/507 [00:00<?, ?it/s]Epoch 100:   0%|          | 0/507 [00:00<?, ?it/s][2023-11-08 09:28:30,262][utils.utils][ERROR] - [rank: 0] 
+Traceback (most recent call last):
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 68, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 92, in train
+    trainer.fit(model=model, datamodule=datamodule, ckpt_path=cfg.get("ckpt_path"))
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 545, in fit
+    call._call_and_handle_interrupt(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 581, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 990, in _run
+    results = self._run_stage()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1036, in _run_stage
+    self.fit_loop.run()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 202, in run
+    self.advance()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 359, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 136, in run
+    self.advance(data_fetcher)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 240, in advance
+    batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 187, in run
+    self._optimizer_step(batch_idx, closure)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 265, in _optimizer_step
+    call._call_lightning_module_hook(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 157, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/core/module.py", line 1282, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/core/optimizer.py", line 151, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 230, in optimizer_step
+    return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/amp.py", line 77, in optimizer_step
+    closure_result = closure()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 140, in __call__
+    self._result = self.closure(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 126, in closure
+    step_output = self._step_fn()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 315, in _training_step
+    training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 382, in training_step
+    return self.lightning_module.training_step(*args, **kwargs)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/triplet/pretrain.py", line 167, in training_step
+    loss_mix, loss_inst = self.model_step(batch)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/triplet/pretrain.py", line 140, in model_step
+    param, mix, _ = self.stft.transform(mix); _, stems, _ = self.stft.transform(stems, param)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/func.py", line 247, in transform
+    transformed_n, phase = magphase(self.stft(sound)) #stftして振幅と位相に分解
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/func.py", line 224, in stft
+    z = torch.stft(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/functional.py", line 604, in stft
+    input = F.pad(input.view(extended_shape), [pad, pad], pad_mode)
+RuntimeError: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 64]
+[2023-11-08 09:28:30,280][utils.utils][INFO] - [rank: 0] Output dir: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-08/09-27-25
+Epoch 100:   0%|          | 0/507 [00:10<?, ?it/s]

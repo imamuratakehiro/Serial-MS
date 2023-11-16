@@ -235,31 +235,32 @@ class TorchSTFT:
         return z.view(*other, freqs, frame)
 
     def normalize(self, data, max = None, min = None):
-        if max is None and min is None:
+        if max is None:# and min is None:
             max = data.max(dim=-1, keepdim=True)[0].max(dim=-2, keepdim=True)[0]
-            min = data.min(dim=-1, keepdim=True)[0].min(dim=-2, keepdim=True)[0]
+        min = data.min(dim=-1, keepdim=True)[0].min(dim=-2, keepdim=True)[0]
         max_min = max - min
         max_min = torch.where(max_min == 0, 1, max_min) # 0なら1に変換
         transformed = (data - min) / max_min
         return transformed, max, min
 
     def transform(self, sound, param=None):
-        transformed_n, phase = magphase(self.stft(sound)) #stftして振幅と位相に分解
+        transformed, phase = magphase(self.stft(sound)) #stftして振幅と位相に分解
         del sound
         if self.cfg.mel:
-            transformed_n = torch.matmul(self.melfilter.to(transformed_n.device), transformed_n)
+            transformed = torch.matmul(self.melfilter.to(transformed.device), transformed)
         if self.cfg.db:
-            transformed_n = Fa.amplitude_to_DB(transformed_n, 20, amin=1e-05, db_multiplier=0)
+            transformed = Fa.amplitude_to_DB(transformed, 20, amin=1e-05, db_multiplier=0)
         if param is None:
-            transformed, max, min = self.normalize(transformed_n) #正規化
+            transformed, max, min = self.normalize(transformed) #正規化
             params = torch.stack([max, min], dim=0)
         else:
-            transformed = []
+            # instはmixのmax,minの値で正規化する
+            transformed_list = []
             for i in range(len(self.cfg.inst_list)):
                 #print(transformed_n.shape)
-                transformed_inst, _, _ = self.normalize(transformed_n[:,i], max=param[0], min=param[1]) #正規化
-                transformed.append(transformed_inst)
-            transformed = torch.stack(transformed, dim=1)
+                transformed_per, _, _ = self.normalize(transformed[:,i], max=param[0], min=param[1]) #正規化
+                transformed_list.append(transformed_per)
+            transformed = torch.stack(transformed_list, dim=1)
             params = param
         return params, transformed, phase
     
@@ -267,7 +268,7 @@ class TorchSTFT:
         return spec * (max - min) + min
     
     def detransform(self, spec, phase, max, min):
-        print(spec.shape)
+        #print(spec.shape)
         spec_denormal = self.denormalize(spec, max, min).to("cpu").numpy() #正規化を解除
         if self.cfg.db:
             spec_denormal = librosa.db_to_amplitude(spec_denormal) #dbを元の振幅に直す
@@ -404,13 +405,13 @@ def knn_psd(label:np.ndarray, vec:np.ndarray, cfg):
         total_all += 1
     return correct_all / total_all
 
-def tsne_psd(label:np.ndarray, vec:np.ndarray, cfg, dir_path:str, current_epoch=0):
+def tsne_psd(label:np.ndarray, vec:np.ndarray, mode: str, cfg, dir_path:str, current_epoch=0):
     tsne_start = start()
     print(f"= T-SNE...")
     counter = 0
     num_continue = 10
-    markers = [",", "o", "v", "^", "p", "D", "<", ">", "8", "*", "3", "x", "1", "."]
-    colors = ["r", "g", "b", "c", "m", "y", "k", "#FF5733", "#8B008B", "#f781bf"]
+    markers = [",", "o", "v", "^", "p", "D", "<", ">", "8", "*"]
+    colors = ["r", "g", "b", "c", "m", "y", "k", "#ffa500", "#00ff00", "gray"]
     #cmap = plt.cm.get_cmap("tab20")
     #label20 = []
     num_songs = 10
@@ -452,7 +453,7 @@ def tsne_psd(label:np.ndarray, vec:np.ndarray, cfg, dir_path:str, current_epoch=
             mappable = ax.scatter(X_reduced[j, 0], X_reduced[j, 1], c=color10[j], marker=marker10[j], s=30)
         #fig.colorbar(mappable, norm=BoundaryNorm(bounds,cmap.N))
         file_exist(dir_path)
-        fig.savefig(dir_path + f"/emb_e{current_epoch}_s{counter}_tsne_p{perplexity[i]}_m{cfg.margin}.png")
+        fig.savefig(dir_path + f"/emb_{mode}_e{current_epoch}_s{counter}_tsne_p{perplexity[i]}_m{cfg.margin}.png")
         plt.clf()
         plt.close()
     tsne_time = finish(tsne_start)
@@ -460,13 +461,13 @@ def tsne_psd(label:np.ndarray, vec:np.ndarray, cfg, dir_path:str, current_epoch=
     print(f"= T-SNE time is {tsne_time} sec. =")
 
 
-def tsne_psd_marker(label:np.ndarray, vec:np.ndarray, cfg, dir_path:str, current_epoch=0):
+def tsne_psd_marker(label:np.ndarray, vec:np.ndarray, mode: str, cfg, dir_path:str, current_epoch=0):
     tsne_start = start()
     print(f"= T-SNE...")
     counter = 0
     num_continue = 10
     markers = [",", "o", "v", "^", "p", "D", "<", ">", "8", "*"]
-    colors = ["r", "g", "b", "c", "m", "y", "k", "#984ea3", "#377eb8", "gray"]
+    colors = ["r", "g", "b", "c", "m", "y", "k", "#ffa500", "#00ff00", "gray"]
     #cmap = plt.cm.get_cmap("tab20")
     #label20 = []
     num_songs = 10
@@ -493,7 +494,7 @@ def tsne_psd_marker(label:np.ndarray, vec:np.ndarray, cfg, dir_path:str, current
             mappable = ax.scatter(X_reduced[j, 0], X_reduced[j, 1], c=colors[id_list.index(label[j,0])], marker=markers[ver_list.index(label[j,1])], s=30)
         #fig.colorbar(mappable, norm=BoundaryNorm(bounds,cmap.N))
         file_exist(dir_path)
-        fig.savefig(dir_path + f"/emb_e{current_epoch}_s{counter}_tsne_p{perplexity[i]}_m{cfg.margin}.png")
+        fig.savefig(dir_path + f"/emb_{mode}_e{current_epoch}_s{counter}_tsne_p{perplexity[i]}_m{cfg.margin}.png")
         plt.clf()
         plt.close()
     tsne_time = finish(tsne_start)

@@ -59,7 +59,9 @@ class Triplet(LightningModule):
         net: torch.nn.Module,
         optimizer: torch.optim.Optimizer,
         scheduler: torch.optim.lr_scheduler,
-        cfg) -> None:
+        cfg,
+        ckpt_model_path,
+        ) -> None:
         """Initialize a `MNISTLitModule`.
 
         :param net: The model to train.
@@ -74,6 +76,14 @@ class Triplet(LightningModule):
 
         # network
         self.net = net
+        model_checkpoint = {}
+        if ckpt_model_path is not None:
+            print("== Loading pretrained model...")
+            checkpoint = torch.load(ckpt_model_path)
+            for key in checkpoint["state_dict"]:
+                model_checkpoint[key.replace("net.","")] = checkpoint["state_dict"][key]
+            self.net.load_state_dict(model_checkpoint)
+            print("== pretrained model was loaded!")
         print(net)
 
         # loss function
@@ -108,7 +118,7 @@ class Triplet(LightningModule):
         self.valid_dist_p = {inst: MeanMetric() for inst in cfg.inst_list}
         self.valid_dist_n = {inst: MeanMetric() for inst in cfg.inst_list}
         """
-        self.song_type = ["anchor", "positive", "negative", "cases"]
+        self.song_type = ["anchor", "positive", "negative"]
         self.recorder = MDict({})
         for step in ["Train", "Valid"]:
             self.recorder[step] = MDict({})
@@ -281,42 +291,38 @@ class Triplet(LightningModule):
             - A tensor of target labels.
         """
         #a_x, a_y, p_x, p_y, n_x, n_y, triposi, posiposi = self.dataload_tripet(batch)
-        tripletdata, condition32data = batch
-        a_x_wave, a_y_wave, p_x_wave, p_y_wave, n_x_wave, n_y_wave, triposi = tripletdata
-        cases_x_wave, cases_y_wave, cases = condition32data
+        a_x_wave, a_y_wave, p_x_wave, p_y_wave, n_x_wave, n_y_wave, triposi, sound_a, sound_p, sound_n = batch
         # stft
         with torch.no_grad():
             a_x, a_y = self.transform(a_x_wave, a_y_wave)
             p_x, p_y = self.transform(p_x_wave, p_y_wave)
             n_x, n_y = self.transform(n_x_wave, n_y_wave)
-            cases_x, cases_y = self.transform(cases_x_wave, cases_y_wave)
         a_e, a_prob, a_mask = self.net(a_x)
         p_e, p_prob, p_mask = self.net(p_x)
         n_e, n_prob, n_mask = self.net(n_x)
-        c_e, c_prob, c_mask = self.net(cases_x)
         # get loss
         loss_unet_a = self.get_loss_unet_triposi(a_x, a_y, a_mask, triposi)
         loss_unet_p = self.get_loss_unet_triposi(p_x, p_y, p_mask, triposi)
         loss_unet_n = self.get_loss_unet_triposi(n_x, n_y, n_mask, triposi)
-        loss_unet_c = self.get_loss_unet(cases_x, cases_y, c_mask)
         loss_triplet_all, loss_triplet, dist_p, dist_n = self.get_loss_triplet(a_e, p_e, n_e, triposi)
-        loss_recog = self.get_loss_recognise2(c_prob, cases)
+        loss_recog = self.get_loss_recognise2(a_prob, sound_a) + self.get_loss_recognise2(p_prob, sound_p) + self.get_loss_recognise2(n_prob, sound_n)
         # record loss
-        loss_all = (loss_unet_a + loss_unet_p + loss_unet_n + loss_unet_c)*self.cfg.unet_rate\
+        loss_all = (loss_unet_a + loss_unet_p + loss_unet_n)*self.cfg.unet_rate\
                     + loss_triplet_all*self.cfg.triplet_rate\
                     + loss_recog*self.cfg.recog_rate
         loss_unet = {
             "anchor": loss_unet_a.item(),
             "positive": loss_unet_p.item(),
             "negative": loss_unet_n.item(),
-            "cases": loss_unet_c.item(),
-            "all": loss_unet_a.item() + loss_unet_p.item() + loss_unet_n.item() + loss_unet_c.item()
+            "all": loss_unet_a.item() + loss_unet_p.item() + loss_unet_n.item()
         }
         loss_triplet["all"] = loss_triplet_all.item()
-        return loss_all, loss_unet, loss_triplet, dist_p, dist_n, loss_recog.item(), c_prob, cases
+        prob = {inst: torch.concat([a_prob[inst], p_prob[inst], n_prob[inst]], dim=0) for inst in self.cfg.inst_list}
+        cases = torch.concat([sound_a, sound_p, sound_n], dim=0)
+        return loss_all, loss_unet, loss_triplet, dist_p, dist_n, loss_recog.item(), prob, cases
     
     def model_step(self, mode:str, batch):
-        loss_all, loss_unet, loss_triplet, dist_p, dist_n, loss_recog, c_prob, cases = self.forward(batch)
+        loss_all, loss_unet, loss_triplet, dist_p, dist_n, loss_recog, prob, cases = self.forward(batch)
         # update and log metrics
         self.recorder[mode]["loss_all"](loss_all)
         self.log(f"{mode}/loss_all", self.recorder[mode]["loss_all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
@@ -340,7 +346,7 @@ class Triplet(LightningModule):
         self.recorder[mode]["loss_recog"](loss_recog)
         self.log(f"{mode}/loss_recog", self.recorder[mode]["loss_recog"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
         for idx,inst in enumerate(self.cfg.inst_list):
-            self.recorder[mode]["recog_acc"][inst](c_prob[inst], cases[:,idx])
+            self.recorder[mode]["recog_acc"][inst](prob[inst], cases[:,idx])
             self.log(f"{mode}/recog_acc_{inst}", self.recorder[mode]["recog_acc"][inst], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
         # return loss or backpropagation will fail
         return loss_all
@@ -350,6 +356,7 @@ class Triplet(LightningModule):
         with torch.no_grad():
             _, data, _ = self.stft.transform(data_wave)
         embvec, _, _ = self.net(data)
+        embvec = torch.nn.functional.normalize(embvec, dim=1)
         csn_valid = ConditionalSimNet1d()
         self.recorder_psd[mode]["label"][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
         self.recorder_psd[mode]["vec"][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))
@@ -371,9 +378,9 @@ class Triplet(LightningModule):
         # unet
         print("\n\n== U-Net Loss ==")
         loss_unet = {type: self.recorder[mode]["loss_unet"][type].compute() for type in self.song_type}
-        print(f"{mode} average loss UNet (anchor, positive, negative, cases)  : {loss_unet['anchor']:2f}, {loss_unet['positive']:2f}, {loss_unet['negative']:2f}, {loss_unet['cases']:2f}")
+        print(f"{mode} average loss UNet (anchor, positive, negative)  : {loss_unet['anchor']:2f}, {loss_unet['positive']:2f}, {loss_unet['negative']:2f}")
         loss_unet_all = self.recorder[mode]["loss_unet"]["all"].compute()
-        print(f"{mode} average loss UNet                 (all)                : {loss_unet_all:2f}")
+        print(f"{mode} average loss UNet            (all)              : {loss_unet_all:2f}")
         # triplet
         print("\n== Triplet Loss ==")
         for inst in self.cfg.inst_list:
@@ -399,9 +406,9 @@ class Triplet(LightningModule):
             acc = knn_psd(label, vec, self.cfg) # knn
             self.log(f"{mode}/knn_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
             if self.cfg.test_psd_mine:
-                tsne_psd_marker(label, vec, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
+                tsne_psd_marker(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
             else:
-                tsne_psd(label, vec, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
+                tsne_psd(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
             print(f"{mode} knn accuracy {inst:<10}: {acc*100}%")
             acc_all += acc
         self.log(f"{mode}/knn_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True, add_dataloader_idx=False)

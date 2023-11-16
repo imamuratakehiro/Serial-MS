@@ -1,0 +1,561 @@
+
+=== Using cuda(utils.func). ===
+
+[2023-11-16 11:23:06,616][utils.utils][INFO] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>
+[2023-11-16 11:23:06,623][utils.utils][INFO] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>
+[2023-11-16 11:23:06,624][utils.rich_utils][WARNING] - [rank: 0] Field 'callbacks' not found in config. Skipping 'callbacks' config printing...
+[2023-11-16 11:23:06,624][utils.rich_utils][WARNING] - [rank: 0] Field 'logger' not found in config. Skipping 'logger' config printing...
+CONFIG
+├── data
+│   └── _target_: dataset.PreTrainDataModule                                    
+│       cfg:                                                                    
+│         n_epoch: 400                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         n_dataset_test: 1000                                                  
+│         batch_train: 32                                                       
+│         batch_test: 32                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         mix_minus_inst: false                                                 
+│         test_valid_norm: true                                                 
+│         normalize128: false                                                   
+│         condition32: false                                                    
+│         load_using_librosa: true                                              
+│         test_psd_mine: false                                                  
+│         seconds_psd_train: 3                                                  
+│         seconds_psd_valid: 10                                                 
+│         seconds_psd_test: 10                                                  
+│         offset_psd_train: 1.5                                                 
+│         offset_psd_valid: 5.0                                                 
+│         offset_psd_test: 10.0                                                 
+│         seconds_triplet_train: 3                                              
+│         seconds_triplet_valid: 3                                              
+│         offset_triplet_train: 1.5                                             
+│         offset_triplet_valid: 1.5                                             
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         sr: 44100                                                             
+│         mel: true                                                             
+│         n_mels: 128                                                           
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         output_dir: /home/imamura23/nas02home/outputs/eval_pretrain/runs/2023-
+│                                                                               
+├── model
+│   └── _target_: model.PreTrain                                                
+│       optimizer:                                                              
+│         _target_: torch.optim.Adam                                            
+│         _partial_: true                                                       
+│         lr: 0.001                                                             
+│         weight_decay: 0.0                                                     
+│       scheduler: null                                                         
+│       net:                                                                    
+│         _target_: model.UNetForTriplet_2d_de5_to1d640                         
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         f_size: 2048                                                          
+│         mono: true                                                            
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         mel: true                                                             
+│         n_mels: 128                                                           
+│       cfg:                                                                    
+│         n_epoch: 400                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         n_dataset_test: 1000                                                  
+│         batch_train: 32                                                       
+│         batch_test: 32                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         mix_minus_inst: false                                                 
+│         test_valid_norm: true                                                 
+│         normalize128: false                                                   
+│         condition32: false                                                    
+│         load_using_librosa: true                                              
+│         test_psd_mine: false                                                  
+│         seconds_psd_train: 3                                                  
+│         seconds_psd_valid: 10                                                 
+│         seconds_psd_test: 10                                                  
+│         offset_psd_train: 1.5                                                 
+│         offset_psd_valid: 5.0                                                 
+│         offset_psd_test: 10.0                                                 
+│         seconds_triplet_train: 3                                              
+│         seconds_triplet_valid: 3                                              
+│         offset_triplet_train: 1.5                                             
+│         offset_triplet_valid: 1.5                                             
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         sr: 44100                                                             
+│         mel: true                                                             
+│         n_mels: 128                                                           
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         output_dir: /home/imamura23/nas02home/outputs/eval_pretrain/runs/2023-
+│                                                                               
+├── trainer
+│   └── _target_: pytorch_lightning.trainer.Trainer                             
+│       default_root_dir: /home/imamura23/nas02home/outputs/eval_pretrain/runs/2
+│       min_epochs: 1                                                           
+│       max_epochs: 400                                                         
+│       accelerator: auto                                                       
+│       devices: 1                                                              
+│       precision: 16                                                           
+│       num_sanity_val_steps: 0                                                 
+│       check_val_every_n_epoch: 1                                              
+│       deterministic: false                                                    
+│       enable_progress_bar: true                                               
+│       log_every_n_steps: 10                                                   
+│                                                                               
+├── paths
+│   └── root_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet       
+│       data_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/datase
+│       log_dir: /home/imamura23/nas02home/outputs/                             
+│       output_dir: /home/imamura23/nas02home/outputs/eval_pretrain/runs/2023-11
+│       work_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet  
+│                                                                               
+├── extras
+│   └── ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── task_name
+│   └── eval_pretrain                                                           
+├── tags
+│   └── ['pretrain', 'model_2d_de5_to1d640', 'lr=0.005']                        
+├── ckpt_path
+│   └── /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/09-21-27
+└── train
+    └── n_epoch: 400                                                            
+        inst_list:                                                              
+        - drums                                                                 
+        - bass                                                                  
+        - piano                                                                 
+        - guitar                                                                
+        - residuals                                                             
+        dataset_dir: /nas03/assets/Dataset/slakh                                
+        n_dataset_test: 1000                                                    
+        batch_train: 32                                                         
+        batch_test: 32                                                          
+        num_workers: 8                                                          
+        pin_memory: true                                                        
+        datasetname: slakh                                                      
+        mix_minus_inst: false                                                   
+        test_valid_norm: true                                                   
+        normalize128: false                                                     
+        condition32: false                                                      
+        load_using_librosa: true                                                
+        test_psd_mine: false                                                    
+        seconds_psd_train: 3                                                    
+        seconds_psd_valid: 10                                                   
+        seconds_psd_test: 10                                                    
+        offset_psd_train: 1.5                                                   
+        offset_psd_valid: 5.0                                                   
+        offset_psd_test: 10.0                                                   
+        seconds_triplet_train: 3                                                
+        seconds_triplet_valid: 3                                                
+        offset_triplet_train: 1.5                                               
+        offset_triplet_valid: 1.5                                               
+        mono: true                                                              
+        f_size: 2048                                                            
+        hop_length: 512                                                         
+        sr: 44100                                                               
+        mel: true                                                               
+        n_mels: 128                                                             
+        db: true                                                                
+        target: model.UNetForTriplet_2d_de5_to1d640                             
+        to1d_mode: mean_linear                                                  
+        order: timefreq                                                         
+        margin: 0.2                                                             
+        monitor_es: val/knn_avr                                                 
+        monitor_mode_es: max                                                    
+        output_dir: /home/imamura23/nas02home/outputs/eval_pretrain/runs/2023-11
+                                                                                
+[2023-11-16 11:23:06,692][source.eval][INFO] - [rank: 0] Instantiating datamodule <dataset.PreTrainDataModule>
+[2023-11-16 11:23:06,706][source.eval][INFO] - [rank: 0] Instantiating model <model.PreTrain>
+
+=== Using cuda(model.csn). ===
+
+
+=== Using cuda(model.unet5.model_csn_640). ===
+
+
+=== Using cuda(model.unet5.model_csn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_normal). ===
+
+
+=== Using cuda(model.unet5.model_notcsn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_unet5_1d_de5). ===
+
+
+=== Using cuda(model.waveunet.model_waveunet5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_128_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_inst). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_ae_embnet). ===
+
+
+=== Using cuda(model.to1d.model_linear). ===
+
+
+=== Using cuda(model.to1d.model_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_de5_to1d_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d_embnet_silence). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_de5_to1d_embnet_lastmean). ===
+
+
+=== Using cuda(model.triplet.model_nnet_old). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de5_to1d640). ===
+
+
+=== Using cuda(model.jnet.model_jnet_128_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_to1d640_1dde5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d640_1dde1_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de5_to1d640_addencoder). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de1_to1d640). ===
+
+
+=== Using cuda(model.triplet.model_nnet). ===
+
+
+=== Using cuda(model.AE.model_ae). ===
+
+
+=== Using cuda(model.demucs.model_demucs). ===
+
+
+=== Using cuda(model.demucs.model_hdemucs). ===
+
+
+=== Using cuda(model.jnet.model_jnet_attention). ===
+
+[2023-11-16 11:23:08,378][torch.distributed.nn.jit.instantiator][INFO] - Created a temporary directory at /tmp/tmp27jv3j06
+[2023-11-16 11:23:08,379][torch.distributed.nn.jit.instantiator][INFO] - Writing /tmp/tmp27jv3j06/_remote_module_non_scriptable.py
+UNetForTriplet_2d_de5_to1d640(
+  (encoder): UNetEncoder(
+    (conv1): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(1, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv2): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv3): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv4): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv5): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv6): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(256, 640, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+  )
+  (decoder_drums): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_bass): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_piano): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_guitar): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_residuals): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (to1d): To1D640(
+    (to1d): To1D640timefreq(
+      (fc1): Linear(in_features=1280, out_features=640, bias=True)
+    )
+  )
+  (sigmoid): Sigmoid()
+)
+[2023-11-16 11:23:08,791][source.eval][INFO] - [rank: 0] Instantiating loggers...
+[2023-11-16 11:23:08,791][utils.instantiators][WARNING] - [rank: 0] No logger configs found! Skipping...
+[2023-11-16 11:23:08,791][source.eval][INFO] - [rank: 0] Instantiating trainer <pytorch_lightning.trainer.Trainer>
+[2023-11-16 11:23:09,324][source.eval][INFO] - [rank: 0] Starting testing!
+
+----------------------------------------
+Use dataset slakh.
+The frame size is setted to 2048.
+----------------------------------------
+Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/29 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/29 [00:00<?, ?it/s]Testing DataLoader 0:   3%|▎         | 1/29 [00:02<01:11,  0.39it/s]Testing DataLoader 0:   7%|▋         | 2/29 [00:02<00:35,  0.76it/s]Testing DataLoader 0:  10%|█         | 3/29 [00:02<00:23,  1.10it/s]Testing DataLoader 0:  14%|█▍        | 4/29 [00:02<00:17,  1.43it/s]Testing DataLoader 0:  17%|█▋        | 5/29 [00:02<00:13,  1.73it/s]Testing DataLoader 0:  21%|██        | 6/29 [00:02<00:11,  2.02it/s]Testing DataLoader 0:  24%|██▍       | 7/29 [00:03<00:09,  2.28it/s]Testing DataLoader 0:  28%|██▊       | 8/29 [00:03<00:08,  2.51it/s]Testing DataLoader 0:  31%|███       | 9/29 [00:03<00:07,  2.69it/s]Testing DataLoader 0:  34%|███▍      | 10/29 [00:03<00:06,  2.85it/s]Testing DataLoader 0:  38%|███▊      | 11/29 [00:03<00:06,  3.00it/s]Testing DataLoader 0:  41%|████▏     | 12/29 [00:03<00:05,  3.03it/s]Testing DataLoader 0:  45%|████▍     | 13/29 [00:04<00:05,  3.20it/s]Testing DataLoader 0:  48%|████▊     | 14/29 [00:04<00:04,  3.33it/s]Testing DataLoader 0:  52%|█████▏    | 15/29 [00:04<00:04,  3.47it/s]Testing DataLoader 0:  55%|█████▌    | 16/29 [00:04<00:03,  3.63it/s]Testing DataLoader 0:  59%|█████▊    | 17/29 [00:04<00:03,  3.72it/s]Testing DataLoader 0:  62%|██████▏   | 18/29 [00:04<00:02,  3.87it/s]Testing DataLoader 0:  66%|██████▌   | 19/29 [00:04<00:02,  4.01it/s]Testing DataLoader 0:  69%|██████▉   | 20/29 [00:04<00:02,  4.15it/s]Testing DataLoader 0:  72%|███████▏  | 21/29 [00:04<00:01,  4.28it/s]Testing DataLoader 0:  76%|███████▌  | 22/29 [00:04<00:01,  4.41it/s]Testing DataLoader 0:  79%|███████▉  | 23/29 [00:05<00:01,  4.54it/s]Testing DataLoader 0:  83%|████████▎ | 24/29 [00:05<00:01,  4.67it/s]Testing DataLoader 0:  86%|████████▌ | 25/29 [00:05<00:00,  4.79it/s]Testing DataLoader 0:  90%|████████▉ | 26/29 [00:05<00:00,  4.90it/s]Testing DataLoader 0:  93%|█████████▎| 27/29 [00:05<00:00,  5.02it/s]Testing DataLoader 0:  97%|█████████▋| 28/29 [00:05<00:00,  5.13it/s]Testing DataLoader 0: 100%|██████████| 29/29 [00:05<00:00,  5.23it/s]Testing DataLoader 0:   0%|          | 0/29 [00:00<?, ?it/s]         Testing DataLoader 1:   0%|          | 0/29 [00:00<?, ?it/s]Testing DataLoader 1:   3%|▎         | 1/29 [00:00<00:06,  4.58it/s]Testing DataLoader 1:   7%|▋         | 2/29 [00:00<00:04,  6.24it/s]Testing DataLoader 1:  10%|█         | 3/29 [00:00<00:03,  7.08it/s]Testing DataLoader 1:  14%|█▍        | 4/29 [00:00<00:03,  7.37it/s]Testing DataLoader 1:  17%|█▋        | 5/29 [00:00<00:03,  6.34it/s]Testing DataLoader 1:  21%|██        | 6/29 [00:00<00:03,  6.16it/s]Testing DataLoader 1:  24%|██▍       | 7/29 [00:01<00:03,  6.21it/s]Testing DataLoader 1:  28%|██▊       | 8/29 [00:01<00:03,  6.08it/s]Testing DataLoader 1:  31%|███       | 9/29 [00:01<00:03,  6.33it/s]Testing DataLoader 1:  34%|███▍      | 10/29 [00:01<00:02,  6.60it/s]Testing DataLoader 1:  38%|███▊      | 11/29 [00:01<00:02,  6.85it/s]Testing DataLoader 1:  41%|████▏     | 12/29 [00:01<00:02,  7.07it/s]Testing DataLoader 1:  45%|████▍     | 13/29 [00:01<00:02,  7.30it/s]Testing DataLoader 1:  48%|████▊     | 14/29 [00:01<00:02,  7.27it/s]Testing DataLoader 1:  52%|█████▏    | 15/29 [00:02<00:01,  7.17it/s]Testing DataLoader 1:  55%|█████▌    | 16/29 [00:02<00:01,  7.20it/s]Testing DataLoader 1:  59%|█████▊    | 17/29 [00:02<00:01,  7.11it/s]Testing DataLoader 1:  62%|██████▏   | 18/29 [00:02<00:01,  7.29it/s]Testing DataLoader 1:  66%|██████▌   | 19/29 [00:02<00:01,  7.46it/s]Testing DataLoader 1:  69%|██████▉   | 20/29 [00:02<00:01,  7.62it/s]Testing DataLoader 1:  72%|███████▏  | 21/29 [00:02<00:01,  7.77it/s]Testing DataLoader 1:  76%|███████▌  | 22/29 [00:02<00:00,  7.91it/s]Testing DataLoader 1:  79%|███████▉  | 23/29 [00:02<00:00,  8.04it/s]Testing DataLoader 1:  83%|████████▎ | 24/29 [00:02<00:00,  8.16it/s]Testing DataLoader 1:  86%|████████▌ | 25/29 [00:03<00:00,  7.82it/s]Testing DataLoader 1:  90%|████████▉ | 26/29 [00:03<00:00,  7.94it/s]Testing DataLoader 1:  93%|█████████▎| 27/29 [00:03<00:00,  8.05it/s]Testing DataLoader 1:  97%|█████████▋| 28/29 [00:03<00:00,  8.16it/s]Testing DataLoader 1: 100%|██████████| 29/29 [00:03<00:00,  8.30it/s]Testing DataLoader 1:   0%|          | 0/26 [00:00<?, ?it/s]         Testing DataLoader 2:   0%|          | 0/26 [00:00<?, ?it/s]Testing DataLoader 2:   4%|▍         | 1/26 [00:00<00:03,  6.37it/s]Testing DataLoader 2:   8%|▊         | 2/26 [00:00<00:04,  4.93it/s]Testing DataLoader 2:  12%|█▏        | 3/26 [00:00<00:04,  5.27it/s]Testing DataLoader 2:  15%|█▌        | 4/26 [00:00<00:04,  5.43it/s]Testing DataLoader 2:  19%|█▉        | 5/26 [00:00<00:03,  6.03it/s]Testing DataLoader 2:  23%|██▎       | 6/26 [00:01<00:03,  5.99it/s]Testing DataLoader 2:  27%|██▋       | 7/26 [00:01<00:03,  6.03it/s]Testing DataLoader 2:  31%|███       | 8/26 [00:01<00:02,  6.17it/s]Testing DataLoader 2:  35%|███▍      | 9/26 [00:01<00:02,  6.02it/s]Testing DataLoader 2:  38%|███▊      | 10/26 [00:01<00:02,  5.89it/s]Testing DataLoader 2:  42%|████▏     | 11/26 [00:01<00:02,  6.15it/s]Testing DataLoader 2:  46%|████▌     | 12/26 [00:01<00:02,  6.37it/s]Testing DataLoader 2:  50%|█████     | 13/26 [00:02<00:02,  6.41it/s]Testing DataLoader 2:  54%|█████▍    | 14/26 [00:02<00:01,  6.64it/s]Testing DataLoader 2:  58%|█████▊    | 15/26 [00:02<00:01,  6.87it/s]Testing DataLoader 2:  62%|██████▏   | 16/26 [00:02<00:01,  6.86it/s]Testing DataLoader 2:  65%|██████▌   | 17/26 [00:02<00:01,  6.41it/s]Testing DataLoader 2:  69%|██████▉   | 18/26 [00:02<00:01,  6.44it/s]Testing DataLoader 2:  73%|███████▎  | 19/26 [00:02<00:01,  6.56it/s]Testing DataLoader 2:  77%|███████▋  | 20/26 [00:02<00:00,  6.71it/s]Testing DataLoader 2:  81%|████████  | 21/26 [00:03<00:00,  6.86it/s]Testing DataLoader 2:  85%|████████▍ | 22/26 [00:03<00:00,  7.01it/s]Testing DataLoader 2:  88%|████████▊ | 23/26 [00:03<00:00,  7.15it/s]Testing DataLoader 2:  92%|█████████▏| 24/26 [00:03<00:00,  7.29it/s]Testing DataLoader 2:  96%|█████████▌| 25/26 [00:03<00:00,  7.42it/s]Testing DataLoader 2: 100%|██████████| 26/26 [00:03<00:00,  7.53it/s]Testing DataLoader 2:   0%|          | 0/28 [00:00<?, ?it/s]         Testing DataLoader 3:   0%|          | 0/28 [00:00<?, ?it/s]Testing DataLoader 3:   4%|▎         | 1/28 [00:00<00:06,  4.12it/s]Testing DataLoader 3:   7%|▋         | 2/28 [00:00<00:05,  4.80it/s]Testing DataLoader 3:  11%|█         | 3/28 [00:00<00:04,  5.94it/s]Testing DataLoader 3:  14%|█▍        | 4/28 [00:00<00:03,  6.74it/s]Testing DataLoader 3:  18%|█▊        | 5/28 [00:00<00:03,  7.03it/s]Testing DataLoader 3:  21%|██▏       | 6/28 [00:00<00:03,  6.41it/s]Testing DataLoader 3:  25%|██▌       | 7/28 [00:01<00:03,  6.33it/s]Testing DataLoader 3:  29%|██▊       | 8/28 [00:01<00:02,  6.73it/s]Testing DataLoader 3:  32%|███▏      | 9/28 [00:01<00:02,  7.09it/s]Testing DataLoader 3:  36%|███▌      | 10/28 [00:01<00:02,  7.41it/s]Testing DataLoader 3:  39%|███▉      | 11/28 [00:01<00:02,  7.70it/s]Testing DataLoader 3:  43%|████▎     | 12/28 [00:01<00:02,  7.96it/s]Testing DataLoader 3:  46%|████▋     | 13/28 [00:01<00:01,  8.19it/s]Testing DataLoader 3:  50%|█████     | 14/28 [00:01<00:01,  8.40it/s]Testing DataLoader 3:  54%|█████▎    | 15/28 [00:01<00:01,  8.59it/s]Testing DataLoader 3:  57%|█████▋    | 16/28 [00:01<00:01,  8.77it/s]Testing DataLoader 3:  61%|██████    | 17/28 [00:02<00:01,  7.41it/s]Testing DataLoader 3:  64%|██████▍   | 18/28 [00:02<00:01,  7.51it/s]Testing DataLoader 3:  68%|██████▊   | 19/28 [00:02<00:01,  7.68it/s]Testing DataLoader 3:  71%|███████▏  | 20/28 [00:02<00:01,  7.80it/s]Testing DataLoader 3:  75%|███████▌  | 21/28 [00:02<00:00,  7.84it/s]Testing DataLoader 3:  79%|███████▊  | 22/28 [00:02<00:00,  7.96it/s]Testing DataLoader 3:  82%|████████▏ | 23/28 [00:02<00:00,  8.06it/s]Testing DataLoader 3:  86%|████████▌ | 24/28 [00:02<00:00,  8.19it/s]Testing DataLoader 3:  89%|████████▉ | 25/28 [00:03<00:00,  8.31it/s]Testing DataLoader 3:  93%|█████████▎| 26/28 [00:03<00:00,  8.43it/s]Testing DataLoader 3:  96%|█████████▋| 27/28 [00:03<00:00,  8.53it/s]Testing DataLoader 3: 100%|██████████| 28/28 [00:03<00:00,  8.71it/s]Testing DataLoader 3:   0%|          | 0/30 [00:00<?, ?it/s]         Testing DataLoader 4:   0%|          | 0/30 [00:00<?, ?it/s]Testing DataLoader 4:   3%|▎         | 1/30 [00:00<00:07,  4.11it/s]Testing DataLoader 4:   7%|▋         | 2/30 [00:00<00:06,  4.28it/s]Testing DataLoader 4:  10%|█         | 3/30 [00:00<00:06,  4.39it/s]Testing DataLoader 4:  13%|█▎        | 4/30 [00:00<00:05,  4.55it/s]Testing DataLoader 4:  17%|█▋        | 5/30 [00:01<00:05,  4.98it/s]Testing DataLoader 4:  20%|██        | 6/30 [00:01<00:04,  5.28it/s]Testing DataLoader 4:  23%|██▎       | 7/30 [00:01<00:04,  5.57it/s]Testing DataLoader 4:  27%|██▋       | 8/30 [00:01<00:03,  5.70it/s]Testing DataLoader 4:  30%|███       | 9/30 [00:01<00:03,  6.04it/s]Testing DataLoader 4:  33%|███▎      | 10/30 [00:01<00:03,  6.36it/s]Testing DataLoader 4:  37%|███▋      | 11/30 [00:01<00:02,  6.54it/s]Testing DataLoader 4:  40%|████      | 12/30 [00:01<00:02,  6.79it/s]Testing DataLoader 4:  43%|████▎     | 13/30 [00:01<00:02,  6.78it/s]Testing DataLoader 4:  47%|████▋     | 14/30 [00:02<00:02,  6.84it/s]Testing DataLoader 4:  50%|█████     | 15/30 [00:02<00:02,  7.00it/s]Testing DataLoader 4:  53%|█████▎    | 16/30 [00:02<00:01,  7.04it/s]Testing DataLoader 4:  57%|█████▋    | 17/30 [00:02<00:01,  7.03it/s]Testing DataLoader 4:  60%|██████    | 18/30 [00:02<00:01,  6.96it/s]Testing DataLoader 4:  63%|██████▎   | 19/30 [00:02<00:01,  6.99it/s]Testing DataLoader 4:  67%|██████▋   | 20/30 [00:02<00:01,  6.71it/s]Testing DataLoader 4:  70%|███████   | 21/30 [00:03<00:01,  6.81it/s]Testing DataLoader 4:  73%|███████▎  | 22/30 [00:03<00:01,  6.92it/s]Testing DataLoader 4:  77%|███████▋  | 23/30 [00:03<00:00,  7.03it/s]Testing DataLoader 4:  80%|████████  | 24/30 [00:03<00:00,  7.15it/s]Testing DataLoader 4:  83%|████████▎ | 25/30 [00:03<00:00,  7.28it/s]Testing DataLoader 4:  87%|████████▋ | 26/30 [00:03<00:00,  7.39it/s]Testing DataLoader 4:  90%|█████████ | 27/30 [00:03<00:00,  7.51it/s]Testing DataLoader 4:  93%|█████████▎| 28/30 [00:03<00:00,  7.62it/s]Testing DataLoader 4:  97%|█████████▋| 29/30 [00:03<00:00,  7.73it/s]Testing DataLoader 4: 100%|██████████| 30/30 [00:03<00:00,  7.89it/s]= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 21.327535390853882 sec. =
+knn accuracy test drums     : 85.91703056768559%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 20.783155918121338 sec. =
+knn accuracy test bass      : 21.92691029900332%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 18.28558874130249 sec. =
+knn accuracy test piano     : 28.345498783454985%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 21.800562381744385 sec. =
+knn accuracy test guitar    : 33.4841628959276%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 21.330349683761597 sec. =
+knn accuracy test residuals : 67.16899892357372%
+
+knn accuracy test average   : 47.36852029392905%
+Testing DataLoader 4: 100%|██████████| 30/30 [02:09<00:00,  0.23it/s]
+┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃    Test metric    ┃   DataLoader 0    ┃   DataLoader 1    ┃   DataLoader 2   ┃
+┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│   test/knn_avr    │ 0.47368520498275… │ 0.47368520498275… │ 0.4736852049827… │
+│   test/knn_bass   │ 0.21926909685134… │ 0.21926909685134… │ 0.2192690968513… │
+│  test/knn_drums   │ 0.85917031764984… │ 0.85917031764984… │ 0.8591703176498… │
+│  test/knn_guitar  │ 0.33484163880348… │ 0.33484163880348… │ 0.3348416388034… │
+│  test/knn_piano   │ 0.28345498442649… │ 0.28345498442649… │ 0.2834549844264… │
+│ test/knn_residua… │ 0.67168998718261… │ 0.67168998718261… │ 0.6716899871826… │
+└───────────────────┴───────────────────┴───────────────────┴──────────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃       Test metric       ┃      DataLoader 3       ┃       DataLoader 4       ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      test/knn_avr       │   0.47368520498275757   │   0.47368520498275757    │
+│      test/knn_bass      │   0.21926909685134888   │   0.21926909685134888    │
+│     test/knn_drums      │   0.8591703176498413    │    0.8591703176498413    │
+│     test/knn_guitar     │   0.33484163880348206   │   0.33484163880348206    │
+│     test/knn_piano      │   0.2834549844264984    │    0.2834549844264984    │
+│   test/knn_residuals    │   0.6716899871826172    │    0.6716899871826172    │
+└─────────────────────────┴─────────────────────────┴──────────────────────────┘
+[2023-11-16 11:25:48,923][utils.utils][INFO] - [rank: 0] Output dir: /home/imamura23/nas02home/outputs/eval_pretrain/runs/2023-11-16/11-23-06

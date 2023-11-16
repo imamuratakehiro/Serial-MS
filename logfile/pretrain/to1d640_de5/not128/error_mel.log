@@ -1,0 +1,48 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name            | Type                          | Params
+------------------------------------------------------------------
+0 | net             | UNetForTriplet_2d_de5_to1d640 | 38.6 M
+1 | loss_triplet    | MarginRankingLoss             | 0     
+2 | loss_mse        | MSELoss                       | 0     
+3 | train_loss_mix  | MeanMetric                    | 0     
+4 | train_loss_inst | MeanMetric                    | 0     
+------------------------------------------------------------------
+38.6 M    Trainable params
+0         Non-trainable params
+38.6 M    Total params
+154.426   Total estimated model params size (MB)
+Metric val/knn_avr improved. New best score: 0.287
+Epoch 0, global step 507: 'val/knn_avr' reached 0.28733 (best 0.28733), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/05-47-10/checkpoints/epoch_000.ckpt' as top 1
+Epoch 1, global step 1014: 'val/knn_avr' was not in top 1
+Metric val/knn_avr improved by 0.015 >= min_delta = 0.0. New best score: 0.303
+Epoch 2, global step 1521: 'val/knn_avr' reached 0.30277 (best 0.30277), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/05-47-10/checkpoints/epoch_002.ckpt' as top 1
+Metric val/knn_avr improved by 0.001 >= min_delta = 0.0. New best score: 0.304
+Epoch 3, global step 2028: 'val/knn_avr' reached 0.30406 (best 0.30406), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/05-47-10/checkpoints/epoch_003.ckpt' as top 1
+Epoch 4, global step 2535: 'val/knn_avr' was not in top 1
+Metric val/knn_avr improved by 0.001 >= min_delta = 0.0. New best score: 0.305
+Epoch 5, global step 3042: 'val/knn_avr' reached 0.30529 (best 0.30529), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/05-47-10/checkpoints/epoch_005.ckpt' as top 1
+Metric val/knn_avr improved by 0.028 >= min_delta = 0.0. New best score: 0.334
+Epoch 6, global step 3549: 'val/knn_avr' reached 0.33365 (best 0.33365), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/05-47-10/checkpoints/epoch_006.ckpt' as top 1
+Epoch 7, global step 4056: 'val/knn_avr' was not in top 1
+Epoch 8, global step 4563: 'val/knn_avr' was not in top 1
+Epoch 9, global step 5070: 'val/knn_avr' was not in top 1
+Epoch 10, global step 5577: 'val/knn_avr' was not in top 1
+Epoch 11, global step 6084: 'val/knn_avr' was not in top 1
+Epoch 12, global step 6591: 'val/knn_avr' was not in top 1
+Epoch 13, global step 7098: 'val/knn_avr' was not in top 1
+Epoch 14, global step 7605: 'val/knn_avr' was not in top 1
+Epoch 15, global step 8112: 'val/knn_avr' was not in top 1
+Monitored metric val/knn_avr did not improve in the last 10 records. Best score: 0.334. Signaling Trainer to stop.
+Epoch 16, global step 8619: 'val/knn_avr' was not in top 1
+Restoring states from the checkpoint path at /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/05-47-10/checkpoints/epoch_006.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/05-47-10/checkpoints/epoch_006.ckpt

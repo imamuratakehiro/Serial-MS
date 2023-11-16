@@ -15,10 +15,11 @@ defaults:
   - hydra: default
 
   #- experiment: triplet_with_unet
-  - experiment: pretrain
+  - experiment: ???
+  #- experiment: pretrain
 # task name, determines output directory path
 #task_name: triplet_with_unet
-task_name: pretrain
+task_name: ???
 
 train: true
 test: true
@@ -28,6 +29,8 @@ tags: ["dev"]
 
 # simply provide checkpoint path to resume training
 #ckpt_path: /home/imamura23/nas02home/outputs/2023-10-29/18-45-05/checkpoints/epoch_006.ckpt
+#ckpt_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/01-11-14/checkpoints/epoch_053.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-08/02-59-37/checkpoints/epoch_epoch=099.ckpt
 ckpt_path: null
 
 # seed for random number generators in pytorch, numpy and python.random

@@ -136,15 +136,9 @@ class TripletDataModule(pl.LightningDataModule):
     def setup(self, stage: str) -> None:
         if stage == "fit" or stage is None:
             self.mylogger.s_dataload()
-            self.trainset = ConcatDataset(
-                TripletLoader(mode="train", cfg=self.cfg),
-                Condition32Loader(cfg=self.cfg, mode="train")
-                )
+            self.trainset = TripletLoader(mode="train", cfg=self.cfg)
             self.validset = [PsdLoader(mode="valid", cfg=self.cfg, inst=inst) for inst in self.cfg.inst_list]
-            self.validset.insert(0, ConcatDataset(
-                TripletLoader(mode="valid", cfg=self.cfg),
-                Condition32Loader(mode="valid", cfg=self.cfg)
-                ))
+            self.validset.insert(0, TripletLoader(mode="valid", cfg=self.cfg))
             self.mylogger.f_dataload()
         if stage == "test" or stage is None:
             self.testset = [PsdLoader(mode="test", cfg=self.cfg, inst=inst) for inst in self.cfg.inst_list]

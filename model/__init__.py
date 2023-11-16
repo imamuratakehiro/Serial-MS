@@ -21,13 +21,17 @@ from .triplet.model_triplet_1d_de5_ae_embnet import main as model_triplet_1d_de5
 from .triplet.model_triplet_csn640_de5_to1d_embedding import main as model_triplet_csn640_de5_to1d_embedding, UNetForTriplet_2d_de5_embnet
 from .triplet.model_triplet_to1d_embnet_silence import main as model_triplet_to1d_embnet_silence, UNetForTriplet_2d_de5_embnet_silence
 from .triplet.model_triplet_2d_de5_to1d_embnet_lastmean import main as model_triplet_2d_de5_to1d_embnet_lastmean, UNetForTriplet_2d_de5_embnet_lastmean
-from .triplet.model_nnet import main as model_nnet, NNet
+from .triplet.model_nnet_old import main as model_nnet, NNet_old
 from .triplet.model_triplet_2d_csn640de5_to1d640 import UNetForTriplet_2d_de5_to1d640
 from .triplet.pretrain import PreTrain
 from .triplet.pretrain_32 import PreTrain32
 from .triplet.triplet import Triplet
 from .triplet.model_triplet_csn640_to1d640_1dde5 import UNetForTriplet_to1d640_1dde5
 from .triplet.model_triplet_to1d640_1dde1_embedding import UNetForTriplet_to1d640_1dde1_embnet
+from .triplet.model_triplet_2d_csn640de5_to1d640_addencoder import UNetForTriplet_2d_de5_to1d640_addencoder, UNetForTriplet_2d_de5_to1d640_addencoder2
+from .triplet.model_triplet_2d_csn640de1_to1d640 import UNetForTriplet_2d_de1_to1d640
+from .triplet.model_zume import TripletModelZume
+from .triplet.model_nnet import NNetForTriplet
 
 from .to1d.model_avgp import AVGPooling
 from .to1d.model_linear import To1D640

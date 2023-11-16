@@ -1,0 +1,57 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py experiment=pretrain ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name            | Type                          | Params
+------------------------------------------------------------------
+0 | net             | UNetForTriplet_2d_de5_to1d640 | 38.6 M
+1 | loss_triplet    | MarginRankingLoss             | 0     
+2 | loss_mse        | MSELoss                       | 0     
+3 | train_loss_mix  | MeanMetric                    | 0     
+4 | train_loss_inst | MeanMetric                    | 0     
+------------------------------------------------------------------
+38.6 M    Trainable params
+0         Non-trainable params
+38.6 M    Total params
+154.432   Total estimated model params size (MB)
+Metric val/knn_avr improved. New best score: 0.195
+Epoch 0, global step 1014: 'val/knn_avr' reached 0.19464 (best 0.19464), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_000.ckpt' as top 1
+Metric val/knn_avr improved by 0.047 >= min_delta = 0.0. New best score: 0.242
+Epoch 1, global step 2028: 'val/knn_avr' reached 0.24210 (best 0.24210), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_001.ckpt' as top 2
+Metric val/knn_avr improved by 0.069 >= min_delta = 0.0. New best score: 0.311
+Epoch 2, global step 3042: 'val/knn_avr' reached 0.31074 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_002.ckpt' as top 3
+Epoch 3, global step 4056: 'val/knn_avr' reached 0.18721 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_003.ckpt' as top 4
+Epoch 4, global step 5070: 'val/knn_avr' reached 0.19967 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_004.ckpt' as top 5
+Epoch 5, global step 6084: 'val/knn_avr' reached 0.17997 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_005.ckpt' as top 6
+Epoch 6, global step 7098: 'val/knn_avr' reached 0.17985 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_006.ckpt' as top 7
+Epoch 7, global step 8112: 'val/knn_avr' reached 0.17888 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_007.ckpt' as top 8
+Epoch 8, global step 9126: 'val/knn_avr' reached 0.19059 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_008.ckpt' as top 9
+Epoch 9, global step 10140: 'val/knn_avr' reached 0.18713 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_009.ckpt' as top 10
+Epoch 10, global step 11154: 'val/knn_avr' reached 0.17366 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_010.ckpt' as top 11
+Epoch 11, global step 12168: 'val/knn_avr' reached 0.19364 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_011.ckpt' as top 12
+Epoch 12, global step 13182: 'val/knn_avr' reached 0.19251 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_012.ckpt' as top 13
+Epoch 13, global step 14196: 'val/knn_avr' reached 0.18982 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_013.ckpt' as top 14
+Epoch 14, global step 15210: 'val/knn_avr' reached 0.21510 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_014.ckpt' as top 15
+Epoch 15, global step 16224: 'val/knn_avr' reached 0.25109 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_015.ckpt' as top 16
+Epoch 16, global step 17238: 'val/knn_avr' reached 0.27103 (best 0.31074), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_016.ckpt' as top 17
+Metric val/knn_avr improved by 0.002 >= min_delta = 0.0. New best score: 0.313
+Epoch 17, global step 18252: 'val/knn_avr' reached 0.31272 (best 0.31272), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_017.ckpt' as top 18
+Epoch 18, global step 19266: 'val/knn_avr' reached 0.27594 (best 0.31272), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_018.ckpt' as top 19
+Metric val/knn_avr improved by 0.053 >= min_delta = 0.0. New best score: 0.366
+Epoch 19, global step 20280: 'val/knn_avr' reached 0.36562 (best 0.36562), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_019.ckpt' as top 20
+Metric val/knn_avr improved by 0.018 >= min_delta = 0.0. New best score: 0.383
+Epoch 20, global step 21294: 'val/knn_avr' reached 0.38336 (best 0.38336), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_020.ckpt' as top 21
+Metric val/knn_avr improved by 0.040 >= min_delta = 0.0. New best score: 0.424
+Epoch 21, global step 22308: 'val/knn_avr' reached 0.42375 (best 0.42375), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_021.ckpt' as top 22
+Epoch 22, global step 23322: 'val/knn_avr' reached 0.35938 (best 0.42375), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_022.ckpt' as top 23
+Epoch 23, global step 24336: 'val/knn_avr' reached 0.40684 (best 0.42375), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_023.ckpt' as top 24
+Epoch 24, global step 25350: 'val/knn_avr' reached 0.38714 (best 0.42375), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_024.ckpt' as top 25
+Epoch 25, global step 26364: 'val/knn_avr' reached 0.36842 (best 0.42375), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_025.ckpt' as top 26
+Epoch 26, global step 27378: 'val/knn_avr' reached 0.39814 (best 0.42375), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-11/08-21-22/checkpoints/epoch_026.ckpt' as top 27
+slurmstepd-compute04: error: *** JOB 70987 ON compute04 CANCELLED AT 2023-11-11T15:14:54 ***

@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap, BoundaryNorm
 
-from utils.func import file_exist, knn_psd, tsne_psd, TorchSTFT
+from utils.func import file_exist, knn_psd, tsne_psd, tsne_psd_marker, TorchSTFT
 from ..jnet.model_jnet_128_embnet import JNet128Embnet
 from ..csn import ConditionalSimNet1d
 
@@ -136,16 +136,16 @@ class PreTrain(LightningModule):
             - A tensor of predictions.
             - A tensor of target labels.
         """
-        mix, stems, emb_target = batch
-        param, mix, _ = self.stft.transform(mix); _, stems, _ = self.stft.transform(stems, param)
+        mix, stems, emb_target_mix, emb_target_stems = batch
+        _, mix, _ = self.stft.transform(mix); _, stems, _ = self.stft.transform(stems)
         emb_mix   = self.forward_mix(mix)
         emb_stems = self.forward_inst(stems)
-        csn_train = ConditionalSimNet1d()
+        #csn_train = ConditionalSimNet1d()
         # loss
-        loss_mix = self.loss_mse(emb_mix, emb_target)
-        loss_inst = 0
-        for idx, inst in enumerate(self.cfg.inst_list):
-            loss_inst += self.loss_mse(emb_stems[:, idx], csn_train(emb_target, torch.tensor([idx], device=mix.device)))
+        loss_mix = self.loss_mse(emb_mix, emb_target_mix)
+        loss_inst = self.loss_mse(emb_stems, emb_target_stems)
+        #for idx, inst in enumerate(self.cfg.inst_list):
+        #    loss_inst += self.loss_mse(emb_stems[:, idx], csn_train(emb_target, torch.tensor([idx], device=mix.device)))
         #a_e = self.forward(a_x)
         #p_e = self.forward(p_x)
         #n_e = self.forward(n_x)
@@ -189,6 +189,8 @@ class PreTrain(LightningModule):
         ID, ver, seg, data, c = batch
         _, data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
+        if self.cfg.test_valid_norm:
+            embvec = torch.nn.functional.normalize(embvec, dim=1)
         csn_valid = ConditionalSimNet1d()
         self.valid_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))
         self.valid_vec[self.cfg.inst_list[dataloader_idx]].append(csn_valid(embvec, c))
@@ -207,7 +209,10 @@ class PreTrain(LightningModule):
             vec   = torch.concat(self.valid_vec[inst], dim=0).to("cpu").numpy()
             acc = knn_psd(label, vec, self.cfg) # knn
             self.log(f"val/knn_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False)
-            tsne_psd(label, vec, self.cfg, dir_path=self.cfg.output_dir+f"/{inst}", current_epoch=self.current_epoch) # tsne
+            if self.cfg.test_psd_mine:
+                tsne_psd_marker(label, vec, "Valid", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
+            else:
+                tsne_psd(label, vec, "Valid", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
             print(f"knn accuracy valid {inst:<10}: {acc*100}%")
             acc_all += acc
         self.log(f"val/knn_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True)
@@ -224,6 +229,8 @@ class PreTrain(LightningModule):
         ID, ver, seg, data, c = batch
         _, data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
+        if self.cfg.test_valid_norm:
+            embvec = torch.nn.functional.normalize(embvec, dim=1)
         csn_test = ConditionalSimNet1d()
         self.test_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))
         self.test_vec[self.cfg.inst_list[dataloader_idx]].append(csn_test(embvec, c))
@@ -235,7 +242,10 @@ class PreTrain(LightningModule):
             label = torch.concat(self.test_label[inst], dim=0).to("cpu").numpy()
             vec   = torch.concat(self.test_vec[inst], dim=0).to("cpu").numpy()
             acc = knn_psd(label, vec, self.cfg) # knn
-            tsne_psd(label, vec, self.cfg, dir_path=self.cfg.output_dir+f"/{inst}") # tsne
+            if self.cfg.test_psd_mine:
+                tsne_psd_marker(label, vec, "Test", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
+            else:
+                tsne_psd(label, vec, "Test", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}") # tsne
             self.log(f"test/knn_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False)
             print(f"knn accuracy test {inst:<10}: {acc*100}%")
             acc_all += acc

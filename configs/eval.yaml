@@ -5,20 +5,28 @@ defaults:
   - data: null # choose datamodule with `test_dataloader()` for evaluation
   - train: null
   - model: null
-  - experiment: triplet_with_unet
   - logger: null
   - trainer: default
   - paths: default
   - extras: default
   - hydra: default
+
+  #- experiment: triplet_with_unet/y
+  - experiment: pretrain
   #- override hydra/job_logging: colorlog
   #- override hydra/hydra_logging: colorlog
 
-task_name: "eval_triplet_with_unet"
+#task_name: "eval_triplet_with_unet"
+task_name: "eval_pretrain"
 
 # なんか入れんと動かん、extrasのtagのやつfalseもあり
 tags: ["dev"]
 
 # passing checkpoint path is necessary for evaluation
 #ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/09-41-24/checkpoints/epoch_028.ckpt
-ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/07-49-24/checkpoints/epoch_028.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/07-49-24/checkpoints/epoch_028.ckpt
+#ckpt_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/01-11-14/checkpoints/epoch_053.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-07/11-35-21/checkpoints/epoch_007.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-11/14-22-12/checkpoints/epoch_025.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/15-31-05/checkpoints/epoch_027.ckpt
+ckpt_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/09-21-27/checkpoints/epoch_168.ckpt

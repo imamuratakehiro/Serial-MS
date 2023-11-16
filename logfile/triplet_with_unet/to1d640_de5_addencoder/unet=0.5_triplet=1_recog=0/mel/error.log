@@ -1,0 +1,29 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name               | Type                                     | Params
+--------------------------------------------------------------------------------
+0 | net                | UNetForTriplet_2d_de5_to1d640_addencoder | 46.7 M
+1 | loss_unet          | L1Loss                                   | 0     
+2 | loss_triplet       | MarginRankingLoss                        | 0     
+3 | loss_l2            | MSELoss                                  | 0     
+4 | loss_mrl           | MarginRankingLoss                        | 0     
+5 | loss_cross_entropy | BCEWithLogitsLoss                        | 0     
+6 | recorder           | ModuleDict                               | 0     
+--------------------------------------------------------------------------------
+46.7 M    Trainable params
+0         Non-trainable params
+46.7 M    Total params
+186.657   Total estimated model params size (MB)
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Metric Valid/knn_avr improved. New best score: 0.278
+Epoch 0, global step 625: 'Valid/knn_avr' reached 0.27754 (best 0.27754), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-08/17-09-39/checkpoints/epoch_000.ckpt' as top 1
+slurmstepd-mrcompute01: error: *** JOB 70742 ON mrcompute01 CANCELLED AT 2023-11-08T17:22:21 ***

@@ -1,0 +1,788 @@
+
+=== Using cuda(utils.func). ===
+
+
+=== Using cuda(utils.logger). ===
+
+[2023-10-29 18:47:48,390][utils.utils][INFO] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>
+[2023-10-29 18:47:48,395][utils.utils][INFO] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>
+CONFIG
+├── data
+│   └── _target_: dataset.PreTrainDataModule                                    
+│       cfg:                                                                    
+│         n_epoch: 100                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         batch_train: 16                                                       
+│         batch_test: 64                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         train_dirname: 3s_on1.5                                               
+│         test_dirname: 3s_on1.5                                                
+│         normalize128: false                                                   
+│         condition32: false                                                    
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         seconds_train: 3                                                      
+│         seconds_test: 3                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         lr: 0.001                                                             
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUN
+│                                                                               
+├── model
+│   └── _target_: model.PreTrain                                                
+│       optimizer:                                                              
+│         _target_: torch.optim.Adam                                            
+│         _partial_: true                                                       
+│         lr: 0.0001                                                            
+│         weight_decay: 0.0                                                     
+│       scheduler: null                                                         
+│       net:                                                                    
+│         _target_: model.UNetForTriplet_2d_de5_to1d640                         
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         f_size: 2048                                                          
+│         mono: true                                                            
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│       cfg:                                                                    
+│         n_epoch: 100                                                          
+│         inst_list:                                                            
+│         - drums                                                               
+│         - bass                                                                
+│         - piano                                                               
+│         - guitar                                                              
+│         - residuals                                                           
+│         dataset_dir: /nas03/assets/Dataset/slakh                              
+│         batch_train: 16                                                       
+│         batch_test: 64                                                        
+│         num_workers: 8                                                        
+│         pin_memory: true                                                      
+│         datasetname: slakh                                                    
+│         train_dirname: 3s_on1.5                                               
+│         test_dirname: 3s_on1.5                                                
+│         normalize128: false                                                   
+│         condition32: false                                                    
+│         mono: true                                                            
+│         f_size: 2048                                                          
+│         hop_length: 512                                                       
+│         seconds_train: 3                                                      
+│         seconds_test: 3                                                       
+│         sr: 44100                                                             
+│         mel: false                                                            
+│         db: true                                                              
+│         target: model.UNetForTriplet_2d_de5_to1d640                           
+│         to1d_mode: mean_linear                                                
+│         order: timefreq                                                       
+│         margin: 0.2                                                           
+│         lr: 0.001                                                             
+│         monitor_es: val/knn_avr                                               
+│         monitor_mode_es: max                                                  
+│         triplet_rate: 1                                                       
+│         unet_rate: 0                                                          
+│         recog_rate: 0                                                         
+│         output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUN
+│                                                                               
+├── callbacks
+│   └── model_checkpoint:                                                       
+│         _target_: pytorch_lightning.callbacks.ModelCheckpoint                 
+│         dirpath: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/
+│         filename: epoch_{epoch:03d}                                           
+│         monitor: val/knn_avr                                                  
+│         verbose: true                                                         
+│         save_last: true                                                       
+│         save_top_k: 1                                                         
+│         mode: max                                                             
+│         auto_insert_metric_name: false                                        
+│         save_weights_only: false                                              
+│         every_n_train_steps: null                                             
+│         train_time_interval: null                                             
+│         every_n_epochs: null                                                  
+│         save_on_train_epoch_end: null                                         
+│       early_stopping:                                                         
+│         _target_: pytorch_lightning.callbacks.EarlyStopping                   
+│         monitor: val/knn_avr                                                  
+│         min_delta: 0.0                                                        
+│         patience: 3                                                           
+│         verbose: true                                                         
+│         mode: max                                                             
+│         strict: true                                                          
+│         check_finite: true                                                    
+│         stopping_threshold: null                                              
+│         divergence_threshold: null                                            
+│         check_on_train_epoch_end: null                                        
+│       tqdm_progress_bar:                                                      
+│         _target_: pytorch_lightning.callbacks.TQDMProgressBar                 
+│         refresh_rate: 50                                                      
+│                                                                               
+├── logger
+│   └── tensorboard:                                                            
+│         _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger     
+│         save_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet
+│         name: lightning_logs                                                  
+│         log_graph: false                                                      
+│         default_hp_metric: true                                               
+│         prefix: ''                                                            
+│                                                                               
+├── trainer
+│   └── _target_: pytorch_lightning.trainer.Trainer                             
+│       default_root_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWi
+│       min_epochs: 1                                                           
+│       max_epochs: 100                                                         
+│       accelerator: auto                                                       
+│       devices: 1                                                              
+│       check_val_every_n_epoch: 1                                              
+│       deterministic: false                                                    
+│       enable_progress_bar: true                                               
+│       log_every_n_steps: 10                                                   
+│                                                                               
+├── paths
+│   └── root_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet       
+│       data_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/datase
+│       log_dir: /home/imamura23/nas01home/codes/MusicSimilarityWithUNet/logs/  
+│       output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet
+│       work_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet  
+│                                                                               
+├── extras
+│   └── ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── task_name
+│   └── pretrain                                                                
+├── train
+│   └── n_epoch: 100                                                            
+│       inst_list:                                                              
+│       - drums                                                                 
+│       - bass                                                                  
+│       - piano                                                                 
+│       - guitar                                                                
+│       - residuals                                                             
+│       dataset_dir: /nas03/assets/Dataset/slakh                                
+│       batch_train: 16                                                         
+│       batch_test: 64                                                          
+│       num_workers: 8                                                          
+│       pin_memory: true                                                        
+│       datasetname: slakh                                                      
+│       train_dirname: 3s_on1.5                                                 
+│       test_dirname: 3s_on1.5                                                  
+│       normalize128: false                                                     
+│       condition32: false                                                      
+│       mono: true                                                              
+│       f_size: 2048                                                            
+│       hop_length: 512                                                         
+│       seconds_train: 3                                                        
+│       seconds_test: 3                                                         
+│       sr: 44100                                                               
+│       mel: false                                                              
+│       db: true                                                                
+│       target: model.UNetForTriplet_2d_de5_to1d640                             
+│       to1d_mode: mean_linear                                                  
+│       order: timefreq                                                         
+│       margin: 0.2                                                             
+│       lr: 0.001                                                               
+│       monitor_es: val/knn_avr                                                 
+│       monitor_mode_es: max                                                    
+│       triplet_rate: 1                                                         
+│       unet_rate: 0                                                            
+│       recog_rate: 0                                                           
+│       output_dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet
+│                                                                               
+├── test
+│   └── True                                                                    
+├── tags
+│   └── ['dev']                                                                 
+├── ckpt_path
+│   └── None                                                                    
+└── seed
+    └── None                                                                    
+[2023-10-29 18:47:48,476][source.train][INFO] - [rank: 0] Instantiating datamodule <dataset.PreTrainDataModule>
+[2023-10-29 18:47:48,514][source.train][INFO] - [rank: 0] Instantiating model <model.PreTrain>
+
+=== Using cuda(model.csn). ===
+
+
+=== Using cuda(model.unet5.model_csn_640). ===
+
+
+=== Using cuda(model.unet5.model_csn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_normal). ===
+
+
+=== Using cuda(model.unet5.model_notcsn_640_de5). ===
+
+
+=== Using cuda(model.unet5.model_unet5_1d_de5). ===
+
+
+=== Using cuda(model.waveunet.model_waveunet5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de5). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn_640_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_128_de1). ===
+
+
+=== Using cuda(model.triplet.model_triplet_inst). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_embnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_1d_de5_ae_embnet). ===
+
+
+=== Using cuda(model.to1d.model_linear). ===
+
+
+=== Using cuda(model.to1d.model_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_csn640_de5_to1d_embedding). ===
+
+
+=== Using cuda(model.triplet.model_triplet_to1d_embnet_silence). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_de5_to1d_embnet_lastmean). ===
+
+
+=== Using cuda(model.triplet.model_nnet). ===
+
+
+=== Using cuda(model.triplet.model_triplet_2d_csn640de5_to1d640). ===
+
+
+=== Using cuda(model.jnet.model_jnet_128_embnet). ===
+
+
+=== Using cuda(model.AE.model_ae). ===
+
+
+=== Using cuda(model.demucs.model_demucs). ===
+
+
+=== Using cuda(model.demucs.model_hdemucs). ===
+
+
+=== Using cuda(model.jnet.model_jnet_attention). ===
+
+[2023-10-29 18:47:51,746][torch.distributed.nn.jit.instantiator][INFO] - Created a temporary directory at /tmp/tmpkf3u53md
+[2023-10-29 18:47:51,747][torch.distributed.nn.jit.instantiator][INFO] - Writing /tmp/tmpkf3u53md/_remote_module_non_scriptable.py
+UNetForTriplet_2d_de5_to1d640(
+  (encoder): UNetEncoder(
+    (conv1): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(1, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv2): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv3): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv4): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv5): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+        (bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (rl): LeakyReLU(negative_slope=0.2)
+      )
+    )
+    (conv6): Conv2d(
+      (conv): Sequential(
+        (0): Conv2d(256, 640, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+      )
+    )
+  )
+  (decoder_drums): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_bass): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_piano): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_guitar): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (decoder_residuals): UNetDecoder(
+    (deconv6_a): ConvTranspose2d(640, 256, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv6_b): Sequential(
+      (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv5_a): ConvTranspose2d(512, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv5_b): Sequential(
+      (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv4_a): ConvTranspose2d(256, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv4_b): Sequential(
+      (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+      (2): Dropout2d(p=0.5, inplace=False)
+    )
+    (deconv3_a): ConvTranspose2d(128, 32, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv3_b): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv2_a): ConvTranspose2d(64, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+    (deconv2_b): Sequential(
+      (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): LeakyReLU(negative_slope=0.2)
+    )
+    (deconv1_a): ConvTranspose2d(32, 1, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2))
+  )
+  (to1d): To1D640(
+    (to1d): To1D640timefreq(
+      (fc1): Linear(in_features=10880, out_features=640, bias=True)
+    )
+  )
+  (sigmoid): Sigmoid()
+)
+[2023-10-29 18:47:51,818][source.train][INFO] - [rank: 0] Instantiating callbacks...
+[2023-10-29 18:47:51,819][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>
+[2023-10-29 18:47:51,826][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2023-10-29 18:47:51,827][utils.instantiators][INFO] - [rank: 0] Instantiating callback <pytorch_lightning.callbacks.TQDMProgressBar>
+[2023-10-29 18:47:51,828][source.train][INFO] - [rank: 0] Instantiating loggers...
+[2023-10-29 18:47:51,828][utils.instantiators][INFO] - [rank: 0] Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2023-10-29 18:47:51,887][source.train][INFO] - [rank: 0] Instantiating trainer <pytorch_lightning.trainer.Trainer>
+[2023-10-29 18:47:52,170][source.train][INFO] - [rank: 0] Logging hyperparameters!
+[2023-10-29 18:47:52,460][source.train][INFO] - [rank: 0] Starting training!
+
+----------------------------------------
+Use dataset slakh.
+The frame size is setted to 2048.
+The length of seg for train is 3s.
+The length of seg for valid and test is 3s.
+----------------------------------------
+	Loading dataset...
+	dataset was loaded!
+	* Loading time is 0.07381772994995117 sec. *
+Sanity Checking: |          | 0/? [00:00<?, ?it/s]Sanity Checking:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:05<00:00,  0.35it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 1:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 1: 100%|██████████| 2/2 [00:01<00:00,  1.16it/s]Sanity Checking DataLoader 1:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 2:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 2: 100%|██████████| 2/2 [00:00<00:00,  2.05it/s]Sanity Checking DataLoader 2:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 3:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 3: 100%|██████████| 2/2 [00:00<00:00,  2.21it/s]Sanity Checking DataLoader 3:   0%|          | 0/2 [00:00<?, ?it/s]        Sanity Checking DataLoader 4:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 4: 100%|██████████| 2/2 [00:01<00:00,  1.74it/s]knn
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 3.110826015472412 sec. =
+knn accuracy valid drums     : 75.0%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 2.9865639209747314 sec. =
+knn accuracy valid bass      : 35.9375%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 3.0433173179626465 sec. =
+knn accuracy valid piano     : 26.5625%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 3.0150630474090576 sec. =
+knn accuracy valid guitar    : 61.71875%
+= T-SNE...
+ディレクトリを作成します
+T-SNE was finished!
+= T-SNE time is 2.9700615406036377 sec. =
+knn accuracy valid residuals : 82.03125%
+
+knn accuracy valid average   : 56.25%
+                                                                           Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/2027 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/2027 [00:00<?, ?it/s] Epoch 0:   2%|▏         | 50/2027 [00:49<32:19,  1.02it/s]Epoch 0:   2%|▏         | 50/2027 [00:49<32:23,  1.02it/s, v_num=0, train/loss_mix_step=0.00222, train/loss_inst_step=0.00339]Epoch 0:   5%|▍         | 100/2027 [01:29<28:49,  1.11it/s, v_num=0, train/loss_mix_step=0.00222, train/loss_inst_step=0.00339]Epoch 0:   5%|▍         | 100/2027 [01:29<28:50,  1.11it/s, v_num=0, train/loss_mix_step=0.00124, train/loss_inst_step=0.00144]Epoch 0:   7%|▋         | 150/2027 [02:09<27:03,  1.16it/s, v_num=0, train/loss_mix_step=0.00124, train/loss_inst_step=0.00144]Epoch 0:   7%|▋         | 150/2027 [02:09<27:04,  1.16it/s, v_num=0, train/loss_mix_step=0.00141, train/loss_inst_step=0.00162]Epoch 0:  10%|▉         | 200/2027 [02:50<25:53,  1.18it/s, v_num=0, train/loss_mix_step=0.00141, train/loss_inst_step=0.00162]Epoch 0:  10%|▉         | 200/2027 [02:50<25:54,  1.18it/s, v_num=0, train/loss_mix_step=0.00141, train/loss_inst_step=0.00163]Epoch 0:  12%|█▏        | 250/2027 [03:31<25:02,  1.18it/s, v_num=0, train/loss_mix_step=0.00141, train/loss_inst_step=0.00163]Epoch 0:  12%|█▏        | 250/2027 [03:31<25:02,  1.18it/s, v_num=0, train/loss_mix_step=0.00139, train/loss_inst_step=0.00172]Epoch 0:  15%|█▍        | 300/2027 [04:11<24:10,  1.19it/s, v_num=0, train/loss_mix_step=0.00139, train/loss_inst_step=0.00172]Epoch 0:  15%|█▍        | 300/2027 [04:12<24:10,  1.19it/s, v_num=0, train/loss_mix_step=0.00155, train/loss_inst_step=0.00185]Epoch 0:  17%|█▋        | 350/2027 [04:53<23:24,  1.19it/s, v_num=0, train/loss_mix_step=0.00155, train/loss_inst_step=0.00185]Epoch 0:  17%|█▋        | 350/2027 [04:53<23:24,  1.19it/s, v_num=0, train/loss_mix_step=0.00134, train/loss_inst_step=0.00213]Epoch 0:  20%|█▉        | 400/2027 [05:34<22:39,  1.20it/s, v_num=0, train/loss_mix_step=0.00134, train/loss_inst_step=0.00213]Epoch 0:  20%|█▉        | 400/2027 [05:34<22:40,  1.20it/s, v_num=0, train/loss_mix_step=0.00129, train/loss_inst_step=0.00147]Epoch 0:  22%|██▏       | 450/2027 [06:15<21:54,  1.20it/s, v_num=0, train/loss_mix_step=0.00129, train/loss_inst_step=0.00147]Epoch 0:  22%|██▏       | 450/2027 [06:15<21:55,  1.20it/s, v_num=0, train/loss_mix_step=0.00142, train/loss_inst_step=0.00172]Epoch 0:  25%|██▍       | 500/2027 [06:57<21:16,  1.20it/s, v_num=0, train/loss_mix_step=0.00142, train/loss_inst_step=0.00172]Epoch 0:  25%|██▍       | 500/2027 [06:58<21:16,  1.20it/s, v_num=0, train/loss_mix_step=0.00119, train/loss_inst_step=0.00146]Epoch 0:  27%|██▋       | 550/2027 [07:38<20:31,  1.20it/s, v_num=0, train/loss_mix_step=0.00119, train/loss_inst_step=0.00146]Epoch 0:  27%|██▋       | 550/2027 [07:38<20:31,  1.20it/s, v_num=0, train/loss_mix_step=0.00112, train/loss_inst_step=0.00133]Epoch 0:  30%|██▉       | 600/2027 [08:19<19:48,  1.20it/s, v_num=0, train/loss_mix_step=0.00112, train/loss_inst_step=0.00133]Epoch 0:  30%|██▉       | 600/2027 [08:19<19:49,  1.20it/s, v_num=0, train/loss_mix_step=0.00115, train/loss_inst_step=0.00151]Epoch 0:  32%|███▏      | 650/2027 [09:00<19:05,  1.20it/s, v_num=0, train/loss_mix_step=0.00115, train/loss_inst_step=0.00151]Epoch 0:  32%|███▏      | 650/2027 [09:00<19:05,  1.20it/s, v_num=0, train/loss_mix_step=0.00107, train/loss_inst_step=0.00151]Epoch 0:  35%|███▍      | 700/2027 [09:41<18:22,  1.20it/s, v_num=0, train/loss_mix_step=0.00107, train/loss_inst_step=0.00151]Epoch 0:  35%|███▍      | 700/2027 [09:41<18:22,  1.20it/s, v_num=0, train/loss_mix_step=0.0011, train/loss_inst_step=0.00137] Epoch 0:  37%|███▋      | 750/2027 [10:23<17:41,  1.20it/s, v_num=0, train/loss_mix_step=0.0011, train/loss_inst_step=0.00137]Epoch 0:  37%|███▋      | 750/2027 [10:23<17:41,  1.20it/s, v_num=0, train/loss_mix_step=0.00138, train/loss_inst_step=0.00152]Epoch 0:  39%|███▉      | 800/2027 [11:05<17:00,  1.20it/s, v_num=0, train/loss_mix_step=0.00138, train/loss_inst_step=0.00152]Epoch 0:  39%|███▉      | 800/2027 [11:05<17:00,  1.20it/s, v_num=0, train/loss_mix_step=0.00103, train/loss_inst_step=0.00156]Epoch 0:  42%|████▏     | 850/2027 [11:46<16:18,  1.20it/s, v_num=0, train/loss_mix_step=0.00103, train/loss_inst_step=0.00156]Epoch 0:  42%|████▏     | 850/2027 [11:46<16:18,  1.20it/s, v_num=0, train/loss_mix_step=0.00121, train/loss_inst_step=0.00156]Epoch 0:  44%|████▍     | 900/2027 [12:26<15:35,  1.20it/s, v_num=0, train/loss_mix_step=0.00121, train/loss_inst_step=0.00156]Epoch 0:  44%|████▍     | 900/2027 [12:27<15:35,  1.20it/s, v_num=0, train/loss_mix_step=0.00105, train/loss_inst_step=0.0014] Epoch 0:  47%|████▋     | 950/2027 [13:08<14:53,  1.21it/s, v_num=0, train/loss_mix_step=0.00105, train/loss_inst_step=0.0014]Epoch 0:  47%|████▋     | 950/2027 [13:08<14:53,  1.21it/s, v_num=0, train/loss_mix_step=0.00107, train/loss_inst_step=0.00147]Epoch 0:  49%|████▉     | 1000/2027 [13:48<14:10,  1.21it/s, v_num=0, train/loss_mix_step=0.00107, train/loss_inst_step=0.00147]Epoch 0:  49%|████▉     | 1000/2027 [13:48<14:10,  1.21it/s, v_num=0, train/loss_mix_step=0.00101, train/loss_inst_step=0.00123]Epoch 0:  52%|█████▏    | 1050/2027 [14:29<13:29,  1.21it/s, v_num=0, train/loss_mix_step=0.00101, train/loss_inst_step=0.00123]Epoch 0:  52%|█████▏    | 1050/2027 [14:30<13:29,  1.21it/s, v_num=0, train/loss_mix_step=0.000929, train/loss_inst_step=0.00148]Epoch 0:  54%|█████▍    | 1100/2027 [15:11<12:47,  1.21it/s, v_num=0, train/loss_mix_step=0.000929, train/loss_inst_step=0.00148]Epoch 0:  54%|█████▍    | 1100/2027 [15:11<12:47,  1.21it/s, v_num=0, train/loss_mix_step=0.000965, train/loss_inst_step=0.00123]Epoch 0:  57%|█████▋    | 1150/2027 [15:52<12:06,  1.21it/s, v_num=0, train/loss_mix_step=0.000965, train/loss_inst_step=0.00123]Epoch 0:  57%|█████▋    | 1150/2027 [15:52<12:06,  1.21it/s, v_num=0, train/loss_mix_step=0.000844, train/loss_inst_step=0.00105]Epoch 0:  59%|█████▉    | 1200/2027 [16:33<11:24,  1.21it/s, v_num=0, train/loss_mix_step=0.000844, train/loss_inst_step=0.00105]Epoch 0:  59%|█████▉    | 1200/2027 [16:33<11:24,  1.21it/s, v_num=0, train/loss_mix_step=0.00069, train/loss_inst_step=0.000927]Epoch 0:  62%|██████▏   | 1250/2027 [17:13<10:42,  1.21it/s, v_num=0, train/loss_mix_step=0.00069, train/loss_inst_step=0.000927]Epoch 0:  62%|██████▏   | 1250/2027 [17:13<10:42,  1.21it/s, v_num=0, train/loss_mix_step=0.00115, train/loss_inst_step=0.00141] Epoch 0:  64%|██████▍   | 1300/2027 [17:55<10:01,  1.21it/s, v_num=0, train/loss_mix_step=0.00115, train/loss_inst_step=0.00141]Epoch 0:  64%|██████▍   | 1300/2027 [17:55<10:01,  1.21it/s, v_num=0, train/loss_mix_step=0.00106, train/loss_inst_step=0.00124]Epoch 0:  67%|██████▋   | 1350/2027 [18:36<09:20,  1.21it/s, v_num=0, train/loss_mix_step=0.00106, train/loss_inst_step=0.00124]Epoch 0:  67%|██████▋   | 1350/2027 [18:37<09:20,  1.21it/s, v_num=0, train/loss_mix_step=0.000906, train/loss_inst_step=0.00125]Epoch 0:  69%|██████▉   | 1400/2027 [19:17<08:38,  1.21it/s, v_num=0, train/loss_mix_step=0.000906, train/loss_inst_step=0.00125]Epoch 0:  69%|██████▉   | 1400/2027 [19:18<08:38,  1.21it/s, v_num=0, train/loss_mix_step=0.00087, train/loss_inst_step=0.00114] Epoch 0:  72%|███████▏  | 1450/2027 [19:59<07:57,  1.21it/s, v_num=0, train/loss_mix_step=0.00087, train/loss_inst_step=0.00114]Epoch 0:  72%|███████▏  | 1450/2027 [19:59<07:57,  1.21it/s, v_num=0, train/loss_mix_step=0.000976, train/loss_inst_step=0.00124]Epoch 0:  74%|███████▍  | 1500/2027 [20:40<07:15,  1.21it/s, v_num=0, train/loss_mix_step=0.000976, train/loss_inst_step=0.00124]Epoch 0:  74%|███████▍  | 1500/2027 [20:40<07:15,  1.21it/s, v_num=0, train/loss_mix_step=0.00111, train/loss_inst_step=0.00147] Epoch 0:  76%|███████▋  | 1550/2027 [21:22<06:34,  1.21it/s, v_num=0, train/loss_mix_step=0.00111, train/loss_inst_step=0.00147]Epoch 0:  76%|███████▋  | 1550/2027 [21:22<06:34,  1.21it/s, v_num=0, train/loss_mix_step=0.000733, train/loss_inst_step=0.000936]Epoch 0:  79%|███████▉  | 1600/2027 [22:03<05:53,  1.21it/s, v_num=0, train/loss_mix_step=0.000733, train/loss_inst_step=0.000936]Epoch 0:  79%|███████▉  | 1600/2027 [22:03<05:53,  1.21it/s, v_num=0, train/loss_mix_step=0.000756, train/loss_inst_step=0.000971]Epoch 0:  81%|████████▏ | 1650/2027 [22:45<05:11,  1.21it/s, v_num=0, train/loss_mix_step=0.000756, train/loss_inst_step=0.000971]Epoch 0:  81%|████████▏ | 1650/2027 [22:45<05:11,  1.21it/s, v_num=0, train/loss_mix_step=0.000702, train/loss_inst_step=0.000812]Epoch 0:  84%|████████▍ | 1700/2027 [23:26<04:30,  1.21it/s, v_num=0, train/loss_mix_step=0.000702, train/loss_inst_step=0.000812]Epoch 0:  84%|████████▍ | 1700/2027 [23:26<04:30,  1.21it/s, v_num=0, train/loss_mix_step=0.000865, train/loss_inst_step=0.00101] Epoch 0:  86%|████████▋ | 1750/2027 [24:08<03:49,  1.21it/s, v_num=0, train/loss_mix_step=0.000865, train/loss_inst_step=0.00101]Epoch 0:  86%|████████▋ | 1750/2027 [24:08<03:49,  1.21it/s, v_num=0, train/loss_mix_step=0.000929, train/loss_inst_step=0.00122]Epoch 0:  89%|████████▉ | 1800/2027 [24:49<03:07,  1.21it/s, v_num=0, train/loss_mix_step=0.000929, train/loss_inst_step=0.00122]Epoch 0:  89%|████████▉ | 1800/2027 [24:49<03:07,  1.21it/s, v_num=0, train/loss_mix_step=0.000847, train/loss_inst_step=0.000974]Epoch 0:  91%|█████████▏| 1850/2027 [25:31<02:26,  1.21it/s, v_num=0, train/loss_mix_step=0.000847, train/loss_inst_step=0.000974]Epoch 0:  91%|█████████▏| 1850/2027 [25:31<02:26,  1.21it/s, v_num=0, train/loss_mix_step=0.000864, train/loss_inst_step=0.000978]Epoch 0:  94%|█████████▎| 1900/2027 [26:13<01:45,  1.21it/s, v_num=0, train/loss_mix_step=0.000864, train/loss_inst_step=0.000978]Epoch 0:  94%|█████████▎| 1900/2027 [26:13<01:45,  1.21it/s, v_num=0, train/loss_mix_step=0.00099, train/loss_inst_step=0.00124]  Epoch 0:  96%|█████████▌| 1950/2027 [26:54<01:03,  1.21it/s, v_num=0, train/loss_mix_step=0.00099, train/loss_inst_step=0.00124]Epoch 0:  96%|█████████▌| 1950/2027 [26:54<01:03,  1.21it/s, v_num=0, train/loss_mix_step=0.000625, train/loss_inst_step=0.000786]Epoch 0:  99%|█████████▊| 2000/2027 [27:35<00:22,  1.21it/s, v_num=0, train/loss_mix_step=0.000625, train/loss_inst_step=0.000786]Epoch 0:  99%|█████████▊| 2000/2027 [27:35<00:22,  1.21it/s, v_num=0, train/loss_mix_step=0.000837, train/loss_inst_step=0.000885]Epoch 0: 100%|██████████| 2027/2027 [27:57<00:00,  1.21it/s, v_num=0, train/loss_mix_step=0.000837, train/loss_inst_step=0.000885]Epoch 0: 100%|██████████| 2027/2027 [27:58<00:00,  1.21it/s, v_num=0, train/loss_mix_step=0.000943, train/loss_inst_step=0.00105] 
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 8/8 [00:03<00:00,  2.36it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 8/8 [00:03<00:00,  2.22it/s][A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 2:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 8/8 [00:04<00:00,  1.93it/s][A
+Validation DataLoader 2:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 7/7 [00:03<00:00,  2.04it/s][A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 4:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 7/7 [00:03<00:00,  1.97it/s][Aknn
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.315592050552368 sec. =
+knn accuracy valid drums     : 76.52173913043478%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.655426740646362 sec. =
+knn accuracy valid bass      : 16.129032258064516%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 11.083566188812256 sec. =
+knn accuracy valid piano     : 21.484375%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.225788354873657 sec. =
+knn accuracy valid guitar    : 38.392857142857146%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.695466995239258 sec. =
+knn accuracy valid residuals : 59.54545454545455%
+
+knn accuracy valid average   : 42.414691615362194%
+
+                                                                      [AEpoch 0: 100%|██████████| 2027/2027 [30:02<00:00,  1.12it/s, v_num=0, train/loss_mix_step=0.000943, train/loss_inst_step=0.00105, val/knn_avr=0.424]Epoch 0: 100%|██████████| 2027/2027 [30:02<00:00,  1.12it/s, v_num=0, train/loss_mix_step=0.000943, train/loss_inst_step=0.00105, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]
+Train average loss <input mix > : 0.0010948111303150654
+Train average loss <input inst> : 0.0015037745470181108
+
+Epoch 0:   0%|          | 0/2027 [00:00<?, ?it/s, v_num=0, train/loss_mix_step=0.000943, train/loss_inst_step=0.00105, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]           Epoch 1:   0%|          | 0/2027 [00:00<?, ?it/s, v_num=0, train/loss_mix_step=0.000943, train/loss_inst_step=0.00105, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:   2%|▏         | 50/2027 [00:47<31:03,  1.06it/s, v_num=0, train/loss_mix_step=0.000943, train/loss_inst_step=0.00105, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:   2%|▏         | 50/2027 [00:47<31:06,  1.06it/s, v_num=0, train/loss_mix_step=0.00124, train/loss_inst_step=0.00146, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:   5%|▍         | 100/2027 [01:28<28:20,  1.13it/s, v_num=0, train/loss_mix_step=0.00124, train/loss_inst_step=0.00146, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:   5%|▍         | 100/2027 [01:28<28:21,  1.13it/s, v_num=0, train/loss_mix_step=0.000857, train/loss_inst_step=0.00119, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:   7%|▋         | 150/2027 [02:12<27:40,  1.13it/s, v_num=0, train/loss_mix_step=0.000857, train/loss_inst_step=0.00119, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:   7%|▋         | 150/2027 [02:12<27:41,  1.13it/s, v_num=0, train/loss_mix_step=0.000911, train/loss_inst_step=0.00114, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  10%|▉         | 200/2027 [02:54<26:36,  1.14it/s, v_num=0, train/loss_mix_step=0.000911, train/loss_inst_step=0.00114, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  10%|▉         | 200/2027 [02:54<26:37,  1.14it/s, v_num=0, train/loss_mix_step=0.000682, train/loss_inst_step=0.000787, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  12%|█▏        | 250/2027 [03:37<25:43,  1.15it/s, v_num=0, train/loss_mix_step=0.000682, train/loss_inst_step=0.000787, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  12%|█▏        | 250/2027 [03:37<25:44,  1.15it/s, v_num=0, train/loss_mix_step=0.00089, train/loss_inst_step=0.00116, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]  Epoch 1:  15%|█▍        | 300/2027 [04:19<24:51,  1.16it/s, v_num=0, train/loss_mix_step=0.00089, train/loss_inst_step=0.00116, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  15%|█▍        | 300/2027 [04:19<24:52,  1.16it/s, v_num=0, train/loss_mix_step=0.000845, train/loss_inst_step=0.00131, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  17%|█▋        | 350/2027 [05:01<24:04,  1.16it/s, v_num=0, train/loss_mix_step=0.000845, train/loss_inst_step=0.00131, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  17%|█▋        | 350/2027 [05:01<24:04,  1.16it/s, v_num=0, train/loss_mix_step=0.00108, train/loss_inst_step=0.00118, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  20%|█▉        | 400/2027 [05:43<23:18,  1.16it/s, v_num=0, train/loss_mix_step=0.00108, train/loss_inst_step=0.00118, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  20%|█▉        | 400/2027 [05:43<23:18,  1.16it/s, v_num=0, train/loss_mix_step=0.000638, train/loss_inst_step=0.000934, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  22%|██▏       | 450/2027 [06:25<22:31,  1.17it/s, v_num=0, train/loss_mix_step=0.000638, train/loss_inst_step=0.000934, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  22%|██▏       | 450/2027 [06:25<22:31,  1.17it/s, v_num=0, train/loss_mix_step=0.000569, train/loss_inst_step=0.000622, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  25%|██▍       | 500/2027 [07:06<21:41,  1.17it/s, v_num=0, train/loss_mix_step=0.000569, train/loss_inst_step=0.000622, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  25%|██▍       | 500/2027 [07:06<21:41,  1.17it/s, v_num=0, train/loss_mix_step=0.000904, train/loss_inst_step=0.00122, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  27%|██▋       | 550/2027 [07:47<20:55,  1.18it/s, v_num=0, train/loss_mix_step=0.000904, train/loss_inst_step=0.00122, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  27%|██▋       | 550/2027 [07:47<20:55,  1.18it/s, v_num=0, train/loss_mix_step=0.000709, train/loss_inst_step=0.000921, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  30%|██▉       | 600/2027 [08:29<20:11,  1.18it/s, v_num=0, train/loss_mix_step=0.000709, train/loss_inst_step=0.000921, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  30%|██▉       | 600/2027 [08:29<20:11,  1.18it/s, v_num=0, train/loss_mix_step=0.000882, train/loss_inst_step=0.000978, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  32%|███▏      | 650/2027 [09:11<19:27,  1.18it/s, v_num=0, train/loss_mix_step=0.000882, train/loss_inst_step=0.000978, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  32%|███▏      | 650/2027 [09:11<19:27,  1.18it/s, v_num=0, train/loss_mix_step=0.000833, train/loss_inst_step=0.00121, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  35%|███▍      | 700/2027 [09:52<18:43,  1.18it/s, v_num=0, train/loss_mix_step=0.000833, train/loss_inst_step=0.00121, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  35%|███▍      | 700/2027 [09:52<18:43,  1.18it/s, v_num=0, train/loss_mix_step=0.000689, train/loss_inst_step=0.000861, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  37%|███▋      | 750/2027 [10:35<18:01,  1.18it/s, v_num=0, train/loss_mix_step=0.000689, train/loss_inst_step=0.000861, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  37%|███▋      | 750/2027 [10:35<18:01,  1.18it/s, v_num=0, train/loss_mix_step=0.000722, train/loss_inst_step=0.000807, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  39%|███▉      | 800/2027 [11:15<17:16,  1.18it/s, v_num=0, train/loss_mix_step=0.000722, train/loss_inst_step=0.000807, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  39%|███▉      | 800/2027 [11:16<17:16,  1.18it/s, v_num=0, train/loss_mix_step=0.00068, train/loss_inst_step=0.000779, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  42%|████▏     | 850/2027 [11:57<16:33,  1.18it/s, v_num=0, train/loss_mix_step=0.00068, train/loss_inst_step=0.000779, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  42%|████▏     | 850/2027 [11:57<16:34,  1.18it/s, v_num=0, train/loss_mix_step=0.000606, train/loss_inst_step=0.000929, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  44%|████▍     | 900/2027 [12:39<15:51,  1.18it/s, v_num=0, train/loss_mix_step=0.000606, train/loss_inst_step=0.000929, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  44%|████▍     | 900/2027 [12:39<15:51,  1.18it/s, v_num=0, train/loss_mix_step=0.000808, train/loss_inst_step=0.00104, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  47%|████▋     | 950/2027 [13:22<15:09,  1.18it/s, v_num=0, train/loss_mix_step=0.000808, train/loss_inst_step=0.00104, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  47%|████▋     | 950/2027 [13:22<15:09,  1.18it/s, v_num=0, train/loss_mix_step=0.000858, train/loss_inst_step=0.00103, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  49%|████▉     | 1000/2027 [14:04<14:27,  1.18it/s, v_num=0, train/loss_mix_step=0.000858, train/loss_inst_step=0.00103, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  49%|████▉     | 1000/2027 [14:05<14:27,  1.18it/s, v_num=0, train/loss_mix_step=0.000764, train/loss_inst_step=0.000854, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  52%|█████▏    | 1050/2027 [14:45<13:44,  1.19it/s, v_num=0, train/loss_mix_step=0.000764, train/loss_inst_step=0.000854, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  52%|█████▏    | 1050/2027 [14:46<13:44,  1.19it/s, v_num=0, train/loss_mix_step=0.00104, train/loss_inst_step=0.00114, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]  Epoch 1:  54%|█████▍    | 1100/2027 [15:27<13:01,  1.19it/s, v_num=0, train/loss_mix_step=0.00104, train/loss_inst_step=0.00114, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  54%|█████▍    | 1100/2027 [15:27<13:01,  1.19it/s, v_num=0, train/loss_mix_step=0.000723, train/loss_inst_step=0.000992, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  57%|█████▋    | 1150/2027 [16:08<12:18,  1.19it/s, v_num=0, train/loss_mix_step=0.000723, train/loss_inst_step=0.000992, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  57%|█████▋    | 1150/2027 [16:09<12:18,  1.19it/s, v_num=0, train/loss_mix_step=0.000706, train/loss_inst_step=0.000842, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  59%|█████▉    | 1200/2027 [16:50<11:36,  1.19it/s, v_num=0, train/loss_mix_step=0.000706, train/loss_inst_step=0.000842, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  59%|█████▉    | 1200/2027 [16:50<11:36,  1.19it/s, v_num=0, train/loss_mix_step=0.000599, train/loss_inst_step=0.000875, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  62%|██████▏   | 1250/2027 [17:32<10:54,  1.19it/s, v_num=0, train/loss_mix_step=0.000599, train/loss_inst_step=0.000875, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  62%|██████▏   | 1250/2027 [17:32<10:54,  1.19it/s, v_num=0, train/loss_mix_step=0.00083, train/loss_inst_step=0.000949, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  64%|██████▍   | 1300/2027 [18:14<10:12,  1.19it/s, v_num=0, train/loss_mix_step=0.00083, train/loss_inst_step=0.000949, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  64%|██████▍   | 1300/2027 [18:14<10:12,  1.19it/s, v_num=0, train/loss_mix_step=0.000587, train/loss_inst_step=0.00088, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  67%|██████▋   | 1350/2027 [18:56<09:29,  1.19it/s, v_num=0, train/loss_mix_step=0.000587, train/loss_inst_step=0.00088, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  67%|██████▋   | 1350/2027 [18:56<09:29,  1.19it/s, v_num=0, train/loss_mix_step=0.000597, train/loss_inst_step=0.000768, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  69%|██████▉   | 1400/2027 [19:37<08:47,  1.19it/s, v_num=0, train/loss_mix_step=0.000597, train/loss_inst_step=0.000768, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  69%|██████▉   | 1400/2027 [19:37<08:47,  1.19it/s, v_num=0, train/loss_mix_step=0.000768, train/loss_inst_step=0.000838, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  72%|███████▏  | 1450/2027 [20:18<08:04,  1.19it/s, v_num=0, train/loss_mix_step=0.000768, train/loss_inst_step=0.000838, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  72%|███████▏  | 1450/2027 [20:18<08:04,  1.19it/s, v_num=0, train/loss_mix_step=0.00089, train/loss_inst_step=0.000926, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  74%|███████▍  | 1500/2027 [20:59<07:22,  1.19it/s, v_num=0, train/loss_mix_step=0.00089, train/loss_inst_step=0.000926, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  74%|███████▍  | 1500/2027 [20:59<07:22,  1.19it/s, v_num=0, train/loss_mix_step=0.00113, train/loss_inst_step=0.00122, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  76%|███████▋  | 1550/2027 [21:41<06:40,  1.19it/s, v_num=0, train/loss_mix_step=0.00113, train/loss_inst_step=0.00122, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  76%|███████▋  | 1550/2027 [21:42<06:40,  1.19it/s, v_num=0, train/loss_mix_step=0.000834, train/loss_inst_step=0.000925, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  79%|███████▉  | 1600/2027 [22:24<05:58,  1.19it/s, v_num=0, train/loss_mix_step=0.000834, train/loss_inst_step=0.000925, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  79%|███████▉  | 1600/2027 [22:24<05:58,  1.19it/s, v_num=0, train/loss_mix_step=0.000793, train/loss_inst_step=0.000798, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  81%|████████▏ | 1650/2027 [23:06<05:16,  1.19it/s, v_num=0, train/loss_mix_step=0.000793, train/loss_inst_step=0.000798, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  81%|████████▏ | 1650/2027 [23:06<05:16,  1.19it/s, v_num=0, train/loss_mix_step=0.000944, train/loss_inst_step=0.0011, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]  Epoch 1:  84%|████████▍ | 1700/2027 [23:48<04:34,  1.19it/s, v_num=0, train/loss_mix_step=0.000944, train/loss_inst_step=0.0011, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  84%|████████▍ | 1700/2027 [23:48<04:34,  1.19it/s, v_num=0, train/loss_mix_step=0.000707, train/loss_inst_step=0.000866, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  86%|████████▋ | 1750/2027 [24:30<03:52,  1.19it/s, v_num=0, train/loss_mix_step=0.000707, train/loss_inst_step=0.000866, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  86%|████████▋ | 1750/2027 [24:30<03:52,  1.19it/s, v_num=0, train/loss_mix_step=0.00076, train/loss_inst_step=0.000966, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  89%|████████▉ | 1800/2027 [25:11<03:10,  1.19it/s, v_num=0, train/loss_mix_step=0.00076, train/loss_inst_step=0.000966, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  89%|████████▉ | 1800/2027 [25:11<03:10,  1.19it/s, v_num=0, train/loss_mix_step=0.000663, train/loss_inst_step=0.000741, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  91%|█████████▏| 1850/2027 [25:52<02:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000663, train/loss_inst_step=0.000741, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  91%|█████████▏| 1850/2027 [25:52<02:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000712, train/loss_inst_step=0.00104, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015] Epoch 1:  94%|█████████▎| 1900/2027 [26:34<01:46,  1.19it/s, v_num=0, train/loss_mix_step=0.000712, train/loss_inst_step=0.00104, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  94%|█████████▎| 1900/2027 [26:34<01:46,  1.19it/s, v_num=0, train/loss_mix_step=0.000835, train/loss_inst_step=0.00104, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  96%|█████████▌| 1950/2027 [27:15<01:04,  1.19it/s, v_num=0, train/loss_mix_step=0.000835, train/loss_inst_step=0.00104, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  96%|█████████▌| 1950/2027 [27:15<01:04,  1.19it/s, v_num=0, train/loss_mix_step=0.000577, train/loss_inst_step=0.000943, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  99%|█████████▊| 2000/2027 [27:56<00:22,  1.19it/s, v_num=0, train/loss_mix_step=0.000577, train/loss_inst_step=0.000943, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1:  99%|█████████▊| 2000/2027 [27:56<00:22,  1.19it/s, v_num=0, train/loss_mix_step=0.000776, train/loss_inst_step=0.000855, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1: 100%|██████████| 2027/2027 [28:18<00:00,  1.19it/s, v_num=0, train/loss_mix_step=0.000776, train/loss_inst_step=0.000855, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1: 100%|██████████| 2027/2027 [28:18<00:00,  1.19it/s, v_num=0, train/loss_mix_step=0.000627, train/loss_inst_step=0.000743, val/knn_avr=0.424, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 8/8 [00:03<00:00,  2.33it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 8/8 [00:03<00:00,  2.01it/s][A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 2:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 8/8 [00:03<00:00,  2.12it/s][A
+Validation DataLoader 2:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 7/7 [00:03<00:00,  2.19it/s][A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 4:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 7/7 [00:03<00:00,  2.18it/s][Aknn
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.47671365737915 sec. =
+knn accuracy valid drums     : 69.78260869565217%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 11.35180401802063 sec. =
+knn accuracy valid bass      : 11.29032258064516%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.876504182815552 sec. =
+knn accuracy valid piano     : 20.8984375%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.517555713653564 sec. =
+knn accuracy valid guitar    : 35.49107142857143%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.256870985031128 sec. =
+knn accuracy valid residuals : 49.54545454545455%
+
+knn accuracy valid average   : 37.40157895006466%
+
+                                                                      [AEpoch 1: 100%|██████████| 2027/2027 [30:20<00:00,  1.11it/s, v_num=0, train/loss_mix_step=0.000627, train/loss_inst_step=0.000743, val/knn_avr=0.374, train/loss_mix_epoch=0.00109, train/loss_inst_epoch=0.0015]Epoch 1: 100%|██████████| 2027/2027 [30:20<00:00,  1.11it/s, v_num=0, train/loss_mix_step=0.000627, train/loss_inst_step=0.000743, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]
+Train average loss <input mix > : 0.0008018436492420733
+Train average loss <input inst> : 0.000981345889158547
+
+Epoch 1:   0%|          | 0/2027 [00:00<?, ?it/s, v_num=0, train/loss_mix_step=0.000627, train/loss_inst_step=0.000743, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]           Epoch 2:   0%|          | 0/2027 [00:00<?, ?it/s, v_num=0, train/loss_mix_step=0.000627, train/loss_inst_step=0.000743, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:   2%|▏         | 50/2027 [00:46<30:56,  1.07it/s, v_num=0, train/loss_mix_step=0.000627, train/loss_inst_step=0.000743, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:   2%|▏         | 50/2027 [00:47<30:59,  1.06it/s, v_num=0, train/loss_mix_step=0.000695, train/loss_inst_step=0.000929, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:   5%|▍         | 100/2027 [01:27<28:01,  1.15it/s, v_num=0, train/loss_mix_step=0.000695, train/loss_inst_step=0.000929, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:   5%|▍         | 100/2027 [01:27<28:02,  1.15it/s, v_num=0, train/loss_mix_step=0.00062, train/loss_inst_step=0.000666, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981] Epoch 2:   7%|▋         | 150/2027 [02:08<26:53,  1.16it/s, v_num=0, train/loss_mix_step=0.00062, train/loss_inst_step=0.000666, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:   7%|▋         | 150/2027 [02:09<26:54,  1.16it/s, v_num=0, train/loss_mix_step=0.000625, train/loss_inst_step=0.000916, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  10%|▉         | 200/2027 [02:50<26:00,  1.17it/s, v_num=0, train/loss_mix_step=0.000625, train/loss_inst_step=0.000916, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  10%|▉         | 200/2027 [02:50<26:01,  1.17it/s, v_num=0, train/loss_mix_step=0.00095, train/loss_inst_step=0.0011, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]   Epoch 2:  12%|█▏        | 250/2027 [03:31<24:59,  1.18it/s, v_num=0, train/loss_mix_step=0.00095, train/loss_inst_step=0.0011, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  12%|█▏        | 250/2027 [03:31<25:00,  1.18it/s, v_num=0, train/loss_mix_step=0.000841, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  15%|█▍        | 300/2027 [04:12<24:15,  1.19it/s, v_num=0, train/loss_mix_step=0.000841, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  15%|█▍        | 300/2027 [04:12<24:16,  1.19it/s, v_num=0, train/loss_mix_step=0.000538, train/loss_inst_step=0.0007, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981] Epoch 2:  17%|█▋        | 350/2027 [04:55<23:38,  1.18it/s, v_num=0, train/loss_mix_step=0.000538, train/loss_inst_step=0.0007, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  17%|█▋        | 350/2027 [04:56<23:38,  1.18it/s, v_num=0, train/loss_mix_step=0.00099, train/loss_inst_step=0.00111, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  20%|█▉        | 400/2027 [05:37<22:54,  1.18it/s, v_num=0, train/loss_mix_step=0.00099, train/loss_inst_step=0.00111, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  20%|█▉        | 400/2027 [05:37<22:54,  1.18it/s, v_num=0, train/loss_mix_step=0.000809, train/loss_inst_step=0.000919, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  22%|██▏       | 450/2027 [06:20<22:14,  1.18it/s, v_num=0, train/loss_mix_step=0.000809, train/loss_inst_step=0.000919, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  22%|██▏       | 450/2027 [06:20<22:14,  1.18it/s, v_num=0, train/loss_mix_step=0.000839, train/loss_inst_step=0.000869, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  25%|██▍       | 500/2027 [07:02<21:30,  1.18it/s, v_num=0, train/loss_mix_step=0.000839, train/loss_inst_step=0.000869, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  25%|██▍       | 500/2027 [07:02<21:30,  1.18it/s, v_num=0, train/loss_mix_step=0.000537, train/loss_inst_step=0.000861, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  27%|██▋       | 550/2027 [07:43<20:45,  1.19it/s, v_num=0, train/loss_mix_step=0.000537, train/loss_inst_step=0.000861, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  27%|██▋       | 550/2027 [07:43<20:45,  1.19it/s, v_num=0, train/loss_mix_step=0.000686, train/loss_inst_step=0.000799, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  30%|██▉       | 600/2027 [08:25<20:03,  1.19it/s, v_num=0, train/loss_mix_step=0.000686, train/loss_inst_step=0.000799, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  30%|██▉       | 600/2027 [08:26<20:03,  1.19it/s, v_num=0, train/loss_mix_step=0.000756, train/loss_inst_step=0.000957, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  32%|███▏      | 650/2027 [09:06<19:18,  1.19it/s, v_num=0, train/loss_mix_step=0.000756, train/loss_inst_step=0.000957, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  32%|███▏      | 650/2027 [09:07<19:18,  1.19it/s, v_num=0, train/loss_mix_step=0.000744, train/loss_inst_step=0.000936, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  35%|███▍      | 700/2027 [09:49<18:37,  1.19it/s, v_num=0, train/loss_mix_step=0.000744, train/loss_inst_step=0.000936, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  35%|███▍      | 700/2027 [09:49<18:37,  1.19it/s, v_num=0, train/loss_mix_step=0.00068, train/loss_inst_step=0.000728, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981] Epoch 2:  37%|███▋      | 750/2027 [10:30<17:54,  1.19it/s, v_num=0, train/loss_mix_step=0.00068, train/loss_inst_step=0.000728, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  37%|███▋      | 750/2027 [10:31<17:54,  1.19it/s, v_num=0, train/loss_mix_step=0.000689, train/loss_inst_step=0.000787, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  39%|███▉      | 800/2027 [11:12<17:11,  1.19it/s, v_num=0, train/loss_mix_step=0.000689, train/loss_inst_step=0.000787, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  39%|███▉      | 800/2027 [11:12<17:11,  1.19it/s, v_num=0, train/loss_mix_step=0.000699, train/loss_inst_step=0.000732, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  42%|████▏     | 850/2027 [11:53<16:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000699, train/loss_inst_step=0.000732, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  42%|████▏     | 850/2027 [11:53<16:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000636, train/loss_inst_step=0.000735, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  44%|████▍     | 900/2027 [12:34<15:44,  1.19it/s, v_num=0, train/loss_mix_step=0.000636, train/loss_inst_step=0.000735, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  44%|████▍     | 900/2027 [12:34<15:44,  1.19it/s, v_num=0, train/loss_mix_step=0.000782, train/loss_inst_step=0.000884, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  47%|████▋     | 950/2027 [13:16<15:02,  1.19it/s, v_num=0, train/loss_mix_step=0.000782, train/loss_inst_step=0.000884, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  47%|████▋     | 950/2027 [13:16<15:02,  1.19it/s, v_num=0, train/loss_mix_step=0.00079, train/loss_inst_step=0.00109, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]  Epoch 2:  49%|████▉     | 1000/2027 [13:57<14:19,  1.19it/s, v_num=0, train/loss_mix_step=0.00079, train/loss_inst_step=0.00109, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  49%|████▉     | 1000/2027 [13:57<14:20,  1.19it/s, v_num=0, train/loss_mix_step=0.000834, train/loss_inst_step=0.00094, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  52%|█████▏    | 1050/2027 [14:38<13:37,  1.20it/s, v_num=0, train/loss_mix_step=0.000834, train/loss_inst_step=0.00094, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  52%|█████▏    | 1050/2027 [14:38<13:37,  1.20it/s, v_num=0, train/loss_mix_step=0.000548, train/loss_inst_step=0.000675, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  54%|█████▍    | 1100/2027 [15:20<12:56,  1.19it/s, v_num=0, train/loss_mix_step=0.000548, train/loss_inst_step=0.000675, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  54%|█████▍    | 1100/2027 [15:21<12:56,  1.19it/s, v_num=0, train/loss_mix_step=0.000699, train/loss_inst_step=0.000873, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  57%|█████▋    | 1150/2027 [16:02<12:13,  1.19it/s, v_num=0, train/loss_mix_step=0.000699, train/loss_inst_step=0.000873, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  57%|█████▋    | 1150/2027 [16:02<12:13,  1.19it/s, v_num=0, train/loss_mix_step=0.000825, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981] Epoch 2:  59%|█████▉    | 1200/2027 [16:42<11:31,  1.20it/s, v_num=0, train/loss_mix_step=0.000825, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  59%|█████▉    | 1200/2027 [16:42<11:31,  1.20it/s, v_num=0, train/loss_mix_step=0.000848, train/loss_inst_step=0.000927, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  62%|██████▏   | 1250/2027 [17:23<10:48,  1.20it/s, v_num=0, train/loss_mix_step=0.000848, train/loss_inst_step=0.000927, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  62%|██████▏   | 1250/2027 [17:23<10:48,  1.20it/s, v_num=0, train/loss_mix_step=0.000936, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981] Epoch 2:  64%|██████▍   | 1300/2027 [18:05<10:06,  1.20it/s, v_num=0, train/loss_mix_step=0.000936, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  64%|██████▍   | 1300/2027 [18:05<10:06,  1.20it/s, v_num=0, train/loss_mix_step=0.000853, train/loss_inst_step=0.00106, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  67%|██████▋   | 1350/2027 [18:45<09:24,  1.20it/s, v_num=0, train/loss_mix_step=0.000853, train/loss_inst_step=0.00106, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  67%|██████▋   | 1350/2027 [18:46<09:24,  1.20it/s, v_num=0, train/loss_mix_step=0.000724, train/loss_inst_step=0.000825, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  69%|██████▉   | 1400/2027 [19:27<08:42,  1.20it/s, v_num=0, train/loss_mix_step=0.000724, train/loss_inst_step=0.000825, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  69%|██████▉   | 1400/2027 [19:27<08:42,  1.20it/s, v_num=0, train/loss_mix_step=0.000497, train/loss_inst_step=0.000728, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  72%|███████▏  | 1450/2027 [20:08<08:01,  1.20it/s, v_num=0, train/loss_mix_step=0.000497, train/loss_inst_step=0.000728, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  72%|███████▏  | 1450/2027 [20:09<08:01,  1.20it/s, v_num=0, train/loss_mix_step=0.001, train/loss_inst_step=0.00104, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]    Epoch 2:  74%|███████▍  | 1500/2027 [20:50<07:19,  1.20it/s, v_num=0, train/loss_mix_step=0.001, train/loss_inst_step=0.00104, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  74%|███████▍  | 1500/2027 [20:50<07:19,  1.20it/s, v_num=0, train/loss_mix_step=0.00103, train/loss_inst_step=0.00104, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  76%|███████▋  | 1550/2027 [21:32<06:37,  1.20it/s, v_num=0, train/loss_mix_step=0.00103, train/loss_inst_step=0.00104, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  76%|███████▋  | 1550/2027 [21:32<06:37,  1.20it/s, v_num=0, train/loss_mix_step=0.000778, train/loss_inst_step=0.000916, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  79%|███████▉  | 1600/2027 [22:16<05:56,  1.20it/s, v_num=0, train/loss_mix_step=0.000778, train/loss_inst_step=0.000916, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  79%|███████▉  | 1600/2027 [22:16<05:56,  1.20it/s, v_num=0, train/loss_mix_step=0.00061, train/loss_inst_step=0.00093, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]  Epoch 2:  81%|████████▏ | 1650/2027 [22:59<05:15,  1.20it/s, v_num=0, train/loss_mix_step=0.00061, train/loss_inst_step=0.00093, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  81%|████████▏ | 1650/2027 [22:59<05:15,  1.20it/s, v_num=0, train/loss_mix_step=0.000741, train/loss_inst_step=0.000976, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  84%|████████▍ | 1700/2027 [23:41<04:33,  1.20it/s, v_num=0, train/loss_mix_step=0.000741, train/loss_inst_step=0.000976, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  84%|████████▍ | 1700/2027 [23:42<04:33,  1.20it/s, v_num=0, train/loss_mix_step=0.000678, train/loss_inst_step=0.000741, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  86%|████████▋ | 1750/2027 [24:23<03:51,  1.20it/s, v_num=0, train/loss_mix_step=0.000678, train/loss_inst_step=0.000741, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  86%|████████▋ | 1750/2027 [24:23<03:51,  1.20it/s, v_num=0, train/loss_mix_step=0.00105, train/loss_inst_step=0.00111, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]  Epoch 2:  89%|████████▉ | 1800/2027 [25:04<03:09,  1.20it/s, v_num=0, train/loss_mix_step=0.00105, train/loss_inst_step=0.00111, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  89%|████████▉ | 1800/2027 [25:04<03:09,  1.20it/s, v_num=0, train/loss_mix_step=0.000689, train/loss_inst_step=0.000943, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  91%|█████████▏| 1850/2027 [25:45<02:27,  1.20it/s, v_num=0, train/loss_mix_step=0.000689, train/loss_inst_step=0.000943, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  91%|█████████▏| 1850/2027 [25:45<02:27,  1.20it/s, v_num=0, train/loss_mix_step=0.000561, train/loss_inst_step=0.000688, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  94%|█████████▎| 1900/2027 [26:27<01:46,  1.20it/s, v_num=0, train/loss_mix_step=0.000561, train/loss_inst_step=0.000688, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  94%|█████████▎| 1900/2027 [26:27<01:46,  1.20it/s, v_num=0, train/loss_mix_step=0.000631, train/loss_inst_step=0.00069, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981] Epoch 2:  96%|█████████▌| 1950/2027 [27:09<01:04,  1.20it/s, v_num=0, train/loss_mix_step=0.000631, train/loss_inst_step=0.00069, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  96%|█████████▌| 1950/2027 [27:09<01:04,  1.20it/s, v_num=0, train/loss_mix_step=0.000733, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  99%|█████████▊| 2000/2027 [27:50<00:22,  1.20it/s, v_num=0, train/loss_mix_step=0.000733, train/loss_inst_step=0.00107, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2:  99%|█████████▊| 2000/2027 [27:50<00:22,  1.20it/s, v_num=0, train/loss_mix_step=0.000809, train/loss_inst_step=0.00118, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2: 100%|██████████| 2027/2027 [28:12<00:00,  1.20it/s, v_num=0, train/loss_mix_step=0.000809, train/loss_inst_step=0.00118, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2: 100%|██████████| 2027/2027 [28:12<00:00,  1.20it/s, v_num=0, train/loss_mix_step=0.000745, train/loss_inst_step=0.000814, val/knn_avr=0.374, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 8/8 [00:03<00:00,  2.35it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 8/8 [00:03<00:00,  2.22it/s][A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 2:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 8/8 [00:03<00:00,  2.11it/s][A
+Validation DataLoader 2:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 7/7 [00:03<00:00,  2.17it/s][A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 4:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 7/7 [00:03<00:00,  2.20it/s][Aknn
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.462357997894287 sec. =
+knn accuracy valid drums     : 60.652173913043484%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.40181589126587 sec. =
+knn accuracy valid bass      : 11.29032258064516%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.898555040359497 sec. =
+knn accuracy valid piano     : 17.7734375%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.61934781074524 sec. =
+knn accuracy valid guitar    : 33.92857142857143%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.101496696472168 sec. =
+knn accuracy valid residuals : 50.90909090909091%
+
+knn accuracy valid average   : 34.9107192662702%
+
+                                                                      [AEpoch 2: 100%|██████████| 2027/2027 [30:13<00:00,  1.12it/s, v_num=0, train/loss_mix_step=0.000745, train/loss_inst_step=0.000814, val/knn_avr=0.349, train/loss_mix_epoch=0.000802, train/loss_inst_epoch=0.000981]Epoch 2: 100%|██████████| 2027/2027 [30:13<00:00,  1.12it/s, v_num=0, train/loss_mix_step=0.000745, train/loss_inst_step=0.000814, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]
+Train average loss <input mix > : 0.0007775979465804994
+Train average loss <input inst> : 0.0009445339674130082
+
+Epoch 2:   0%|          | 0/2027 [00:00<?, ?it/s, v_num=0, train/loss_mix_step=0.000745, train/loss_inst_step=0.000814, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]           Epoch 3:   0%|          | 0/2027 [00:00<?, ?it/s, v_num=0, train/loss_mix_step=0.000745, train/loss_inst_step=0.000814, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:   2%|▏         | 50/2027 [00:48<32:07,  1.03it/s, v_num=0, train/loss_mix_step=0.000745, train/loss_inst_step=0.000814, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:   2%|▏         | 50/2027 [00:48<32:10,  1.02it/s, v_num=0, train/loss_mix_step=0.000678, train/loss_inst_step=0.000843, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:   5%|▍         | 100/2027 [01:28<28:31,  1.13it/s, v_num=0, train/loss_mix_step=0.000678, train/loss_inst_step=0.000843, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:   5%|▍         | 100/2027 [01:28<28:33,  1.12it/s, v_num=0, train/loss_mix_step=0.000603, train/loss_inst_step=0.000909, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:   7%|▋         | 150/2027 [02:11<27:23,  1.14it/s, v_num=0, train/loss_mix_step=0.000603, train/loss_inst_step=0.000909, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:   7%|▋         | 150/2027 [02:11<27:24,  1.14it/s, v_num=0, train/loss_mix_step=0.000942, train/loss_inst_step=0.00103, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945] Epoch 3:  10%|▉         | 200/2027 [02:52<26:12,  1.16it/s, v_num=0, train/loss_mix_step=0.000942, train/loss_inst_step=0.00103, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  10%|▉         | 200/2027 [02:52<26:12,  1.16it/s, v_num=0, train/loss_mix_step=0.00077, train/loss_inst_step=0.000851, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  12%|█▏        | 250/2027 [03:34<25:24,  1.17it/s, v_num=0, train/loss_mix_step=0.00077, train/loss_inst_step=0.000851, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  12%|█▏        | 250/2027 [03:34<25:25,  1.16it/s, v_num=0, train/loss_mix_step=0.000681, train/loss_inst_step=0.000908, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  15%|█▍        | 300/2027 [04:16<24:37,  1.17it/s, v_num=0, train/loss_mix_step=0.000681, train/loss_inst_step=0.000908, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  15%|█▍        | 300/2027 [04:16<24:37,  1.17it/s, v_num=0, train/loss_mix_step=0.000942, train/loss_inst_step=0.00108, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945] Epoch 3:  17%|█▋        | 350/2027 [04:57<23:45,  1.18it/s, v_num=0, train/loss_mix_step=0.000942, train/loss_inst_step=0.00108, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  17%|█▋        | 350/2027 [04:57<23:46,  1.18it/s, v_num=0, train/loss_mix_step=0.000767, train/loss_inst_step=0.000875, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  20%|█▉        | 400/2027 [05:39<23:01,  1.18it/s, v_num=0, train/loss_mix_step=0.000767, train/loss_inst_step=0.000875, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  20%|█▉        | 400/2027 [05:39<23:02,  1.18it/s, v_num=0, train/loss_mix_step=0.00084, train/loss_inst_step=0.000919, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945] Epoch 3:  22%|██▏       | 450/2027 [06:20<22:14,  1.18it/s, v_num=0, train/loss_mix_step=0.00084, train/loss_inst_step=0.000919, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  22%|██▏       | 450/2027 [06:20<22:15,  1.18it/s, v_num=0, train/loss_mix_step=0.000845, train/loss_inst_step=0.00109, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  25%|██▍       | 500/2027 [07:03<21:32,  1.18it/s, v_num=0, train/loss_mix_step=0.000845, train/loss_inst_step=0.00109, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  25%|██▍       | 500/2027 [07:03<21:33,  1.18it/s, v_num=0, train/loss_mix_step=0.000725, train/loss_inst_step=0.000886, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  27%|██▋       | 550/2027 [07:44<20:48,  1.18it/s, v_num=0, train/loss_mix_step=0.000725, train/loss_inst_step=0.000886, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  27%|██▋       | 550/2027 [07:45<20:48,  1.18it/s, v_num=0, train/loss_mix_step=0.000593, train/loss_inst_step=0.000792, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  30%|██▉       | 600/2027 [08:27<20:06,  1.18it/s, v_num=0, train/loss_mix_step=0.000593, train/loss_inst_step=0.000792, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  30%|██▉       | 600/2027 [08:27<20:07,  1.18it/s, v_num=0, train/loss_mix_step=0.0011, train/loss_inst_step=0.00112, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]   Epoch 3:  32%|███▏      | 650/2027 [09:08<19:22,  1.18it/s, v_num=0, train/loss_mix_step=0.0011, train/loss_inst_step=0.00112, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  32%|███▏      | 650/2027 [09:08<19:22,  1.18it/s, v_num=0, train/loss_mix_step=0.000739, train/loss_inst_step=0.000819, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  35%|███▍      | 700/2027 [09:50<18:39,  1.19it/s, v_num=0, train/loss_mix_step=0.000739, train/loss_inst_step=0.000819, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  35%|███▍      | 700/2027 [09:50<18:39,  1.19it/s, v_num=0, train/loss_mix_step=0.000699, train/loss_inst_step=0.000763, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  37%|███▋      | 750/2027 [10:32<17:57,  1.19it/s, v_num=0, train/loss_mix_step=0.000699, train/loss_inst_step=0.000763, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  37%|███▋      | 750/2027 [10:32<17:57,  1.18it/s, v_num=0, train/loss_mix_step=0.000792, train/loss_inst_step=0.000925, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  39%|███▉      | 800/2027 [11:14<17:14,  1.19it/s, v_num=0, train/loss_mix_step=0.000792, train/loss_inst_step=0.000925, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  39%|███▉      | 800/2027 [11:14<17:14,  1.19it/s, v_num=0, train/loss_mix_step=0.000461, train/loss_inst_step=0.000587, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  42%|████▏     | 850/2027 [11:56<16:31,  1.19it/s, v_num=0, train/loss_mix_step=0.000461, train/loss_inst_step=0.000587, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  42%|████▏     | 850/2027 [11:56<16:31,  1.19it/s, v_num=0, train/loss_mix_step=0.000558, train/loss_inst_step=0.000594, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  44%|████▍     | 900/2027 [12:37<15:49,  1.19it/s, v_num=0, train/loss_mix_step=0.000558, train/loss_inst_step=0.000594, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  44%|████▍     | 900/2027 [12:38<15:49,  1.19it/s, v_num=0, train/loss_mix_step=0.000737, train/loss_inst_step=0.000792, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  47%|████▋     | 950/2027 [13:19<15:06,  1.19it/s, v_num=0, train/loss_mix_step=0.000737, train/loss_inst_step=0.000792, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  47%|████▋     | 950/2027 [13:19<15:06,  1.19it/s, v_num=0, train/loss_mix_step=0.00084, train/loss_inst_step=0.000888, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945] Epoch 3:  49%|████▉     | 1000/2027 [14:00<14:23,  1.19it/s, v_num=0, train/loss_mix_step=0.00084, train/loss_inst_step=0.000888, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  49%|████▉     | 1000/2027 [14:00<14:23,  1.19it/s, v_num=0, train/loss_mix_step=0.000639, train/loss_inst_step=0.000832, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  52%|█████▏    | 1050/2027 [14:41<13:40,  1.19it/s, v_num=0, train/loss_mix_step=0.000639, train/loss_inst_step=0.000832, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  52%|█████▏    | 1050/2027 [14:41<13:40,  1.19it/s, v_num=0, train/loss_mix_step=0.000925, train/loss_inst_step=0.00113, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945] Epoch 3:  54%|█████▍    | 1100/2027 [15:22<12:57,  1.19it/s, v_num=0, train/loss_mix_step=0.000925, train/loss_inst_step=0.00113, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  54%|█████▍    | 1100/2027 [15:23<12:57,  1.19it/s, v_num=0, train/loss_mix_step=0.001, train/loss_inst_step=0.00108, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]   Epoch 3:  57%|█████▋    | 1150/2027 [16:04<12:15,  1.19it/s, v_num=0, train/loss_mix_step=0.001, train/loss_inst_step=0.00108, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  57%|█████▋    | 1150/2027 [16:04<12:15,  1.19it/s, v_num=0, train/loss_mix_step=0.000656, train/loss_inst_step=0.000864, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  59%|█████▉    | 1200/2027 [16:47<11:34,  1.19it/s, v_num=0, train/loss_mix_step=0.000656, train/loss_inst_step=0.000864, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  59%|█████▉    | 1200/2027 [16:47<11:34,  1.19it/s, v_num=0, train/loss_mix_step=0.000827, train/loss_inst_step=0.000914, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  62%|██████▏   | 1250/2027 [17:28<10:51,  1.19it/s, v_num=0, train/loss_mix_step=0.000827, train/loss_inst_step=0.000914, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  62%|██████▏   | 1250/2027 [17:28<10:51,  1.19it/s, v_num=0, train/loss_mix_step=0.00106, train/loss_inst_step=0.00124, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]  Epoch 3:  64%|██████▍   | 1300/2027 [18:10<10:09,  1.19it/s, v_num=0, train/loss_mix_step=0.00106, train/loss_inst_step=0.00124, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  64%|██████▍   | 1300/2027 [18:10<10:09,  1.19it/s, v_num=0, train/loss_mix_step=0.000843, train/loss_inst_step=0.000916, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  67%|██████▋   | 1350/2027 [18:52<09:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000843, train/loss_inst_step=0.000916, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  67%|██████▋   | 1350/2027 [18:52<09:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000606, train/loss_inst_step=0.000834, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  69%|██████▉   | 1400/2027 [19:33<08:45,  1.19it/s, v_num=0, train/loss_mix_step=0.000606, train/loss_inst_step=0.000834, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  69%|██████▉   | 1400/2027 [19:33<08:45,  1.19it/s, v_num=0, train/loss_mix_step=0.000754, train/loss_inst_step=0.000996, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  72%|███████▏  | 1450/2027 [20:15<08:03,  1.19it/s, v_num=0, train/loss_mix_step=0.000754, train/loss_inst_step=0.000996, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  72%|███████▏  | 1450/2027 [20:15<08:03,  1.19it/s, v_num=0, train/loss_mix_step=0.000826, train/loss_inst_step=0.000956, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  74%|███████▍  | 1500/2027 [20:57<07:21,  1.19it/s, v_num=0, train/loss_mix_step=0.000826, train/loss_inst_step=0.000956, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  74%|███████▍  | 1500/2027 [20:57<07:21,  1.19it/s, v_num=0, train/loss_mix_step=0.000936, train/loss_inst_step=0.000999, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  76%|███████▋  | 1550/2027 [21:39<06:39,  1.19it/s, v_num=0, train/loss_mix_step=0.000936, train/loss_inst_step=0.000999, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  76%|███████▋  | 1550/2027 [21:39<06:39,  1.19it/s, v_num=0, train/loss_mix_step=0.000552, train/loss_inst_step=0.000635, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  79%|███████▉  | 1600/2027 [22:21<05:57,  1.19it/s, v_num=0, train/loss_mix_step=0.000552, train/loss_inst_step=0.000635, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  79%|███████▉  | 1600/2027 [22:21<05:57,  1.19it/s, v_num=0, train/loss_mix_step=0.000562, train/loss_inst_step=0.000781, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  81%|████████▏ | 1650/2027 [23:02<05:15,  1.19it/s, v_num=0, train/loss_mix_step=0.000562, train/loss_inst_step=0.000781, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  81%|████████▏ | 1650/2027 [23:02<05:15,  1.19it/s, v_num=0, train/loss_mix_step=0.000534, train/loss_inst_step=0.000731, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  84%|████████▍ | 1700/2027 [23:44<04:34,  1.19it/s, v_num=0, train/loss_mix_step=0.000534, train/loss_inst_step=0.000731, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  84%|████████▍ | 1700/2027 [23:44<04:34,  1.19it/s, v_num=0, train/loss_mix_step=0.000474, train/loss_inst_step=0.000822, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  86%|████████▋ | 1750/2027 [24:26<03:52,  1.19it/s, v_num=0, train/loss_mix_step=0.000474, train/loss_inst_step=0.000822, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  86%|████████▋ | 1750/2027 [24:26<03:52,  1.19it/s, v_num=0, train/loss_mix_step=0.000653, train/loss_inst_step=0.000797, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  89%|████████▉ | 1800/2027 [25:06<03:10,  1.19it/s, v_num=0, train/loss_mix_step=0.000653, train/loss_inst_step=0.000797, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  89%|████████▉ | 1800/2027 [25:07<03:10,  1.19it/s, v_num=0, train/loss_mix_step=0.000649, train/loss_inst_step=0.000834, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  91%|█████████▏| 1850/2027 [25:50<02:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000649, train/loss_inst_step=0.000834, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  91%|█████████▏| 1850/2027 [25:50<02:28,  1.19it/s, v_num=0, train/loss_mix_step=0.000507, train/loss_inst_step=0.000688, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  94%|█████████▎| 1900/2027 [26:31<01:46,  1.19it/s, v_num=0, train/loss_mix_step=0.000507, train/loss_inst_step=0.000688, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  94%|█████████▎| 1900/2027 [26:31<01:46,  1.19it/s, v_num=0, train/loss_mix_step=0.000718, train/loss_inst_step=0.000867, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  96%|█████████▌| 1950/2027 [27:12<01:04,  1.19it/s, v_num=0, train/loss_mix_step=0.000718, train/loss_inst_step=0.000867, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  96%|█████████▌| 1950/2027 [27:13<01:04,  1.19it/s, v_num=0, train/loss_mix_step=0.000854, train/loss_inst_step=0.000963, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  99%|█████████▊| 2000/2027 [27:54<00:22,  1.19it/s, v_num=0, train/loss_mix_step=0.000854, train/loss_inst_step=0.000963, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3:  99%|█████████▊| 2000/2027 [27:54<00:22,  1.19it/s, v_num=0, train/loss_mix_step=0.000961, train/loss_inst_step=0.0011, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]  Epoch 3: 100%|██████████| 2027/2027 [28:15<00:00,  1.20it/s, v_num=0, train/loss_mix_step=0.000961, train/loss_inst_step=0.0011, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3: 100%|██████████| 2027/2027 [28:15<00:00,  1.20it/s, v_num=0, train/loss_mix_step=0.000926, train/loss_inst_step=0.00122, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 0: 100%|██████████| 8/8 [00:03<00:00,  2.63it/s][A
+Validation DataLoader 0:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 1: 100%|██████████| 8/8 [00:04<00:00,  1.86it/s][A
+Validation DataLoader 1:   0%|          | 0/8 [00:00<?, ?it/s]        [A
+Validation DataLoader 2:   0%|          | 0/8 [00:00<?, ?it/s][A
+Validation DataLoader 2: 100%|██████████| 8/8 [00:03<00:00,  2.18it/s][A
+Validation DataLoader 2:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 3: 100%|██████████| 7/7 [00:03<00:00,  2.18it/s][A
+Validation DataLoader 3:   0%|          | 0/7 [00:00<?, ?it/s]        [A
+Validation DataLoader 4:   0%|          | 0/7 [00:00<?, ?it/s][A
+Validation DataLoader 4: 100%|██████████| 7/7 [00:03<00:00,  2.16it/s][Aknn
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.84024715423584 sec. =
+knn accuracy valid drums     : 61.08695652173913%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.545634508132935 sec. =
+knn accuracy valid bass      : 12.903225806451612%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 10.864842653274536 sec. =
+knn accuracy valid piano     : 17.96875%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.59984540939331 sec. =
+knn accuracy valid guitar    : 34.82142857142857%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 9.230552434921265 sec. =
+knn accuracy valid residuals : 47.5%
+
+knn accuracy valid average   : 34.85607217992387%
+
+                                                                      [AEpoch 3: 100%|██████████| 2027/2027 [30:16<00:00,  1.12it/s, v_num=0, train/loss_mix_step=0.000926, train/loss_inst_step=0.00122, val/knn_avr=0.349, train/loss_mix_epoch=0.000778, train/loss_inst_epoch=0.000945]Epoch 3: 100%|██████████| 2027/2027 [30:16<00:00,  1.12it/s, v_num=0, train/loss_mix_step=0.000926, train/loss_inst_step=0.00122, val/knn_avr=0.349, train/loss_mix_epoch=0.000765, train/loss_inst_epoch=0.000924]
+Train average loss <input mix > : 0.0007653865613974631
+Train average loss <input inst> : 0.0009240622166544199
+
+Epoch 3: 100%|██████████| 2027/2027 [30:16<00:00,  1.12it/s, v_num=0, train/loss_mix_step=0.000926, train/loss_inst_step=0.00122, val/knn_avr=0.349, train/loss_mix_epoch=0.000765, train/loss_inst_epoch=0.000924]
+[2023-10-29 20:50:06,030][source.train][INFO] - [rank: 0] Starting testing!
+
+----------------------------------------
+Use dataset slakh.
+The frame size is setted to 2048.
+The length of seg for train is 3s.
+The length of seg for valid and test is 3s.
+----------------------------------------
+Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/15 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/15 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 15/15 [00:10<00:00,  1.45it/s]Testing DataLoader 0:   0%|          | 0/15 [00:00<?, ?it/s]         Testing DataLoader 1:   0%|          | 0/15 [00:00<?, ?it/s]Testing DataLoader 1: 100%|██████████| 15/15 [00:09<00:00,  1.56it/s]Testing DataLoader 1:   0%|          | 0/13 [00:00<?, ?it/s]         Testing DataLoader 2:   0%|          | 0/13 [00:00<?, ?it/s]Testing DataLoader 2: 100%|██████████| 13/13 [00:09<00:00,  1.37it/s]Testing DataLoader 2:   0%|          | 0/14 [00:00<?, ?it/s]         Testing DataLoader 3:   0%|          | 0/14 [00:00<?, ?it/s]Testing DataLoader 3: 100%|██████████| 14/14 [00:08<00:00,  1.59it/s]Testing DataLoader 3:   0%|          | 0/15 [00:00<?, ?it/s]         Testing DataLoader 4:   0%|          | 0/15 [00:00<?, ?it/s]Testing DataLoader 4: 100%|██████████| 15/15 [00:09<00:00,  1.57it/s]= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.924451112747192 sec. =
+knn accuracy test drums     : 59.93449781659389%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.953356742858887 sec. =
+knn accuracy test bass      : 11.960132890365449%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.038727521896362 sec. =
+knn accuracy test piano     : 12.895377128953772%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 19.25938391685486 sec. =
+knn accuracy test guitar    : 12.782805429864252%
+= T-SNE...
+T-SNE was finished!
+= T-SNE time is 20.391557693481445 sec. =
+knn accuracy test residuals : 31.10871905274489%
+
+knn accuracy test average   : 25.73630646370445%
+Testing DataLoader 4: 100%|██████████| 15/15 [02:05<00:00,  0.12it/s]
+┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃    Test metric    ┃   DataLoader 0    ┃   DataLoader 1    ┃   DataLoader 2   ┃
+┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│   test/knn_avr    │ 0.25736305117607… │ 0.25736305117607… │ 0.2573630511760… │
+│   test/knn_bass   │ 0.11960133165121… │ 0.11960133165121… │ 0.1196013316512… │
+│  test/knn_drums   │ 0.59934496879577… │ 0.59934496879577… │ 0.5993449687957… │
+│  test/knn_guitar  │ 0.12782806158065… │ 0.12782806158065… │ 0.1278280615806… │
+│  test/knn_piano   │ 0.12895376980304… │ 0.12895376980304… │ 0.1289537698030… │
+│ test/knn_residua… │ 0.31108719110488… │ 0.31108719110488… │ 0.3110871911048… │
+└───────────────────┴───────────────────┴───────────────────┴──────────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃       Test metric       ┃      DataLoader 3       ┃       DataLoader 4       ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      test/knn_avr       │   0.25736305117607117   │   0.25736305117607117    │
+│      test/knn_bass      │   0.11960133165121078   │   0.11960133165121078    │
+│     test/knn_drums      │   0.5993449687957764    │    0.5993449687957764    │
+│     test/knn_guitar     │   0.12782806158065796   │   0.12782806158065796    │
+│     test/knn_piano      │   0.12895376980304718   │   0.12895376980304718    │
+│   test/knn_residuals    │   0.3110871911048889    │    0.3110871911048889    │
+└─────────────────────────┴─────────────────────────┴──────────────────────────┘
+[2023-10-29 20:53:40,176][source.train][INFO] - [rank: 0] Best ckpt path: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-29/18-47-48/checkpoints/epoch_000.ckpt
+[2023-10-29 20:53:40,177][utils.utils][INFO] - [rank: 0] Output dir: /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-29/18-47-48
+[2023-10-29 20:53:40,179][utils.utils][INFO] - [rank: 0] Metric name is None! Skipping metric value retrieval...
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Time taken to study : 02:05:51
+
+All prosess was Done!

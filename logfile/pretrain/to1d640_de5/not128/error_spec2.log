@@ -1,0 +1,111 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-08/02-59-37/checkpoints/epoch_epoch=099.ckpt
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:345: The dirpath has changed from '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-08/02-59-37/checkpoints' to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-08/09-27-25/checkpoints', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name            | Type                          | Params
+------------------------------------------------------------------
+0 | net             | UNetForTriplet_2d_de5_to1d640 | 43.5 M
+1 | loss_triplet    | MarginRankingLoss             | 0     
+2 | loss_mse        | MSELoss                       | 0     
+3 | train_loss_mix  | MeanMetric                    | 0     
+4 | train_loss_inst | MeanMetric                    | 0     
+------------------------------------------------------------------
+43.5 M    Trainable params
+0         Non-trainable params
+43.5 M    Total params
+174.092   Total estimated model params size (MB)
+Restored all states from the checkpoint at /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-08/02-59-37/checkpoints/epoch_epoch=099.ckpt
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/./train.py", line 20, in <module>
+    train()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 126, in main
+    metric_dict, _ = train(cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 78, in wrap
+    raise ex
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 68, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 92, in train
+    trainer.fit(model=model, datamodule=datamodule, ckpt_path=cfg.get("ckpt_path"))
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 545, in fit
+    call._call_and_handle_interrupt(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 581, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 990, in _run
+    results = self._run_stage()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1036, in _run_stage
+    self.fit_loop.run()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 202, in run
+    self.advance()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 359, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 136, in run
+    self.advance(data_fetcher)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 240, in advance
+    batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 187, in run
+    self._optimizer_step(batch_idx, closure)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 265, in _optimizer_step
+    call._call_lightning_module_hook(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 157, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/core/module.py", line 1282, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/core/optimizer.py", line 151, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 230, in optimizer_step
+    return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/amp.py", line 77, in optimizer_step
+    closure_result = closure()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 140, in __call__
+    self._result = self.closure(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 126, in closure
+    step_output = self._step_fn()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 315, in _training_step
+    training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 382, in training_step
+    return self.lightning_module.training_step(*args, **kwargs)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/triplet/pretrain.py", line 167, in training_step
+    loss_mix, loss_inst = self.model_step(batch)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/triplet/pretrain.py", line 140, in model_step
+    param, mix, _ = self.stft.transform(mix); _, stems, _ = self.stft.transform(stems, param)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/func.py", line 247, in transform
+    transformed_n, phase = magphase(self.stft(sound)) #stftして振幅と位相に分解
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/func.py", line 224, in stft
+    z = torch.stft(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torch/functional.py", line 604, in stft
+    input = F.pad(input.view(extended_shape), [pad, pad], pad_mode)
+RuntimeError: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 64]

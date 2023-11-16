@@ -1,0 +1,101 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Restoring states from the checkpoint path at /home/imamura23/nas02home/outputs/2023-10-29/18-47-48/checkpoints/epoch_000.ckpt
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py:263: Be aware that when using `ckpt_path`, callbacks used to create the checkpoint need to be provided during `Trainer` instantiation. Please add the following callbacks: ["ModelCheckpoint{'monitor': 'val/knn_avr', 'mode': 'max', 'every_n_train_steps': 0, 'every_n_epochs': 1, 'train_time_interval': None}", "EarlyStopping{'monitor': 'val/knn_avr', 'mode': 'max'}"].
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name               | Type                          | Params
+---------------------------------------------------------------------
+0 | net                | UNetForTriplet_2d_de5_to1d640 | 43.5 M
+1 | loss_unet          | L1Loss                        | 0     
+2 | loss_triplet       | MarginRankingLoss             | 0     
+3 | loss_l2            | MSELoss                       | 0     
+4 | loss_mrl           | MarginRankingLoss             | 0     
+5 | loss_cross_entropy | BCELoss                       | 0     
+6 | recorder           | ModuleDict                    | 0     
+---------------------------------------------------------------------
+43.5 M    Trainable params
+0         Non-trainable params
+43.5 M    Total params
+174.087   Total estimated model params size (MB)
+Restored all states from the checkpoint at /home/imamura23/nas02home/outputs/2023-10-29/18-47-48/checkpoints/epoch_000.ckpt
+Metric Valid/knn_avr improved. New best score: 0.351
+Epoch 1, global step 3277: 'Valid/knn_avr' reached 0.35114 (best 0.35114), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/checkpoints/epoch_001.ckpt' as top 1
+Metric Valid/knn_avr improved by 0.039 >= min_delta = 0.0. New best score: 0.390
+Epoch 2, global step 4527: 'Valid/knn_avr' reached 0.38999 (best 0.38999), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/checkpoints/epoch_002.ckpt' as top 1
+Metric Valid/knn_avr improved by 0.024 >= min_delta = 0.0. New best score: 0.414
+Epoch 3, global step 5777: 'Valid/knn_avr' reached 0.41412 (best 0.41412), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/checkpoints/epoch_003.ckpt' as top 1
+Metric Valid/knn_avr improved by 0.004 >= min_delta = 0.0. New best score: 0.418
+Epoch 4, global step 7027: 'Valid/knn_avr' reached 0.41777 (best 0.41777), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/checkpoints/epoch_004.ckpt' as top 1
+Metric Valid/knn_avr improved by 0.039 >= min_delta = 0.0. New best score: 0.457
+Epoch 5, global step 8277: 'Valid/knn_avr' reached 0.45716 (best 0.45716), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/checkpoints/epoch_005.ckpt' as top 1
+Epoch 6, global step 9527: 'Valid/knn_avr' was not in top 1
+Epoch 7, global step 10777: 'Valid/knn_avr' was not in top 1
+Monitored metric Valid/knn_avr did not improve in the last 3 records. Best score: 0.457. Signaling Trainer to stop.
+Epoch 8, global step 12027: 'Valid/knn_avr' was not in top 1
+Restoring states from the checkpoint path at /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/checkpoints/epoch_005.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/checkpoints/epoch_005.ckpt
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/./train.py", line 20, in <module>
+    train()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 126, in main
+    metric_dict, _ = train(cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 78, in wrap
+    raise ex
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 68, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 102, in train
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 755, in test
+    return call._call_and_handle_interrupt(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 795, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 990, in _run
+    results = self._run_stage()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1029, in _run_stage
+    return self._evaluation_loop.run()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 181, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 134, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 391, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 416, in test_step
+    return self.lightning_module.test_step(*args, **kwargs)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/triplet/triplet.py", line 445, in test_step
+    soundfile.write(self.cfg.output_dir+f"/sound/{inst}/separate{self.n_sound}_{inst}.wav", sound, self.cfg.sr)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/soundfile.py", line 343, in write
+    with SoundFile(file, 'w', samplerate, channels,
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/soundfile.py", line 658, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/soundfile.py", line 1216, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/home/imamura23/nas02home/outputs/triplet_with_unet/runs/2023-10-31/04-08-41/sound/drums/separate0_drums.wav': System error.

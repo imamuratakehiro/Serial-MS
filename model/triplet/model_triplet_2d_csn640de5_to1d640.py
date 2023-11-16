@@ -12,6 +12,7 @@ import os
 import csv
 import pandas as pd
 #import soundfile
+import math
 
 from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
@@ -130,7 +131,8 @@ class UNetForTriplet_2d_de5_to1d640(nn.Module):
         # To1d
         #self.to1d = To1D640(to1d_mode=to1d_mode, order=order, in_channel=(f_size/2/(2**6)+1)*encoder_out_size)
         if mel:
-            in_channel = (n_mels//(2**6)+1)*encoder_out_size
+            #in_channel = (n_mels//(2**6)+1)*encoder_out_size
+            in_channel = math.ceil(n_mels/(2**6))*encoder_out_size
         else:
             in_channel = (f_size/2/(2**6)+1)*encoder_out_size
         self.to1d = To1D640(to1d_mode=to1d_mode, order=order, in_channel=in_channel)

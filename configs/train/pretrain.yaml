@@ -1,6 +1,6 @@
 
 # hyper parameter
-n_epoch: 100
+n_epoch: 400
 inst_list: ['drums', 'bass', 'piano', 'guitar', 'residuals']
 
 # data
@@ -12,6 +12,13 @@ num_workers: 8
 pin_memory: true
 
 datasetname: "slakh"
+mix_minus_inst: False
+test_valid_norm: True
+normalize128: False
+condition32: False
+load_using_librosa: True
+test_psd_mine: False
+
 seconds_psd_train: 3
 seconds_psd_valid: 10
 seconds_psd_test: 10
@@ -24,31 +31,27 @@ seconds_triplet_valid: 3
 offset_triplet_train: 1.5
 offset_triplet_valid: 1.5
 #offset_triplet_test: 10.0
-normalize128: False
-condition32: True
-load_using_librosa: True
 mono: True
 f_size: 2048
 hop_length: 512
 sr: 44100
-mel: True
-n_mels: 259
+mel: true
+n_mels: 128
 db: True
 
 # model
 target: model.UNetForTriplet_2d_de5_to1d640
+#target: model.TripletModelZume
 to1d_mode: "mean_linear"
 order: "timefreq"
 #order: "freqtime"
 #order: "bilstm"
 margin: 0.2
-lr: 1e-3
 # monitor
 monitor_es: "val/knn_avr"
 monitor_mode_es: "max"
 #monitor_sch: "train/loss_mix"
 #monitor_mode_sch: "min"
-test_psd_mine: false
 
 # path
 output_dir: ${paths.output_dir}

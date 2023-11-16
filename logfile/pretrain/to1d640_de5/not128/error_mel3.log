@@ -1,0 +1,103 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name            | Type                          | Params
+------------------------------------------------------------------
+0 | net             | UNetForTriplet_2d_de5_to1d640 | 38.6 M
+1 | loss_triplet    | MarginRankingLoss             | 0     
+2 | loss_mse        | MSELoss                       | 0     
+3 | train_loss_mix  | MeanMetric                    | 0     
+4 | train_loss_inst | MeanMetric                    | 0     
+------------------------------------------------------------------
+38.6 M    Trainable params
+0         Non-trainable params
+38.6 M    Total params
+154.432   Total estimated model params size (MB)
+Metric val/knn_avr improved. New best score: 0.189
+Epoch 0, global step 507: 'val/knn_avr' reached 0.18860 (best 0.18860), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_000.ckpt' as top 1
+Metric val/knn_avr improved by 0.073 >= min_delta = 0.0. New best score: 0.261
+Epoch 1, global step 1014: 'val/knn_avr' reached 0.26141 (best 0.26141), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_001.ckpt' as top 1
+Epoch 2, global step 1521: 'val/knn_avr' was not in top 1
+Epoch 3, global step 2028: 'val/knn_avr' was not in top 1
+Epoch 4, global step 2535: 'val/knn_avr' was not in top 1
+Epoch 5, global step 3042: 'val/knn_avr' was not in top 1
+Epoch 6, global step 3549: 'val/knn_avr' was not in top 1
+Metric val/knn_avr improved by 0.009 >= min_delta = 0.0. New best score: 0.271
+Epoch 7, global step 4056: 'val/knn_avr' reached 0.27065 (best 0.27065), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_007.ckpt' as top 1
+Epoch 8, global step 4563: 'val/knn_avr' was not in top 1
+Metric val/knn_avr improved by 0.043 >= min_delta = 0.0. New best score: 0.313
+Epoch 9, global step 5070: 'val/knn_avr' reached 0.31323 (best 0.31323), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_009.ckpt' as top 1
+Epoch 10, global step 5577: 'val/knn_avr' was not in top 1
+Metric val/knn_avr improved by 0.050 >= min_delta = 0.0. New best score: 0.363
+Epoch 11, global step 6084: 'val/knn_avr' reached 0.36276 (best 0.36276), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_011.ckpt' as top 1
+Metric val/knn_avr improved by 0.010 >= min_delta = 0.0. New best score: 0.373
+Epoch 12, global step 6591: 'val/knn_avr' reached 0.37267 (best 0.37267), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_012.ckpt' as top 1
+Epoch 13, global step 7098: 'val/knn_avr' was not in top 1
+Epoch 14, global step 7605: 'val/knn_avr' was not in top 1
+Epoch 15, global step 8112: 'val/knn_avr' was not in top 1
+Epoch 16, global step 8619: 'val/knn_avr' was not in top 1
+Metric val/knn_avr improved by 0.033 >= min_delta = 0.0. New best score: 0.406
+Epoch 17, global step 9126: 'val/knn_avr' reached 0.40614 (best 0.40614), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_017.ckpt' as top 1
+Metric val/knn_avr improved by 0.022 >= min_delta = 0.0. New best score: 0.428
+Epoch 18, global step 9633: 'val/knn_avr' reached 0.42831 (best 0.42831), saving model to '/nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_018.ckpt' as top 1
+Epoch 19, global step 10140: 'val/knn_avr' was not in top 1
+Epoch 20, global step 10647: 'val/knn_avr' was not in top 1
+Epoch 21, global step 11154: 'val/knn_avr' was not in top 1
+Epoch 22, global step 11661: 'val/knn_avr' was not in top 1
+Epoch 23, global step 12168: 'val/knn_avr' was not in top 1
+Epoch 24, global step 12675: 'val/knn_avr' was not in top 1
+Epoch 25, global step 13182: 'val/knn_avr' was not in top 1
+Epoch 26, global step 13689: 'val/knn_avr' was not in top 1
+Epoch 27, global step 14196: 'val/knn_avr' was not in top 1
+Epoch 28, global step 14703: 'val/knn_avr' was not in top 1
+Epoch 29, global step 15210: 'val/knn_avr' was not in top 1
+Epoch 30, global step 15717: 'val/knn_avr' was not in top 1
+Epoch 31, global step 16224: 'val/knn_avr' was not in top 1
+Epoch 32, global step 16731: 'val/knn_avr' was not in top 1
+Epoch 33, global step 17238: 'val/knn_avr' was not in top 1
+Epoch 34, global step 17745: 'val/knn_avr' was not in top 1
+Epoch 35, global step 18252: 'val/knn_avr' was not in top 1
+Epoch 36, global step 18759: 'val/knn_avr' was not in top 1
+Epoch 37, global step 19266: 'val/knn_avr' was not in top 1
+Epoch 38, global step 19773: 'val/knn_avr' was not in top 1
+Epoch 39, global step 20280: 'val/knn_avr' was not in top 1
+Epoch 40, global step 20787: 'val/knn_avr' was not in top 1
+Epoch 41, global step 21294: 'val/knn_avr' was not in top 1
+Epoch 42, global step 21801: 'val/knn_avr' was not in top 1
+Epoch 43, global step 22308: 'val/knn_avr' was not in top 1
+Epoch 44, global step 22815: 'val/knn_avr' was not in top 1
+Epoch 45, global step 23322: 'val/knn_avr' was not in top 1
+Epoch 46, global step 23829: 'val/knn_avr' was not in top 1
+Epoch 47, global step 24336: 'val/knn_avr' was not in top 1
+Epoch 48, global step 24843: 'val/knn_avr' was not in top 1
+Epoch 49, global step 25350: 'val/knn_avr' was not in top 1
+Epoch 50, global step 25857: 'val/knn_avr' was not in top 1
+Epoch 51, global step 26364: 'val/knn_avr' was not in top 1
+Epoch 52, global step 26871: 'val/knn_avr' was not in top 1
+Epoch 53, global step 27378: 'val/knn_avr' was not in top 1
+Epoch 54, global step 27885: 'val/knn_avr' was not in top 1
+Epoch 55, global step 28392: 'val/knn_avr' was not in top 1
+Epoch 56, global step 28899: 'val/knn_avr' was not in top 1
+Epoch 57, global step 29406: 'val/knn_avr' was not in top 1
+Epoch 58, global step 29913: 'val/knn_avr' was not in top 1
+Epoch 59, global step 30420: 'val/knn_avr' was not in top 1
+Epoch 60, global step 30927: 'val/knn_avr' was not in top 1
+Epoch 61, global step 31434: 'val/knn_avr' was not in top 1
+Epoch 62, global step 31941: 'val/knn_avr' was not in top 1
+Epoch 63, global step 32448: 'val/knn_avr' was not in top 1
+Epoch 64, global step 32955: 'val/knn_avr' was not in top 1
+Epoch 65, global step 33462: 'val/knn_avr' was not in top 1
+Epoch 66, global step 33969: 'val/knn_avr' was not in top 1
+Epoch 67, global step 34476: 'val/knn_avr' was not in top 1
+Monitored metric val/knn_avr did not improve in the last 50 records. Best score: 0.428. Signaling Trainer to stop.
+Epoch 68, global step 34983: 'val/knn_avr' was not in top 1
+Restoring states from the checkpoint path at /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_018.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-05/23-20-53/checkpoints/epoch_018.ckpt

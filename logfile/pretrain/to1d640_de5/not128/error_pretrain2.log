@@ -1,0 +1,29 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name            | Type                          | Params
+------------------------------------------------------------------
+0 | net             | UNetForTriplet_2d_de5_to1d640 | 43.5 M
+1 | loss_triplet    | MarginRankingLoss             | 0     
+2 | loss_mse        | MSELoss                       | 0     
+3 | train_loss_mix  | MeanMetric                    | 0     
+4 | train_loss_inst | MeanMetric                    | 0     
+------------------------------------------------------------------
+43.5 M    Trainable params
+0         Non-trainable params
+43.5 M    Total params
+174.087   Total estimated model params size (MB)
+Metric val/knn_avr improved. New best score: 0.424
+Epoch 0, global step 2027: 'val/knn_avr' reached 0.42415 (best 0.42415), saving model to '/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-29/18-47-48/checkpoints/epoch_000.ckpt' as top 1
+Epoch 1, global step 4054: 'val/knn_avr' was not in top 1
+Epoch 2, global step 6081: 'val/knn_avr' was not in top 1
+Monitored metric val/knn_avr did not improve in the last 3 records. Best score: 0.424. Signaling Trainer to stop.
+Epoch 3, global step 8108: 'val/knn_avr' was not in top 1
+Restoring states from the checkpoint path at /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-29/18-47-48/checkpoints/epoch_000.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/outputs/2023-10-29/18-47-48/checkpoints/epoch_000.ckpt

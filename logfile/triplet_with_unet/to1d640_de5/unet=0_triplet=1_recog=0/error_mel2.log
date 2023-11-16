@@ -1,0 +1,113 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name               | Type                          | Params
+---------------------------------------------------------------------
+0 | net                | UNetForTriplet_2d_de5_to1d640 | 38.6 M
+1 | loss_unet          | L1Loss                        | 0     
+2 | loss_triplet       | MarginRankingLoss             | 0     
+3 | loss_l2            | MSELoss                       | 0     
+4 | loss_mrl           | MarginRankingLoss             | 0     
+5 | loss_cross_entropy | BCEWithLogitsLoss             | 0     
+6 | recorder           | ModuleDict                    | 0     
+---------------------------------------------------------------------
+38.6 M    Trainable params
+0         Non-trainable params
+38.6 M    Total params
+154.426   Total estimated model params size (MB)
+Metric Valid/knn_avr improved. New best score: 0.336
+Epoch 0, global step 313: 'Valid/knn_avr' reached 0.33571 (best 0.33571), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_000.ckpt' as top 1
+Metric Valid/knn_avr improved by 0.098 >= min_delta = 0.0. New best score: 0.434
+Epoch 1, global step 626: 'Valid/knn_avr' reached 0.43386 (best 0.43386), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_001.ckpt' as top 1
+Epoch 2, global step 939: 'Valid/knn_avr' was not in top 1
+Epoch 3, global step 1252: 'Valid/knn_avr' was not in top 1
+Epoch 4, global step 1565: 'Valid/knn_avr' was not in top 1
+Epoch 5, global step 1878: 'Valid/knn_avr' was not in top 1
+Metric Valid/knn_avr improved by 0.009 >= min_delta = 0.0. New best score: 0.443
+Epoch 6, global step 2191: 'Valid/knn_avr' reached 0.44294 (best 0.44294), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_006.ckpt' as top 1
+Epoch 7, global step 2504: 'Valid/knn_avr' was not in top 1
+Metric Valid/knn_avr improved by 0.008 >= min_delta = 0.0. New best score: 0.451
+Epoch 8, global step 2817: 'Valid/knn_avr' reached 0.45116 (best 0.45116), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_008.ckpt' as top 1
+Metric Valid/knn_avr improved by 0.004 >= min_delta = 0.0. New best score: 0.455
+Epoch 9, global step 3130: 'Valid/knn_avr' reached 0.45524 (best 0.45524), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_009.ckpt' as top 1
+Epoch 10, global step 3443: 'Valid/knn_avr' was not in top 1
+Epoch 11, global step 3756: 'Valid/knn_avr' was not in top 1
+Epoch 12, global step 4069: 'Valid/knn_avr' was not in top 1
+Epoch 13, global step 4382: 'Valid/knn_avr' was not in top 1
+Metric Valid/knn_avr improved by 0.017 >= min_delta = 0.0. New best score: 0.472
+Epoch 14, global step 4695: 'Valid/knn_avr' reached 0.47177 (best 0.47177), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_014.ckpt' as top 1
+Epoch 15, global step 5008: 'Valid/knn_avr' was not in top 1
+Epoch 16, global step 5321: 'Valid/knn_avr' was not in top 1
+Epoch 17, global step 5634: 'Valid/knn_avr' was not in top 1
+Epoch 18, global step 5947: 'Valid/knn_avr' was not in top 1
+Epoch 19, global step 6260: 'Valid/knn_avr' was not in top 1
+Epoch 20, global step 6573: 'Valid/knn_avr' was not in top 1
+Epoch 21, global step 6886: 'Valid/knn_avr' was not in top 1
+Epoch 22, global step 7199: 'Valid/knn_avr' was not in top 1
+Epoch 23, global step 7512: 'Valid/knn_avr' was not in top 1
+Monitored metric Valid/knn_avr did not improve in the last 10 records. Best score: 0.472. Signaling Trainer to stop.
+Epoch 24, global step 7825: 'Valid/knn_avr' was not in top 1
+Restoring states from the checkpoint path at /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_014.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-05/06-21-20/checkpoints/epoch_014.ckpt
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/./train.py", line 20, in <module>
+    train()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 126, in main
+    metric_dict, _ = train(cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 78, in wrap
+    raise ex
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/utils/utils.py", line 68, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/source/train.py", line 102, in train
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 755, in test
+    return call._call_and_handle_interrupt(
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 795, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 990, in _run
+    results = self._run_stage()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1029, in _run_stage
+    return self._evaluation_loop.run()
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 181, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 134, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 391, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 416, in test_step
+    return self.lightning_module.test_step(*args, **kwargs)
+  File "/nas01/homes/imamura23-1000067/codes/MusicSimilarityWithUNet/model/triplet/triplet.py", line 458, in test_step
+    and self.n_sound < 5):
+IndexError: too many indices for tensor of dimension 1

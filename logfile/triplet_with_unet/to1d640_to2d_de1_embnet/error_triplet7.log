@@ -1,0 +1,40 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name               | Type                                | Params
+---------------------------------------------------------------------------
+0 | net                | UNetForTriplet_to1d640_1dde1_embnet | 26.2 M
+1 | loss_unet          | L1Loss                              | 0     
+2 | loss_triplet       | MarginRankingLoss                   | 0     
+3 | loss_l2            | MSELoss                             | 0     
+4 | loss_mrl           | MarginRankingLoss                   | 0     
+5 | loss_cross_entropy | BCEWithLogitsLoss                   | 0     
+6 | recorder           | ModuleDict                          | 0     
+---------------------------------------------------------------------------
+26.2 M    Trainable params
+0         Non-trainable params
+26.2 M    Total params
+104.890   Total estimated model params size (MB)
+Metric Valid/loss_all improved. New best score: 0.328
+Epoch 0, global step 1000: 'Valid/loss_all' reached 0.32758 (best 0.32758), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-02/06-55-15/checkpoints/epoch_000.ckpt' as top 1
+Metric Valid/loss_all improved by 0.032 >= min_delta = 0.0. New best score: 0.296
+Epoch 1, global step 2000: 'Valid/loss_all' reached 0.29578 (best 0.29578), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-02/06-55-15/checkpoints/epoch_001.ckpt' as top 1
+Metric Valid/loss_all improved by 0.003 >= min_delta = 0.0. New best score: 0.293
+Epoch 2, global step 3000: 'Valid/loss_all' reached 0.29318 (best 0.29318), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-02/06-55-15/checkpoints/epoch_002.ckpt' as top 1
+Metric Valid/loss_all improved by 0.023 >= min_delta = 0.0. New best score: 0.270
+Epoch 3, global step 4000: 'Valid/loss_all' reached 0.27006 (best 0.27006), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-02/06-55-15/checkpoints/epoch_003.ckpt' as top 1
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Encounted `nan` values in tensor. Will be removed.
+  warnings.warn(*args, **kwargs)  # noqa: B028
+Monitored metric Valid/loss_all = nan is not finite. Previous best value was 0.270. Signaling Trainer to stop.
+Epoch 4, global step 5000: 'Valid/loss_all' was not in top 1
+Restoring states from the checkpoint path at /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-02/06-55-15/checkpoints/epoch_003.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-02/06-55-15/checkpoints/epoch_003.ckpt

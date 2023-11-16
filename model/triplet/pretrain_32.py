@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap, BoundaryNorm
 
-from utils.func import file_exist, knn_psd, tsne_psd, TorchSTFT
+from utils.func import file_exist, knn_psd, tsne_psd, tsne_psd_marker, TorchSTFT
 from ..jnet.model_jnet_128_embnet import JNet128Embnet
 from ..csn import ConditionalSimNet1d
 
@@ -201,7 +201,10 @@ class PreTrain32(LightningModule):
             vec   = torch.concat(self.valid_vec[inst], dim=0).to("cpu").numpy()
             acc = knn_psd(label, vec, self.cfg) # knn
             self.log(f"val/knn_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False)
-            tsne_psd(label, vec, self.cfg, dir_path=self.cfg.output_dir+f"/{inst}", current_epoch=self.current_epoch) # tsne
+            if self.cfg.test_psd_mine:
+                tsne_psd_marker(label, vec, "Valid", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
+            else:
+                tsne_psd(label, vec, "Valid", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
             print(f"knn accuracy valid {inst:<10}: {acc*100}%")
             acc_all += acc
         self.log(f"val/knn_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True)
@@ -218,7 +221,7 @@ class PreTrain32(LightningModule):
         ID, ver, seg, data, c = batch
         _, data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
-        csn_test = ConditionalSimNet1d(data.shape[0]) # csnのモデルを保存されないようにするために配列に入れる
+        csn_test = ConditionalSimNet1d() # csnのモデルを保存されないようにするために配列に入れる
         self.test_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))
         self.test_vec[self.cfg.inst_list[dataloader_idx]].append(csn_test(embvec, c))
 
@@ -229,7 +232,10 @@ class PreTrain32(LightningModule):
             label = torch.concat(self.test_label[inst], dim=0).to("cpu").numpy()
             vec   = torch.concat(self.test_vec[inst], dim=0).to("cpu").numpy()
             acc = knn_psd(label, vec, self.cfg) # knn
-            tsne_psd(label, vec, self.cfg, dir_path=self.cfg.output_dir+f"/{inst}") # tsne
+            if self.cfg.test_psd_mine:
+                tsne_psd_marker(label, vec, "Test", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}") # tsne
+            else:
+                tsne_psd(label, vec, "Test", self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}") # tsne
             self.log(f"test/knn_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False)
             print(f"knn accuracy test {inst:<10}: {acc*100}%")
             acc_all += acc

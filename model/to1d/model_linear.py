@@ -25,15 +25,24 @@ class MyError(Exception):
     pass
 
 class To1D640timefreq(nn.Module):
-    def __init__(self, in_channel) -> None:
+    def __init__(self, in_channel, to1d_mode) -> None:
         super().__init__()
-        self.fc1 = nn.Linear(in_channel, 640)
+        self.to1d_mode = to1d_mode
+        if to1d_mode == "mean_linear":
+            self.fc1 = nn.Linear(in_channel, 640)
+        elif to1d_mode == "meanstd_linear":
+            self.fc1 = nn.Linear(in_channel*2, 640)
         self.to(device)
     
     def forward(self, input):
-        out_mean = torch.mean(input, axis=3)
-        out_mean_2d = out_mean.view(out_mean.size()[0], -1)
-        output = self.fc1(out_mean_2d)
+        if self.to1d_mode == "mean_linear":
+            out_mean = torch.mean(input, dim=3)
+            out_2d = out_mean.view(out_mean.size()[0], -1)
+        elif self.to1d_mode == "meanstd_linear":
+            out_mean = torch.mean(input, dim=3)
+            out_std = torch.std(input, dim=3)
+            out_2d = torch.concat([out_mean, out_std], dim=2).view(out_mean.size()[0], -1) # [B, ch*F*2]
+        output = self.fc1(out_2d)
         return output
 
 class To1D128timefreq(nn.Module):
@@ -212,7 +221,7 @@ class To1D640(nn.Module):
     def __init__(self, to1d_mode, order, in_channel) -> None:
         super().__init__()
         if order == "timefreq":
-            self.to1d = To1D640timefreq(in_channel=int(in_channel))
+            self.to1d = To1D640timefreq(in_channel=int(in_channel), to1d_mode=to1d_mode)
         elif order =="freqtime":
             pass
         elif order == "freq_emb_time":

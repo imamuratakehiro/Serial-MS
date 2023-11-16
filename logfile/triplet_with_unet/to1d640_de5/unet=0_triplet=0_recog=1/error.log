@@ -1,0 +1,50 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /home/imamura23/nas02home/outputs/2023-10-29/18-45-05/checkpoints/epoch_006.ckpt
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py:263: Be aware that when using `ckpt_path`, callbacks used to create the checkpoint need to be provided during `Trainer` instantiation. Please add the following callbacks: ["EarlyStopping{'monitor': 'val/knn_avr', 'mode': 'max'}", "ModelCheckpoint{'monitor': 'val/knn_avr', 'mode': 'max', 'every_n_train_steps': 0, 'every_n_epochs': 1, 'train_time_interval': None}"].
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name               | Type                          | Params
+---------------------------------------------------------------------
+0 | net                | UNetForTriplet_2d_de5_to1d640 | 43.5 M
+1 | loss_unet          | L1Loss                        | 0     
+2 | loss_triplet       | MarginRankingLoss             | 0     
+3 | loss_l2            | MSELoss                       | 0     
+4 | loss_mrl           | MarginRankingLoss             | 0     
+5 | loss_cross_entropy | BCEWithLogitsLoss             | 0     
+6 | recorder           | ModuleDict                    | 0     
+---------------------------------------------------------------------
+43.5 M    Trainable params
+0         Non-trainable params
+43.5 M    Total params
+174.087   Total estimated model params size (MB)
+Restored all states from the checkpoint at /home/imamura23/nas02home/outputs/2023-10-29/18-45-05/checkpoints/epoch_006.ckpt
+Metric Valid/loss_all improved. New best score: 0.478
+Epoch 7, global step 15189: 'Valid/loss_all' reached 0.47848 (best 0.47848), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-03/05-48-06/checkpoints/epoch_007.ckpt' as top 1
+Metric Valid/loss_all improved by 0.063 >= min_delta = 0.0. New best score: 0.416
+Epoch 8, global step 16189: 'Valid/loss_all' reached 0.41596 (best 0.41596), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-03/05-48-06/checkpoints/epoch_008.ckpt' as top 1
+Metric Valid/loss_all improved by 0.007 >= min_delta = 0.0. New best score: 0.409
+Epoch 9, global step 17189: 'Valid/loss_all' reached 0.40884 (best 0.40884), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-03/05-48-06/checkpoints/epoch_009.ckpt' as top 1
+Metric Valid/loss_all improved by 0.006 >= min_delta = 0.0. New best score: 0.403
+Epoch 10, global step 18189: 'Valid/loss_all' reached 0.40332 (best 0.40332), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-03/05-48-06/checkpoints/epoch_010.ckpt' as top 1
+Metric Valid/loss_all improved by 0.018 >= min_delta = 0.0. New best score: 0.385
+Epoch 11, global step 19189: 'Valid/loss_all' reached 0.38538 (best 0.38538), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-03/05-48-06/checkpoints/epoch_011.ckpt' as top 1
+Epoch 12, global step 20189: 'Valid/loss_all' was not in top 1
+Epoch 13, global step 21189: 'Valid/loss_all' was not in top 1
+Epoch 14, global step 22189: 'Valid/loss_all' was not in top 1
+Metric Valid/loss_all improved by 0.018 >= min_delta = 0.0. New best score: 0.367
+Epoch 15, global step 23189: 'Valid/loss_all' reached 0.36732 (best 0.36732), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-03/05-48-06/checkpoints/epoch_015.ckpt' as top 1
+Epoch 16, global step 24189: 'Valid/loss_all' was not in top 1
+Epoch 17, global step 25189: 'Valid/loss_all' was not in top 1
+Epoch 18, global step 26189: 'Valid/loss_all' was not in top 1
+Epoch 19, global step 27189: 'Valid/loss_all' was not in top 1
+Epoch 20, global step 28189: 'Valid/loss_all' was not in top 1
+Epoch 21, global step 29189: 'Valid/loss_all' was not in top 1
+/var/lib/slurm-llnl/slurmd/job70170/slurm_script: 30 行: 1869074 バスエラー         (コアダンプ) python3 -u ./train.py > ./logfile/triplet_with_unet/to1d640_de5/unet=0_triplet=0_recog=1/train.log

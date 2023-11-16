@@ -1,0 +1,73 @@
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'net' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['net'])`.
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/connector.py:565: `precision=16` is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python3 ./train.py ...
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /home/imamura23/nas02home/outputs/2023-10-29/18-45-05/checkpoints/epoch_006.ckpt
+/home/imamura23/nas01home/codes/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py:263: Be aware that when using `ckpt_path`, callbacks used to create the checkpoint need to be provided during `Trainer` instantiation. Please add the following callbacks: ["ModelCheckpoint{'monitor': 'val/knn_avr', 'mode': 'max', 'every_n_train_steps': 0, 'every_n_epochs': 1, 'train_time_interval': None}", "EarlyStopping{'monitor': 'val/knn_avr', 'mode': 'max'}"].
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name               | Type                          | Params
+---------------------------------------------------------------------
+0 | net                | UNetForTriplet_2d_de5_to1d640 | 43.5 M
+1 | loss_unet          | L1Loss                        | 0     
+2 | loss_triplet       | MarginRankingLoss             | 0     
+3 | loss_l2            | MSELoss                       | 0     
+4 | loss_mrl           | MarginRankingLoss             | 0     
+5 | loss_cross_entropy | BCEWithLogitsLoss             | 0     
+6 | recorder           | ModuleDict                    | 0     
+---------------------------------------------------------------------
+43.5 M    Trainable params
+0         Non-trainable params
+43.5 M    Total params
+174.087   Total estimated model params size (MB)
+Restored all states from the checkpoint at /home/imamura23/nas02home/outputs/2023-10-29/18-45-05/checkpoints/epoch_006.ckpt
+Metric Train/loss_all improved. New best score: 0.186
+Epoch 7, global step 15189: 'Train/loss_all' reached 0.18576 (best 0.18576), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_007.ckpt' as top 1
+Metric Train/loss_all improved by 0.038 >= min_delta = 0.0. New best score: 0.147
+Epoch 8, global step 16189: 'Train/loss_all' reached 0.14726 (best 0.14726), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_008.ckpt' as top 1
+Metric Train/loss_all improved by 0.021 >= min_delta = 0.0. New best score: 0.127
+Epoch 9, global step 17189: 'Train/loss_all' reached 0.12658 (best 0.12658), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_009.ckpt' as top 1
+Metric Train/loss_all improved by 0.019 >= min_delta = 0.0. New best score: 0.108
+Epoch 10, global step 18189: 'Train/loss_all' reached 0.10781 (best 0.10781), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_010.ckpt' as top 1
+Metric Train/loss_all improved by 0.018 >= min_delta = 0.0. New best score: 0.090
+Epoch 11, global step 19189: 'Train/loss_all' reached 0.09012 (best 0.09012), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_011.ckpt' as top 1
+Metric Train/loss_all improved by 0.016 >= min_delta = 0.0. New best score: 0.074
+Epoch 12, global step 20189: 'Train/loss_all' reached 0.07391 (best 0.07391), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_012.ckpt' as top 1
+Metric Train/loss_all improved by 0.016 >= min_delta = 0.0. New best score: 0.058
+Epoch 13, global step 21189: 'Train/loss_all' reached 0.05798 (best 0.05798), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_013.ckpt' as top 1
+Metric Train/loss_all improved by 0.010 >= min_delta = 0.0. New best score: 0.048
+Epoch 14, global step 22189: 'Train/loss_all' reached 0.04821 (best 0.04821), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_014.ckpt' as top 1
+Metric Train/loss_all improved by 0.009 >= min_delta = 0.0. New best score: 0.040
+Epoch 15, global step 23189: 'Train/loss_all' reached 0.03961 (best 0.03961), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_015.ckpt' as top 1
+Metric Train/loss_all improved by 0.006 >= min_delta = 0.0. New best score: 0.033
+Epoch 16, global step 24189: 'Train/loss_all' reached 0.03347 (best 0.03347), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_016.ckpt' as top 1
+Metric Train/loss_all improved by 0.003 >= min_delta = 0.0. New best score: 0.030
+Epoch 17, global step 25189: 'Train/loss_all' reached 0.03028 (best 0.03028), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_017.ckpt' as top 1
+Metric Train/loss_all improved by 0.005 >= min_delta = 0.0. New best score: 0.025
+Epoch 18, global step 26189: 'Train/loss_all' reached 0.02547 (best 0.02547), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_018.ckpt' as top 1
+Metric Train/loss_all improved by 0.001 >= min_delta = 0.0. New best score: 0.025
+Epoch 19, global step 27189: 'Train/loss_all' reached 0.02496 (best 0.02496), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_019.ckpt' as top 1
+Metric Train/loss_all improved by 0.002 >= min_delta = 0.0. New best score: 0.023
+Epoch 20, global step 28189: 'Train/loss_all' reached 0.02346 (best 0.02346), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_020.ckpt' as top 1
+Metric Train/loss_all improved by 0.000 >= min_delta = 0.0. New best score: 0.023
+Epoch 21, global step 29189: 'Train/loss_all' reached 0.02306 (best 0.02306), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_021.ckpt' as top 1
+Metric Train/loss_all improved by 0.003 >= min_delta = 0.0. New best score: 0.020
+Epoch 22, global step 30189: 'Train/loss_all' reached 0.02045 (best 0.02045), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_022.ckpt' as top 1
+Metric Train/loss_all improved by 0.000 >= min_delta = 0.0. New best score: 0.020
+Epoch 23, global step 31189: 'Train/loss_all' reached 0.02013 (best 0.02013), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_023.ckpt' as top 1
+Metric Train/loss_all improved by 0.001 >= min_delta = 0.0. New best score: 0.019
+Epoch 24, global step 32189: 'Train/loss_all' reached 0.01947 (best 0.01947), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_024.ckpt' as top 1
+Metric Train/loss_all improved by 0.000 >= min_delta = 0.0. New best score: 0.019
+Epoch 25, global step 33189: 'Train/loss_all' reached 0.01929 (best 0.01929), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_025.ckpt' as top 1
+Metric Train/loss_all improved by 0.001 >= min_delta = 0.0. New best score: 0.018
+Epoch 26, global step 34189: 'Train/loss_all' reached 0.01786 (best 0.01786), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_026.ckpt' as top 1
+Metric Train/loss_all improved by 0.000 >= min_delta = 0.0. New best score: 0.018
+Epoch 27, global step 35189: 'Train/loss_all' reached 0.01755 (best 0.01755), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_027.ckpt' as top 1
+Metric Train/loss_all improved by 0.000 >= min_delta = 0.0. New best score: 0.017
+Epoch 28, global step 36189: 'Train/loss_all' reached 0.01721 (best 0.01721), saving model to '/nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-01/08-12-38/checkpoints/epoch_028.ckpt' as top 1
+slurmstepd-mrcompute03: error: *** JOB 69901 ON mrcompute03 CANCELLED AT 2023-11-02T08:12:44 DUE TO TIME LIMIT ***
