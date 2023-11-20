@@ -2,6 +2,7 @@
 # hyper parameter
 n_epoch: 400
 inst_list: ['drums', 'bass', 'piano', 'guitar', 'residuals']
+lr: 0.001
 
 # data
 dataset_dir: "/nas03/assets/Dataset/slakh"

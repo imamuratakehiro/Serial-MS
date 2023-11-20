@@ -32,8 +32,10 @@ class To1D640timefreq(nn.Module):
             self.fc1 = nn.Linear(in_channel, 640)
         elif to1d_mode == "meanstd_linear":
             self.fc1 = nn.Linear(in_channel*2, 640)
+        elif to1d_mode == "pool":
+            self.fc1 * nn.Linear(640*2, 640)
         self.to(device)
-    
+
     def forward(self, input):
         if self.to1d_mode == "mean_linear":
             out_mean = torch.mean(input, dim=3)
@@ -42,8 +44,32 @@ class To1D640timefreq(nn.Module):
             out_mean = torch.mean(input, dim=3)
             out_std = torch.std(input, dim=3)
             out_2d = torch.concat([out_mean, out_std], dim=2).view(out_mean.size()[0], -1) # [B, ch*F*2]
+        elif self.to1d_mode == "pool":
+            avgpool = nn.AvgPool2d(kernel_size=(input.shape[2], input.shape[3]))
+            # グローバル平均プーリング
+            out_mean = avgpool(input)
+            maxpool = nn.MaxPool2d(kernel_size=(input.shape[2], input.shape[3]))
+            # グローバル最大プーリング
+            out_max = maxpool(input)
+            out_2d = torch.squeeze(torch.concat([out_mean, out_max], dim=1))
+
         output = self.fc1(out_2d)
         return output
+
+class To1D640Demucs(nn.Module):
+    def __init__(self, channel):
+        super().__init__()
+        self.fc1 = nn.Linear(channel*2, 640)
+    
+    def forward(self, input):
+        avgpool = nn.AvgPool1d(kernel_size=input.shape[2])
+        # グローバル平均プーリング
+        out_mean = avgpool(input)
+        maxpool = nn.MaxPool1d(kernel_size=input.shape[2])
+        # グローバル最大プーリング
+        out_max = maxpool(input)
+        out_1d = torch.squeeze(torch.concat([out_mean, out_max], dim=1))
+        return self.fc1(out_1d)
 
 class To1D128timefreq(nn.Module):
     def __init__(self, mode="mean_linear", in_channel=None, att=False) -> None:

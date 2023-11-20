@@ -4,7 +4,7 @@ import time
 import librosa.core as lc
 import librosa
 import os
-import museval
+#import museval
 import numpy as np
 from torchmetrics.audio import SignalDistortionRatio as SDR, ScaleInvariantSignalDistortionRatio as SISDR
 from sklearn.neighbors import KNeighborsClassifier

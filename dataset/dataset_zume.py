@@ -100,8 +100,10 @@ class CreatePseudo(Dataset):
         self.loader = LoadSegZume(self.cfg, mode, self.second, self.offset, dirpath)
         self.stft = STFT(cfg=cfg)
 
-    def load_mix_stems(self, tracklist, seglist, condition=0b11111):
-        bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
+    def load_mix_stems(self, tracklist, seglist, condition=None):
+        if condition is None:
+            condition = [1 for i in range(len(self.cfg.inst_list))]
+        #bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
         stems = []
         if self.cfg.load_using_librosa:
             mix = np.zeros((1, self.second*self.cfg.sr), dtype=np.float32)
@@ -112,7 +114,7 @@ class CreatePseudo(Dataset):
                 mix = np.zeros((1, 440320), dtype=np.float32)
         #mix = np.zeros((1, 131072), dtype=np.float32)
         for iter, inst in enumerate(self.cfg.inst_list):
-            if bin_str[iter] == "1":
+            if condition[iter] == 1:
                 #Pow = 0
                 #path = self.dirpath + f"/{inst}/wave{tracklist[iter]}_{seglist[iter]}.npz"
                 #stem_wave, sound = loadseg_from_npz(path=path)
@@ -193,12 +195,14 @@ class SongDataForPreTrain(Dataset):
         self.loader = CreatePseudo(cfg, datasettype="triplet", mode=mode)
         self.cfg = cfg
     
-    def load_embvec(self, track_id, seg_id, condition=0b11111):
-        bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
+    def load_embvec(self, track_id, seg_id, condition=None):
+        #bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
+        if condition is None:
+            condition = [1 for _ in range(len(self.cfg.inst_list))]
         dirpath = f"/nas03/assets/Dataset/slakh/single3_200data-euc_zero/"
         embvec = []
         for idx, inst in enumerate(self.cfg.inst_list):
-            if bin_str[idx] == "1":
+            if condition[idx] == 1:
                 vec_inst = np.load(dirpath + inst + f"/Track{track_id}/seg{seg_id}.npy")
             else:
                 vec_inst = np.zeros((1,128), dtype=np.float32)
@@ -207,13 +211,15 @@ class SongDataForPreTrain(Dataset):
             embvec.append(vec_inst)
         return torch.from_numpy(l2normalize(np.concatenate(embvec, axis=1).squeeze()))
     
-    def load_embvec_stems(self, track_id, seg_id, condition=0b11111):
-        bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
+    def load_embvec_stems(self, track_id, seg_id, condition=None):
+        if condition is None:
+            condition = [1 for i in range(len(self.cfg.inst_list))]
+        #bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
         dirpath = f"/nas03/assets/Dataset/slakh/single3_200data-euc_zero/"
         embvec = []
         for idx, inst in enumerate(self.cfg.inst_list):
             vec_inst = np.zeros((1,640), dtype=np.float32)
-            if bin_str[idx] == "1":
+            if condition[idx] == "1":
                 vec_inst[:,idx*128:(idx+1)*128] = np.load(dirpath + inst + f"/Track{track_id}/seg{seg_id}.npy")
             else:
                 pass
@@ -232,6 +238,7 @@ class SongDataForPreTrain(Dataset):
         seglist   = [seg_id   for _ in self.cfg.inst_list]
         if self.cfg.condition32:
             condition = random.randrange(0, 2**len(self.cfg.inst_list))
+            condition = [int(i) for i in format(condition, f"0{len(self.cfg.inst_list)}b")]
             mix_spec, _ = self.loader.load_mix_stems(tracklist=tracklist, seglist=seglist, condition=condition)
             return mix_spec, condition, self.load_embvec(track_id, seg_id, condition=condition)
         else:
@@ -318,9 +325,9 @@ class TripletLoader(Dataset):
             sound_n,
             c,
         ) = self.triplets[index]
-        mix_a, stems_a = self.loader.load_mix_stems(tracklist_a, seglist_a)
-        mix_p, stems_p = self.loader.load_mix_stems(tracklist_p, seglist_p)
-        mix_n, stems_n = self.loader.load_mix_stems(tracklist_n, seglist_n)
+        mix_a, stems_a = self.loader.load_mix_stems(tracklist_a, seglist_a, sound_a)
+        mix_p, stems_p = self.loader.load_mix_stems(tracklist_p, seglist_p, sound_p)
+        mix_n, stems_n = self.loader.load_mix_stems(tracklist_n, seglist_n, sound_n)
         # cのindexにおいてanchor、positive、negativeの曲のセグメント
         return mix_a, stems_a, mix_p, stems_p, mix_n, stems_n, c[0], torch.FloatTensor(sound_a), torch.FloatTensor(sound_p), torch.FloatTensor(sound_n)
 
@@ -353,6 +360,7 @@ class Condition32Loader(Dataset):
         seglist   = [seg_id   for _ in self.cfg.inst_list]
         condition = random.randrange(0, 2**len(self.cfg.inst_list))
         cases = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
+        condition = [int(i) for i in cases]
         cases = torch.tensor([float(int(i)) for i in cases])
         #if self.mode == "train" or self.mode == "valid":
         #    mix_spec, stems_spec = self.loader.load_mix_stems(tracklist=tracklist, seglist=seglist, condition=condition)
