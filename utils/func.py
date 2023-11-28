@@ -47,6 +47,10 @@ def time2hms(time):
     else:
         return f"{int(hour):0>2}:{int(min):0>2}:{int(sec):0>2}"
 
+def bin2list(case, length):
+    case = format(case, f"0{length}b") #2進数化
+    return [int(i) for i in case]
+
 class progress_bar():
     def __init__(self, name: str, total: int) -> None:
         self.total = total
@@ -212,6 +216,27 @@ def magphase(
     phase.imag = complex_tensor.imag / mag_nonzero
     return mag, phase
 
+def normalize_torch(data, max = None, min = None):
+    if max is None:# and min is None:
+        max = data.max(dim=-1, keepdim=True)[0].max(dim=-2, keepdim=True)[0]
+    min = data.min(dim=-1, keepdim=True)[0].min(dim=-2, keepdim=True)[0]
+    max_min = max - min
+    max_min = torch.where(max_min == 0, 1, max_min) # 0なら1に変換
+    transformed = (data - min) / max_min
+    return transformed, max, min
+
+def denormalize_torch(spec, max, min):
+    return spec * (max - min) + min
+
+def standardize_torch(data):
+    mean = data.mean(dim=(1, 2, 3), keepdim=True)
+    std = data.std(dim=(1, 2, 3), keepdim=True)
+    transformed = (data - mean) / (std + 1e-5)
+    return transformed, mean, std
+
+def destandardize_torch(data, mean, std):
+    return data * std + mean
+
 class TorchSTFT:
     def __init__(self, cfg) -> None:
         self.cfg = cfg
@@ -250,6 +275,7 @@ class TorchSTFT:
             transformed = torch.matmul(self.melfilter.to(transformed.device), transformed)
         if self.cfg.db:
             transformed = Fa.amplitude_to_DB(transformed, 20, amin=1e-05, db_multiplier=0)
+        """
         if param is None:
             transformed, max, min = self.normalize(transformed) #正規化
             params = torch.stack([max, min], dim=0)
@@ -262,17 +288,36 @@ class TorchSTFT:
                 transformed_list.append(transformed_per)
             transformed = torch.stack(transformed_list, dim=1)
             params = param
-        return params, transformed, phase
+        """
+        #return params, transformed, phase
+        return transformed, phase
     
     def denormalize(self, spec, max, min):
         return spec * (max - min) + min
     
-    def detransform(self, spec, phase, max, min):
+    def detransform(self, spec, phase):
         #print(spec.shape)
-        spec_denormal = self.denormalize(spec, max, min).to("cpu").numpy() #正規化を解除
+        #spec_denormal = self.denormalize(spec, max, min).to("cpu").numpy() #正規化を解除
         if self.cfg.db:
-            spec_denormal = librosa.db_to_amplitude(spec_denormal) #dbを元の振幅に直す
-        return lc.istft(spec_denormal * phase.to("cpu").numpy(), n_fft=self.cfg.f_size, hop_length=self.cfg.hop_length)
+            spec = Fa.DB_to_amplitude(spec, ref=1, power=0.5)#.to("cpu").numpy() #dbを元の振幅に直す
+        #else:
+        #    spec = spec.to("cpu").numpy()
+        z = spec * phase
+        *other, freqs, frames = z.shape
+        n_fft = 2 * freqs - 2
+        z = z.view(-1, freqs, frames)
+        print(z.dtype)
+        x = torch.istft(z,
+                    n_fft=self.cfg.f_size,
+                    hop_length=self.cfg.hop_length,
+                    window=torch.hann_window(self.cfg.f_size).to(z.real),
+                    win_length=self.cfg.f_size,
+                    normalized=False,
+                    #length=length,
+                    center=True)
+        _, length = x.shape
+        return x.view(*other, length).to("cpu").numpy()
+        #return lc.istft(spec * phase.to("cpu").numpy(), n_fft=self.cfg.f_size, hop_length=self.cfg.hop_length)
 
 
 

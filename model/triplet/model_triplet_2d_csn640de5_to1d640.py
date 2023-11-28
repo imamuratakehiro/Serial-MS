@@ -17,6 +17,7 @@ import math
 from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
 from ..to1d.model_linear import To1D640
+from utils.func import normalize_torch, denormalize_torch, standardize_torch, destandardize_torch
 
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -102,6 +103,53 @@ class UNetDecoder(nn.Module):
         output = torch.sigmoid(deconv1_out)
         return output
 
+class RNNModule(nn.Module):
+    """
+    RNN submodule of BandSequence module
+    """
+
+    def __init__(
+            self,
+            input_dim_size: int,
+            hidden_dim_size: int,
+            rnn_type: str = 'lstm',
+            bidirectional: bool = True
+    ):
+        super(RNNModule, self).__init__()
+        self.groupnorm = nn.GroupNorm(input_dim_size, input_dim_size)
+        self.rnn = getattr(nn, rnn_type)(
+            input_dim_size, hidden_dim_size, batch_first=True, bidirectional=bidirectional
+        )
+        self.fc = nn.Linear(
+            hidden_dim_size * 2 if bidirectional else hidden_dim_size,
+            input_dim_size
+        )
+
+    def forward(
+            self,
+            x: torch.Tensor
+    ):
+        """
+        Input shape:
+            across T - [batch_size, k_subbands, time, n_features]
+            OR
+            across K - [batch_size, time, k_subbands, n_features]
+        """
+        B, C, F, T = x.shape  # across T      across K (keep in mind T->K, K->T)
+
+        out = x.view(B, T, F * C)  # [BK, T, N]    [BT, K, N]
+
+        out = self.groupnorm(
+            out.transpose(-1, -2)
+        ).transpose(-1, -2)  # [BK, T, N]    [BT, K, N]
+        out = self.rnn(out)[0]  # [BK, T, H]    [BT, K, H]
+        out = self.fc(out)  # [BK, T, N]    [BT, K, N]
+
+        x = out.view(B, K, T, N) + x  # [B, K, T, N]  [B, T, K, N]
+
+        x = x.permute(0, 2, 1, 3).contiguous()  # [B, T, K, N]  [B, K, T, N]
+        return x
+
 class UNetForTriplet_2d_de5_to1d640(nn.Module):
     def __init__(self, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
         super().__init__()
@@ -144,6 +192,8 @@ class UNetForTriplet_2d_de5_to1d640(nn.Module):
 
     def forward(self, input):
         # Encoder
+        #input, max, min = normalize_torch(input)
+        input, mean, std = standardize_torch(input)
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out = self.encoder(input)
 
         # 特徴量を条件づけ
@@ -173,11 +223,13 @@ class UNetForTriplet_2d_de5_to1d640(nn.Module):
             # decoder
             sep_feature_decoder = csn(conv6_out, torch.tensor([idx], device=device))  # 特徴量を条件づけ
             decoder_out = decoder[inst].forward(sep_feature_decoder, conv5_out, conv4_out, conv3_out, conv2_out, conv1_out, input)
-            output_decoder[inst] = decoder_out
+            #output_decoder[inst] = denormalize_torch(input*decoder_out, max, min) # マスクをかけてからdenormalize
+            output_decoder[inst] = destandardize_torch(input*decoder_out, mean, std) # マスクをかけてからdestandardize
         # to1d
         output_emb = self.to1d(conv6_out)
         # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする
         csn1d = ConditionalSimNet1d() # csnのモデルを保存されないようにするために配列に入れる
+        csn1d.to(output_emb.device)
         output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
         return output_emb, output_probability, output_decoder
     

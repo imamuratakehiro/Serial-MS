@@ -11,13 +11,13 @@ defaults:
   - extras: default
   - hydra: default
 
-  #- experiment: triplet_with_unet/y
-  - experiment: pretrain
+  - experiment: triplet_with_unet/y
+  #- experiment: pretrain
   #- override hydra/job_logging: colorlog
   #- override hydra/hydra_logging: colorlog
 
-#task_name: "eval_triplet_with_unet"
-task_name: "eval_pretrain"
+task_name: "eval_triplet_with_unet"
+#task_name: "eval_pretrain"
 
 # なんか入れんと動かん、extrasのtagのやつfalseもあり
 tags: ["dev"]
@@ -29,4 +29,7 @@ tags: ["dev"]
 #ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-07/11-35-21/checkpoints/epoch_007.ckpt
 #ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-11/14-22-12/checkpoints/epoch_025.ckpt
 #ckpt_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/15-31-05/checkpoints/epoch_027.ckpt
-ckpt_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/09-21-27/checkpoints/epoch_168.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/09-21-27/checkpoints/epoch_168.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-25/17-17-12/checkpoints/epoch_076.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-27/21-31-54/checkpoints/epoch_009.ckpt
+ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-15/16-43-59/checkpoints/epoch_197.ckpt

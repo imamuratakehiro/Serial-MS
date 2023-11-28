@@ -16,6 +16,7 @@ import pandas as pd
 from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
 from ..to1d.model_linear import To1D640
+from utils.func import normalize_torch, denormalize_torch
 
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -123,7 +124,7 @@ class UNetDecoder(nn.Module):
         output = torch.sigmoid(deconv1_out)
         return output
 
-class UNetForTriplet_2d_de5_to1d640_addencoder(nn.Module):
+class UNetForTriplet_2d_de5_to1d640_addresencoder(nn.Module):
     def __init__(self, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
         super().__init__()
         if mono:
@@ -133,7 +134,7 @@ class UNetForTriplet_2d_de5_to1d640_addencoder(nn.Module):
         encoder_out_size = len(inst_list) * 128
         # Encoder
         self.encoder = UNetEncoder(encoder_in_size, encoder_out_size)
-        self.adencoder = UNetEncoder(encoder_in_size, encoder_out_size)
+        self.addencoder = UNetResEncoder(encoder_in_size, encoder_out_size)
         # Decoder
         for inst in inst_list:
             if inst == "drums":
@@ -167,7 +168,7 @@ class UNetForTriplet_2d_de5_to1d640_addencoder(nn.Module):
     def forward(self, input):
         # Encoder
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out = self.encoder(input)
-        addconv_out = self.adencoder(input, conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out)
+        addconv_out = self.addencoder(input, conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out)
 
         # 特徴量を条件づけ
         size = conv6_out.shape
@@ -200,7 +201,7 @@ class UNetForTriplet_2d_de5_to1d640_addencoder(nn.Module):
         # to1d
         output_emb = self.to1d(addconv_out)
         # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする
-        csn1d = ConditionalSimNet1d() # csnのモデルを保存されないようにするために配列に入れる
+        csn1d = ConditionalSimNet1d().to(output_emb.device) # csnのモデルを保存されないようにするために配列に入れる
         output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
         return output_emb, output_probability, output_decoder
 
@@ -245,6 +246,7 @@ class UNetForTriplet_2d_de5_to1d640_addencoder2(nn.Module):
         self.inst_list = inst_list
 
     def forward(self, input):
+        input, max, min = normalize_torch(input)
         # Encoder
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out = self.encoder(input)
         _, _, _, _, _, addconv_out = self.adencoder(input)
@@ -276,7 +278,7 @@ class UNetForTriplet_2d_de5_to1d640_addencoder2(nn.Module):
             # decoder
             sep_feature_decoder = csn(conv6_out, torch.tensor([idx], device=device))  # 特徴量を条件づけ
             decoder_out = decoder[inst].forward(sep_feature_decoder, conv5_out, conv4_out, conv3_out, conv2_out, conv1_out, input)
-            output_decoder[inst] = decoder_out
+            output_decoder[inst] = denormalize_torch(decoder_out, max, min)
         # to1d
         output_emb = self.to1d(torch.concat([conv6_out, addconv_out], dim=1))
         # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする

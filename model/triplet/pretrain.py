@@ -137,7 +137,7 @@ class PreTrain(LightningModule):
             - A tensor of target labels.
         """
         mix, stems, emb_target_mix, emb_target_stems = batch
-        _, mix, _ = self.stft.transform(mix); _, stems, _ = self.stft.transform(stems)
+        mix, _ = self.stft.transform(mix); stems, _ = self.stft.transform(stems)
         emb_mix   = self.forward_mix(mix)
         emb_stems = self.forward_inst(stems)
         #csn_train = ConditionalSimNet1d()
@@ -187,11 +187,11 @@ class PreTrain(LightningModule):
         :param batch_idx: The index of the current batch.
         """
         ID, ver, seg, data, c = batch
-        _, data, _ = self.stft.transform(data)
+        data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
-        csn_valid = ConditionalSimNet1d()
+        csn_valid = ConditionalSimNet1d(); csn_valid.to(embvec.device)
         self.valid_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))
         self.valid_vec[self.cfg.inst_list[dataloader_idx]].append(csn_valid(embvec, c))
 
@@ -227,11 +227,11 @@ class PreTrain(LightningModule):
         :param batch_idx: The index of the current batch.
         """
         ID, ver, seg, data, c = batch
-        _, data, _ = self.stft.transform(data)
+        data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
-        csn_test = ConditionalSimNet1d()
+        csn_test = ConditionalSimNet1d(); csn_test.to(embvec.device)
         self.test_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))
         self.test_vec[self.cfg.inst_list[dataloader_idx]].append(csn_test(embvec, c))
 

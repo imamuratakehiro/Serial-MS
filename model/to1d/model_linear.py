@@ -33,7 +33,7 @@ class To1D640timefreq(nn.Module):
         elif to1d_mode == "meanstd_linear":
             self.fc1 = nn.Linear(in_channel*2, 640)
         elif to1d_mode == "pool":
-            self.fc1 * nn.Linear(640*2, 640)
+            self.fc1 = nn.Linear(640*2, 640)
         self.to(device)
 
     def forward(self, input):

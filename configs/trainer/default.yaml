@@ -9,7 +9,7 @@ accelerator: auto
 devices: 1
 
 # mixed precision for extra speed-up
-precision: 16
+precision: 16-mixed
 
 # the num of steps in sanity checking. If 0, it is not done.
 num_sanity_val_steps: 0

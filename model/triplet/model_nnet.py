@@ -17,6 +17,7 @@ import math
 from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
 from ..to1d.model_linear import To1D640
+from utils.func import normalize_torch, denormalize_torch
 
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -172,6 +173,7 @@ class NNetForTriplet(nn.Module):
         self.inst_list = inst_list
 
     def forward(self, input):
+        input, max, min = normalize_torch(input)
         # Encoder
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out = self.encoder(input)
 
@@ -220,7 +222,7 @@ class NNetForTriplet(nn.Module):
         csn1d = ConditionalSimNet1d() # csnのモデルを保存されないようにするために配列に入れる
         output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
         output_de = torch.unsqueeze(self.sigmoid(output_de), dim=2) # Encoder2にsigmoidする前を入れたので、ここでsigmoidする
-        output_decoder = {inst: output_de[:,i] for i,inst in enumerate(self.inst_list)}
+        output_decoder = {inst: denormalize_torch(output_de[:,i], max, min) for i,inst in enumerate(self.inst_list)}
         return output_emb, output_probability, output_decoder
     
 def main():

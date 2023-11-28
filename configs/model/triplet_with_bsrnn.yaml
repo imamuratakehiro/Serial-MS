@@ -1,0 +1,42 @@
+_target_: model.TripletWithBSRnn
+#_target_: model.TripletNoMss
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: ${train.lr}
+  weight_decay: 0.0
+
+scheduler: null
+#  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+#  _partial_: true
+#  mode: ${train.monitor_mode_sch}
+#  factor: 1
+#  patience: 5
+#  verbose: true
+
+net:
+  _target_: ${train.target}
+  sr: ${train.sr}
+  n_fft: ${train.f_size}
+  bandsplits: ${train.bandsplits}
+  complex_as_channel: true
+  is_mono: ${train.mono}
+  bottleneck_layer: rnn
+  t_timesteps: 263
+  fc_dim: 128
+  rnn_dim: 256
+  rnn_type: LSTM
+  bidirectional: true
+  num_layers: 12
+  mlp_dim: 512
+  inst_list: ${train.inst_list}
+  return_mask: false
+
+# pretrain32
+#ckpt_model_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/01-11-14/checkpoints/epoch_053.ckpt
+# pretrain
+#ckpt_model_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/00-58-42/checkpoints/epoch_016.ckpt
+ckpt_model_path: ${train.ckpt_model_path}
+
+cfg: ${train}

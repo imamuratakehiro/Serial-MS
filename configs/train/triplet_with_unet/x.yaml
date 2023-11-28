@@ -6,8 +6,10 @@ lr: 0.001
 
 # data
 dataset_dir: "/nas03/assets/Dataset/slakh"
+#pseudo: "31ways"
+pseudo: "ba_4t"
 n_dataset_test: 1000
-batch_train: 64
+batch_train: 50
 batch_test: 64
 num_workers: 8
 pin_memory: true
@@ -15,6 +17,11 @@ pin_memory: true
 datasetname: "slakh"
 load_using_librosa: False
 mix_minus_inst: False
+test_psd_mine: False
+test_valid_norm: false
+
+mel: False
+n_mels: 259
 mono: True
 f_size: 2048
 hop_length: 512
@@ -37,11 +44,10 @@ offset_c32_train: 1.5
 offset_c32_valid: 5.0
 offset_c32_test: 10.0
 sr: 44100
-mel: True
-n_mels: 259
-db: True
+db: False
 
 # model
+pl_target: model.Triplet
 target: model.UNetForTriplet_2d_de5_to1d640
 #target: model.UNetForTriplet_2d_de1_to1d640
 #target: model.UNetForTriplet_to1d640_1dde5
@@ -54,26 +60,31 @@ order: "timefreq"
 #order: "bilstm"
 margin: 0.2
 # monitor
-monitor_es: "Valid/knn_avr"
-#monitor_es: "Valid/loss_all"
 #monitor_es: "Valid/knn_avr"
-monitor_mode_es: "max"
-#monitor_mode_es: "min"
+monitor_es: "Valid/loss_all"
+#monitor_es: "Valid/knn_avr"
+#monitor_mode_es: "max"
+monitor_mode_es: "min"
 #monitor_sch: "train/loss_mix"
 #monitor_mode_sch: "min"
 # rate of loss
-triplet_rate: 1
-unet_rate: 0
+triplet_rate: 0
+unet_rate: 1
 recog_rate: 0
-test_psd_mine: False
+ckpt_model_path_kind: null
 # pretrain32
-ckpt_model_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/01-11-14/checkpoints/epoch_053.ckpt
+#ckpt_model_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/01-11-14/checkpoints/epoch_053.ckpt
+# pretrain32 norm640
+#ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-21/10-54-18/checkpoints/epoch_231.ckpt
 # pretrain mel=259
 #ckpt_model_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/00-58-42/checkpoints/epoch_016.ckpt
-ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/15-31-05/checkpoints/epoch_027.ckpt
+#ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/15-31-05/checkpoints/epoch_027.ckpt
+#ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-21/11-21-37/checkpoints/epoch_053.ckpt
 # pretrain mel=128
-ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/09-21-27/checkpoints/epoch_168.ckpt
-#ckpt_model_path: null
+#ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-15/09-21-27/checkpoints/epoch_168.ckpt
+# zume
+#ckpt_model_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-22/12-41-18/checkpoints/epoch_035.ckpt
+ckpt_model_path: null
 
 # path
 output_dir: ${paths.output_dir}

@@ -32,6 +32,13 @@ from .triplet.model_triplet_2d_csn640de5_to1d640_addencoder import UNetForTriple
 from .triplet.model_triplet_2d_csn640de1_to1d640 import UNetForTriplet_2d_de1_to1d640
 from .triplet.model_zume import TripletModelZume
 from .triplet.model_nnet import NNetForTriplet
+from .triplet.model_triplet_tfc_tdf_unet import TripletWithTFCTDFUNet
+from .triplet.model_triplet_hdemucs import TripletWithHDemucs
+from .triplet.model_triplet_demucs import TripletWithDemucs
+from .triplet.triplet_no_mss import TripletNoMss
+from .triplet.model_triplet_2d_csn640de5_to1d640_add_resencoder import UNetForTriplet_2d_de5_to1d640_addresencoder
+from .triplet.model_triplet_to1dlstm import UNetForTriplet_to1dLSTM
+from .triplet.model_triplet_subband import UNetForTriplet_Subband
 
 from .to1d.model_avgp import AVGPooling
 from .to1d.model_linear import To1D640
@@ -47,6 +54,10 @@ from .jnet.model_jnet_128_embnet import JNet128Embnet
 from .jnet.model_jnet_attention import JNet128Attention
 from .jnet.jnet import JNet
 from .jnet.jnet_validknn import JNetValidKnn
+
+from .bsrnn.model_bsrnn import BandSplitRNN
+from .bsrnn.model_triplet_bsrnn import BandSplitRNNForTriplet
+from .bsrnn.pl_model import TripletWithBSRnn
 
 __all__ = ["ConditionalSimNet2d",
             "ConditionalSimNet1d"

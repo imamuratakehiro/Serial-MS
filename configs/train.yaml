@@ -31,6 +31,7 @@ tags: ["dev"]
 #ckpt_path: /home/imamura23/nas02home/outputs/2023-10-29/18-45-05/checkpoints/epoch_006.ckpt
 #ckpt_path: /home/imamura23/nas02home/outputs/pretrain/runs/2023-11-07/01-11-14/checkpoints/epoch_053.ckpt
 #ckpt_path: /nas02/homes/imamura23-1000067/outputs/pretrain/runs/2023-11-08/02-59-37/checkpoints/epoch_epoch=099.ckpt
+#ckpt_path: /nas02/homes/imamura23-1000067/outputs/triplet_with_unet/runs/2023-11-26/17-02-39/checkpoints/epoch_031.ckpt
 ckpt_path: null
 
 # seed for random number generators in pytorch, numpy and python.random

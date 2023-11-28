@@ -197,6 +197,86 @@ class TripletDataModule(pl.LightningDataModule):
         """
         pass
 
+class TripletDataModuleBSRnn(pl.LightningDataModule):
+    def __init__(
+        self,
+        cfg,
+        ) -> None:
+        super().__init__()
+        self.cfg = cfg
+        self.save_hyperparameters()
+        self.mylogger = MyLoggerModel()
+    
+    def prepare_data(self) -> None:
+        print(f"\n----------------------------------------")
+        print(f"Use dataset {self.cfg.datasetname}.")
+        print(f"The frame size is setted to {self.cfg.f_size}.")
+        print("----------------------------------------")
+    
+    def setup(self, stage: str) -> None:
+        if stage == "fit" or stage is None:
+            self.mylogger.s_dataload()
+            self.trainset = TripletLoader(mode="train", cfg=self.cfg, inst=self.cfg.inst)
+            self.validset = [PsdLoader(mode="valid", cfg=self.cfg, inst=inst) for inst in self.cfg.inst_list]
+            self.validset.insert(0, TripletLoader(mode="valid", cfg=self.cfg, inst=self.cfg.inst))
+            self.mylogger.f_dataload()
+        if stage == "test" or stage is None:
+            self.testset = [PsdLoader(mode="test", cfg=self.cfg, inst=inst) for inst in self.cfg.inst_list]
+            self.testset.insert(0, Condition32Loader(mode="test", cfg=self.cfg))
+        if stage == "predict"  or stage is None:
+            pass
+    
+    def train_dataloader(self) -> TRAIN_DATALOADERS:
+        return DataLoader(
+            dataset=self.trainset,
+            batch_size=self.cfg.batch_train,
+            shuffle=False,
+            num_workers=self.cfg.num_workers,
+            pin_memory=self.cfg.pin_memory,
+        )
+        
+    def val_dataloader(self) -> EVAL_DATALOADERS:
+        return [DataLoader(
+            dataset=self.validset[i],
+            batch_size=self.cfg.batch_test,
+            shuffle=False,
+            num_workers=self.cfg.num_workers,
+            pin_memory=self.cfg.pin_memory,
+        ) for i in range(len(self.validset))]
+    
+    def test_dataloader(self) -> EVAL_DATALOADERS:
+        return [DataLoader(
+            dataset=self.testset[i],
+            batch_size=self.cfg.batch_test,
+            shuffle=False,
+            num_workers=self.cfg.num_workers,
+            pin_memory=self.cfg.pin_memory,
+        ) for i in range(len(self.testset))]
+    
+    def teardown(self, stage: Optional[str] = None) -> None:
+        """Lightning hook for cleaning up after `trainer.fit()`, `trainer.validate()`,
+        `trainer.test()`, and `trainer.predict()`.
+
+        :param stage: The stage being torn down. Either `"fit"`, `"validate"`, `"test"`, or `"predict"`.
+            Defaults to ``None``.
+        """
+        pass
+
+    def state_dict(self) -> Dict[Any, Any]:
+        """Called when saving a checkpoint. Implement to generate and save the datamodule state.
+
+        :return: A dictionary containing the datamodule state that you want to save.
+        """
+        return {}
+
+    def load_state_dict(self, state_dict: Dict[str, Any]) -> None:
+        """Called when loading a checkpoint. Implement to reload datamodule state given datamodule
+        `state_dict()`.
+
+        :param state_dict: The datamodule state returned by `self.state_dict()`.
+        """
+        pass
+
 
 class TripletDataModuleOneInst(pl.LightningDataModule):
     def __init__(

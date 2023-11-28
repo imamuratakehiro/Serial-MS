@@ -5,6 +5,7 @@ import torch
 from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
 from ..to1d.model_linear import To1D640
+from utils.func import normalize_torch, denormalize_torch
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
@@ -144,13 +145,16 @@ class TripletModelZume(nn.Module):
         self.inst_list = inst_list
 
     def forward(self, input):
+        input, max, min = normalize_torch(input)
         # Encoder
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out = self.encoder(input)
         #print(conv5_out.shape)
         # to1d
         output_emb = self.to1d(conv5_out)
-        return output_emb, conv1_out, conv2_out # ただの数合わせ
-
+        # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする
+        csn1d = ConditionalSimNet1d(); csn1d.to(output_emb.device)
+        output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=output_emb.device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
+        return output_emb, output_probability
 """
 class UNet_2D(nn.Module):
     def __init__(self):

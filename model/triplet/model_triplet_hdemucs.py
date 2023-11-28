@@ -18,6 +18,8 @@ from utils.func import progress_bar, normalize, denormalize
 from ..csn import ConditionalSimNet2d
 from ..to1d.model_linear import To1D640Demucs
 
+from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
+
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 print(f"\n=== Using {device}({__name__}). ===\n")
@@ -528,9 +530,12 @@ class TripletWithHDemucs(nn.Module):
         conv1_out_time, conv2_out_time, conv3_out_time, conv4_out_time, conv5_out_time = self.encoder_time(x_time)
         conv1_out_freq, conv2_out_freq, conv3_out_freq, conv4_out_freq, conv5_out_freq = self.encoder_freq(x_freq)
         conv6_out = self.encoder_6(torch.squeeze(conv5_out_freq) + conv5_out_time)
-        output = self.to1d(conv6_out)
+        output_emb = self.to1d(conv6_out)
         # BiLSTM
         #blstm_out = self.blstm(conv6_out)
+        # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする
+        csn1d = ConditionalSimNet1d(); csn1d.to(output_emb.device)
+        output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=output_emb.device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
         """
         # Decoder
         deconv6_out = self.decoder_6(conv6_out, None, conv5_out_time.shape)
@@ -549,7 +554,7 @@ class TripletWithHDemucs(nn.Module):
         output = output_time[..., :output_zwave.shape[-1]] + output_zwave
         #output = output * (max - min + 1e-5) + min
         """
-        return output
+        return output_emb, output_probability, input
 
 
 

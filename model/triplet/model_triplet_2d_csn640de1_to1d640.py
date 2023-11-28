@@ -16,6 +16,7 @@ import pandas as pd
 from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
 from ..to1d.model_linear import To1D640
+from utils.func import normalize_torch, denormalize_torch
 
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -127,6 +128,7 @@ class UNetForTriplet_2d_de1_to1d640(nn.Module):
         self.inst_list = inst_list
 
     def forward(self, input):
+        input, max, min = normalize_torch(input)
         # Encoder
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out = self.encoder(input)
 
@@ -141,7 +143,7 @@ class UNetForTriplet_2d_de1_to1d640(nn.Module):
             # decoder
             sep_feature_decoder = csn(conv6_out, torch.tensor([idx], device=device))  # 特徴量を条件づけ
             decoder_out = self.decoder(sep_feature_decoder, conv5_out, conv4_out, conv3_out, conv2_out, conv1_out, input)
-            output_decoder[inst] = decoder_out
+            output_decoder[inst] = denormalize_torch(decoder_out, max, min)
         # to1d
         output_emb = self.to1d(conv6_out)
         # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする

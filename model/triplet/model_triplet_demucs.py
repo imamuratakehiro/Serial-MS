@@ -14,7 +14,7 @@ import pandas as pd
 #import soundfile
 
 from utils.func import progress_bar, normalize, denormalize
-from ..csn import ConditionalSimNet2d
+from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_linear import To1D640Demucs
 
 # GPUが使用可能かどうか判定、使用可能なら使用する
@@ -175,11 +175,14 @@ class TripletWithDemucs(nn.Module):
         # BiLSTM
         blstm_out = self.blstm(conv6_out)
         # to1d
-        output = self.to1d(blstm_out)
+        output_emb = self.to1d(blstm_out)
+        # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする
+        csn1d = ConditionalSimNet1d(); csn1d.to(output_emb.device)
+        output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=output_emb.device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
         # Decoder
         #output = self.decoder(blstm_out, conv6_out, conv5_out, conv4_out, conv3_out, conv2_out, conv1_out, input)
         #output = output * (max - min + 1e-5) + min
-        return output
+        return output_emb, output_probability, input
 
 
 

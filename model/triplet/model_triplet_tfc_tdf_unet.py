@@ -246,8 +246,8 @@ class TripletWithTFCTDFUNet(nn.Module):
         # 辻褄合わせでoutput_decoderを出力
         output_decoder = {inst: input for inst in self.config.inst_list}
         # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする
-        csn1d = ConditionalSimNet1d() # csnのモデルを保存されないようにするために配列に入れる
-        output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=x.device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
+        csn1d = ConditionalSimNet1d(); csn1d.to(output_emb.device)
+        output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=x.device))**2, dim=1))) for i,inst in enumerate(self.config.inst_list)} # logit
         return output_emb, output_probability, output_decoder
 
 @hydra.main(version_base=None, config_path="../../configs", config_name="train")

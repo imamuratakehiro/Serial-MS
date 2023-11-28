@@ -192,13 +192,12 @@ class Triplet(LightningModule):
             loss += self.loss_unet(pred, y[:,idx])
         return loss / len(self.cfg.inst_list)
     
-    def get_loss_unet_triposi(self, X, y, pred_mask, triposi):
+    def get_loss_unet_triposi(self, X, y, pred, triposi):
         # triplet positionのところのみ分離ロスを計算
         batch = X.shape[0]
         loss = 0
         for idx, c in enumerate(triposi): #個別音源でロスを計算
-            pred = X[idx] * pred_mask[self.cfg.inst_list[c.item()]][idx]
-            loss += self.loss_unet(pred, y[idx, c])
+            loss += self.loss_unet(pred[self.cfg.inst_list[c.item()]][idx], y[idx, c])
         return loss / batch
     
     """
@@ -237,7 +236,7 @@ class Triplet(LightningModule):
 
     def get_loss_triplet(self, e_a, e_p, e_n, triposi):
         #batch = triposi.shape[0]
-        tnet = CS_Tripletnet(ConditionalSimNet1d())
+        tnet = CS_Tripletnet(ConditionalSimNet1d().to(e_a.device))
         distp, distn = tnet(e_a, e_p, e_n, triposi)
         target = torch.FloatTensor(distp.size()).fill_(1).to(distp.device) # 1で埋める
         loss = self.loss_triplet(distn, distp, target) # トリプレットロス
@@ -277,7 +276,7 @@ class Triplet(LightningModule):
     
     def transform(self, x_wave, y_wave):
         device = x_wave.device
-        param, x, _ = self.stft.transform(x_wave); _, y, _ = self.stft.transform(y_wave, param)
+        x, _ = self.stft.transform(x_wave); y, _ = self.stft.transform(y_wave)
         return x, y
 
     def forward(self, batch):
@@ -297,13 +296,14 @@ class Triplet(LightningModule):
             a_x, a_y = self.transform(a_x_wave, a_y_wave)
             p_x, p_y = self.transform(p_x_wave, p_y_wave)
             n_x, n_y = self.transform(n_x_wave, n_y_wave)
-        a_e, a_prob, a_mask = self.net(a_x)
-        p_e, p_prob, p_mask = self.net(p_x)
-        n_e, n_prob, n_mask = self.net(n_x)
+        a_e, a_prob, a_pred = self.net(a_x)
+        p_e, p_prob, p_pred = self.net(p_x)
+        n_e, n_prob, n_pred = self.net(n_x)
         # get loss
-        loss_unet_a = self.get_loss_unet_triposi(a_x, a_y, a_mask, triposi)
-        loss_unet_p = self.get_loss_unet_triposi(p_x, p_y, p_mask, triposi)
-        loss_unet_n = self.get_loss_unet_triposi(n_x, n_y, n_mask, triposi)
+        # TODO: networkの中でマスクをdenormalizeしてしまっている状態だから、そこを直す！マスクをかけてからdenormalizeか？
+        loss_unet_a = self.get_loss_unet_triposi(a_x, a_y, a_pred, triposi)
+        loss_unet_p = self.get_loss_unet_triposi(p_x, p_y, p_pred, triposi)
+        loss_unet_n = self.get_loss_unet_triposi(n_x, n_y, n_pred, triposi)
         loss_triplet_all, loss_triplet, dist_p, dist_n = self.get_loss_triplet(a_e, p_e, n_e, triposi)
         loss_recog = self.get_loss_recognise2(a_prob, sound_a) + self.get_loss_recognise2(p_prob, sound_p) + self.get_loss_recognise2(n_prob, sound_n)
         # record loss
@@ -354,11 +354,11 @@ class Triplet(LightningModule):
     def model_step_psd(self, mode:str, batch, idx):
         ID, ver, seg, data_wave, c = batch
         with torch.no_grad():
-            _, data, _ = self.stft.transform(data_wave)
+            data, _ = self.stft.transform(data_wave)
         embvec, _, _ = self.net(data)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
-        csn_valid = ConditionalSimNet1d()
+        csn_valid = ConditionalSimNet1d().to(embvec.device)
         self.recorder_psd[mode]["label"][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
         self.recorder_psd[mode]["vec"][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))
 
@@ -451,18 +451,20 @@ class Triplet(LightningModule):
         """
         if dataloader_idx == 0:
             cases_x, cases_y, cases = batch
-            param, cases_x, phase = self.stft.transform(cases_x)
-            c_e, c_prob, c_mask = self.net(cases_x)
+            cases_x, phase = self.stft.transform(cases_x)
+            c_e, c_prob, c_pred = self.net(cases_x)
             if not self.cfg.mel:
                 for idx,c in enumerate(cases):
                     if ((c[0] == 1 and c[1] == 1 and c[2] == 1 and c[3] == 1 and c[4] == 1)
                         and self.n_sound < 5):
-                        sound = self.stft.detransform(cases_x[idx], phase[idx], param[0,idx], param[1,idx])
+                        #sound = self.stft.detransform(cases_x[idx], phase[idx], param[0,idx], param[1,idx])
+                        sound = self.stft.detransform(cases_x[idx], phase[idx])
                         path = self.cfg.output_dir+f"/sound/mix"
                         file_exist(path)
                         soundfile.write(path + f"/separate{self.n_sound}_mix.wav", np.squeeze(sound), self.cfg.sr)
                         for j,inst in enumerate(self.cfg.inst_list):
-                            sound = self.stft.detransform(cases_x[idx]*c_mask[inst][idx], phase[idx], param[0,idx], param[1,idx])
+                            #sound = self.stft.detransform(cases_x[idx]*c_mask[inst][idx], phase[idx], param[0,idx], param[1,idx])
+                            sound = self.stft.detransform(c_pred[inst][idx], phase[idx])
                             path = self.cfg.output_dir+f"/sound/{inst}"
                             file_exist(path)
                             soundfile.write(path + f"/separate{self.n_sound}_{inst}.wav", np.squeeze(sound), self.cfg.sr)

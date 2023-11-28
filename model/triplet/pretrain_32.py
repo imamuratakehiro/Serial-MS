@@ -139,7 +139,7 @@ class PreTrain32(LightningModule):
             - A tensor of target labels.
         """
         mix, condition, emb_target = batch
-        _, mix, _ = self.stft.transform(mix)
+        mix, _ = self.stft.transform(mix)
         emb_mix   = self.forward_mix(mix)
         # loss
         loss_mix = self.loss_mse(emb_mix, emb_target)
@@ -180,7 +180,7 @@ class PreTrain32(LightningModule):
         :param batch_idx: The index of the current batch.
         """
         ID, ver, seg, data, c = batch
-        _, data, _ = self.stft.transform(data)
+        data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
         # インスタンスを生成していなかったら、生成する。
         csn_valid = ConditionalSimNet1d()
@@ -219,7 +219,7 @@ class PreTrain32(LightningModule):
         :param batch_idx: The index of the current batch.
         """
         ID, ver, seg, data, c = batch
-        _, data, _ = self.stft.transform(data)
+        data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
         csn_test = ConditionalSimNet1d() # csnのモデルを保存されないようにするために配列に入れる
         self.test_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))

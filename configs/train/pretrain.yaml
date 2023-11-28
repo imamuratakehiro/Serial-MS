@@ -6,18 +6,19 @@ inst_list: ['drums', 'bass', 'piano', 'guitar', 'residuals']
 # data
 dataset_dir: "/nas03/assets/Dataset/slakh"
 n_dataset_test: 1000
-batch_train: 32
-batch_test: 32
+batch_train: 64
+batch_test: 64
 num_workers: 8
 pin_memory: true
 
 datasetname: "slakh"
 mix_minus_inst: False
-test_valid_norm: True
+test_valid_norm: false
 normalize128: False
 condition32: False
 load_using_librosa: True
 test_psd_mine: False
+emb_640norm: True
 
 seconds_psd_train: 3
 seconds_psd_valid: 10
@@ -36,13 +37,15 @@ f_size: 2048
 hop_length: 512
 sr: 44100
 mel: true
-n_mels: 128
+n_mels: 259
 db: True
 
 # model
+model_target: model.PreTrain
 target: model.UNetForTriplet_2d_de5_to1d640
 #target: model.TripletModelZume
 to1d_mode: "mean_linear"
+#to1d_mode: "pool"
 order: "timefreq"
 #order: "freqtime"
 #order: "bilstm"

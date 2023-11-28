@@ -4,6 +4,8 @@ import torch
 import torch.nn as nn
 import numpy as np
 
+from utils.func import bin2list
+
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 print(f"\n=== Using {device}({__name__}). ===\n")
@@ -136,31 +138,33 @@ class ConditionalSimNet1d(nn.Module):
     def __init__(self):
         super(ConditionalSimNet1d, self).__init__()
         # maskを作成。embeddingするために１次元化
-        mask_init = torch.ones(128, device=device)
+        mask_init = torch.ones(128)
         mask = torch.stack(
-            [(torch.cat([mask_init, torch.zeros(512, device=device)], dim=0)),
-            (torch.cat([torch.cat([torch.zeros(128, device=device),mask_init], dim=0),
-                                    torch.zeros(384, device=device)], dim=0)),
-            (torch.cat([torch.cat([torch.zeros(256, device=device),mask_init], dim=0),
-                                    torch.zeros(256, device=device)], dim=0)),
-            (torch.cat([torch.cat([torch.zeros(384, device=device),mask_init], dim=0),
-                                    torch.zeros(128, device=device)], dim=0)),
-            (torch.cat([torch.zeros(512, device=device), mask_init], dim=0))
+            [(torch.cat([mask_init, torch.zeros(512)], dim=0)),
+            (torch.cat([torch.cat([torch.zeros(128),mask_init], dim=0),
+                                    torch.zeros(384)], dim=0)),
+            (torch.cat([torch.cat([torch.zeros(256),mask_init], dim=0),
+                                    torch.zeros(256)], dim=0)),
+            (torch.cat([torch.cat([torch.zeros(384),mask_init], dim=0),
+                                    torch.zeros(128)], dim=0)),
+            (torch.cat([torch.zeros(512), mask_init], dim=0))
         ], dim=0)
         #print(mask.size())
         # embeddingを定義
         self.masks = torch.nn.Embedding(mask.shape[0], mask.shape[1])
         # 各条件に対するembedding結果(重み)を定義(学習なし)
         self.masks.weight = torch.nn.Parameter(mask, requires_grad=False)
+        #self.to(device)
 
     def forward(self, input, c):
         mask_c = self.masks(c)
         masked_embedding = input * mask_c
         return masked_embedding
 
-class ConditionalSimNet1d_zume(nn.Module):
-    def __init__(self, conditions, cfg, embedding_size=640):
-        super(ConditionalSimNet1d, self).__init__()
+class ConditionalSimNet1d31cases(nn.Module):
+    def __init__(self, cfg, embedding_size=640):
+        super(ConditionalSimNet1d31cases, self).__init__()
+        conditions = [bin2list(i, len(cfg.inst_list)) for i in range(32)]
         n_category = len(cfg.inst_list)
         # create the mask
         self.n_conditions = len(conditions)  # 条件(組み合わせ含む)数
@@ -170,9 +174,14 @@ class ConditionalSimNet1d_zume(nn.Module):
         mask_array = np.zeros([self.n_conditions, embedding_size])
         mask_len = int(embedding_size / n_category)
         # make the dimension assigned for each cndition 1
+        #for i in range(self.n_conditions):
+        #    for j in conditions[i][1]:
+        #        mask_array[i, j * mask_len : (j + 1) * mask_len] = 1
         for i in range(self.n_conditions):
-            for j in conditions[i][1]:
-                mask_array[i, j * mask_len : (j + 1) * mask_len] = 1
+            #print(conditions[i])
+            for idx, case in enumerate(conditions[i]):
+                if case == 1:
+                    mask_array[i, idx * mask_len : (idx + 1) * mask_len] = 1
 
         # no gradients for the masks
         self.masks.weight = torch.nn.Parameter(

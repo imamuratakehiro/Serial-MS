@@ -1,4 +1,6 @@
-_target_: model.Triplet
+#_target_: model.Triplet
+#_target_: model.TripletNoMss
+_target_: ${train.pl_target}
 
 optimizer:
   _target_: torch.optim.Adam

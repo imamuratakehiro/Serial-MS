@@ -22,6 +22,7 @@ import librosa
 import random
 
 from utils.func import stft, trackname, detrackname, l2normalize, STFT
+from model.csn import ConditionalSimNet1d31cases, ConditionalSimNet1d
 
 
 def loadseg_from_npz(path):
@@ -204,30 +205,48 @@ class SongDataForPreTrain(Dataset):
         for idx, inst in enumerate(self.cfg.inst_list):
             if condition[idx] == 1:
                 vec_inst = np.load(dirpath + inst + f"/Track{track_id}/seg{seg_id}.npy")
+                #print(inst, np.max(vec_inst))
             else:
                 vec_inst = np.zeros((1,128), dtype=np.float32)
             if self.cfg.normalize128:
                 vec_inst = l2normalize(vec_inst)
             embvec.append(vec_inst)
         return torch.from_numpy(l2normalize(np.concatenate(embvec, axis=1).squeeze()))
-    
-    def load_embvec_stems(self, track_id, seg_id, condition=None):
-        if condition is None:
-            condition = [1 for i in range(len(self.cfg.inst_list))]
+
+    def load_embvec_640(self, track_id, seg_id, condition=0b11111):
+        """全ての音源のembを読んで640次元で正規化してからcsnでconditionの部分だけ残してreturn。"""
         #bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
         dirpath = f"/nas03/assets/Dataset/slakh/single3_200data-euc_zero/"
-        embvec = []
-        for idx, inst in enumerate(self.cfg.inst_list):
-            vec_inst = np.zeros((1,640), dtype=np.float32)
-            if condition[idx] == "1":
-                vec_inst[:,idx*128:(idx+1)*128] = np.load(dirpath + inst + f"/Track{track_id}/seg{seg_id}.npy")
-            else:
-                pass
-                #vec_inst = np.zeros((1,128), dtype=np.float32)
-            #if self.cfg.normalize128:
-            #    vec_inst = l2normalize(vec_inst)
-            embvec.append(l2normalize(vec_inst.squeeze()))
-        return torch.from_numpy(np.stack(embvec, axis=0))
+        embvec = self.load_embvec(track_id, seg_id)
+        csn = ConditionalSimNet1d31cases(self.cfg)
+        return csn(embvec, torch.tensor([condition], device=embvec.device))
+    
+    def load_embvec_stems(self, track_id, seg_id, condition=None):
+        if self.cfg.emb_640norm:
+            embvec = self.load_embvec(track_id, seg_id)
+            csn = ConditionalSimNet1d()
+            embvec_inst = []
+            for idx,inst in enumerate(self.cfg.inst_list):
+                embvec_inst.append(csn(embvec, torch.tensor([idx], device=embvec.device)))
+            return torch.stack(embvec_inst, dim=0).squeeze()
+            #return torch.stack([csn(embvec, torch.tensor([i], device=embvec.device)) for i in range(len(self.cfg.inst_list))], dim=0).squeeze()
+        else:
+            if condition is None:
+                condition = [1 for i in range(len(self.cfg.inst_list))]
+            #bin_str = format(condition, f"0{len(self.cfg.inst_list)}b") #2進数化
+            dirpath = f"/nas03/assets/Dataset/slakh/single3_200data-euc_zero/"
+            embvec = []
+            for idx, inst in enumerate(self.cfg.inst_list):
+                vec_inst = np.zeros((1,640), dtype=np.float32)
+                if condition[idx] == 1:
+                    vec_inst[:,idx*128:(idx+1)*128] = np.load(dirpath + inst + f"/Track{track_id}/seg{seg_id}.npy")
+                else:
+                    pass
+                    #vec_inst = np.zeros((1,128), dtype=np.float32)
+                #if self.cfg.normalize128:
+                #    vec_inst = l2normalize(vec_inst)
+                embvec.append(l2normalize(vec_inst.squeeze()))
+            return torch.from_numpy(np.stack(embvec, axis=0))
     
     def __len__(self):
         return len(self.datafile)
@@ -237,10 +256,13 @@ class SongDataForPreTrain(Dataset):
         tracklist = [track_id for _ in self.cfg.inst_list]
         seglist   = [seg_id   for _ in self.cfg.inst_list]
         if self.cfg.condition32:
-            condition = random.randrange(0, 2**len(self.cfg.inst_list))
-            condition = [int(i) for i in format(condition, f"0{len(self.cfg.inst_list)}b")]
+            condition_b = random.randrange(0, 2**len(self.cfg.inst_list))
+            condition = [int(i) for i in format(condition_b, f"0{len(self.cfg.inst_list)}b")]
             mix_spec, _ = self.loader.load_mix_stems(tracklist=tracklist, seglist=seglist, condition=condition)
-            return mix_spec, condition, self.load_embvec(track_id, seg_id, condition=condition)
+            if self.cfg.emb_640norm:
+                return mix_spec, condition, self.load_embvec_640(track_id, seg_id, condition=condition_b).squeeze()
+            else:
+                return mix_spec, condition, self.load_embvec(track_id, seg_id, condition=condition)
         else:
             mix_spec, stems_spec = self.loader.load_mix_stems(tracklist=tracklist, seglist=seglist)
             return mix_spec, stems_spec, self.load_embvec(track_id, seg_id), self.load_embvec_stems(track_id, seg_id)
@@ -298,14 +320,25 @@ class TripletLoader(Dataset):
         self,
         cfg,
         mode,
+        inst=None,
         ):
         self.cfg = cfg
         if mode == "train":
             #self.triplets = load_lst(f"triplets_1200_ba1_4_withsil_20000triplets.lst")
-            self.triplets = load_lst(f"triplets_1200_ba4t_withsil_nosegsfl_20000triplets.lst")
+            if self.cfg.pseudo == "ba_4t":
+                self.triplets = load_lst(f"triplets_1200_ba4t_withsil_nosegsfl_20000triplets.lst")
+            elif self.cfg.pseudo == "31ways":
+                self.triplets = load_lst(f"triplets_ba4t_31ways_train_3s_10000songs.lst")
+            elif self.cfg.pseudo == "b_4t_inst":
+                self.triplets = load_lst(f"triplets_b4t_{inst}_train_3s_10000songs.lst")
         elif mode == "valid":
             #self.triplets = load_lst(f"triplets_valid_ba1_4_withsil_200triplets.lst")
-            self.triplets = load_lst(f"triplets_valid_ba4t_withsil_nosegsfl_200triplets.lst")
+            if self.cfg.pseudo == "ba_4t":
+                self.triplets = load_lst(f"triplets_valid_ba4t_withsil_nosegsfl_200triplets.lst")
+            elif self.cfg.pseudo == "31ways":
+                self.triplets = load_lst(f"triplets_ba4t_31ways_valid_10s_2000songs.lst")
+            elif self.cfg.pseudo == "b_4t_inst":
+                self.triplets = load_lst(f"triplets_b4t_{inst}_valid_10s_200songs.lst")
         self.loader = CreatePseudo(cfg, datasettype="triplet", mode=mode)
 
     def __len__(self):
