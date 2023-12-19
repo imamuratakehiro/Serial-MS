@@ -37,17 +37,17 @@ def SongDataFile(cfg, mode):
     if cfg.datasetname == "slakh":
         path = "/nas03/assets/Dataset/slakh-2100_2"
         if cfg.reduce_silence=="mix" or cfg.reduce_silence=="stems":
-            datafile = np.loadtxt(f"./metadata/{cfg.datasetname}/{seconds}s_no_silence_or0.5_0.25/{mode}_slakh_{seconds}s_{cfg.reduce_silence}.txt", delimiter = ",", dtype = "unicode")
+            datafile = np.loadtxt(cfg.metadata_dir + f"{cfg.datasetname}/{seconds}s_no_silence_or0.5_0.25/{mode}_slakh_{seconds}s_{cfg.reduce_silence}.txt", delimiter = ",", dtype = "unicode")
         elif cfg.reduce_silence=="none":
-            datafile = np.loadtxt(f"./metadata/{cfg.datasetname}/{seconds}s/{mode}_slakh_{seconds}s.txt", delimiter = ",", dtype = "unicode")
+            datafile = np.loadtxt(cfg.metadata_dir + f"{cfg.datasetname}/{seconds}s/{mode}_slakh_{seconds}s.txt", delimiter = ",", dtype = "unicode")
         else:
             raise MyError(f"Argument reduce_silence is not correct ({cfg.reduce_silence}).")
     elif cfg.datasetname == "musdb18":
         path = "/nas03/assets/Dataset/MUSDB18/wav"
         if cfg.reduce_silence=="mix" or cfg.reduce_silence=="stems":
-            datafile = np.loadtxt(f"./metadata/{cfg.datasetname}/{seconds}s_no_silence_or0.5_0.25/{mode}_{cfg.datasetname}_{seconds}s_{cfg.reduce_silence}.txt", delimiter = ",", dtype = "unicode")
+            datafile = np.loadtxt(cfg.metadata_dir + f"{cfg.datasetname}/{seconds}s_no_silence_or0.5_0.25/{mode}_{cfg.datasetname}_{seconds}s_{cfg.reduce_silence}.txt", delimiter = ",", dtype = "unicode")
         elif cfg.reduce_silence=="none":
-            datafile = np.loadtxt(f"./metadata/{cfg.datasetname}/{seconds}s/train_{cfg.datasetname}_{seconds}s.txt", delimiter = ",", dtype = "unicode")
+            datafile = np.loadtxt(cfg.metadata_dir + f"{cfg.datasetname}/{seconds}s/train_{cfg.datasetname}_{seconds}s.txt", delimiter = ",", dtype = "unicode")
         else:
             raise MyError(f"Argument reduce_silence is not correct ({cfg.reduce_silence}).")
     else:

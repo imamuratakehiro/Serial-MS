@@ -9,6 +9,8 @@ from .unet5.model_csn_640_de5 import UNetcsnde5
 from .unet5.model_normal import UNetNormal
 from .unet5.model_notcsn_640_de5 import UNetnotcsnde5
 from .unet5.model_unet5_1d_de5 import UNet5_1d_de5, main as model_unet5_1d_de5
+from .unet5.model_unet import UNet
+from .unet5.unet import PL_UNet
 
 from .waveunet.model_waveunet5 import WaveUNet, main as model_waveunet5
 
@@ -39,6 +41,11 @@ from .triplet.triplet_no_mss import TripletNoMss
 from .triplet.model_triplet_2d_csn640de5_to1d640_add_resencoder import UNetForTriplet_2d_de5_to1d640_addresencoder
 from .triplet.model_triplet_to1dlstm import UNetForTriplet_to1dLSTM
 from .triplet.model_triplet_subband import UNetForTriplet_Subband
+from .triplet.model_triplet_resnet import UNetForTriplet_2d_de5_to1d64_resnet
+from .triplet.model_triplet_1d_csn640de5_to1d640 import UNetForTriplet_1d_de5_to1d640
+from .triplet.model_triplet_2d_csn640de5_to1d640_c64 import UNetForTriplet_2d_de5_to1d640_c64
+
+from .nnet.nnet import NNet
 
 from .to1d.model_avgp import AVGPooling
 from .to1d.model_linear import To1D640

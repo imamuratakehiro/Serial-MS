@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap, BoundaryNorm
 
-from utils.func import file_exist, knn_psd, tsne_psd, istft, tsne_psd_marker, TorchSTFT
+from utils.func import file_exist, knn_psd, tsne_psd, istft, tsne_psd_marker, TorchSTFT, tsne_not_psd
 from ..csn import ConditionalSimNet1d
 from ..tripletnet import CS_Tripletnet
 
@@ -137,8 +137,13 @@ class Triplet(LightningModule):
         self.recorder_psd = {}
         for step in ["Valid", "Test"]:
             self.recorder_psd[step] = {}
-            self.recorder_psd[step]["label"] = {inst: [] for inst in cfg.inst_list}
-            self.recorder_psd[step]["vec"] = {inst: [] for inst in cfg.inst_list}
+            self.recorder_psd[step]["label"] = {}
+            self.recorder_psd[step]["vec"] = {}
+            self.n_sound[step] = {}
+            for psd in ["psd", "not_psd", "psd_mine"]:
+                self.recorder_psd[step]["label"][psd] = {inst: [] for inst in cfg.inst_list}
+                self.recorder_psd[step]["vec"][psd] = {inst: [] for inst in cfg.inst_list}
+                self.n_sound[step][psd] = {inst: 0 for inst in cfg.inst_list}
         #self.test_loss = MeanMetric()
 
         # for tracking best so far validation accuracy
@@ -241,9 +246,9 @@ class Triplet(LightningModule):
         target = torch.FloatTensor(distp.size()).fill_(1).to(distp.device) # 1で埋める
         loss = self.loss_triplet(distn, distp, target) # トリプレットロス
         loss_all = torch.sum(loss)/len(triposi)
-        loss_inst  = {inst: torch.sum(loss[torch.where(triposi==i)])/len(torch.where(triposi==i)[0])  for i,inst in enumerate(self.cfg.inst_list)}
-        dist_p_all = {inst: torch.sum(distp[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) for i,inst in enumerate(self.cfg.inst_list)}
-        dist_n_all = {inst: torch.sum(distn[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) for i,inst in enumerate(self.cfg.inst_list)}
+        loss_inst  = {inst: torch.sum(loss[torch.where(triposi==i)])/len(torch.where(triposi==i)[0])  if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_list)}
+        dist_p_all = {inst: torch.sum(distp[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_list)}
+        dist_n_all = {inst: torch.sum(distn[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_list)}
         return loss_all, loss_inst, dist_p_all, dist_n_all
     
     def get_loss_recognise1(self, emb, cases, l = 1e5):
@@ -276,8 +281,38 @@ class Triplet(LightningModule):
     
     def transform(self, x_wave, y_wave):
         device = x_wave.device
-        x, _ = self.stft.transform(x_wave); y, _ = self.stft.transform(y_wave)
+        if self.cfg.complex:
+            x = self.stft.transform(x_wave); y = self.stft.transform(y_wave)
+        else:
+            x, _ = self.stft.transform(x_wave); y, _ = self.stft.transform(y_wave)
         return x, y
+
+    def clone_for_additional(self, a_x, a_y, p_x, p_y, n_x, n_y, s_a, s_p, s_n, triposi):
+        if triposi.dim() == 2: # [b, a]で入ってる
+            x_a, x_p, x_n, y_a, y_p, y_n, a_s, p_s, n_s, tp = [], [], [], [], [], [], [], [], [], []
+            for i, ba in enumerate(triposi):
+                # basic
+                x_a.append(a_x[i].clone()); x_p.append(p_x[i].clone()); x_n.append(n_x[i].clone())
+                y_a.append(a_y[i].clone()); y_p.append(p_y[i].clone()); y_n.append(n_y[i].clone())
+                a_s.append(s_a[i]); p_s.append(s_p[i]); n_s.append(s_n[i]); tp.append(ba[0])
+                #print(ba[1].item(), type(ba[1].item()),  ba[1].item() == -1)
+                if not ba[1].item() == -1:
+                    # additional
+                    x_a.append(a_x[i].clone()); x_p.append(n_x[i].clone()); x_n.append(p_x[i].clone())
+                    y_a.append(a_y[i].clone()); y_p.append(n_y[i].clone()); y_n.append(p_y[i].clone())
+                    a_s.append(s_a[i]); p_s.append(s_n[i]); n_s.append(s_p[i]); tp.append(ba[1])
+            return (torch.stack(x_a, dim=0),
+                    torch.stack(y_a, dim=0),
+                    torch.stack(x_p, dim=0),
+                    torch.stack(y_p, dim=0),
+                    torch.stack(x_n, dim=0),
+                    torch.stack(y_n, dim=0),
+                    torch.stack(a_s, dim=0),
+                    torch.stack(p_s, dim=0),
+                    torch.stack(n_s, dim=0),
+                    torch.stack(tp, dim=0))
+        else:
+            return a_x, a_y, p_x, p_y, n_x, n_y, s_a, s_p, s_n, triposi
 
     def forward(self, batch):
         """Perform a single model step on a batch of data.
@@ -290,12 +325,15 @@ class Triplet(LightningModule):
             - A tensor of target labels.
         """
         #a_x, a_y, p_x, p_y, n_x, n_y, triposi, posiposi = self.dataload_tripet(batch)
-        a_x_wave, a_y_wave, p_x_wave, p_y_wave, n_x_wave, n_y_wave, triposi, sound_a, sound_p, sound_n = batch
+        a_x_wave, a_y_wave, p_x_wave, p_y_wave, n_x_wave, n_y_wave, sound_a, sound_p, sound_n, triposi = batch
         # stft
         with torch.no_grad():
             a_x, a_y = self.transform(a_x_wave, a_y_wave)
             p_x, p_y = self.transform(p_x_wave, p_y_wave)
             n_x, n_y = self.transform(n_x_wave, n_y_wave)
+        a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi = self.clone_for_additional(a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi)
+        #print(triposi.shape)
+
         a_e, a_prob, a_pred = self.net(a_x)
         p_e, p_prob, p_pred = self.net(p_x)
         n_e, n_prob, n_pred = self.net(n_x)
@@ -354,13 +392,46 @@ class Triplet(LightningModule):
     def model_step_psd(self, mode:str, batch, idx):
         ID, ver, seg, data_wave, c = batch
         with torch.no_grad():
-            data, _ = self.stft.transform(data_wave)
+            if self.cfg.complex:
+                data = self.stft.transform(data_wave)
+            else:
+                data, _ = self.stft.transform(data_wave)
         embvec, _, _ = self.net(data)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
         csn_valid = ConditionalSimNet1d().to(embvec.device)
         self.recorder_psd[mode]["label"][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
         self.recorder_psd[mode]["vec"][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))
+    
+    def model_step_knn_tsne(self, mode:str, batch, idx, psd: str):
+        ID, ver, seg, data_wave, c = batch
+        with torch.no_grad():
+            if self.cfg.complex:
+                data = self.stft.transform(data_wave)
+            else:
+                data, _ = self.stft.transform(data_wave)
+        embvec, _, _ = self.net(data)
+        if self.cfg.test_valid_norm:
+            embvec = torch.nn.functional.normalize(embvec, dim=1)
+        if len(self.cfg.inst_list) == 1:
+            self.recorder_psd[mode]["label"][psd][self.cfg.inst].append(torch.stack([ID, ver], dim=1))
+            self.recorder_psd[mode]["vec"][psd][self.cfg.inst].append(embvec)
+        else:
+            csn_valid = ConditionalSimNet1d().to(embvec.device)
+            self.recorder_psd[mode]["label"][psd][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
+            self.recorder_psd[mode]["vec"][psd][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))
+        """if self.n_sound[mode][psd][self.cfg.inst_list[idx]] < 5:
+            for inst in self.cfg.inst_list:
+                if self.cfg.complex_unet:
+                    z = self.stft.spec2complex(data["unet_out"][inst][5])
+                else:
+                    z = data["unet_out"][inst][0] * data["phase"][0]
+                sound = self.stft.istft(z)
+                path = self.cfg.output_dir+f"/sound/{inst}/{mode}_e={self.current_epoch}/{psd}"
+                file_exist(path)
+                soundfile.write(path + f"/separate{self.n_sound[mode][psd][self.cfg.inst_list[idx]]}_{inst}.wav", np.squeeze(sound.to("cpu").numpy()), self.cfg.sr)
+                soundfile.write(path + f"/mix{self.n_sound[mode][psd][self.cfg.inst_list[idx]]}_{inst}.wav", np.squeeze(data_wave[0].to("cpu").numpy()), self.cfg.sr)
+                self.n_sound[mode][psd][self.cfg.inst_list[idx]] += 1"""
 
     def training_step(
         self, batch, batch_idx: int
@@ -399,8 +470,8 @@ class Triplet(LightningModule):
             print(f"{mode} average accuracy {inst:9} : {recog_acc*100:2f} %")
         print(f"\n== {mode} average loss all : {self.recorder[mode]['loss_all'].compute():2f}\n")
     
-    def knn_tsne(self, mode:str):
-        acc_all = 0
+    def knn_tsne(self, mode:str, psd:str):
+        """acc_all = 0
         for inst in self.cfg.inst_list:
             label = torch.concat(self.recorder_psd[mode]["label"][inst], dim=0).to("cpu").numpy()
             vec   = torch.concat(self.recorder_psd[mode]["vec"][inst], dim=0).to("cpu").numpy()
@@ -414,7 +485,25 @@ class Triplet(LightningModule):
             acc_all += acc
         self.log(f"{mode}/knn_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
         print(f"\n{mode} knn accuracy average   : {acc_all/len(self.cfg.inst_list)*100}%")
-        self.recorder_psd[mode]["label"] = {inst:[] for inst in self.cfg.inst_list}; self.recorder_psd[mode]["vec"] = {inst:[] for inst in self.cfg.inst_list}
+        self.recorder_psd[mode]["label"] = {inst:[] for inst in self.cfg.inst_list}; self.recorder_psd[mode]["vec"] = {inst:[] for inst in self.cfg.inst_list}"""
+        print(f"\n== {psd} ==")
+        acc_all = 0
+        for inst in self.cfg.inst_list:
+            label = torch.concat(self.recorder_psd[mode]["label"][psd][inst], dim=0).to("cpu").numpy()
+            vec   = torch.concat(self.recorder_psd[mode]["vec"][psd][inst], dim=0).to("cpu").numpy()
+            acc = knn_psd(label, vec, self.cfg, psd=False if psd == "not_psd" else True) # knn
+            self.log(f"{mode}/knn_{psd}_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
+            if psd == "psd_mine":
+                tsne_psd_marker(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}/{mode}_e={self.current_epoch}/{psd}", current_epoch=self.current_epoch) # tsne
+            elif psd == "psd":
+                tsne_psd(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}/{mode}_e={self.current_epoch}/{psd}", current_epoch=self.current_epoch) # tsne
+            elif psd == "not_psd":
+                tsne_not_psd(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}/{mode}_e={self.current_epoch}/{psd}", current_epoch=self.current_epoch) # tsne
+            print(f"{mode} knn accuracy {inst:<10} {psd:<8} : {acc*100}%")
+            acc_all += acc
+        self.log(f"{mode}/knn_{psd}_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
+        print(f"\n{mode} knn accuracy average {psd:<8}   : {acc_all/len(self.cfg.inst_list)*100}%")
+        self.recorder_psd[mode]["label"][psd] = {inst:[] for inst in self.cfg.inst_list}; self.recorder_psd[mode]["vec"][psd] = {inst:[] for inst in self.cfg.inst_list}
 
     def on_train_epoch_end(self) -> None:
         "Lightning hook that is called when a training epoch ends."
@@ -427,10 +516,15 @@ class Triplet(LightningModule):
             labels.
         :param batch_idx: The index of the current batch.
         """
+        n_inst = len(self.cfg.inst_list)
         if dataloader_idx == 0:
             loss_all = self.model_step("Valid", batch)
-        else:
-            self.model_step_psd("Valid", batch, dataloader_idx-1)
+        elif dataloader_idx > 0 and dataloader_idx < n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx-1, psd="psd")
+        elif dataloader_idx >= n_inst + 1 and dataloader_idx < 2*n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx - 1 - n_inst, psd="not_psd")
+        elif dataloader_idx >= 2*n_inst + 1 and dataloader_idx < 3*n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx - 1 - 2*n_inst, psd="psd_mine")
 
     def on_validation_epoch_end(self) -> None:
         "Lightning hook that is called when a validation epoch ends."
@@ -440,7 +534,9 @@ class Triplet(LightningModule):
         # otherwise metric would be reset by lightning after each epoch
         #self.log("val/acc_best", self.val_acc_best.compute(), sync_dist=True, prog_bar=True)
         self.print_loss("Valid")
-        self.knn_tsne("Valid")
+        self.knn_tsne("Valid", psd="psd")
+        self.knn_tsne("Valid", psd="not_psd")
+        self.knn_tsne("Valid", psd="psd_mine")
 
     def test_step(self, batch, batch_idx: int, dataloader_idx=0) -> None:
         """Perform a single test step on a batch of data from the test set.
@@ -449,30 +545,47 @@ class Triplet(LightningModule):
             labels.
         :param batch_idx: The index of the current batch.
         """
+        n_inst = len(self.cfg.inst_list)
         if dataloader_idx == 0:
             cases_x, cases_y, cases = batch
-            cases_x, phase = self.stft.transform(cases_x)
+            if self.cfg.complex:
+                cases_x = self.stft.transform(cases_x)
+                phase = None
+            else:
+                cases_x, phase = self.stft.transform(cases_x)
             c_e, c_prob, c_pred = self.net(cases_x)
             if not self.cfg.mel:
                 for idx,c in enumerate(cases):
                     if ((c[0] == 1 and c[1] == 1 and c[2] == 1 and c[3] == 1 and c[4] == 1)
                         and self.n_sound < 5):
                         #sound = self.stft.detransform(cases_x[idx], phase[idx], param[0,idx], param[1,idx])
-                        sound = self.stft.detransform(cases_x[idx], phase[idx])
+                        # TODO: complex = TrueだとphaseがNoneでidxがないって怒られるからそこを直す！いっそモデルの中で波にしちゃうのあり？てかそのロス追加する？
+                        if self.cfg.complex:
+                            sound = self.stft.detransform(cases_x[idx])
+                        else:
+                            sound = self.stft.detransform(cases_x[idx], phase[idx])
+                        #sound = self.stft.detransform(cases_x[idx], phase[idx])
                         path = self.cfg.output_dir+f"/sound/mix"
                         file_exist(path)
-                        soundfile.write(path + f"/separate{self.n_sound}_mix.wav", np.squeeze(sound), self.cfg.sr)
+                        soundfile.write(path + f"/separate{self.n_sound}_mix.wav", np.squeeze(sound.to("cpu").numpy()), self.cfg.sr)
                         for j,inst in enumerate(self.cfg.inst_list):
                             #sound = self.stft.detransform(cases_x[idx]*c_mask[inst][idx], phase[idx], param[0,idx], param[1,idx])
-                            sound = self.stft.detransform(c_pred[inst][idx], phase[idx])
+                            if self.cfg.complex:
+                                sound = self.stft.detransform(c_pred[inst][idx])
+                            else:
+                                sound = self.stft.detransform(c_pred[inst][idx], phase[idx])
                             path = self.cfg.output_dir+f"/sound/{inst}"
                             file_exist(path)
-                            soundfile.write(path + f"/separate{self.n_sound}_{inst}.wav", np.squeeze(sound), self.cfg.sr)
+                            soundfile.write(path + f"/separate{self.n_sound}_{inst}.wav", np.squeeze(sound.to("cpu").numpy()), self.cfg.sr)
                         self.n_sound += 1
             for idx,inst in enumerate(self.cfg.inst_list):
                 self.recorder["Test"]["recog_acc"][inst](c_prob[inst], cases[:,idx])
-        else:
-            self.model_step_psd("Test", batch, dataloader_idx-1)
+        elif dataloader_idx > 0 and dataloader_idx < n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx-1, psd="psd")
+        elif dataloader_idx >= n_inst + 1 and dataloader_idx < 2*n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx - 1 - n_inst, psd="not_psd")
+        elif dataloader_idx >= 2*n_inst + 1 and dataloader_idx < 3*n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx - 1 - 2*n_inst, psd="psd_mine")
 
     def on_test_epoch_end(self) -> None:
         """Lightning hook that is called when a test epoch ends."""
@@ -480,7 +593,9 @@ class Triplet(LightningModule):
         for inst in self.cfg.inst_list:
             recog_acc = self.recorder["Test"]["recog_acc"][inst].compute()
             print(f"Test average accuracy {inst:9} : {recog_acc*100: 2f} %")
-        self.knn_tsne("Test")
+        self.knn_tsne("Test", psd="psd")
+        self.knn_tsne("Test", psd="not_psd")
+        self.knn_tsne("Test", psd="psd_mine")
 
     def setup(self, stage: str) -> None:
         """Lightning hook that is called at the beginning of fit (train + validate), validate,

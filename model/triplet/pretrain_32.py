@@ -139,7 +139,10 @@ class PreTrain32(LightningModule):
             - A tensor of target labels.
         """
         mix, condition, emb_target = batch
-        mix, _ = self.stft.transform(mix)
+        if self.cfg.complex:
+            mix = self.stft.transform(mix)
+        else:
+            mix, _ = self.stft.transform(mix)
         emb_mix   = self.forward_mix(mix)
         # loss
         loss_mix = self.loss_mse(emb_mix, emb_target)
@@ -180,10 +183,13 @@ class PreTrain32(LightningModule):
         :param batch_idx: The index of the current batch.
         """
         ID, ver, seg, data, c = batch
-        data, _ = self.stft.transform(data)
+        if self.cfg.complex:
+            data = self.stft.transform(data)
+        else:
+            data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
         # インスタンスを生成していなかったら、生成する。
-        csn_valid = ConditionalSimNet1d()
+        csn_valid = ConditionalSimNet1d().to(embvec.device)
         self.valid_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))
         self.valid_vec[self.cfg.inst_list[dataloader_idx]].append(csn_valid(embvec, c))
 
@@ -218,12 +224,22 @@ class PreTrain32(LightningModule):
             labels.
         :param batch_idx: The index of the current batch.
         """
+        n_inst = len(self.cfg.inst_list)
         ID, ver, seg, data, c = batch
-        data, _ = self.stft.transform(data)
+        if self.cfg.complex:
+            data = self.stft.transform(data)
+        else:
+            data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
-        csn_test = ConditionalSimNet1d() # csnのモデルを保存されないようにするために配列に入れる
-        self.test_label[self.cfg.inst_list[dataloader_idx]].append(torch.stack([ID, ver], dim=1))
-        self.test_vec[self.cfg.inst_list[dataloader_idx]].append(csn_test(embvec, c))
+        csn_test = ConditionalSimNet1d().to(embvec.device)
+        if dataloader_idx < n_inst:
+            idx_inst = dataloader_idx
+        elif dataloader_idx >= n_inst and dataloader_idx < 2*n_inst:
+            idx_inst = dataloader_idx - n_inst
+        elif dataloader_idx >= 2* n_inst and data < 3*n_inst:
+            idx_inst = dataloader_idx - 2*n_inst
+        self.test_label[self.cfg.inst_list[idx_inst]].append(torch.stack([ID, ver], dim=1))
+        self.test_vec[self.cfg.inst_list[idx_inst]].append(csn_test(embvec, c))
 
     def on_test_epoch_end(self) -> None:
         """Lightning hook that is called when a test epoch ends."""

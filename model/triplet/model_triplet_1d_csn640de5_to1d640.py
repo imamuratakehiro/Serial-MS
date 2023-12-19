@@ -12,11 +12,12 @@ import os
 import csv
 import pandas as pd
 #import soundfile
+import math
 
-from utils.func import standardize_torch, normalize_torch, destandardize_torch, denormalize_torch
-from ..csn import ConditionalSimNet2d
+from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
-from ..to1d.model_linear import To1D128timefreq, To1D128freqtime, To1D128
+from ..to1d.model_linear import To1D640, To2DFrom1D640
+from utils.func import normalize_torch, denormalize_torch, standardize_torch, destandardize_torch
 
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -29,16 +30,10 @@ class MyError(Exception):
 class Conv2d(nn.Module):
     def __init__(self, in_channels, out_channels, last=False) -> None:
         super().__init__()
-        if last:
-            self.conv = nn.Sequential(
-                nn.Conv2d(in_channels, out_channels, kernel_size = (5, 5), stride=(2, 2), padding=2),
-            )
-        else:
-            self.conv = nn.Sequential(
-                nn.Conv2d(in_channels, out_channels, kernel_size = (5, 5), stride=(2, 2), padding=2),
-                nn.BatchNorm2d(out_channels),
-                nn.LeakyReLU(0.2),
-            )
+        self.conv = nn.Sequential(nn.Conv2d(in_channels, out_channels, kernel_size = (5, 5), stride=(2, 2), padding=2))
+        #if not last:
+        self.conv.add_module("bn", nn.BatchNorm2d(out_channels))
+        self.conv.add_module("rl", nn.LeakyReLU(0.2))
     def forward(self, input):
         return self.conv(input)
 
@@ -53,7 +48,7 @@ class UNetEncoder(nn.Module):
         self.conv5 = Conv2d(128, 256)
         self.conv6 = Conv2d(256, encoder_out_size, last=True)
         #deviceを指定
-        self.to(device)
+        #self.to(device)
     def forward(self, input):
         # Encoder
         conv1_out = self.conv1(input)
@@ -69,31 +64,28 @@ class UNetDecoder(nn.Module):
         super().__init__()
         self.deconv6_a = nn.ConvTranspose2d(encoder_out_size, 256, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv6_b = nn.Sequential(
-                                #nn.BatchNorm2d(256),
+                                nn.BatchNorm2d(256),
                                 nn.LeakyReLU(0.2),
                                 nn.Dropout2d(0.5))
         self.deconv5_a = nn.ConvTranspose2d(256+256, 128, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv5_b = nn.Sequential(
-                                #nn.BatchNorm2d(128),
+                                nn.BatchNorm2d(128),
                                 nn.LeakyReLU(0.2),
                                 nn.Dropout2d(0.5))
         self.deconv4_a = nn.ConvTranspose2d(128+128, 64, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv4_b = nn.Sequential(
-                                #nn.BatchNorm2d(64),
+                                nn.BatchNorm2d(64),
                                 nn.LeakyReLU(0.2),
                                 nn.Dropout2d(0.5))
         self.deconv3_a = nn.ConvTranspose2d(64+64, 32, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv3_b = nn.Sequential(
-                                #nn.BatchNorm2d(32),
+                                nn.BatchNorm2d(32),
                                 nn.LeakyReLU(0.2))
         self.deconv2_a = nn.ConvTranspose2d(32+32, 16, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv2_b = nn.Sequential(
-                                #nn.BatchNorm2d(16),
+                                nn.BatchNorm2d(16),
                                 nn.LeakyReLU(0.2))
         self.deconv1_a = nn.ConvTranspose2d(16+16, encoder_in_size, kernel_size = (5, 5), stride=(2, 2), padding=2)
-        self.deconv1 = nn.Sequential(
-                                nn.LeakyReLU(0.2),
-                                nn.Sigmoid())
         #deviceを指定
         self.to(device)
     def forward(self, sep_feature, conv5_out, conv4_out, conv3_out, conv2_out, conv1_out, input):
@@ -111,58 +103,107 @@ class UNetDecoder(nn.Module):
         output = torch.sigmoid(deconv1_out)
         return output
 
-class JNet128Embnet(nn.Module):
+class UNetForTriplet_1d_de5_to1d640(nn.Module):
     def __init__(self, cfg, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
         super().__init__()
-        self.cfg = cfg
         if mono:
             encoder_in_size = 1
         else:
             encoder_in_size = 2
-        if cfg.complex_featurenet:
+        if cfg.complex:
             encoder_in_size *= 2
-        #encoder_out_size = len(inst_list) * 128
-        encoder_out_size = 512
-        if mel:
-            in_channel = (n_mels//(2**6)+1)*encoder_out_size
-        else:
-            in_channel = (f_size/2/(2**6)+1)*encoder_out_size
+        encoder_out_size = len(inst_list) * 128
         # Encoder
         self.encoder = UNetEncoder(encoder_in_size, encoder_out_size)
-        # Decoder・Embedding Network
-        self.embnet = To1D128(to1d_mode=to1d_mode, order=order, in_channel=in_channel)
+        # Decoder
+        for inst in inst_list:
+            if inst == "drums":
+                self.decoder_drums = UNetDecoder(encoder_in_size, encoder_out_size)
+            elif inst == "bass":
+                self.decoder_bass = UNetDecoder(encoder_in_size, encoder_out_size)
+            elif inst == "piano":
+                self.decoder_piano = UNetDecoder(encoder_in_size, encoder_out_size)
+            elif inst == "guitar":
+                self.decoder_guitar = UNetDecoder(encoder_in_size, encoder_out_size)
+            elif inst == "vocals":
+                self.decoder_vocals = UNetDecoder(encoder_in_size, encoder_out_size)
+            elif inst == "residuals":
+                self.decoder_residuals = UNetDecoder(encoder_in_size, encoder_out_size)
+            elif inst == "other":
+                self.decoder_other = UNetDecoder(encoder_in_size, encoder_out_size)
+        # To1d
+        #self.to1d = To1D640(to1d_mode=to1d_mode, order=order, in_channel=(f_size/2/(2**6)+1)*encoder_out_size)
+        if mel:
+            #in_channel = (n_mels//(2**6)+1)*encoder_out_size
+            in_channel = math.ceil(n_mels/(2**6))*encoder_out_size
+        else:
+            in_channel = (f_size/2/(2**6)+1)*encoder_out_size
+        self.to1d = To1D640(to1d_mode=to1d_mode, order=order, in_channel=in_channel)
+        # To2d from 1d
+        self.to2d = To2DFrom1D640(out_channel=in_channel)
+        #self.tanh = nn.Tanh()
         self.sigmoid = nn.Sigmoid()
         #deviceを指定
         self.to(device)
         self.inst_list = inst_list
+        self.cfg = cfg
+
 
     def forward(self, input):
-        B = input.shape[0]
-        if self.cfg.standardize_featurenet:
-            input, mean, std = standardize_torch(input)
-        elif self.cfg.normalize_featurenet:
-            input, max, min = normalize_torch(input)
         # Encoder
+        if self.cfg.standardize:
+            input, mean, std = standardize_torch(input)
+        elif self.cfg.normalize:
+            input, max, min = normalize_torch(input)
+
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out, conv6_out = self.encoder(input)
-        #conv1_out, conv2_out = self.encoder(input)
 
         # 特徴量を条件づけ
-        #size = conv6_out.shape
+        size = conv6_out.shape
         #print(size)
-        emb = self.embnet(conv6_out)
-        #output_emb[inst] = emb
-        output_emb = emb
-        # 原点からのユークリッド距離にtanhをしたものを無音有音の確率とする
-        output_probability = {}
-        output_probability[self.cfg.inst] = self.sigmoid(torch.log(torch.sqrt(torch.sum(emb**2, dim=1))))
-        #output_probability[inst] = self.sigmoid(recog_probability)[:,0]
-        #print(output_probability[inst].shape)
-        return output_emb, output_probability
+        # インスタンスを生成していなかったら、生成する。
+        #csn = ConditionalSimNet2d(size, device) # csnのモデルを保存されないようにするために配列に入れる
+        csn1d = ConditionalSimNet1d(); csn1d.to(input.device)
+        decoder = {}
+        output_decoder = {}
+        for inst in self.inst_list:
+            if inst == "drums":
+                decoder[inst] = self.decoder_drums
+            elif inst == "bass":
+                decoder[inst] = self.decoder_bass
+            elif inst == "piano":
+                decoder[inst] = self.decoder_piano
+            elif inst == "guitar":
+                decoder[inst] = self.decoder_guitar
+            elif inst == "vocals":
+                decoder[inst] = self.decoder_vocals
+            elif inst == "residuals":
+                decoder[inst] = self.decoder_residuals
+            elif inst == "other":
+                decoder[inst] = self.decoder_other
+
+        # to1d
+        output_emb = self.to1d(conv6_out)
+        for idx, inst in enumerate(self.inst_list):
+            # decoder
+            #sep_feature_decoder = csn(conv6_out, torch.tensor([idx], device=device))  # 特徴量を条件づけ
+            masked_emb = csn1d(output_emb, torch.tensor([idx], device=device))  # 特徴量を条件づけ
+            sep_feature_decoder = self.to2d(masked_emb, size[3])
+            decoder_out = decoder[inst].forward(sep_feature_decoder, conv5_out, conv4_out, conv3_out, conv2_out, conv1_out, input)
+            if self.cfg.standardize:
+                output_decoder[inst] = destandardize_torch(input*decoder_out, mean, std) # マスクをかけてからdestandardize
+            elif self.cfg.normalize:
+                output_decoder[inst] = denormalize_torch(input*decoder_out, max, min) # マスクをかけてからdenormalize
+            else:
+                output_decoder[inst] = input*decoder_out
+        # 原点からのユークリッド距離にlogをかけてsigmoidしたものを無音有音の確率とする
+        output_probability = {inst : torch.log(torch.sqrt(torch.sum(csn1d(output_emb, torch.tensor([i], device=device))**2, dim=1))) for i,inst in enumerate(self.inst_list)} # logit
+        return output_emb, output_probability, output_decoder
     
 def main():
     # モデルを定義
     inst_list = ["drums", "bass", "piano", "guitar", "residuals"]
-    model = JNet128Embnet(inst_list=inst_list, f_size=1024)
+    model = UNetForTriplet_2d_de5_embnet(inst_list=inst_list, f_size=1024)
     batchsize = 16
     summary(model=model,
             input_size=(batchsize, 1, 513, 259),

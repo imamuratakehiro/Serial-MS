@@ -5,7 +5,7 @@ import torch
 from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
 from ..to1d.model_linear import To1D640
-from utils.func import normalize_torch, denormalize_torch
+from utils.func import normalize_torch, denormalize_torch, standardize_torch, destandardize_torch
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
@@ -48,9 +48,9 @@ class UpConv(nn.Module):
         return x
 
 class UNetEncoder(nn.Module):
-    def __init__(self) -> None:
+    def __init__(self, encoder_in_size) -> None:
         super().__init__()
-        self.TCB1 = TwoConvBlock(1, 32, 32)
+        self.TCB1 = TwoConvBlock(encoder_in_size, 32, 32)
         self.TCB2 = TwoConvBlock(32, 64, 64)
         self.TCB3 = TwoConvBlock(64, 128, 128)
         self.TCB4 = TwoConvBlock(128, 256, 256)
@@ -121,15 +121,17 @@ class UNetDecoder(nn.Module):
         return output
     
 class TripletModelZume(nn.Module):
-    def __init__(self, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
+    def __init__(self, cfg, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
         super().__init__()
         if mono:
             encoder_in_size = 1
         else:
             encoder_in_size = 2
+        if cfg.complex:
+            encoder_in_size *= 2
         #encoder_out_size = len(inst_list) * 128
         # Encoder
-        self.encoder = UNetEncoder()
+        self.encoder = UNetEncoder(encoder_in_size)
         # Decoder
         self.decoder = UNetDecoder()
         # To1d
@@ -145,7 +147,10 @@ class TripletModelZume(nn.Module):
         self.inst_list = inst_list
 
     def forward(self, input):
-        input, max, min = normalize_torch(input)
+        if self.cfg.standardize:
+            input, mean, std = standardize_torch(input)
+        elif self.cfg.normalize:
+            input, max, min = normalize_torch(input)
         # Encoder
         conv1_out, conv2_out, conv3_out, conv4_out, conv5_out = self.encoder(input)
         #print(conv5_out.shape)

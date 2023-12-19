@@ -53,7 +53,7 @@ def get_norm(norm_type):
             return nn.GroupNorm(num_groups=g, num_channels=c)
         else:
             return nn.Identity()
-    return partial(norm, norm_type=norm_type)
+    return partial(norm, norm_type=norm_type) # norm関数のnorm_typeにすでに値が入った関数を返す
 
 
 def get_act(act_type):

@@ -129,6 +129,7 @@ class UNetEncoder2(nn.Module):
 class NNetForTriplet(nn.Module):
     def __init__(self, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
         super().__init__()
+        # TODO: 直すポイント：complexを有効に、normalise・standardizeを有効に
         if mono:
             encoder_in_size = 1
         else:

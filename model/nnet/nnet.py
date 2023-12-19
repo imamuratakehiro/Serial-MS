@@ -16,12 +16,12 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap, BoundaryNorm
 
-from utils.func import file_exist, knn_psd, tsne_psd, istft, tsne_psd_marker, TorchSTFT
+from utils.func import file_exist, knn_psd, tsne_psd, istft, tsne_psd_marker, TorchSTFT, tsne_not_psd
 from ..csn import ConditionalSimNet1d
 from ..tripletnet import CS_Tripletnet
 
 
-class TripletNoMss(LightningModule):
+class NNet(LightningModule):
     """Example of a `LightningModule` for MNIST classification.
 
     A `LightningModule` implements 8 key methods:
@@ -56,11 +56,13 @@ class TripletNoMss(LightningModule):
 
     def __init__(
         self,
-        net: torch.nn.Module,
+        unet: torch.nn.Module,
+        featurenet: torch.nn.Module,
         optimizer: torch.optim.Optimizer,
         scheduler: torch.optim.lr_scheduler,
         cfg,
-        ckpt_model_path,
+        ckpt_model_path_unet,
+        ckpt_model_path_featurenet
         ) -> None:
         """Initialize a `MNISTLitModule`.
 
@@ -75,16 +77,39 @@ class TripletNoMss(LightningModule):
         self.save_hyperparameters(logger=False)
 
         # network
-        self.net = net
-        model_checkpoint = {}
-        if ckpt_model_path is not None:
-            print("== Loading pretrained model...")
-            checkpoint = torch.load(ckpt_model_path)
+        self.unet = unet
+        self.featurenet = featurenet
+        # loading pretrained model
+        model_checkpoint_unet = {}
+        if ckpt_model_path_unet is not None:
+            print("== Loading pretrained model (unet)...")
+            checkpoint = torch.load(ckpt_model_path_unet)
+            """for key in checkpoint["state_dict"]:
+                model_checkpoint_unet[key.replace("net.","")] = checkpoint["state_dict"][key]
+            self.unet.load_state_dict(model_checkpoint_unet)"""
             for key in checkpoint["state_dict"]:
-                model_checkpoint[key.replace("net.","")] = checkpoint["state_dict"][key]
-            self.net.load_state_dict(model_checkpoint)
+                if "unet." in key:
+                    model_checkpoint_unet[key.replace("unet.","")] = checkpoint["state_dict"][key]
+            self.unet.load_state_dict(model_checkpoint_unet)
             print("== pretrained model was loaded!")
-        print(net)
+        model_checkpoint_featurenet = {}
+        if ckpt_model_path_featurenet is not None:
+            print("== Loading pretrained model (featurenet)...")
+            checkpoint = torch.load(ckpt_model_path_featurenet)
+            for key in checkpoint["state_dict"]:
+                model_checkpoint_featurenet[key.replace("net.","")] = checkpoint["state_dict"][key]
+            self.featurenet.load_state_dict(model_checkpoint_featurenet)
+            print("== pretrained model was loaded!")
+        print(self.featurenet)
+        # model's required grad
+        if not cfg.unet_required_grad:
+            for param in unet.parameters():
+                param.requires_grad = False
+        if not cfg.featurenet_required_grad:
+            for param in featurenet.parameters():
+                param.requires_grad = False
+        print(self.unet)
+        print(self.featurenet)
 
         # loss function
         self.loss_unet  = nn.L1Loss(reduction="mean")
@@ -123,8 +148,8 @@ class TripletNoMss(LightningModule):
         for step in ["Train", "Valid"]:
             self.recorder[step] = MDict({})
             self.recorder[step]["loss_all"] = MeanMetric()
-            #self.recorder[step]["loss_unet"] = MDict({type: MeanMetric() for type in self.song_type})
-            #self.recorder[step]["loss_unet"]["all"] = MeanMetric()
+            self.recorder[step]["loss_unet"] = MDict({type: MeanMetric() for type in self.song_type})
+            self.recorder[step]["loss_unet"]["all"] = MeanMetric()
             self.recorder[step]["loss_triplet"] = MDict({inst: MeanMetric() for inst in cfg.inst_list})
             self.recorder[step]["loss_triplet"]["all"] = MeanMetric()
             self.recorder[step]["loss_recog"] = MeanMetric()
@@ -133,12 +158,17 @@ class TripletNoMss(LightningModule):
             self.recorder[step]["dist_n"] = MDict({inst: MeanMetric() for inst in cfg.inst_list})
         self.recorder["Test"] = MDict({})
         self.recorder["Test"]["recog_acc"] = MDict({inst: BinaryAccuracy() for inst in cfg.inst_list})
-        self.n_sound = 0
         self.recorder_psd = {}
+        self.n_sound = {}
         for step in ["Valid", "Test"]:
             self.recorder_psd[step] = {}
-            self.recorder_psd[step]["label"] = {inst: [] for inst in cfg.inst_list}
-            self.recorder_psd[step]["vec"] = {inst: [] for inst in cfg.inst_list}
+            self.recorder_psd[step]["label"] = {}
+            self.recorder_psd[step]["vec"] = {}
+            self.n_sound[step] = {}
+            for psd in ["psd", "not_psd", "psd_mine"]:
+                self.recorder_psd[step]["label"][psd] = {inst: [] for inst in cfg.inst_list}
+                self.recorder_psd[step]["vec"][psd] = {inst: [] for inst in cfg.inst_list}
+                self.n_sound[step][psd] = {inst: 0 for inst in cfg.inst_list}
         #self.test_loss = MeanMetric()
 
         # for tracking best so far validation accuracy
@@ -154,9 +184,9 @@ class TripletNoMss(LightningModule):
         #self.val_acc.reset()
         #self.val_acc_best.reset()
         self.recorder["Valid"]["loss_all"].reset()
-        #for type in self.song_type:
-        #    self.recorder["Valid"]["loss_unet"][type].reset()
-        #self.recorder["Valid"]["loss_unet"]["all"].reset()
+        for type in self.song_type:
+            self.recorder["Valid"]["loss_unet"][type].reset()
+        self.recorder["Valid"]["loss_unet"]["all"].reset()
         for inst in self.cfg.inst_list:
             self.recorder["Valid"]["loss_triplet"][inst].reset()
             self.recorder["Valid"]["loss_recog"][inst].reset()
@@ -192,13 +222,15 @@ class TripletNoMss(LightningModule):
             loss += self.loss_unet(pred, y[:,idx])
         return loss / len(self.cfg.inst_list)
     
-    def get_loss_unet_triposi(self, X, y, pred_mask, triposi):
+    def get_loss_unet_triposi(self, y, pred, triposi):
         # triplet positionのところのみ分離ロスを計算
-        batch = X.shape[0]
+        batch = y.shape[0]
         loss = 0
         for idx, c in enumerate(triposi): #個別音源でロスを計算
-            pred = X[idx] * pred_mask[self.cfg.inst_list[c.item()]][idx]
-            loss += self.loss_unet(pred, y[idx, c])
+            #if len(self.cfg.inst_list) == 1:
+            #    loss += self.loss_unet(pred[self.cfg.inst_all[c.item()]][idx], y[idx, 0])
+            #else:
+            loss += self.loss_unet(pred[self.cfg.inst_all[c.item()]][idx], y[idx, c])
         return loss / batch
     
     """
@@ -234,17 +266,20 @@ class TripletNoMss(LightningModule):
                 dist_n_all[condition] /= inst_n_triplet[i]
         return loss_all/batch, loss, dist_p_all, dist_n_all
     """
-
     def get_loss_triplet(self, e_a, e_p, e_n, triposi):
         #batch = triposi.shape[0]
-        tnet = CS_Tripletnet(ConditionalSimNet1d().to(e_a.device))
-        distp, distn = tnet(e_a, e_p, e_n, triposi)
+        if len(self.cfg.inst_list) == 1:
+            distp = F.pairwise_distance(e_a, e_p, 2)
+            distn = F.pairwise_distance(e_a, e_n, 2)
+        else:
+            tnet = CS_Tripletnet(ConditionalSimNet1d().to(e_a.device))
+            distp, distn = tnet(e_a, e_p, e_n, triposi)
         target = torch.FloatTensor(distp.size()).fill_(1).to(distp.device) # 1で埋める
         loss = self.loss_triplet(distn, distp, target) # トリプレットロス
         loss_all = torch.sum(loss)/len(triposi)
-        loss_inst  = {inst: torch.sum(loss[torch.where(triposi==i)])/len(torch.where(triposi==i)[0])  for i,inst in enumerate(self.cfg.inst_list)}
-        dist_p_all = {inst: torch.sum(distp[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) for i,inst in enumerate(self.cfg.inst_list)}
-        dist_n_all = {inst: torch.sum(distn[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) for i,inst in enumerate(self.cfg.inst_list)}
+        loss_inst  = {inst: torch.sum(loss[torch.where(triposi==i)])/len(torch.where(triposi==i)[0])  if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_all)}
+        dist_p_all = {inst: torch.sum(distp[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_all)}
+        dist_n_all = {inst: torch.sum(distn[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_all)}
         return loss_all, loss_inst, dist_p_all, dist_n_all
     
     def get_loss_recognise1(self, emb, cases, l = 1e5):
@@ -275,14 +310,47 @@ class TripletNoMss(LightningModule):
                 loss_recognise += self.loss_cross_entropy(probability[inst][b], cases[b, c])
         return loss_recognise / batch / len(self.cfg.inst_list)
     
-    def transform(self, x_wave, y_wave):
-        device = x_wave.device
-        if self.cfg.complex:
-            x = self.stft.transform(x_wave); y = self.stft.transform(y_wave)
-        else:
-            x, _ = self.stft.transform(x_wave); y, _ = self.stft.transform(y_wave)
-        return x, y
+    def stft_complex(self, wave):
+        x = self.stft.stft(wave)
+        *other, C, F, T = x.shape
+        return torch.view_as_real(x.reshape(-1, C, F, T)).permute(0, 1, 4, 2, 3).reshape(*other, C * 2, F, T)
     
+    def transform_for_unet(self, wave):
+        device = wave.device
+        if self.cfg.complex_unet:
+            return {"spec": self.stft_complex(wave)}
+        else:
+            x = self.stft.stft(wave)
+            x, phase = self.stft.magphase(x)
+        return {"spec": x, "phase": phase}
+    
+    def transform_for_featurenet(self, **kwargs):
+        if self.cfg.complex_unet and self.cfg.complex_featurenet:
+            """complex -> complex"""
+            return torch.concat(list(kwargs["unet_out"].values()), dim=1)
+        elif self.cfg.complex_unet and not self.cfg.complex_featurenet:
+            """complex -> spec"""
+            x, _ = self.stft.magphase(torch.concat(list(kwargs["unet_out"].values()), dim=1))
+            if self.cfg.mel_featurenet:
+                x = self.stft.mel(x)
+            if self.cfg.db_featurenet:
+                x = self.stft.amp2db(x)
+            return x
+        elif not self.cfg.complex_unet and self.cfg.complex_featurenet:
+            """spec -> comlex"""
+            out = []
+            for inst in self.cfg.inst_list:
+                out.append(kwargs["unet_out"][inst] * kwargs["phase"])
+            return torch.stack(out, dim=1)
+        elif not self.cfg.complex_unet and not self.cfg.complex_featurenet:
+            """spec -> spec"""
+            x = torch.concat(list(kwargs["unet_out"].values()), dim=1)
+            if self.cfg.mel_featurenet:
+                x = self.stft.mel(x)
+            if self.cfg.db_featurenet:
+                x = self.stft.amp2db(x)
+            return x
+    """
     def clone_for_additional(self, a_x, a_y, p_x, p_y, n_x, n_y, s_a, s_p, s_n, triposi):
         if triposi.dim() == 2: # [b, a]で入ってる
             x_a, x_p, x_n, y_a, y_p, y_n, a_s, p_s, n_s, tp = [], [], [], [], [], [], [], [], [], []
@@ -309,6 +377,7 @@ class TripletNoMss(LightningModule):
                     torch.stack(tp, dim=0))
         else:
             return a_x, a_y, p_x, p_y, n_x, n_y, s_a, s_p, s_n, triposi
+    """
 
     def forward(self, batch):
         """Perform a single model step on a batch of data.
@@ -320,48 +389,55 @@ class TripletNoMss(LightningModule):
             - A tensor of predictions.
             - A tensor of target labels.
         """
-        # TODO: triposiの次元を増やしたから　triplet.pyを参考にして直してから動かす
         #a_x, a_y, p_x, p_y, n_x, n_y, triposi, posiposi = self.dataload_tripet(batch)
         a_x_wave, a_y_wave, p_x_wave, p_y_wave, n_x_wave, n_y_wave, sound_a, sound_p, sound_n, triposi = batch
         # stft
         with torch.no_grad():
-            a_x, a_y = self.transform(a_x_wave, a_y_wave)
-            p_x, p_y = self.transform(p_x_wave, p_y_wave)
-            n_x, n_y = self.transform(n_x_wave, n_y_wave)
-        a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi = self.clone_for_additional(a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi)
-        a_e, a_prob = self.net(a_x)
-        p_e, p_prob = self.net(p_x)
-        n_e, n_prob = self.net(n_x)
+            a_x = self.transform_for_unet(a_x_wave); a_y = self.transform_for_unet(a_y_wave)
+            p_x = self.transform_for_unet(p_x_wave); p_y = self.transform_for_unet(p_y_wave)
+            n_x = self.transform_for_unet(n_x_wave); n_y = self.transform_for_unet(n_y_wave)
+        #a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi = self.clone_for_additional(a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi)
+        a_x["unet_out"] = self.unet(a_x["spec"])
+        p_x["unet_out"] = self.unet(p_x["spec"])
+        n_x["unet_out"] = self.unet(n_x["spec"])
+        a_pred = self.transform_for_featurenet(**a_x)
+        p_pred = self.transform_for_featurenet(**p_x)
+        n_pred = self.transform_for_featurenet(**n_x)
+        a_e, a_prob = self.featurenet(a_pred)
+        p_e, p_prob = self.featurenet(p_pred)
+        n_e, n_prob = self.featurenet(n_pred)
         # get loss
-        #loss_unet_a = self.get_loss_unet_triposi(a_x, a_y, a_mask, triposi)
-        #loss_unet_p = self.get_loss_unet_triposi(p_x, p_y, p_mask, triposi)
-        #loss_unet_n = self.get_loss_unet_triposi(n_x, n_y, n_mask, triposi)
+        loss_unet_a = self.get_loss_unet_triposi(a_y["spec"], a_x["unet_out"], triposi)
+        loss_unet_p = self.get_loss_unet_triposi(p_y["spec"], p_x["unet_out"], triposi)
+        loss_unet_n = self.get_loss_unet_triposi(n_y["spec"], n_x["unet_out"], triposi)
         loss_triplet_all, loss_triplet, dist_p, dist_n = self.get_loss_triplet(a_e, p_e, n_e, triposi)
         loss_recog = self.get_loss_recognise2(a_prob, sound_a) + self.get_loss_recognise2(p_prob, sound_p) + self.get_loss_recognise2(n_prob, sound_n)
         # record loss
-        loss_all = loss_triplet_all*self.cfg.triplet_rate + loss_recog*self.cfg.recog_rate
-        #loss_unet = {
-        #    "anchor": loss_unet_a.item(),
-        #    "positive": loss_unet_p.item(),
-        #    "negative": loss_unet_n.item(),
-        #    "all": loss_unet_a.item() + loss_unet_p.item() + loss_unet_n.item()
-        #}
+        loss_all = (loss_unet_a + loss_unet_p + loss_unet_n)*self.cfg.unet_rate\
+                    + loss_triplet_all*self.cfg.triplet_rate\
+                    + loss_recog*self.cfg.recog_rate
+        loss_unet = {
+            "anchor": loss_unet_a.item(),
+            "positive": loss_unet_p.item(),
+            "negative": loss_unet_n.item(),
+            "all": loss_unet_a.item() + loss_unet_p.item() + loss_unet_n.item()
+        }
         loss_triplet["all"] = loss_triplet_all.item()
         prob = {inst: torch.concat([a_prob[inst], p_prob[inst], n_prob[inst]], dim=0) for inst in self.cfg.inst_list}
         cases = torch.concat([sound_a, sound_p, sound_n], dim=0)
-        return loss_all, loss_triplet, dist_p, dist_n, loss_recog.item(), prob, cases
+        return loss_all, loss_unet, loss_triplet, dist_p, dist_n, loss_recog.item(), prob, cases
     
     def model_step(self, mode:str, batch):
-        loss_all, loss_triplet, dist_p, dist_n, loss_recog, prob, cases = self.forward(batch)
+        loss_all, loss_unet, loss_triplet, dist_p, dist_n, loss_recog, prob, cases = self.forward(batch)
         # update and log metrics
         self.recorder[mode]["loss_all"](loss_all)
         self.log(f"{mode}/loss_all", self.recorder[mode]["loss_all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
         # unet
-        #for type in self.song_type:
-        #    self.recorder[mode]["loss_unet"][type](loss_unet[type])
-        #    self.log(f"{mode}/loss_unet_{type}", self.recorder[mode]["loss_unet"][type], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
-        #self.recorder[mode]["loss_unet"]["all"](loss_unet["all"])
-        #self.log(f"{mode}/loss_unet_all", self.recorder[mode]["loss_unet"]["all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
+        for type in self.song_type:
+            self.recorder[mode]["loss_unet"][type](loss_unet[type])
+            self.log(f"{mode}/loss_unet_{type}", self.recorder[mode]["loss_unet"][type], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
+        self.recorder[mode]["loss_unet"]["all"](loss_unet["all"])
+        self.log(f"{mode}/loss_unet_all", self.recorder[mode]["loss_unet"]["all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
         # triplet
         for inst in self.cfg.inst_list:
             self.recorder[mode]["loss_triplet"][inst](loss_triplet[inst])
@@ -381,19 +457,78 @@ class TripletNoMss(LightningModule):
         # return loss or backpropagation will fail
         return loss_all
     
-    def model_step_psd(self, mode:str, batch, idx):
+    """def model_step_psd(self, mode:str, batch, idx):
+        ID, ver, seg, data_psd_wave, data_not_psd_wave, c = batch
+        with torch.no_grad():
+            data_psd = self.transform_for_unet(data_psd_wave)
+            data_not_psd = self.transform_for_unet(data_not_psd_wave)
+        data_psd["unet_out"] = self.unet(data_psd["spec"])
+        data_not_psd["unet_out"] = self.unet(data_not_psd["spec"])
+        pred_psd = self.transform_for_featurenet(**data_psd)
+        pred_not_psd = self.transform_for_featurenet(**data_not_psd)
+        embvec_psd, _ = self.featurenet(pred_psd)
+        embvec_not_psd, _ = self.featurenet(pred_not_psd)
+        #embvec, _, _ = self.net(data)
+        if self.cfg.test_valid_norm:
+            embvec_psd = torch.nn.functional.normalize(embvec_psd, dim=1)
+            embvec_not_psd = torch.nn.functional.normalize(embvec_not_psd, dim=1)
+        if len(self.cfg.inst_list) == 1:
+            self.recorder_psd[mode]["label"][self.cfg.inst].append(torch.stack([ID, ver], dim=1))
+            self.recorder_psd[mode]["vec_psd"][self.cfg.inst].append(embvec_psd)
+            self.recorder_psd[mode]["vec_not_psd"][self.cfg.inst].append(embvec_not_psd)
+        else:
+            csn_valid = ConditionalSimNet1d().to(embvec_psd.device)
+            self.recorder_psd[mode]["label"][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
+            self.recorder_psd[mode]["vec_psd"][self.cfg.inst_list[idx]].append(csn_valid(embvec_psd, c))
+            self.recorder_psd[mode]["vec_not_psd"][self.cfg.inst_list[idx]].append(csn_valid(embvec_not_psd, c))
+        if self.n_sound < 5:
+            for inst in self.cfg.inst_list:
+                if self.cfg.complex_unet:
+                    z_psd = self.stft.spec2complex(data_psd["unet_out"][inst][5])
+                    z_not_psd = self.stft.spec2complex(data_not_psd["unet_out"][inst][5])
+                else:
+                    z_psd = data_psd["unet_out"][inst][0] * data_psd["phase"][0]
+                    z_not_psd = data_not_psd["unet_out"][inst][0] * data_not_psd["phase"][0]
+                sound_psd = self.stft.istft(z_psd)
+                sound_not_psd = self.stft.istft(z_not_psd)
+                path = self.cfg.output_dir+f"/sound/{inst}/valid_e={self.current_epoch}"
+                file_exist(path + "/psd")
+                soundfile.write(path + f"/psd/separate{self.n_sound}_{inst}.wav", np.squeeze(sound_psd.to("cpu").numpy()), self.cfg.sr)
+                file_exist(path + "/not_psd")
+                soundfile.write(path + f"/not_psd/separate{self.n_sound}_{inst}.wav", np.squeeze(sound_not_psd.to("cpu").numpy()), self.cfg.sr)
+                soundfile.write(path + f"/psd/mix{self.n_sound}_{inst}.wav", np.squeeze(data_psd_wave[0].to("cpu").numpy()), self.cfg.sr)
+                soundfile.write(path + f"/not_psd/mix{self.n_sound}_{inst}.wav", np.squeeze(data_not_psd_wave[0].to("cpu").numpy()), self.cfg.sr)
+                self.n_sound += 1"""
+    
+    def model_step_knn_tsne(self, mode:str, batch, idx, psd: str):
         ID, ver, seg, data_wave, c = batch
         with torch.no_grad():
-            if self.cfg.complex:
-                data = self.stft.transform(data_wave)
-            else:
-                data, _ = self.stft.transform(data_wave)
-        embvec, _ = self.net(data)
+            data = self.transform_for_unet(data_wave)
+        data["unet_out"] = self.unet(data["spec"])
+        pred = self.transform_for_featurenet(**data)
+        embvec, _ = self.featurenet(pred)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
-        csn_valid = ConditionalSimNet1d().to(embvec.device)
-        self.recorder_psd[mode]["label"][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
-        self.recorder_psd[mode]["vec"][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))
+        if len(self.cfg.inst_list) == 1:
+            self.recorder_psd[mode]["label"][psd][self.cfg.inst].append(torch.stack([ID, ver], dim=1))
+            self.recorder_psd[mode]["vec"][psd][self.cfg.inst].append(embvec)
+        else:
+            csn_valid = ConditionalSimNet1d().to(embvec.device)
+            self.recorder_psd[mode]["label"][psd][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
+            self.recorder_psd[mode]["vec"][psd][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))
+        if self.n_sound[mode][psd][self.cfg.inst_list[idx]] < 5:
+            for inst in self.cfg.inst_list:
+                if self.cfg.complex_unet:
+                    z = self.stft.spec2complex(data["unet_out"][inst][5])
+                else:
+                    z = data["unet_out"][inst][0] * data["phase"][0]
+                sound = self.stft.istft(z)
+                path = self.cfg.output_dir+f"/sound/{inst}/{mode}_e={self.current_epoch}/{psd}"
+                file_exist(path)
+                soundfile.write(path + f"/separate{self.n_sound[mode][psd][self.cfg.inst_list[idx]]}_{inst}.wav", np.squeeze(sound.to("cpu").numpy()), self.cfg.sr)
+                soundfile.write(path + f"/mix{self.n_sound[mode][psd][self.cfg.inst_list[idx]]}_{inst}.wav", np.squeeze(data_wave[0].to("cpu").numpy()), self.cfg.sr)
+                self.n_sound[mode][psd][self.cfg.inst_list[idx]] += 1
+
 
     def training_step(
         self, batch, batch_idx: int
@@ -410,11 +545,11 @@ class TripletNoMss(LightningModule):
 
     def print_loss(self, mode:str):
         # unet
-        #print("\n\n== U-Net Loss ==")
-        #loss_unet = {type: self.recorder[mode]["loss_unet"][type].compute() for type in self.song_type}
-        #print(f"{mode} average loss UNet (anchor, positive, negative)  : {loss_unet['anchor']:2f}, {loss_unet['positive']:2f}, {loss_unet['negative']:2f}")
-        #loss_unet_all = self.recorder[mode]["loss_unet"]["all"].compute()
-        #print(f"{mode} average loss UNet            (all)              : {loss_unet_all:2f}")
+        print("\n\n== U-Net Loss ==")
+        loss_unet = {type: self.recorder[mode]["loss_unet"][type].compute() for type in self.song_type}
+        print(f"{mode} average loss UNet (anchor, positive, negative)  : {loss_unet['anchor']:2f}, {loss_unet['positive']:2f}, {loss_unet['negative']:2f}")
+        loss_unet_all = self.recorder[mode]["loss_unet"]["all"].compute()
+        print(f"{mode} average loss UNet            (all)              : {loss_unet_all:2f}")
         # triplet
         print("\n== Triplet Loss ==")
         for inst in self.cfg.inst_list:
@@ -432,22 +567,25 @@ class TripletNoMss(LightningModule):
             print(f"{mode} average accuracy {inst:9} : {recog_acc*100:2f} %")
         print(f"\n== {mode} average loss all : {self.recorder[mode]['loss_all'].compute():2f}\n")
     
-    def knn_tsne(self, mode:str):
+    def knn_tsne(self, mode:str, psd: str):
+        print(f"\n== {psd} ==")
         acc_all = 0
         for inst in self.cfg.inst_list:
-            label = torch.concat(self.recorder_psd[mode]["label"][inst], dim=0).to("cpu").numpy()
-            vec   = torch.concat(self.recorder_psd[mode]["vec"][inst], dim=0).to("cpu").numpy()
-            acc = knn_psd(label, vec, self.cfg) # knn
-            self.log(f"{mode}/knn_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
-            if self.cfg.test_psd_mine:
-                tsne_psd_marker(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
-            else:
-                tsne_psd(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}", current_epoch=self.current_epoch) # tsne
-            print(f"{mode} knn accuracy {inst:<10}: {acc*100}%")
+            label = torch.concat(self.recorder_psd[mode]["label"][psd][inst], dim=0).to("cpu").numpy()
+            vec   = torch.concat(self.recorder_psd[mode]["vec"][psd][inst], dim=0).to("cpu").numpy()
+            acc = knn_psd(label, vec, self.cfg, psd=False if psd == "not_psd" else True) # knn
+            self.log(f"{mode}/knn_{psd}_{inst}", acc, on_step=False, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
+            if psd == "psd_mine":
+                tsne_psd_marker(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}/{mode}_e={self.current_epoch}/{psd}", current_epoch=self.current_epoch) # tsne
+            elif psd == "psd":
+                tsne_psd(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}/{mode}_e={self.current_epoch}/{psd}", current_epoch=self.current_epoch) # tsne
+            elif psd == "not_psd":
+                tsne_not_psd(label, vec, mode, self.cfg, dir_path=self.cfg.output_dir+f"/figure/{inst}/{mode}_e={self.current_epoch}/{psd}", current_epoch=self.current_epoch) # tsne
+            print(f"{mode} knn accuracy {inst:<10} {psd:<8} : {acc*100}%")
             acc_all += acc
-        self.log(f"{mode}/knn_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
-        print(f"\n{mode} knn accuracy average   : {acc_all/len(self.cfg.inst_list)*100}%")
-        self.recorder_psd[mode]["label"] = {inst:[] for inst in self.cfg.inst_list}; self.recorder_psd[mode]["vec"] = {inst:[] for inst in self.cfg.inst_list}
+        self.log(f"{mode}/knn_{psd}_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
+        print(f"\n{mode} knn accuracy average {psd:<8}   : {acc_all/len(self.cfg.inst_list)*100}%")
+        self.recorder_psd[mode]["label"][psd] = {inst:[] for inst in self.cfg.inst_list}; self.recorder_psd[mode]["vec"][psd] = {inst:[] for inst in self.cfg.inst_list}
 
     def on_train_epoch_end(self) -> None:
         "Lightning hook that is called when a training epoch ends."
@@ -460,10 +598,15 @@ class TripletNoMss(LightningModule):
             labels.
         :param batch_idx: The index of the current batch.
         """
+        n_inst = len(self.cfg.inst_list)
         if dataloader_idx == 0:
             loss_all = self.model_step("Valid", batch)
-        else:
-            self.model_step_psd("Valid", batch, dataloader_idx-1)
+        elif dataloader_idx > 0 and dataloader_idx < n_inst + 1:
+            self.model_step_knn_tsne("Valid", batch, dataloader_idx-1, psd="psd")
+        elif dataloader_idx >= n_inst + 1 and dataloader_idx < 2*n_inst + 1:
+            self.model_step_knn_tsne("Valid", batch, dataloader_idx - 1 - n_inst, psd="not_psd")
+        elif dataloader_idx >= 2*n_inst + 1 and dataloader_idx < 3*n_inst + 1:
+            self.model_step_knn_tsne("Valid", batch, dataloader_idx - 1 - 2*n_inst, psd="psd_mine")
 
     def on_validation_epoch_end(self) -> None:
         "Lightning hook that is called when a validation epoch ends."
@@ -473,7 +616,11 @@ class TripletNoMss(LightningModule):
         # otherwise metric would be reset by lightning after each epoch
         #self.log("val/acc_best", self.val_acc_best.compute(), sync_dist=True, prog_bar=True)
         self.print_loss("Valid")
-        self.knn_tsne("Valid")
+        self.knn_tsne("Valid", psd="psd")
+        self.knn_tsne("Valid", psd="not_psd")
+        self.knn_tsne("Valid", psd="psd_mine")
+        for psd in ["psd", "not_psd", "psd_mine"]:
+            self.n_sound["Valid"][psd] = {inst: 0 for inst in self.cfg.inst_list}
 
     def test_step(self, batch, batch_idx: int, dataloader_idx=0) -> None:
         """Perform a single test step on a batch of data from the test set.
@@ -482,25 +629,58 @@ class TripletNoMss(LightningModule):
             labels.
         :param batch_idx: The index of the current batch.
         """
+        n_inst = len(self.cfg.inst_list)
         if dataloader_idx == 0:
-            cases_x, cases_y, cases = batch
+            """cases_x, cases_y, cases = batch
             if self.cfg.complex:
                 cases_x = self.stft.transform(cases_x)
+                phase = None
             else:
                 cases_x, phase = self.stft.transform(cases_x)
-            c_e, c_prob = self.net(cases_x)
+            c_e, c_prob, c_pred = self.net(cases_x)
+            if not self.cfg.mel:
+                for idx,c in enumerate(cases):
+                    if ((c[0] == 1 and c[1] == 1 and c[2] == 1 and c[3] == 1 and c[4] == 1)
+                        and self.n_sound < 5):
+                        #sound = self.stft.detransform(cases_x[idx], phase[idx], param[0,idx], param[1,idx])
+                        # TODO: complex = TrueだとphaseがNoneでidxがないって怒られるからそこを直す！いっそモデルの中で波にしちゃうのあり？てかそのロス追加する？
+                        if self.cfg.complex:
+                            sound = self.stft.detransform(cases_x[idx])
+                        else:
+                            sound = self.stft.detransform(cases_x[idx], phase[idx])
+                        #sound = self.stft.detransform(cases_x[idx], phase[idx])
+                        path = self.cfg.output_dir+f"/sound/mix"
+                        file_exist(path)
+                        soundfile.write(path + f"/separate{self.n_sound}_mix.wav", np.squeeze(sound.to("cpu").numpy()), self.cfg.sr)
+                        for j,inst in enumerate(self.cfg.inst_list):
+                            #sound = self.stft.detransform(cases_x[idx]*c_mask[inst][idx], phase[idx], param[0,idx], param[1,idx])
+                            if self.cfg.complex:
+                                sound = self.stft.detransform(c_pred[inst][idx])
+                            else:
+                                sound = self.stft.detransform(c_pred[inst][idx], phase[idx])
+                            path = self.cfg.output_dir+f"/sound/{inst}"
+                            file_exist(path)
+                            soundfile.write(path + f"/separate{self.n_sound}_{inst}.wav", np.squeeze(sound.to("cpu").numpy()), self.cfg.sr)
+                        self.n_sound += 1
             for idx,inst in enumerate(self.cfg.inst_list):
-                self.recorder["Test"]["recog_acc"][inst](c_prob[inst], cases[:,idx])
-        else:
-            self.model_step_psd("Test", batch, dataloader_idx-1)
+                self.recorder["Test"]["recog_acc"][inst](c_prob[inst], cases[:,idx])"""
+            pass
+        elif dataloader_idx > 0 and dataloader_idx < n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx-1, psd="psd")
+        elif dataloader_idx >= n_inst + 1 and dataloader_idx < 2*n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx - 1 - n_inst, psd="not_psd")
+        elif dataloader_idx >= 2*n_inst + 1 and dataloader_idx < 3*n_inst + 1:
+            self.model_step_knn_tsne("Test", batch, dataloader_idx - 1 - 2*n_inst, psd="psd_mine")
 
     def on_test_epoch_end(self) -> None:
         """Lightning hook that is called when a test epoch ends."""
         print()
-        for inst in self.cfg.inst_list:
+        """for inst in self.cfg.inst_list:
             recog_acc = self.recorder["Test"]["recog_acc"][inst].compute()
-            print(f"Test average accuracy {inst:9} : {recog_acc*100: 2f} %")
-        self.knn_tsne("Test")
+            print(f"Test average accuracy {inst:9} : {recog_acc*100: 2f} %")"""
+        self.knn_tsne("Test", psd="psd")
+        self.knn_tsne("Test", psd="not_psd")
+        self.knn_tsne("Test", psd="psd_mine")
 
     def setup(self, stage: str) -> None:
         """Lightning hook that is called at the beginning of fit (train + validate), validate,
@@ -543,4 +723,4 @@ class TripletNoMss(LightningModule):
 
 
 if __name__ == "__main__":
-    pass
+    _ = MNISTLitModule(None, None, None, None)

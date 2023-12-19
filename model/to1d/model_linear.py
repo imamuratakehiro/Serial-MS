@@ -234,14 +234,12 @@ class To1D128(nn.Module):
             #self.embnet = To1DFreqEmbedding(to1d_mode=to1d_mode, in_channel_freq=int(in_channel), tanh=tanh)
         elif order == "bilstm":
             self.to1d = To1dLSTM2(in_channel=int(in_channel))
-        self.recog = nn.Linear(128, 1)
         #deviceを指定
         self.to(device)
 
     def forward(self, input):
         emb_vec = self.to1d(input)
-        recog_p = self.recog(emb_vec)
-        return emb_vec, recog_p
+        return emb_vec
 
 class To1D640(nn.Module):
     def __init__(self, to1d_mode, order, in_channel) -> None:

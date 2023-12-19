@@ -15,13 +15,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap, BoundaryNorm
+import museval
 
-from utils.func import file_exist, knn_psd, tsne_psd, istft, tsne_psd_marker, TorchSTFT
+from utils.func import file_exist, knn_psd, tsne_psd, istft, tsne_psd_marker, TorchSTFT, evaluate
 from ..csn import ConditionalSimNet1d
 from ..tripletnet import CS_Tripletnet
 
 
-class TripletNoMss(LightningModule):
+class PL_UNet(LightningModule):
     """Example of a `LightningModule` for MNIST classification.
 
     A `LightningModule` implements 8 key methods:
@@ -88,10 +89,10 @@ class TripletNoMss(LightningModule):
 
         # loss function
         self.loss_unet  = nn.L1Loss(reduction="mean")
-        self.loss_triplet = nn.MarginRankingLoss(margin=cfg.margin, reduction="none") #バッチ平均
-        self.loss_l2      = nn.MSELoss(reduction="sum")
-        self.loss_mrl     = nn.MarginRankingLoss(margin=cfg.margin, reduction="mean") #バッチ平均
-        self.loss_cross_entropy = nn.BCEWithLogitsLoss(reduction="mean")
+        #self.loss_triplet = nn.MarginRankingLoss(margin=cfg.margin, reduction="none") #バッチ平均
+        #self.loss_l2      = nn.MSELoss(reduction="sum")
+        #self.loss_mrl     = nn.MarginRankingLoss(margin=cfg.margin, reduction="mean") #バッチ平均
+        #self.loss_cross_entropy = nn.BCEWithLogitsLoss(reduction="mean")
 
         # metric objects for calculating and averaging accuracy across batches
         #self.train_acc = Accuracy(task="multiclass", num_classes=10)
@@ -120,26 +121,16 @@ class TripletNoMss(LightningModule):
         """
         self.song_type = ["anchor", "positive", "negative"]
         self.recorder = MDict({})
-        for step in ["Train", "Valid"]:
+        for step in ["Train", "Valid", "Test"]:
             self.recorder[step] = MDict({})
             self.recorder[step]["loss_all"] = MeanMetric()
-            #self.recorder[step]["loss_unet"] = MDict({type: MeanMetric() for type in self.song_type})
-            #self.recorder[step]["loss_unet"]["all"] = MeanMetric()
-            self.recorder[step]["loss_triplet"] = MDict({inst: MeanMetric() for inst in cfg.inst_list})
-            self.recorder[step]["loss_triplet"]["all"] = MeanMetric()
-            self.recorder[step]["loss_recog"] = MeanMetric()
-            self.recorder[step]["recog_acc"] = MDict({inst: BinaryAccuracy() for inst in cfg.inst_list})
-            self.recorder[step]["dist_p"] = MDict({inst: MeanMetric() for inst in cfg.inst_list})
-            self.recorder[step]["dist_n"] = MDict({inst: MeanMetric() for inst in cfg.inst_list})
-        self.recorder["Test"] = MDict({})
-        self.recorder["Test"]["recog_acc"] = MDict({inst: BinaryAccuracy() for inst in cfg.inst_list})
+            self.recorder[step]["loss_unet"] = MeanMetric()
+            if step == "Test":
+                self.recorder[step]["SDR"] = MeanMetric()
+                self.recorder[step]["ISR"] = MeanMetric()
+                self.recorder[step]["SIR"] = MeanMetric()
+                self.recorder[step]["SAR"] = MeanMetric()
         self.n_sound = 0
-        self.recorder_psd = {}
-        for step in ["Valid", "Test"]:
-            self.recorder_psd[step] = {}
-            self.recorder_psd[step]["label"] = {inst: [] for inst in cfg.inst_list}
-            self.recorder_psd[step]["vec"] = {inst: [] for inst in cfg.inst_list}
-        #self.test_loss = MeanMetric()
 
         # for tracking best so far validation accuracy
         #self.val_acc_best = MaxMetric()
@@ -154,16 +145,16 @@ class TripletNoMss(LightningModule):
         #self.val_acc.reset()
         #self.val_acc_best.reset()
         self.recorder["Valid"]["loss_all"].reset()
-        #for type in self.song_type:
-        #    self.recorder["Valid"]["loss_unet"][type].reset()
-        #self.recorder["Valid"]["loss_unet"]["all"].reset()
-        for inst in self.cfg.inst_list:
-            self.recorder["Valid"]["loss_triplet"][inst].reset()
-            self.recorder["Valid"]["loss_recog"][inst].reset()
-            self.recorder["Valid"]["recog_acc"][inst].reset()
-            self.recorder["Valid"]["dist_p"][inst].reset()
-            self.recorder["Valid"]["dist_n"][inst].reset()
-        self.recorder["Valid"]["loss_triplet"]["all"].reset()
+        for type in self.song_type:
+            self.recorder["Valid"]["loss_unet"][type].reset()
+        self.recorder["Valid"]["loss_unet"]["all"].reset()
+        #for inst in self.cfg.inst_list:
+        #    self.recorder["Valid"]["loss_triplet"][inst].reset()
+        #    self.recorder["Valid"]["loss_recog"][inst].reset()
+        #    self.recorder["Valid"]["recog_acc"][inst].reset()
+        #    self.recorder["Valid"]["dist_p"][inst].reset()
+        #    self.recorder["Valid"]["dist_n"][inst].reset()
+        #self.recorder["Valid"]["loss_triplet"]["all"].reset()
     """
     def dataload_triplet(self, batch):
         # データセットを学習部分と教師部分に分けてdeviceを設定
@@ -184,24 +175,20 @@ class TripletNoMss(LightningModule):
         return cases_X, cases_y, cases
     """
     
-    def get_loss_unet(self, X, y, pred_mask):
-        batch = X.shape[0]
-        loss = 0
-        for idx, inst in enumerate(self.cfg.inst_list): #個別音源でロスを計算
-            pred = X * pred_mask[inst]
-            loss += self.loss_unet(pred, y[:,idx])
-        return loss / len(self.cfg.inst_list)
-    
-    def get_loss_unet_triposi(self, X, y, pred_mask, triposi):
+    def get_loss_unet(self, pred, y):
+        for idx, inst in enumerate(self.cfg.inst_list):
+            loss = self.loss_unet(pred[inst], y[:, idx])
+        return loss
+
+    """
+    def get_loss_unet_triposi(self, X, y, pred, triposi):
         # triplet positionのところのみ分離ロスを計算
         batch = X.shape[0]
         loss = 0
         for idx, c in enumerate(triposi): #個別音源でロスを計算
-            pred = X[idx] * pred_mask[self.cfg.inst_list[c.item()]][idx]
-            loss += self.loss_unet(pred, y[idx, c])
+            loss += self.loss_unet(pred[self.cfg.inst_list[c.item()]][idx], y[idx, c])
         return loss / batch
-    
-    """
+
     def get_loss_triplet(self, e_a, e_p, e_n, triposi):
         batch = triposi.shape[0]
         loss_all = 0
@@ -233,7 +220,6 @@ class TripletNoMss(LightningModule):
                 dist_p_all[condition] /= inst_n_triplet[i]
                 dist_n_all[condition] /= inst_n_triplet[i]
         return loss_all/batch, loss, dist_p_all, dist_n_all
-    """
 
     def get_loss_triplet(self, e_a, e_p, e_n, triposi):
         #batch = triposi.shape[0]
@@ -242,9 +228,9 @@ class TripletNoMss(LightningModule):
         target = torch.FloatTensor(distp.size()).fill_(1).to(distp.device) # 1で埋める
         loss = self.loss_triplet(distn, distp, target) # トリプレットロス
         loss_all = torch.sum(loss)/len(triposi)
-        loss_inst  = {inst: torch.sum(loss[torch.where(triposi==i)])/len(torch.where(triposi==i)[0])  for i,inst in enumerate(self.cfg.inst_list)}
-        dist_p_all = {inst: torch.sum(distp[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) for i,inst in enumerate(self.cfg.inst_list)}
-        dist_n_all = {inst: torch.sum(distn[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) for i,inst in enumerate(self.cfg.inst_list)}
+        loss_inst  = {inst: torch.sum(loss[torch.where(triposi==i)])/len(torch.where(triposi==i)[0])  if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_list)}
+        dist_p_all = {inst: torch.sum(distp[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_list)}
+        dist_n_all = {inst: torch.sum(distn[torch.where(triposi==i)])/len(torch.where(triposi==i)[0]) if len(torch.where(triposi==i)[0]) != 0 else 0 for i,inst in enumerate(self.cfg.inst_list)}
         return loss_all, loss_inst, dist_p_all, dist_n_all
     
     def get_loss_recognise1(self, emb, cases, l = 1e5):
@@ -274,15 +260,16 @@ class TripletNoMss(LightningModule):
                 # 実際の有音無音判定と予想した有音確率でクロスエントロピーロスを計算
                 loss_recognise += self.loss_cross_entropy(probability[inst][b], cases[b, c])
         return loss_recognise / batch / len(self.cfg.inst_list)
+    """
     
     def transform(self, x_wave, y_wave):
         device = x_wave.device
-        if self.cfg.complex:
+        if self.cfg.complex_unet:
             x = self.stft.transform(x_wave); y = self.stft.transform(y_wave)
         else:
             x, _ = self.stft.transform(x_wave); y, _ = self.stft.transform(y_wave)
         return x, y
-    
+    """
     def clone_for_additional(self, a_x, a_y, p_x, p_y, n_x, n_y, s_a, s_p, s_n, triposi):
         if triposi.dim() == 2: # [b, a]で入ってる
             x_a, x_p, x_n, y_a, y_p, y_n, a_s, p_s, n_s, tp = [], [], [], [], [], [], [], [], [], []
@@ -309,8 +296,8 @@ class TripletNoMss(LightningModule):
                     torch.stack(tp, dim=0))
         else:
             return a_x, a_y, p_x, p_y, n_x, n_y, s_a, s_p, s_n, triposi
-
-    def forward(self, batch):
+    """
+    def forward(self, batch, mode):
         """Perform a single model step on a batch of data.
 
         :param batch: A batch of data (a tuple) containing the input tensor of images and target labels.
@@ -320,67 +307,45 @@ class TripletNoMss(LightningModule):
             - A tensor of predictions.
             - A tensor of target labels.
         """
-        # TODO: triposiの次元を増やしたから　triplet.pyを参考にして直してから動かす
         #a_x, a_y, p_x, p_y, n_x, n_y, triposi, posiposi = self.dataload_tripet(batch)
-        a_x_wave, a_y_wave, p_x_wave, p_y_wave, n_x_wave, n_y_wave, sound_a, sound_p, sound_n, triposi = batch
+        mix_wave, stems_wave = batch
         # stft
         with torch.no_grad():
-            a_x, a_y = self.transform(a_x_wave, a_y_wave)
-            p_x, p_y = self.transform(p_x_wave, p_y_wave)
-            n_x, n_y = self.transform(n_x_wave, n_y_wave)
-        a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi = self.clone_for_additional(a_x, a_y, p_x, p_y, n_x, n_y, sound_a, sound_p, sound_n, triposi)
-        a_e, a_prob = self.net(a_x)
-        p_e, p_prob = self.net(p_x)
-        n_e, n_prob = self.net(n_x)
+            if self.cfg.complex_unet:
+                mix = self.stft.transform(mix_wave); stems = self.stft.transform(stems_wave); phase = None
+            else:
+                mix, phase = self.stft.transform(mix_wave); stems, _ = self.stft.transform(stems_wave)
+        # forward
+        pred = self.net(mix)
         # get loss
-        #loss_unet_a = self.get_loss_unet_triposi(a_x, a_y, a_mask, triposi)
-        #loss_unet_p = self.get_loss_unet_triposi(p_x, p_y, p_mask, triposi)
-        #loss_unet_n = self.get_loss_unet_triposi(n_x, n_y, n_mask, triposi)
-        loss_triplet_all, loss_triplet, dist_p, dist_n = self.get_loss_triplet(a_e, p_e, n_e, triposi)
-        loss_recog = self.get_loss_recognise2(a_prob, sound_a) + self.get_loss_recognise2(p_prob, sound_p) + self.get_loss_recognise2(n_prob, sound_n)
+        loss_unet = self.get_loss_unet(pred, stems)
         # record loss
-        loss_all = loss_triplet_all*self.cfg.triplet_rate + loss_recog*self.cfg.recog_rate
-        #loss_unet = {
-        #    "anchor": loss_unet_a.item(),
-        #    "positive": loss_unet_p.item(),
-        #    "negative": loss_unet_n.item(),
-        #    "all": loss_unet_a.item() + loss_unet_p.item() + loss_unet_n.item()
-        #}
-        loss_triplet["all"] = loss_triplet_all.item()
-        prob = {inst: torch.concat([a_prob[inst], p_prob[inst], n_prob[inst]], dim=0) for inst in self.cfg.inst_list}
-        cases = torch.concat([sound_a, sound_p, sound_n], dim=0)
-        return loss_all, loss_triplet, dist_p, dist_n, loss_recog.item(), prob, cases
+        loss_all = loss_unet
+        if mode != "Train":
+            pred_s = self.stft.detransform(pred) if phase is None else self.stft.detransform(pred, phase)
+            return loss_all, loss_unet, pred_s
+        else:
+            return loss_all, loss_unet
     
     def model_step(self, mode:str, batch):
-        loss_all, loss_triplet, dist_p, dist_n, loss_recog, prob, cases = self.forward(batch)
+        if mode != "Train":
+            loss_all, loss_unet, pred_s = self.forward(batch, mode)
+            if self.n_sound < 5:
+                path = self.cfg.output_dir+f"/sound/{self.cfg.inst}/valid_e={self.current_epoch}"
+                file_exist(path)
+                soundfile.write(path + f"/separate{self.n_sound}_{self.cfg.inst}.wav", torch.squeeze(pred_s).to("cpu").numpy(), self.cfg.sr)
+        else:
+            loss_all, loss_unet = self.forward(batch, mode)
         # update and log metrics
         self.recorder[mode]["loss_all"](loss_all)
         self.log(f"{mode}/loss_all", self.recorder[mode]["loss_all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
         # unet
-        #for type in self.song_type:
-        #    self.recorder[mode]["loss_unet"][type](loss_unet[type])
-        #    self.log(f"{mode}/loss_unet_{type}", self.recorder[mode]["loss_unet"][type], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
-        #self.recorder[mode]["loss_unet"]["all"](loss_unet["all"])
-        #self.log(f"{mode}/loss_unet_all", self.recorder[mode]["loss_unet"]["all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
-        # triplet
-        for inst in self.cfg.inst_list:
-            self.recorder[mode]["loss_triplet"][inst](loss_triplet[inst])
-            self.recorder[mode]["dist_p"][inst](dist_p[inst])
-            self.recorder[mode]["dist_n"][inst](dist_n[inst])
-            self.log(f"{mode}/loss_triplet_{inst}", self.recorder[mode]["loss_triplet"][inst], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
-            self.log(f"{mode}/dist_p_{inst}",       self.recorder[mode]["dist_p"][inst],       on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
-            self.log(f"{mode}/dist_n_{inst}",       self.recorder[mode]["dist_n"][inst],       on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
-        self.recorder[mode]["loss_triplet"]["all"](loss_triplet["all"])
-        self.log(f"{mode}/loss_triplet_all", self.recorder[mode]["loss_triplet"]["all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
-        # recognize
-        self.recorder[mode]["loss_recog"](loss_recog)
-        self.log(f"{mode}/loss_recog", self.recorder[mode]["loss_recog"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
-        for idx,inst in enumerate(self.cfg.inst_list):
-            self.recorder[mode]["recog_acc"][inst](prob[inst], cases[:,idx])
-            self.log(f"{mode}/recog_acc_{inst}", self.recorder[mode]["recog_acc"][inst], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
+        self.recorder[mode]["loss_unet"](loss_unet)
+        self.log(f"{mode}/loss_unet", self.recorder[mode]["loss_unet"], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
+        #evaluate(reference=y[...,:pred_sound.shape[-1]].to("cpu"), estimate=pred_sound.to("cpu"), inst_list=self.inst_list, writer=self.writer, epoch=self.epoch)
         # return loss or backpropagation will fail
         return loss_all
-    
+    """
     def model_step_psd(self, mode:str, batch, idx):
         ID, ver, seg, data_wave, c = batch
         with torch.no_grad():
@@ -388,13 +353,13 @@ class TripletNoMss(LightningModule):
                 data = self.stft.transform(data_wave)
             else:
                 data, _ = self.stft.transform(data_wave)
-        embvec, _ = self.net(data)
+        embvec, _, _ = self.net(data)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
         csn_valid = ConditionalSimNet1d().to(embvec.device)
         self.recorder_psd[mode]["label"][self.cfg.inst_list[idx]].append(torch.stack([ID, ver], dim=1))
         self.recorder_psd[mode]["vec"][self.cfg.inst_list[idx]].append(csn_valid(embvec, c))
-
+    """
     def training_step(
         self, batch, batch_idx: int
     ):
@@ -410,28 +375,12 @@ class TripletNoMss(LightningModule):
 
     def print_loss(self, mode:str):
         # unet
-        #print("\n\n== U-Net Loss ==")
-        #loss_unet = {type: self.recorder[mode]["loss_unet"][type].compute() for type in self.song_type}
-        #print(f"{mode} average loss UNet (anchor, positive, negative)  : {loss_unet['anchor']:2f}, {loss_unet['positive']:2f}, {loss_unet['negative']:2f}")
-        #loss_unet_all = self.recorder[mode]["loss_unet"]["all"].compute()
-        #print(f"{mode} average loss UNet            (all)              : {loss_unet_all:2f}")
-        # triplet
-        print("\n== Triplet Loss ==")
-        for inst in self.cfg.inst_list:
-            loss_triplet = self.recorder[mode]["loss_triplet"][inst].compute()
-            dist_p = self.recorder[mode]["dist_p"][inst].compute()
-            dist_n = self.recorder[mode]["dist_n"][inst].compute()
-            print(f"{mode} average loss {inst:9}(Triplet, dist_p, dist_n) : {loss_triplet:2f}, {dist_p:2f}, {dist_n:2f}")
-        loss_triplet_all = self.recorder[mode]["loss_triplet"]["all"].compute()
-        print(f"{mode} average loss all      (Triplet)                 : {loss_triplet_all:2f}")
-        # recognize
-        print("\n== Recognize ==")
-        print(f"{mode} average loss Recognize     : {self.recorder[mode]['loss_recog'].compute():2f}")
-        for inst in self.cfg.inst_list:
-            recog_acc = self.recorder[mode]["recog_acc"][inst].compute()
-            print(f"{mode} average accuracy {inst:9} : {recog_acc*100:2f} %")
+        print("\n\n== U-Net Loss ==")
+        loss_unet = self.recorder[mode]["loss_unet"].compute()
+        print(f"{mode} average loss UNet {self.cfg.inst} : {loss_unet:2f}")
         print(f"\n== {mode} average loss all : {self.recorder[mode]['loss_all'].compute():2f}\n")
     
+    """
     def knn_tsne(self, mode:str):
         acc_all = 0
         for inst in self.cfg.inst_list:
@@ -448,6 +397,7 @@ class TripletNoMss(LightningModule):
         self.log(f"{mode}/knn_avr", acc_all/len(self.cfg.inst_list), on_step=False, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
         print(f"\n{mode} knn accuracy average   : {acc_all/len(self.cfg.inst_list)*100}%")
         self.recorder_psd[mode]["label"] = {inst:[] for inst in self.cfg.inst_list}; self.recorder_psd[mode]["vec"] = {inst:[] for inst in self.cfg.inst_list}
+    """
 
     def on_train_epoch_end(self) -> None:
         "Lightning hook that is called when a training epoch ends."
@@ -460,10 +410,37 @@ class TripletNoMss(LightningModule):
             labels.
         :param batch_idx: The index of the current batch.
         """
-        if dataloader_idx == 0:
-            loss_all = self.model_step("Valid", batch)
-        else:
-            self.model_step_psd("Valid", batch, dataloader_idx-1)
+        #a_x, a_y, p_x, p_y, n_x, n_y, triposi, posiposi = self.dataload_tripet(batch)
+        mix_wave, stems_wave = batch
+        # stft
+        with torch.no_grad():
+            if self.cfg.complex_unet:
+                mix = self.stft.transform(mix_wave); stems = self.stft.transform(stems_wave); phase = None
+            else:
+                mix, phase = self.stft.transform(mix_wave); stems, _ = self.stft.transform(stems_wave)
+        # forward
+        pred = self.net(mix)
+        # get loss
+        loss_unet = self.get_loss_unet(pred, stems)
+        # record loss
+        loss_all = loss_unet
+        # Save predicted sound.
+        if self.n_sound < 5:
+            for i, inst in enumerate(self.cfg.inst_list):
+                pred_s = self.stft.detransform(pred[inst]) if phase is None else self.stft.detransform(pred[inst], phase)
+                path = self.cfg.output_dir+f"/sound/{inst}/valid_e={self.current_epoch}"
+                file_exist(path)
+                idx = 0
+                while self.n_sound < 5:
+                    soundfile.write(path + f"/separate{self.n_sound}_{inst}.wav", torch.squeeze(pred_s[idx]).to("cpu").numpy(), self.cfg.sr)
+                    idx += 1; self.n_sound += 1
+        # update and log metrics
+        self.recorder["Valid"]["loss_all"](loss_all)
+        self.log(f"Valid/loss_all", self.recorder["Valid"]["loss_all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
+        # unet
+        self.recorder["Valid"]["loss_unet"](loss_unet)
+        self.log(f"Valid/loss_unet", self.recorder["Valid"]["loss_unet"], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
+        #evaluate(reference=y[...,:pred_sound.shape[-1]].to("cpu"), estimate=pred_sound.to("cpu"), inst_list=self.inst_list, writer=self.writer, epoch=self.epoch)
 
     def on_validation_epoch_end(self) -> None:
         "Lightning hook that is called when a validation epoch ends."
@@ -472,8 +449,24 @@ class TripletNoMss(LightningModule):
         # log `val_acc_best` as a value through `.compute()` method, instead of as a metric object
         # otherwise metric would be reset by lightning after each epoch
         #self.log("val/acc_best", self.val_acc_best.compute(), sync_dist=True, prog_bar=True)
+        self.n_sound = 0
         self.print_loss("Valid")
-        self.knn_tsne("Valid")
+
+    def evaluate(self, reference, estimate):
+        # assume mix as estimates
+        if reference.shape[3] > estimate.shape[3]:
+            reference = reference[..., :estimate.shape[3]]
+        B, C, S, T = reference.shape
+        reference = torch.reshape(reference, (B, T, C*S))
+        estimate  = torch.reshape(estimate, (B, T, C*S))
+        scores = {"SDR":0, "ISR":0, "SIR":0, "SAR":0}
+        # Evaluate using museval
+        score = museval.evaluate(references=reference.to("cpu"), estimates=estimate.to("cpu"))
+        #print(score)
+        for i,key in enumerate(list(scores.keys())):
+            #print(score[i].shape)
+            scores[key] = np.mean(score[i])
+        return scores
 
     def test_step(self, batch, batch_idx: int, dataloader_idx=0) -> None:
         """Perform a single test step on a batch of data from the test set.
@@ -482,25 +475,49 @@ class TripletNoMss(LightningModule):
             labels.
         :param batch_idx: The index of the current batch.
         """
-        if dataloader_idx == 0:
-            cases_x, cases_y, cases = batch
-            if self.cfg.complex:
-                cases_x = self.stft.transform(cases_x)
+        #a_x, a_y, p_x, p_y, n_x, n_y, triposi, posiposi = self.dataload_tripet(batch)
+        mix_wave, stems_wave = batch
+        # stft
+        with torch.no_grad():
+            if self.cfg.complex_unet:
+                mix = self.stft.transform(mix_wave); stems = self.stft.transform(stems_wave); phase = None
             else:
-                cases_x, phase = self.stft.transform(cases_x)
-            c_e, c_prob = self.net(cases_x)
-            for idx,inst in enumerate(self.cfg.inst_list):
-                self.recorder["Test"]["recog_acc"][inst](c_prob[inst], cases[:,idx])
-        else:
-            self.model_step_psd("Test", batch, dataloader_idx-1)
+                mix, phase = self.stft.transform(mix_wave); stems, _ = self.stft.transform(stems_wave)
+        # forward
+        pred = self.net(mix)
+        # get loss
+        loss_unet = self.get_loss_unet(pred, stems)
+        # record loss
+        loss_all = loss_unet
+        # Save predicted sound.
+        pred_s = self.stft.detransform(pred[self.cfg.inst]) if phase is None else self.stft.detransform(pred[self.cfg.inst], phase)
+        if self.n_sound < 10:
+            path = self.cfg.output_dir+f"/sound/{self.cfg.inst}/test"
+            file_exist(path)
+            idx = 0
+            while self.n_sound < 5:
+                soundfile.write(path + f"/reference{self.n_sound}_{self.cfg.inst}.wav", torch.squeeze(stems_wave[idx]).to("cpu").numpy(), self.cfg.sr)
+                soundfile.write(path + f"/separate{self.n_sound}_{self.cfg.inst}.wav", torch.squeeze(pred_s[idx]).to("cpu").numpy(), self.cfg.sr)
+                idx += 1; self.n_sound += 1
+        # update and log metrics
+        self.recorder["Test"]["loss_all"](loss_all)
+        self.log(f"Test/loss_all", self.recorder["Test"]["loss_all"], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
+        # unet
+        self.recorder["Test"]["loss_unet"](loss_unet)
+        self.log(f"Test/loss_unet", self.recorder["Test"]["loss_unet"], on_step=True, on_epoch=True, prog_bar=False, add_dataloader_idx=False)
+        # Evaluate predicted sound.
+        pred_s = torch.unsqueeze(pred_s, dim=1) # B, C, S, TのC(楽器音数)をつくる。ちなみにSはmono or stereo
+        #print(stems_wave.shape, pred_s.shape)
+        scores = self.evaluate(reference=stems_wave, estimate=pred_s)
+        for i,key in enumerate(list(scores.keys())):
+            self.recorder["Test"][key](scores[key])
+            self.log(f"Test/{key}", self.recorder["Test"][key], on_step=True, on_epoch=True, prog_bar=True, add_dataloader_idx=False)
 
     def on_test_epoch_end(self) -> None:
         """Lightning hook that is called when a test epoch ends."""
         print()
-        for inst in self.cfg.inst_list:
-            recog_acc = self.recorder["Test"]["recog_acc"][inst].compute()
-            print(f"Test average accuracy {inst:9} : {recog_acc*100: 2f} %")
-        self.knn_tsne("Test")
+        print(f'{self.cfg.inst:<10}- SDR: {self.recorder["Test"]["SDR"].compute():.3f}, ISR: {self.recorder["Test"]["ISR"].compute():.3f}, SIR: {self.recorder["Test"]["SIR"].compute():.3f}, SAR: {self.recorder["Test"]["SAR"].compute():.3f}')
+        self.n_sound = 0
 
     def setup(self, stage: str) -> None:
         """Lightning hook that is called at the beginning of fit (train + validate), validate,
@@ -543,4 +560,4 @@ class TripletNoMss(LightningModule):
 
 
 if __name__ == "__main__":
-    pass
+    _ = MNISTLitModule(None, None, None, None)

@@ -18,6 +18,7 @@ from ..csn import ConditionalSimNet2d, ConditionalSimNet1d
 from ..to1d.model_embedding import EmbeddingNet128to128, To1dEmbedding
 from ..to1d.model_linear import To1D640
 from utils.func import normalize_torch, denormalize_torch, standardize_torch, destandardize_torch
+from functools import partial
 
 # GPUが使用可能かどうか判定、使用可能なら使用する
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -26,13 +27,27 @@ print(f"\n=== Using {device}({__name__}). ===\n")
 class MyError(Exception):
     pass
 
+def get_norm(norm_type):
+    def norm(c, norm_type):   
+        if norm_type=='BatchNorm':
+            return nn.BatchNorm2d(c)
+        elif norm_type=='InstanceNorm':
+            return nn.InstanceNorm2d(c, affine=True)
+        elif 'GroupNorm' in norm_type:
+            g = int(norm_type.replace('GroupNorm', ''))
+            return nn.GroupNorm(num_groups=g, num_channels=c)
+        else:
+            return nn.Identity()
+    return partial(norm, norm_type=norm_type) # norm関数のnorm_typeにすでに値が入った関数を返す
+
 
 class Conv2d(nn.Module):
     def __init__(self, in_channels, out_channels, last=False) -> None:
         super().__init__()
         self.conv = nn.Sequential(nn.Conv2d(in_channels, out_channels, kernel_size = (5, 5), stride=(2, 2), padding=2))
         #if not last:
-        self.conv.add_module("bn", nn.BatchNorm2d(out_channels))
+        #self.conv.add_module("bn", nn.BatchNorm2d(out_channels))
+        self.conv.add_module("bn", nn.InstanceNorm2d(out_channels))
         self.conv.add_module("rl", nn.LeakyReLU(0.2))
     def forward(self, input):
         return self.conv(input)
@@ -48,7 +63,7 @@ class UNetEncoder(nn.Module):
         self.conv5 = Conv2d(128, 256)
         self.conv6 = Conv2d(256, encoder_out_size, last=True)
         #deviceを指定
-        #self.to(device)
+        self.to(device)
     def forward(self, input):
         # Encoder
         conv1_out = self.conv1(input)
@@ -64,26 +79,31 @@ class UNetDecoder(nn.Module):
         super().__init__()
         self.deconv6_a = nn.ConvTranspose2d(encoder_out_size, 256, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv6_b = nn.Sequential(
-                                nn.BatchNorm2d(256),
+                                #nn.BatchNorm2d(256),
+                                nn.InstanceNorm2d(256),
                                 nn.LeakyReLU(0.2),
                                 nn.Dropout2d(0.5))
         self.deconv5_a = nn.ConvTranspose2d(256+256, 128, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv5_b = nn.Sequential(
-                                nn.BatchNorm2d(128),
+                                #nn.BatchNorm2d(128),
+                                nn.InstanceNorm2d(128),
                                 nn.LeakyReLU(0.2),
                                 nn.Dropout2d(0.5))
         self.deconv4_a = nn.ConvTranspose2d(128+128, 64, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv4_b = nn.Sequential(
-                                nn.BatchNorm2d(64),
+                                #nn.BatchNorm2d(64),
+                                nn.InstanceNorm2d(64),
                                 nn.LeakyReLU(0.2),
                                 nn.Dropout2d(0.5))
         self.deconv3_a = nn.ConvTranspose2d(64+64, 32, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv3_b = nn.Sequential(
-                                nn.BatchNorm2d(32),
+                                #nn.BatchNorm2d(32),
+                                nn.InstanceNorm2d(32),
                                 nn.LeakyReLU(0.2))
         self.deconv2_a = nn.ConvTranspose2d(32+32, 16, kernel_size = (5, 5), stride=(2, 2), padding=2)
         self.deconv2_b = nn.Sequential(
-                                nn.BatchNorm2d(16),
+                                #nn.BatchNorm2d(16),
+                                nn.InstanceNorm2d(16),
                                 nn.LeakyReLU(0.2))
         self.deconv1_a = nn.ConvTranspose2d(16+16, encoder_in_size, kernel_size = (5, 5), stride=(2, 2), padding=2)
         #deviceを指定
@@ -104,14 +124,13 @@ class UNetDecoder(nn.Module):
         return output
 
 class UNetForTriplet_2d_de5_to1d640(nn.Module):
-    def __init__(self, cfg, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
+    def __init__(self, inst_list, f_size, mono=True, to1d_mode="mean_linear", order="timefreq", mel=False, n_mels=259):
         super().__init__()
+        # TODO: 直すポイント：complexを有効に、normalise・standardizeを有効に
         if mono:
             encoder_in_size = 1
         else:
             encoder_in_size = 2
-        if cfg.complex:
-            encoder_in_size *= 2
         encoder_out_size = len(inst_list) * 128
         # Encoder
         self.encoder = UNetEncoder(encoder_in_size, encoder_out_size)
@@ -144,8 +163,6 @@ class UNetForTriplet_2d_de5_to1d640(nn.Module):
         #deviceを指定
         self.to(device)
         self.inst_list = inst_list
-        self.cfg = cfg
-
 
     def forward(self, input):
         # Encoder

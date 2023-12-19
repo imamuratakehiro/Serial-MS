@@ -137,7 +137,10 @@ class PreTrain(LightningModule):
             - A tensor of target labels.
         """
         mix, stems, emb_target_mix, emb_target_stems = batch
-        mix, _ = self.stft.transform(mix); stems, _ = self.stft.transform(stems)
+        if self.cfg.complex:
+            mix = self.stft.transform(mix); stems = self.stft.transform(stems)
+        else:
+            mix, _ = self.stft.transform(mix); stems, _ = self.stft.transform(stems)
         emb_mix   = self.forward_mix(mix)
         emb_stems = self.forward_inst(stems)
         #csn_train = ConditionalSimNet1d()
@@ -187,7 +190,10 @@ class PreTrain(LightningModule):
         :param batch_idx: The index of the current batch.
         """
         ID, ver, seg, data, c = batch
-        data, _ = self.stft.transform(data)
+        if self.cfg.complex:
+            data = self.stft.transform(data)
+        else:
+            data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
@@ -227,7 +233,10 @@ class PreTrain(LightningModule):
         :param batch_idx: The index of the current batch.
         """
         ID, ver, seg, data, c = batch
-        data, _ = self.stft.transform(data)
+        if self.cfg.complex:
+            data = self.stft.transform(data)
+        else:
+            data, _ = self.stft.transform(data)
         embvec = self.forward_mix(data)
         if self.cfg.test_valid_norm:
             embvec = torch.nn.functional.normalize(embvec, dim=1)
